@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Register class-based dark mode variant for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   /* Brand colours */
   --color-navy:      #0a1628;
@@ -68,3 +71,60 @@ body {
 .section { @apply py-16 lg:py-24; }
 .section-narrow { @apply py-12 lg:py-16; }
 .container-site { @apply mx-auto max-w-6xl px-5 sm:px-8; }
+
+/* ─── Dark mode overrides ─── */
+html.dark body {
+  background-color: #0a1628;
+  color: #e8ecf0;
+}
+
+/* Light section backgrounds */
+html.dark .bg-white {
+  background-color: #0d1f35 !important;
+}
+html.dark .bg-\[\#f5f7fa\] {
+  background-color: #080f1d !important;
+}
+
+/* Primary text on light backgrounds */
+html.dark .text-\[\#0a1628\] {
+  color: #e8ecf0 !important;
+}
+html.dark .text-\[\#4a5568\] {
+  color: #8b97a5 !important;
+}
+
+/* Borders */
+html.dark .border-\[\#e8ecf0\] {
+  border-color: #1e3052 !important;
+}
+
+/* Dividers (FAQ, etc.) */
+html.dark .divide-\[\#e8ecf0\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e3052 !important;
+}
+
+/* Form elements */
+html.dark .form-input {
+  background-color: #0d1f35 !important;
+  color: #e8ecf0 !important;
+  border-color: #1e3052 !important;
+}
+html.dark .form-input::placeholder {
+  color: #4a5568;
+}
+html.dark .form-label {
+  color: #e8ecf0 !important;
+}
+html.dark select.form-input option {
+  background-color: #0d1f35;
+}
+
+/* White button variant in dark mode */
+html.dark .btn-white {
+  background-color: #1e3052;
+  color: #e8ecf0;
+}
+html.dark .btn-white:hover {
+  background-color: #243d66;
+}

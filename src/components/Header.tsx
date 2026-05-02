@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/buy-off-market-yachts", label: "Buy" },
@@ -21,17 +21,79 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+function SunIcon() {
+  return (
+    <svg className="h-3 w-3 text-[#0a1628]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <line x1="12" y1="2" x2="12" y2="4" />
+      <line x1="12" y1="20" x2="12" y2="22" />
+      <line x1="2" y1="12" x2="4" y2="12" />
+      <line x1="20" y1="12" x2="22" y2="12" />
+      <line x1="4.93" y1="4.93" x2="6.34" y2="6.34" />
+      <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+      <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" />
+      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg className="h-3 w-3 text-[#c9a96e]" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
+  );
+}
+
+function ThemeToggle({ darkMode, onToggle }: { darkMode: boolean; onToggle: () => void }) {
+  return (
+    <button
+      role="switch"
+      aria-checked={darkMode}
+      onClick={onToggle}
+      aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      className={`relative flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-300 ${
+        darkMode ? "bg-[#c9a96e]" : "bg-[#1e3052]"
+      }`}
+    >
+      <span
+        className={`absolute flex h-5 w-5 items-center justify-center rounded-full bg-white shadow-sm transition-transform duration-300 ${
+          darkMode ? "translate-x-[22px]" : "translate-x-0.5"
+        }`}
+      >
+        {darkMode ? <MoonIcon /> : <SunIcon />}
+      </span>
+    </button>
+  );
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    setDarkMode(isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-[#0a1628] shadow-lg">
-      <div className="container-site flex h-16 items-center justify-between md:h-20">
+      <div className="container-site flex h-16 items-center justify-between gap-4 md:h-20">
         {/* Logo */}
         <Link
           href="/"
-          className="flex flex-col leading-none"
+          className="flex shrink-0 flex-col leading-none"
           aria-label="OffMarketYachts home"
         >
           <span className="text-base font-bold tracking-wider text-white sm:text-lg">
@@ -43,12 +105,12 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
+        <nav className="hidden items-center gap-5 md:flex" aria-label="Main navigation">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label} className="relative">
                 <button
-                  className="flex items-center gap-1 text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
+                  className="flex items-center gap-1 whitespace-nowrap text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
                   onClick={() => setDropdownOpen((o) => !o)}
                   aria-expanded={dropdownOpen}
                   aria-haspopup="true"
@@ -77,7 +139,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href!}
-                className="text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
+                className="whitespace-nowrap text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
               >
                 {link.label}
               </Link>
@@ -85,8 +147,9 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Desktop CTAs */}
-        <div className="hidden items-center gap-3 md:flex">
+        {/* Desktop CTAs + Theme Toggle */}
+        <div className="hidden shrink-0 items-center gap-3 md:flex">
+          <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
           <Link href="/submit-yacht" className="btn-outline-gold py-2 text-xs">
             Submit Yacht
           </Link>
@@ -140,6 +203,12 @@ export default function Header() {
             )
           )}
           <div className="mt-4 flex flex-col gap-3">
+            <div className="flex items-center justify-between rounded border border-[#112040] px-4 py-3">
+              <span className="text-sm font-medium text-[#8b97a5]">
+                {darkMode ? "Night Mode" : "Day Mode"}
+              </span>
+              <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
+            </div>
             <Link href="/submit-yacht" className="btn-outline-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
               Submit Yacht
             </Link>
