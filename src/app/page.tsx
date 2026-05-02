@@ -65,6 +65,109 @@ const whyOffMarket = [
   },
 ];
 
+const dealFlowSnapshot = [
+  {
+    loa: "42m",
+    region: "Western Med",
+    priceRange: "€12M – €15M",
+    status: "Under Review",
+    statusClass: "border-yellow-400/25 bg-yellow-400/10 text-yellow-400",
+    type: "Motor Yacht",
+    note: "2022 refit · Owner-side discussion",
+    masked: "Exact marina withheld",
+  },
+  {
+    loa: "55m",
+    region: "Caribbean",
+    priceRange: "€25M – €30M",
+    status: "NDA Required",
+    statusClass: "border-[#c9a96e]/25 bg-[#c9a96e]/10 text-[#c9a96e]",
+    type: "Superyacht",
+    note: "Private seller · Crew-managed",
+    masked: "Owner identity protected",
+  },
+  {
+    loa: "33m",
+    region: "Confidential",
+    priceRange: "Price on Request",
+    status: "Limited Circulation",
+    statusClass: "border-sky-400/25 bg-sky-400/10 text-sky-400",
+    type: "Trimaran",
+    note: "Specialist multihull · Principal-only access",
+    masked: "Vessel name withheld",
+  },
+  {
+    loa: "68m",
+    region: "Northern Europe",
+    priceRange: "€45M+",
+    status: "Owner Approval Required",
+    statusClass: "border-orange-400/25 bg-orange-400/10 text-orange-400",
+    type: "Superyacht",
+    note: "Recent technical upgrades · No public listing",
+    masked: "Specs released under NDA",
+  },
+  {
+    loa: "29m",
+    region: "UAE / Gulf",
+    priceRange: "€6M – €9M",
+    status: "Pre-Market",
+    statusClass: "border-violet-400/25 bg-violet-400/10 text-violet-400",
+    type: "Motor Yacht",
+    note: "Low-hour vessel · Documentation pending",
+    masked: "Flag details withheld",
+  },
+  {
+    loa: "47m",
+    region: "East Med",
+    priceRange: "€18M – €22M",
+    status: "Verified Representative",
+    statusClass: "border-emerald-400/25 bg-emerald-400/10 text-emerald-400",
+    type: "Displacement Yacht",
+    note: "Commercially compliant · NDA standard",
+    masked: "Exact location masked",
+  },
+  {
+    loa: "24m",
+    region: "Balearics",
+    priceRange: "€3M – €5M",
+    status: "Soft Availability",
+    statusClass: "border-teal-400/25 bg-teal-400/10 text-teal-400",
+    type: "Catamaran",
+    note: "Charter-ready · Private approach only",
+    masked: "Owner identity protected",
+  },
+  {
+    loa: "74m",
+    region: "Confidential",
+    priceRange: "€60M+",
+    status: "Principal Review Only",
+    statusClass: "border-red-400/25 bg-red-400/10 text-red-400",
+    type: "Superyacht",
+    note: "Flag confidential · Family office channel",
+    masked: "All details withheld",
+  },
+  {
+    loa: "38m",
+    region: "Florida / Bahamas",
+    priceRange: "€10M – €14M",
+    status: "Broker Cooperation",
+    statusClass: "border-blue-400/25 bg-blue-400/10 text-blue-400",
+    type: "Motor Yacht",
+    note: "US buyer-ready · Co-brokerage possible",
+    masked: "Vessel name withheld",
+  },
+  {
+    loa: "52m",
+    region: "Monaco / SOF",
+    priceRange: "€28M – €35M",
+    status: "Controlled Access",
+    statusClass: "border-amber-400/25 bg-amber-400/10 text-amber-400",
+    type: "Superyacht",
+    note: "Survey package available under NDA",
+    masked: "Exact marina withheld",
+  },
+];
+
 const faqItems = [
   {
     question: "What is an off-market yacht?",
@@ -215,43 +318,155 @@ export default function HomePage() {
       </section>
 
       {/* Private Deal Flow Snapshot */}
-      <section className="section-narrow bg-[#060e1a]" aria-labelledby="snapshot-heading">
-        <div className="container-site">
-          <div className="mb-8 text-center">
+      <section className="section relative overflow-hidden bg-[#060e1a]" aria-labelledby="snapshot-heading">
+        {/* Dot-grid background */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: "radial-gradient(#c9a96e 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        <div className="container-site relative">
+          {/* Section header */}
+          <div className="mb-12 text-center">
+            <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
+              Not listed. Not indexed. Not publicly circulated.
+            </div>
             <h2
               id="snapshot-heading"
-              className="text-xl font-bold tracking-tight text-white sm:text-2xl"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
             >
               Private Deal Flow Snapshot
             </h2>
-            <p className="mt-2 text-sm text-[#8b97a5]">
-              Current opportunities are shared under NDA with approved principals only.
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#8b97a5]">
+              A limited preview of confidential yacht opportunities currently reviewed through
+              private owner-side, broker, and representative channels.{" "}
+              Full details are shared only after qualification, NDA execution, and owner approval.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3">
-            {[
-              { label: "42m · EU · €12M", sub: "Refit 2022 · Motor Yacht" },
-              { label: "55m · Caribbean · €28M", sub: "Off-Market · Superyacht" },
-              { label: "33m Trimaran · Confidential", sub: "Region undisclosed · Price on application" },
-            ].map(({ label, sub }) => (
+
+          {/* Cards grid */}
+          <div
+            className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5"
+            aria-hidden="true"
+          >
+            {dealFlowSnapshot.map((card, i) => (
               <div
-                key={label}
-                className="relative overflow-hidden rounded-lg border border-[#112040] bg-[#0a1628] px-5 py-4"
-                aria-hidden="true"
+                key={i}
+                className="flex cursor-default select-none flex-col overflow-hidden rounded-xl border border-[#1e3052] bg-[#0a1628]"
               >
-                <div className="select-none">
-                  <p className="font-semibold text-white">{label}</p>
-                  <p className="mt-1 text-xs text-[#8b97a5]">{sub}</p>
-                </div>
-                <div className="pointer-events-none absolute inset-0 backdrop-blur-[3px]" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="rounded border border-[#c9a96e]/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
-                    NDA Required
+                {/* Gold gradient top line */}
+                <div className="h-px w-full bg-gradient-to-r from-transparent via-[#c9a96e]/35 to-transparent" />
+
+                {/* LOA + status */}
+                <div className="flex items-start justify-between gap-2 px-4 pb-2 pt-4">
+                  <span className="text-xl font-bold leading-none text-white">
+                    {card.loa}
                   </span>
+                  <span
+                    className={`shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-widest ${card.statusClass}`}
+                  >
+                    {card.status}
+                  </span>
+                </div>
+
+                {/* Body */}
+                <div className="flex flex-1 flex-col gap-1.5 px-4 pb-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[#8b97a5]">{card.region}</span>
+                    <span className="text-[10px] text-[#c9a96e]/50">🔒</span>
+                  </div>
+                  <p className="text-sm font-semibold text-[#c9a96e]">{card.priceRange}</p>
+                  <p className="text-[11px] leading-relaxed text-[#8b97a5]">
+                    {card.type} · {card.note}
+                  </p>
+                </div>
+
+                {/* Masked footer */}
+                <div className="border-t border-[#112040] bg-[#080f1c] px-4 py-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="shrink-0 text-[9px] text-[#c9a96e]/40">▪</span>
+                    <span
+                      className="pointer-events-none text-[10px] text-[#8b97a5]/70"
+                      style={{ filter: "blur(4px)" }}
+                    >
+                      {card.masked} · Confidential
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Access Protocol bar */}
+          <div className="mt-10 rounded-xl border border-[#1e3052] bg-[#0a1628] px-6 py-6">
+            <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
+              Access Protocol
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {[
+                "Buyer Qualification",
+                "NDA Execution",
+                "Owner-Side Approval",
+                "Controlled Data Release",
+                "Private Introduction",
+              ].map((step, i, arr) => (
+                <span key={step} className="flex items-center gap-3">
+                  <span className="flex items-center gap-2">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#c9a96e]/15 text-[9px] font-bold text-[#c9a96e]">
+                      {i + 1}
+                    </span>
+                    <span className="text-xs text-[#8b97a5]">{step}</span>
+                  </span>
+                  {i < arr.length - 1 && (
+                    <span className="hidden text-xs text-[#8b97a5]/30 sm:inline">→</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Trust badges */}
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {[
+              "NDA Standard",
+              "Owner Approved Only",
+              "No Public Listing",
+              "Principal-Only Access",
+              "Co-Brokerage Supported",
+              "Family Office Ready",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="rounded-full border border-[#1e3052] px-3 py-1 text-[10px] font-medium tracking-wide text-[#8b97a5]"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+
+          {/* Disclaimer */}
+          <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-[#8b97a5]/55">
+            These examples are illustrative of the type of private opportunities reviewed through
+            our network. No vessel information is publicly disclosed without written owner or
+            representative consent.
+          </p>
+
+          {/* CTAs */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/private-access" className="btn-gold">
+              Apply for Private Access
+            </Link>
+            <Link href="/submit-yacht" className="btn-outline-gold">
+              Submit a Confidential Opportunity
+            </Link>
+          </div>
+          <p className="mt-4 text-center text-xs text-[#8b97a5]/50">
+            Access is reviewed manually. Not all requests are accepted.
+          </p>
         </div>
       </section>
 
