@@ -568,6 +568,129 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Our Private Advisory Services */}
+      <section className="section bg-white" aria-labelledby="services-heading">
+        <div className="container-site">
+          <div className="mb-12 text-center">
+            <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
+              Private Advisory
+            </div>
+            <h2
+              id="services-heading"
+              className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
+            >
+              Our Private Advisory Services
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#4a5568]">
+              Discreet, confidential support across every stage of private yacht
+              ownership, acquisition, and transaction.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            {[
+              {
+                icon: "🏛",
+                title: "Owner-Side Representation",
+                body: "Confidential support for owners who want to explore a private sale without public exposure, uncontrolled circulation, or price speculation.",
+                ctaLabel: "Explore Owner Representation",
+                ctaHref: "/owner-representation",
+              },
+              {
+                icon: "⚓",
+                title: "Private Yacht Brokerage",
+                body: "Controlled introductions between qualified buyers, verified brokers, and owner-side representatives. No public listing exposure.",
+                ctaLabel: "Explore Private Brokerage",
+                ctaHref: "/private-yacht-brokerage",
+              },
+              {
+                icon: "📊",
+                title: "Off-Market Deal Flow Advisory",
+                body: "Buyer-side access strategy for principals seeking yachts before they reach public marketplaces.",
+                ctaLabel: "Apply for Access",
+                ctaHref: "/private-access",
+              },
+              {
+                icon: "🏦",
+                title: "Broker & Family Office Cooperation",
+                body: "Structured cooperation for brokers, advisors, and family offices managing confidential yacht mandates for UHNW principals.",
+                ctaLabel: "View Cooperation",
+                ctaHref: "/yacht-brokers",
+              },
+            ].map(({ icon, title, body, ctaLabel, ctaHref }) => (
+              <div
+                key={title}
+                className="group flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-8 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#f5f7fa] text-2xl">
+                  {icon}
+                </div>
+                <h3 className="mb-3 text-lg font-bold text-[#0a1628] transition group-hover:text-[#c9a96e]">
+                  {title}
+                </h3>
+                <p className="mb-6 flex-1 text-sm leading-relaxed text-[#4a5568]">{body}</p>
+                <Link
+                  href={ctaHref}
+                  className="self-start text-xs font-semibold uppercase tracking-widest text-[#c9a96e] transition hover:text-[#0a1628]"
+                >
+                  {ctaLabel} →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Principals Choose Us */}
+      <section className="section bg-[#0a1628]" aria-labelledby="principals-heading">
+        <div className="container-site">
+          <div className="mb-12 text-center">
+            <h2
+              id="principals-heading"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+            >
+              Why Principals Choose OffMarketYachts
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
+              Built for those who require discretion at every stage of a private
+              yacht transaction.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                label: "Privacy",
+                icon: "🔒",
+                body: "No public listings, no open circulation, no unnecessary exposure of vessel or owner identity.",
+              },
+              {
+                label: "Network",
+                icon: "🌐",
+                body: "Access through owner-side, broker, family office, and authorised representative channels.",
+              },
+              {
+                label: "Security",
+                icon: "🛡",
+                body: "NDA-led information sharing and controlled release of vessel documentation at every stage.",
+              },
+              {
+                label: "Guidance",
+                icon: "🧭",
+                body: "Transaction support from initial qualification through private introduction and completion.",
+              },
+            ].map(({ label, icon, body }) => (
+              <div
+                key={label}
+                className="rounded-xl border border-[#1e3052] bg-[#112040] p-6"
+              >
+                <div className="mb-4 text-3xl">{icon}</div>
+                <h3 className="mb-2 text-base font-bold text-[#c9a96e]">{label}</h3>
+                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Yacht Categories */}
       <section className="section bg-white" aria-labelledby="categories-heading">
         <div className="container-site">
@@ -749,6 +872,83 @@ export default function HomePage() {
               </p>
             </div>
             <BuyerForm title="Apply for Private Buyer Access" />
+          </div>
+        </div>
+      </section>
+
+      {/* Private Yacht Market Insights */}
+      <section id="insights" className="section bg-[#f5f7fa]" aria-labelledby="insights-heading">
+        <div className="container-site">
+          <div className="mb-12 text-center">
+            <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
+              Insights
+            </div>
+            <h2
+              id="insights-heading"
+              className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
+            >
+              Private Yacht Market Insights
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#4a5568]">
+              Confidential acquisition, private sale strategy, and off-market
+              yacht transaction guidance.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                category: "Off-Market Listings",
+                title: "Off-Market Yacht Listings: Why Serious Buyers Look Before the Public Market",
+                excerpt:
+                  "The most significant yacht transactions never appear on public brokerage databases. Here is why qualified buyers prioritise private channels.",
+              },
+              {
+                category: "Private Sale Strategy",
+                title: "How to Sell a Yacht Privately Without Public Listing Exposure",
+                excerpt:
+                  "Owner-side representation, controlled introductions, and NDA-led information sharing allow discreet yacht sales without open-market exposure.",
+              },
+              {
+                category: "Boat Shows",
+                title: "Palm Beach Boat Show 2026: Private Buyer Opportunities",
+                excerpt:
+                  "Behind the public event, significant pre-market and off-market yacht discussions take place. What qualified principals should know.",
+              },
+              {
+                category: "Boat Shows",
+                title: "Monaco Yacht Show: How Off-Market Deal Flow Works",
+                excerpt:
+                  "The Monaco Yacht Show surfaces public listings — the real deal flow happens through private networks before and after the show.",
+              },
+              {
+                category: "Owner Representation",
+                title: "Owner Representation in Yacht Sales: What It Means",
+                excerpt:
+                  "Understanding the role of owner-side advisors and representatives in managing private yacht sale processes without public exposure.",
+              },
+              {
+                category: "Family Offices",
+                title: "Family Office Yacht Acquisition: Confidential Buying Process",
+                excerpt:
+                  "A structured, NDA-led acquisition process for family offices and UHNW advisors managing discreet yacht mandates.",
+              },
+            ].map(({ category, title, excerpt }) => (
+              <div
+                key={title}
+                className="flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-6 shadow-sm"
+              >
+                <span className="mb-3 self-start rounded-full bg-[#f5f7fa] px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
+                  {category}
+                </span>
+                <h3 className="mb-3 flex-1 text-sm font-bold leading-snug text-[#0a1628]">
+                  {title}
+                </h3>
+                <p className="mb-5 text-xs leading-relaxed text-[#4a5568]">{excerpt}</p>
+                <span className="self-start text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+                  Read More →
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

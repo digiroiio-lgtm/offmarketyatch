@@ -15,8 +15,16 @@ const navLinks = [
       { href: "/off-market-trimarans", label: "Trimarans" },
     ],
   },
-  { href: "/yacht-brokers", label: "Brokers" },
-  { href: "/family-offices", label: "Family Offices" },
+  {
+    label: "Services",
+    children: [
+      { href: "/owner-representation", label: "Owner Representation" },
+      { href: "/private-yacht-brokerage", label: "Private Brokerage" },
+      { href: "/yacht-brokers", label: "Broker Cooperation" },
+      { href: "/family-offices", label: "Family Offices" },
+    ],
+  },
+  { href: "/#insights", label: "Insights" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -69,7 +77,7 @@ function ThemeToggle({ darkMode, onToggle }: { darkMode: boolean; onToggle: () =
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
@@ -86,6 +94,9 @@ export default function Header() {
     setDarkMode(isDark);
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
+
+  const toggleDropdown = (label: string) =>
+    setOpenDropdown((prev) => (prev === label ? null : label));
 
   return (
     <header className="sticky top-0 z-50 bg-[#0a1628] shadow-lg">
@@ -111,8 +122,8 @@ export default function Header() {
               <div key={link.label} className="relative">
                 <button
                   className="flex items-center gap-1 whitespace-nowrap text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
-                  onClick={() => setDropdownOpen((o) => !o)}
-                  aria-expanded={dropdownOpen}
+                  onClick={() => toggleDropdown(link.label)}
+                  aria-expanded={openDropdown === link.label}
                   aria-haspopup="true"
                 >
                   {link.label}
@@ -120,13 +131,13 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {dropdownOpen && (
-                  <div className="absolute left-0 top-full mt-1 w-48 rounded border border-[#112040] bg-[#0a1628] py-1 shadow-xl">
+                {openDropdown === link.label && (
+                  <div className="absolute left-0 top-full mt-1 w-52 rounded border border-[#112040] bg-[#0a1628] py-1 shadow-xl">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={() => setOpenDropdown(null)}
                         className="block px-4 py-2 text-sm text-[#8b97a5] transition hover:bg-[#112040] hover:text-[#c9a96e]"
                       >
                         {child.label}

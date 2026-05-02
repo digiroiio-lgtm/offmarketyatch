@@ -14,7 +14,9 @@ const footerLinks = {
     { href: "/off-market-trimarans", label: "Trimarans" },
   ],
   "Advisory": [
-    { href: "/yacht-brokers", label: "Yacht Brokers" },
+    { href: "/owner-representation", label: "Owner Representation" },
+    { href: "/private-yacht-brokerage", label: "Private Brokerage" },
+    { href: "/yacht-brokers", label: "Broker Cooperation" },
     { href: "/family-offices", label: "Family Offices" },
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
