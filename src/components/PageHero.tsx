@@ -67,7 +67,7 @@ export default function PageHero({
           {secondaryCtaLabel && secondaryCtaHref && (
             <Link
               href={secondaryCtaHref}
-              className={dark ? "btn-outline-gold" : "btn-outline-gold"}
+              className="btn-outline-gold"
             >
               {secondaryCtaLabel}
             </Link>
