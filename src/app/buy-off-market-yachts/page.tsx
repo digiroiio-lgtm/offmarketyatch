@@ -80,8 +80,8 @@ export default function BuyPage() {
       <Breadcrumb items={[{ label: "Buy Off-Market Yachts" }]} />
       <PageHero
         h1="Buy Off-Market Yachts Before They Reach the Public Market"
-        subheadline="Access private yacht opportunities not available through public brokerages. Qualified buyer introductions, NDA-governed documentation, and discreet transactions."
-        ctaLabel="Request Buyer Access"
+        subheadline="Access private yacht opportunities not available through public brokerages. Access is subject to qualification — approved principals receive controlled introductions under NDA."
+        ctaLabel="Apply for Buyer Access"
         ctaHref="/private-access"
         secondaryCtaLabel="View Yacht Types"
         secondaryCtaHref="/off-market-superyachts"
@@ -98,23 +98,23 @@ export default function BuyPage() {
                 {[
                   {
                     step: "01",
-                    title: "Submit Your Requirements",
-                    body: "Complete the private buyer access form with your budget range, yacht type preferences, region, and timeline.",
+                    title: "Qualification Review",
+                    body: "Submit your access application. Our team reviews all requests privately within 24 hours. Not all applications are approved — access is selective.",
                   },
                   {
                     step: "02",
-                    title: "Private Qualification Review",
-                    body: "Our team reviews your request within 24 hours. This step ensures appropriate and qualified introductions for all parties.",
+                    title: "NDA Execution",
+                    body: "Approved principals execute a confidentiality agreement before receiving any vessel information. This protects both parties throughout the process.",
                   },
                   {
                     step: "03",
-                    title: "Receive Private Introductions",
-                    body: "Qualified buyers receive introductions to off-market opportunities matching their requirements. NDA-based documentation sharing is standard.",
+                    title: "Controlled Data Access",
+                    body: "Approved buyers receive controlled access to vessel documentation — specifications, surveys, and financials — under strict NDA governance.",
                   },
                   {
                     step: "04",
-                    title: "Discreet Transaction Support",
-                    body: "We support the transaction process from introduction through to completion, coordinating with owner representatives and brokers.",
+                    title: "Direct Introduction",
+                    body: "We facilitate a direct, private introduction to the owner representative or broker. All communication remains confidential.",
                   },
                 ].map(({ step, title, body }) => (
                   <li key={step} className="flex gap-5">
@@ -131,7 +131,7 @@ export default function BuyPage() {
             </div>
 
             <div>
-              <BuyerForm title="Request Private Buyer Access" />
+              <BuyerForm title="Apply for Private Buyer Access" />
             </div>
           </div>
         </div>

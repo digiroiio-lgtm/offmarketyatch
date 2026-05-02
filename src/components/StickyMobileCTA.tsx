@@ -9,13 +9,13 @@ export default function StickyMobileCTA() {
         href="/submit-yacht"
         className="btn-outline-gold flex-1 py-3 text-xs"
       >
-        Submit Yacht
+        Submit Confidentially
       </Link>
       <Link
         href="/private-access"
         className="btn-gold flex-1 py-3 text-xs"
       >
-        Request Access
+        Apply for Access
       </Link>
     </div>
   );

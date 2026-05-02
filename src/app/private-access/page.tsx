@@ -6,16 +6,16 @@ import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Request Access to Private Yacht Opportunities",
+  title: "Apply for Access to Private Yacht Opportunities",
   description:
-    "Request private access to off-market yacht opportunities. Qualified buyers, family offices, and yacht brokers can apply for access to our confidential yacht network.",
+    "Apply for private access to off-market yacht opportunities. Qualified buyers, family offices, and yacht brokers can apply for consideration. Access is selective and subject to review.",
   alternates: {
     canonical: "https://www.offmarketyachts.com/private-access",
   },
   openGraph: {
     url: "https://www.offmarketyachts.com/private-access",
-    title: "Request Access to Private Yacht Opportunities",
-    description: "Apply for private access to off-market yacht opportunities.",
+    title: "Apply for Access to Private Yacht Opportunities",
+    description: "Apply for private access to off-market yacht opportunities. Access subject to approval.",
   },
 };
 
@@ -34,8 +34,8 @@ export default function PrivateAccessPage() {
       <SchemaOrg schema={[breadcrumbSchema]} />
       <Breadcrumb items={[{ label: "Private Access" }]} />
       <PageHero
-        h1="Request Access to Private Yacht Opportunities"
-        subheadline="Apply for qualified buyer access to our off-market yacht network. All requests are reviewed privately. Qualified introductions only."
+        h1="Apply for Access to Private Yacht Opportunities"
+        subheadline="Apply for consideration. Access is selective — we do not accept all requests. Approved principals receive controlled introductions to off-market opportunities."
         ctaLabel="Apply Below"
         ctaHref="#access-form"
       />
@@ -43,6 +43,11 @@ export default function PrivateAccessPage() {
       <section id="access-form" className="section bg-white">
         <div className="container-site">
           <div className="mx-auto max-w-2xl">
+            <div className="mb-6 rounded-lg border border-[#c9a96e]/20 bg-[#0a1628] px-5 py-4 text-center">
+              <p className="text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+                Access is Selective — Not All Applications are Approved
+              </p>
+            </div>
             <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
               {[
                 { icon: "🔍", label: "Qualified Buyers", desc: "UHNW individuals and family offices" },
@@ -56,7 +61,7 @@ export default function PrivateAccessPage() {
                 </div>
               ))}
             </div>
-            <BuyerForm title="Request Private Access" />
+            <BuyerForm title="Apply for Private Access" />
           </div>
         </div>
       </section>

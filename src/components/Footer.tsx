@@ -4,8 +4,8 @@ const footerLinks = {
   "Buy & Sell": [
     { href: "/buy-off-market-yachts", label: "Buy Off-Market Yachts" },
     { href: "/sell-off-market-yacht", label: "Sell Your Yacht" },
-    { href: "/private-access", label: "Request Private Access" },
-    { href: "/submit-yacht", label: "Submit a Yacht" },
+    { href: "/private-access", label: "Apply for Access" },
+    { href: "/submit-yacht", label: "Submit Confidentially" },
   ],
   "Yacht Types": [
     { href: "/off-market-superyachts", label: "Superyachts" },
@@ -45,6 +45,9 @@ export default function Footer() {
               A private, high-trust platform for off-market yachts and luxury
               marine assets not publicly listed.
             </p>
+            <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]/70">
+              Not Public. Not Indexed. Not Circulated.
+            </p>
           </div>
 
           {/* Link columns */}
@@ -71,6 +74,9 @@ export default function Footer() {
 
         {/* Disclaimer */}
         <div className="mt-12 border-t border-[#112040] pt-8">
+          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#c9a96e]/60">
+            Not Public. Not Indexed. Not Circulated.
+          </p>
           <p className="text-xs leading-relaxed text-[#8b97a5]">
             <strong className="text-[#8b97a5]">Disclaimer:</strong>{" "}
             OffMarketYachts.com is a private lead-generation and advisory

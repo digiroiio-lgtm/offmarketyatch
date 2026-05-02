@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Submit an Off-Market Yacht Opportunity",
+  title: "Submit an Off-Market Yacht for Confidential Review",
   description:
     "Submit your yacht for confidential off-market review. No public listing exposure. Accepted from direct owners, owner representatives, and licensed brokers.",
   alternates: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "https://www.offmarketyachts.com/submit-yacht",
-    title: "Submit an Off-Market Yacht Opportunity",
+    title: "Submit an Off-Market Yacht for Confidential Review",
     description: "Confidential yacht submission. No public listing exposure.",
   },
 };
@@ -34,9 +34,9 @@ export default function SubmitYachtPage() {
       <SchemaOrg schema={[breadcrumbSchema]} />
       <Breadcrumb items={[{ label: "Submit Yacht" }]} />
       <PageHero
-        h1="Submit an Off-Market Yacht Opportunity"
+        h1="Submit an Off-Market Yacht for Confidential Review"
         subheadline="Submit your vessel for confidential review. No public listing exposure without your explicit consent. Accepted from owners, owner representatives, and licensed brokers."
-        ctaLabel="Submit Now"
+        ctaLabel="Submit for Review"
         ctaHref="#submit-form"
       />
 
@@ -50,7 +50,7 @@ export default function SubmitYachtPage() {
               and authorised family office representatives. All submissions
               are reviewed privately.
             </div>
-            <SellerForm title="Submit an Off-Market Yacht" />
+            <SellerForm title="Submit Yacht for Confidential Review" />
           </div>
         </div>
       </section>

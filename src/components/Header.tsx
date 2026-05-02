@@ -150,11 +150,17 @@ export default function Header() {
         {/* Desktop CTAs + Theme Toggle */}
         <div className="hidden shrink-0 items-center gap-3 md:flex">
           <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
+          <span className="whitespace-nowrap text-xs text-[#8b97a5]/60">
+            Member Access{" "}
+            <span className="rounded-sm bg-[#112040] px-1 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]/60">
+              Soon
+            </span>
+          </span>
           <Link href="/submit-yacht" className="btn-outline-gold py-2 text-xs">
-            Submit Yacht
+            Submit Confidentially
           </Link>
           <Link href="/private-access" className="btn-gold py-2 text-xs">
-            Request Access
+            Apply for Access
           </Link>
         </div>
 
@@ -210,10 +216,10 @@ export default function Header() {
               <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
             </div>
             <Link href="/submit-yacht" className="btn-outline-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
-              Submit Yacht
+              Submit Confidentially
             </Link>
             <Link href="/private-access" className="btn-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
-              Request Private Access
+              Apply for Access
             </Link>
           </div>
         </nav>

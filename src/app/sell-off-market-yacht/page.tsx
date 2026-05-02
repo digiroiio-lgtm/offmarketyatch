@@ -79,10 +79,10 @@ export default function SellPage() {
       <Breadcrumb items={[{ label: "Sell Off-Market Yacht" }]} />
       <PageHero
         h1="Sell Your Yacht Privately Without Public Listing Exposure"
-        subheadline="Represent your vessel confidentially. No public listing, no speculation — qualified buyer introductions and NDA-governed information sharing only."
-        ctaLabel="Submit Your Yacht"
+        subheadline="Represent your vessel confidentially. No public listing, no speculation — we selectively introduce qualified buyers under NDA-governed information sharing only."
+        ctaLabel="Submit Confidentially"
         ctaHref="/submit-yacht"
-        secondaryCtaLabel="Request Access"
+        secondaryCtaLabel="Apply for Access"
         secondaryCtaHref="/private-access"
       />
 
@@ -140,6 +140,48 @@ export default function SellPage() {
       <section className="section-narrow bg-[#f5f7fa]">
         <div className="container-site text-center">
           <TrustBadges />
+        </div>
+      </section>
+
+      {/* Why Owners Choose Off-Market */}
+      <section className="section bg-[#0a1628]" aria-labelledby="why-owners-heading">
+        <div className="container-site">
+          <div className="mb-10 text-center">
+            <h2
+              id="why-owners-heading"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+            >
+              Why Owners Choose Off-Market
+            </h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                icon: "📉",
+                title: "Avoid Price Anchoring",
+                body: "Public listings set a visible price ceiling. Off-market transactions preserve flexibility and avoid market speculation on your vessel's value.",
+              },
+              {
+                icon: "🔒",
+                title: "Maintain Privacy",
+                body: "Your identity, asset details, and transaction terms remain confidential throughout. Nothing is shared without your explicit authorisation.",
+              },
+              {
+                icon: "🎛",
+                title: "Control Information Flow",
+                body: "You decide what is shared, when, and with whom. Qualified buyers only — filtered, NDA-governed, and professionally managed.",
+              },
+            ].map(({ icon, title, body }) => (
+              <div
+                key={title}
+                className="rounded-lg border border-[#112040] bg-[#112040] p-6"
+              >
+                <div className="mb-3 text-2xl">{icon}</div>
+                <h3 className="mb-2 font-bold text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

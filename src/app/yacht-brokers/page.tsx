@@ -69,8 +69,8 @@ export default function BrokersPage() {
       <Breadcrumb items={[{ label: "Yacht Brokers" }]} />
       <PageHero
         h1="Private Off-Market Yacht Deal Flow for Brokers"
-        subheadline="Expand your off-market yacht pipeline. Access confidential deal flow, co-brokerage opportunities, and a qualified buyer and seller network."
-        ctaLabel="Register as a Broker"
+        subheadline="Expand your off-market yacht pipeline. Access confidential deal flow, co-brokerage opportunities, and a qualified buyer and seller network — by invitation and approval only."
+        ctaLabel="Apply for Broker Access"
         ctaHref="/private-access"
         secondaryCtaLabel="Submit a Client Listing"
         secondaryCtaHref="/submit-yacht"
@@ -109,8 +109,53 @@ export default function BrokersPage() {
               </div>
             </div>
             <div>
-              <BuyerForm title="Register Broker Interest" />
+              <BuyerForm title="Apply for Broker Access" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Broker Protocol */}
+      <section className="section bg-[#0a1628]" aria-labelledby="broker-protocol-heading">
+        <div className="container-site">
+          <div className="mb-10 text-center">
+            <h2
+              id="broker-protocol-heading"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+            >
+              Broker Cooperation Protocol
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
+              Our cooperation standards protect all parties and ensure
+              professional, structured introductions.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                step: "01",
+                title: "NDA Required Before Sharing",
+                body: "No vessel information, pricing, or principal details are shared without a signed confidentiality agreement. This is non-negotiable.",
+              },
+              {
+                step: "02",
+                title: "Commission Agreed Pre-Introduction",
+                body: "Co-brokerage commission arrangements are agreed in writing before any introduction is made. Transparent, documented, and enforceable.",
+              },
+              {
+                step: "03",
+                title: "Buyer Qualification Mandatory",
+                body: "All buyer clients must be qualified and verified before receiving access. Unverified enquiries are not accepted regardless of claimed budget.",
+              },
+            ].map(({ step, title, body }) => (
+              <div key={step} className="rounded-lg border border-[#112040] bg-[#112040] p-6">
+                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#c9a96e]/10 text-sm font-bold text-[#c9a96e]">
+                  {step}
+                </div>
+                <h3 className="mb-2 font-bold text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

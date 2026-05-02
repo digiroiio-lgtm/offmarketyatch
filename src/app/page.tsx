@@ -149,26 +149,108 @@ export default function HomePage() {
         />
         <div className="container-site relative text-center">
           <div className="mb-5 inline-block rounded-full border border-[#c9a96e]/40 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
-            Private · Discreet · Qualified
+            Deal Flow · Private · Selective
           </div>
           <h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Off-Market Yachts for Private Buyers and Qualified Sellers
+            Off-Market Yacht Deal Flow
+            <span className="block mt-2 text-[#c9a96e]">For Qualified Principals Only</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#8b97a5]">
-            A private, high-trust platform connecting qualified buyers, owners,
-            family offices, and brokers with off-market yachts and superyachts
-            not publicly listed anywhere else.
+            Access vessels that are never listed.
+            Introductions happen privately — or not at all.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/private-access" className="btn-gold text-base">
-              Request Private Access
+              Apply for Access
             </Link>
             <Link href="/submit-yacht" className="btn-outline-gold text-base">
-              Submit an Off-Market Yacht
+              Submit Confidentially
             </Link>
           </div>
           <div className="mt-10">
             <TrustBadges dark />
+          </div>
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#c9a96e]/50">
+            Not Public. Not Indexed. Not Circulated.
+          </p>
+        </div>
+      </section>
+
+      {/* Access is Selective */}
+      <section className="section bg-[#0a1628]" aria-labelledby="selective-heading">
+        <div className="container-site">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mb-5 inline-block rounded-full border border-[#c9a96e]/40 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
+              Access is Selective
+            </div>
+            <h2
+              id="selective-heading"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+            >
+              We do not accept all requests.
+            </h2>
+            <p className="mt-4 text-[#8b97a5]">
+              Access is limited to qualified buyers, verified brokers, and
+              authorised representatives. All applications are reviewed privately
+              before any introduction is made.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { badge: "Pending Review", color: "text-yellow-400", bg: "border-yellow-400/20 bg-yellow-400/5" },
+              { badge: "Under Consideration", color: "text-blue-400", bg: "border-blue-400/20 bg-blue-400/5" },
+              { badge: "Approved", color: "text-green-400", bg: "border-green-400/20 bg-green-400/5" },
+              { badge: "Invitation Only", color: "text-[#c9a96e]", bg: "border-[#c9a96e]/20 bg-[#c9a96e]/5" },
+            ].map(({ badge, color, bg }) => (
+              <div
+                key={badge}
+                className={`flex items-center justify-center rounded-lg border px-5 py-4 text-sm font-semibold tracking-wide ${bg} ${color}`}
+              >
+                <span className="mr-2 h-2 w-2 rounded-full bg-current opacity-70" />
+                {badge}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Private Deal Flow Snapshot */}
+      <section className="section-narrow bg-[#060e1a]" aria-labelledby="snapshot-heading">
+        <div className="container-site">
+          <div className="mb-8 text-center">
+            <h2
+              id="snapshot-heading"
+              className="text-xl font-bold tracking-tight text-white sm:text-2xl"
+            >
+              Private Deal Flow Snapshot
+            </h2>
+            <p className="mt-2 text-sm text-[#8b97a5]">
+              Current opportunities are shared under NDA with approved principals only.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              { label: "42m · EU · €12M", sub: "Refit 2022 · Motor Yacht" },
+              { label: "55m · Caribbean · €28M", sub: "Off-Market · Superyacht" },
+              { label: "33m Trimaran · Confidential", sub: "Region undisclosed · Price on application" },
+            ].map(({ label, sub }) => (
+              <div
+                key={label}
+                className="relative overflow-hidden rounded-lg border border-[#112040] bg-[#0a1628] px-5 py-4"
+                aria-hidden="true"
+              >
+                <div className="select-none">
+                  <p className="font-semibold text-white">{label}</p>
+                  <p className="mt-1 text-xs text-[#8b97a5]">{sub}</p>
+                </div>
+                <div className="pointer-events-none absolute inset-0 backdrop-blur-[3px]" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="rounded border border-[#c9a96e]/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
+                    NDA Required
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -183,17 +265,16 @@ export default function HomePage() {
                 Looking to Buy Off-Market?
               </h2>
               <p className="mb-5 text-sm leading-relaxed text-[#4a5568]">
-                Gain private access to off-market yachts and superyachts before
-                they reach the public. Qualified buyers receive discreet
-                introductions, full vessel documentation under NDA, and direct
-                access to owner representatives.
+                We selectively introduce qualified principals to off-market yachts
+                before they reach the public. Access is subject to review —
+                qualified buyers receive discreet introductions under NDA.
               </p>
               <ul className="mb-6 space-y-2 text-sm text-[#4a5568]">
                 {[
-                  "Pre-market and off-market opportunities",
+                  "Qualification review required",
                   "NDA-governed information sharing",
                   "Discreet introductions to owners",
-                  "Broker cooperation supported",
+                  "Access subject to approval",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <span className="mt-0.5 text-[#c9a96e]">✓</span>
@@ -202,7 +283,7 @@ export default function HomePage() {
                 ))}
               </ul>
               <Link href="/buy-off-market-yachts" className="btn-gold">
-                Explore Buyer Access
+                Apply for Buyer Access
               </Link>
             </div>
 
@@ -212,10 +293,9 @@ export default function HomePage() {
                 Selling Privately?
               </h2>
               <p className="mb-5 text-sm leading-relaxed text-[#8b97a5]">
-                Represent your vessel confidentially, without public listing
-                exposure. We facilitate discreet introductions to qualified
-                buyers and family offices, maintaining full control of your
-                information.
+                We selectively introduce your vessel to qualified buyers — never
+                publicly, never without your consent. Full control of information
+                flow at every stage.
               </p>
               <ul className="mb-6 space-y-2 text-sm text-[#8b97a5]">
                 {[
@@ -231,15 +311,50 @@ export default function HomePage() {
                 ))}
               </ul>
               <Link href="/sell-off-market-yacht" className="btn-gold">
-                Sell Privately
+                Submit Confidentially
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Who We Work With */}
+      <section className="section bg-[#f5f7fa]" aria-labelledby="who-heading">
+        <div className="container-site">
+          <div className="mb-10 text-center">
+            <h2
+              id="who-heading"
+              className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
+            >
+              Who We Work With
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#4a5568]">
+              We selectively introduce qualified parties. Our network is
+              invitation-based and professionally verified.
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {[
+              { icon: "🏛", label: "Owner Representatives" },
+              { icon: "⚓", label: "Yacht Management Firms" },
+              { icon: "🚩", label: "Flag Administrators" },
+              { icon: "📋", label: "Private Brokers" },
+              { icon: "🏦", label: "Family Offices" },
+            ].map(({ icon, label }) => (
+              <div
+                key={label}
+                className="flex flex-col items-center rounded-lg border border-[#e8ecf0] bg-white p-5 text-center shadow-sm"
+              >
+                <span className="mb-3 text-2xl">{icon}</span>
+                <span className="text-sm font-semibold text-[#0a1628]">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Yacht Categories */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="categories-heading">
+      <section className="section bg-white" aria-labelledby="categories-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
@@ -276,6 +391,37 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* What We Don't Do */}
+      <section className="section bg-[#0a1628]" aria-labelledby="wdnd-heading">
+        <div className="container-site">
+          <div className="mx-auto max-w-2xl">
+            <div className="mb-10 text-center">
+              <h2
+                id="wdnd-heading"
+                className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              >
+                What We Don&apos;t Do
+              </h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                "We do not publicly list vessels",
+                "We do not mass distribute opportunities",
+                "We do not circulate blind listings",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-4 rounded-lg border border-[#112040] bg-[#112040] px-6 py-4"
+                >
+                  <span className="text-lg text-red-400/80">✕</span>
+                  <span className="text-sm font-medium text-[#8b97a5]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Off-Market */}
       <section className="section bg-white" aria-labelledby="why-heading">
         <div className="container-site">
@@ -308,27 +454,27 @@ export default function HomePage() {
       </section>
 
       {/* Broker & Family Office */}
-      <section className="section bg-[#0a1628]" aria-labelledby="advisory-heading">
+      <section className="section bg-[#f5f7fa]" aria-labelledby="advisory-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
               id="advisory-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
             >
               For Brokers &amp; Family Offices
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
+            <p className="mx-auto mt-3 max-w-xl text-[#4a5568]">
               Specialist support for yacht brokers seeking private deal flow and
               family offices managing luxury marine asset acquisitions.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-lg border border-[#112040] bg-[#112040] p-8">
+            <div className="rounded-lg border border-[#e8ecf0] bg-white p-8 shadow-sm">
               <div className="mb-4 text-3xl">📋</div>
-              <h3 className="mb-3 text-lg font-bold text-white">
+              <h3 className="mb-3 text-lg font-bold text-[#0a1628]">
                 Yacht Brokers
               </h3>
-              <p className="mb-5 text-sm leading-relaxed text-[#8b97a5]">
+              <p className="mb-5 text-sm leading-relaxed text-[#4a5568]">
                 Access private off-market deal flow, co-brokerage opportunities,
                 and a network of qualified buyer and seller introductions.
               </p>
@@ -336,15 +482,14 @@ export default function HomePage() {
                 Broker Cooperation
               </Link>
             </div>
-            <div className="rounded-lg border border-[#112040] bg-[#112040] p-8">
+            <div className="rounded-lg border border-[#e8ecf0] bg-white p-8 shadow-sm">
               <div className="mb-4 text-3xl">🏦</div>
-              <h3 className="mb-3 text-lg font-bold text-white">
+              <h3 className="mb-3 text-lg font-bold text-[#0a1628]">
                 Family Offices
               </h3>
-              <p className="mb-5 text-sm leading-relaxed text-[#8b97a5]">
+              <p className="mb-5 text-sm leading-relaxed text-[#4a5568]">
                 Discreet yacht acquisition support for family offices and wealth
-                managers. Private introductions, advisory, and full
-                confidentiality maintained throughout.
+                managers. Principal identity protected. NDA-standard throughout.
               </p>
               <Link href="/family-offices" className="btn-gold text-sm">
                 Family Office Services
@@ -381,14 +526,14 @@ export default function HomePage() {
                 id="access-form-heading"
                 className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
               >
-                Request Private Buyer Access
+                Apply for Private Buyer Access
               </h2>
               <p className="mt-3 text-[#4a5568]">
-                Submit your details for a private review. Qualified buyers
-                receive direct access to off-market opportunities.
+                Submit your details for a private review. Access is subject to
+                qualification — approved principals receive controlled introductions.
               </p>
             </div>
-            <BuyerForm title="Request Private Buyer Access" />
+            <BuyerForm title="Apply for Private Buyer Access" />
           </div>
         </div>
       </section>
@@ -400,21 +545,23 @@ export default function HomePage() {
       <section className="section bg-[#0a1628]">
         <div className="container-site text-center">
           <h2 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Ready to Explore Private Yacht Opportunities?
+            Ready to Enter the Private Network?
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-[#8b97a5]">
             Whether you are looking to acquire a vessel privately or represent
-            one discreetly, our team is available to assist qualified
-            principals.
+            one discreetly, our team is available to assist qualified principals.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/private-access" className="btn-gold text-base">
-              Request Private Access
+              Apply for Access
             </Link>
             <Link href="/submit-yacht" className="btn-outline-gold text-base">
-              Submit an Off-Market Yacht
+              Submit Confidentially
             </Link>
           </div>
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#c9a96e]/50">
+            Not Public. Not Indexed. Not Circulated.
+          </p>
         </div>
       </section>
     </>

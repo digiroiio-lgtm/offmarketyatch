@@ -69,7 +69,7 @@ export default function FamilyOfficesPage() {
       <Breadcrumb items={[{ label: "Family Offices" }]} />
       <PageHero
         h1="Private Yacht Acquisition Support for Family Offices"
-        subheadline="Discreet, confidential yacht acquisition services for family offices and UHNW principals. Principal identity protected. NDA-standard process throughout."
+        subheadline="Discreet, confidential yacht acquisition services for family offices and UHNW principals. Principal identity protected. NDA-standard process throughout. Access subject to review."
         ctaLabel="Request Family Office Consultation"
         ctaHref="/private-access"
         secondaryCtaLabel="Contact Us"
@@ -127,6 +127,50 @@ export default function FamilyOfficesPage() {
             <div>
               <BuyerForm title="Request Family Office Consultation" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Principal Protection Protocol */}
+      <section className="section bg-[#0a1628]" aria-labelledby="ppp-heading">
+        <div className="container-site">
+          <div className="mb-10 text-center">
+            <h2
+              id="ppp-heading"
+              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+            >
+              Principal Protection Protocol
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
+              Family office acquisitions require a higher standard of
+              confidentiality. Our protocol is designed to protect the principal
+              at every stage.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                icon: "👤",
+                title: "Identity Not Disclosed Without Consent",
+                body: "Principal identity is never disclosed to sellers, brokers, or third parties without explicit written authorisation from your office.",
+              },
+              {
+                icon: "🏛",
+                title: "Acquisition via Legal Structures",
+                body: "We are experienced with acquisitions through BVI, Cayman, and other offshore holding structures. Compliance and flag registry guidance available.",
+              },
+              {
+                icon: "⚖️",
+                title: "Legal Team Coordination",
+                body: "We coordinate directly with your legal counsel, trustees, and advisory team throughout the acquisition process — ensuring a seamless and discreet experience.",
+              },
+            ].map(({ icon, title, body }) => (
+              <div key={title} className="rounded-lg border border-[#112040] bg-[#112040] p-6">
+                <div className="mb-3 text-2xl">{icon}</div>
+                <h3 className="mb-2 font-bold text-white">{title}</h3>
+                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
