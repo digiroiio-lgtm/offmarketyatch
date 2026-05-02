@@ -168,6 +168,107 @@ const dealFlowSnapshot = [
   },
 ];
 
+const yachtShowsATier = [
+  {
+    flag: "🇺🇸",
+    name: "Miami International Boat Show",
+    date: "February (Annual)",
+    location: "Miami, USA",
+    note: "High volume, retail + mid/high segment buyers. Strong US east-coast buyer acquisition event.",
+    url: "https://www.miamiboatshow.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇺🇸",
+    name: "Palm Beach International Boat Show",
+    date: "March",
+    location: "Florida, USA",
+    note: "UHNW and serious superyacht buyers. Private deal discussions concentrated here.",
+    url: "https://www.pbboatshow.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇺🇸",
+    name: "Fort Lauderdale International Boat Show",
+    date: "October – November",
+    location: "Florida, USA",
+    note: "World's largest in-water yacht show. Significant off-market introductions occur around the event.",
+    url: "https://www.flibs.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇫🇷",
+    name: "Cannes Yachting Festival",
+    date: "September",
+    location: "Cannes, France",
+    note: "New launches and dealer ecosystem. Key broker acquisition event for European deal flow.",
+    url: "https://www.cannesyachtingfestival.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇲🇨",
+    name: "Monaco Yacht Show",
+    date: "September",
+    location: "Monaco",
+    note: "Ultra-high-end. €25M+ transactions closed through private networks during the show week.",
+    url: "https://www.monacoyachtshow.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇮🇹",
+    name: "Genoa International Boat Show",
+    date: "October",
+    location: "Genoa, Italy",
+    note: "Historic European marine hub. Strong Mediterranean owner and broker deal flow.",
+    url: "https://www.salonenautico.com",
+    tier: "standard",
+  },
+  {
+    flag: "🇩🇪",
+    name: "boot Düsseldorf",
+    date: "January",
+    location: "Düsseldorf, Germany",
+    note: "World's largest indoor marine exhibition. Opens Q1 deal flow across European markets.",
+    url: "https://www.boot.com",
+    tier: "standard",
+  },
+  {
+    flag: "🇦🇪",
+    name: "Dubai International Boat Show",
+    date: "February – March",
+    location: "Dubai, UAE",
+    note: "High liquidity UHNW buyers. Gulf region principals and sovereign wealth adjacent mandates.",
+    url: "https://www.boatshowdubai.com",
+    tier: "flagship",
+  },
+  {
+    flag: "🇶🇦",
+    name: "Qatar Boat Show",
+    date: "November",
+    location: "Qatar",
+    note: "Emerging ultra-rich buyer market. Strong acquisition appetite in the Gulf region.",
+    url: "https://www.boatshowqatar.com",
+    tier: "standard",
+  },
+];
+
+const yachtShowsBTier = [
+  { flag: "🇪🇸", name: "Palma International Boat Show", url: "https://www.palmainternationalboatshow.com" },
+  { flag: "🇬🇷", name: "Mediterranean Yacht Show", url: "https://mediterraneanyachtshow.gr" },
+  { flag: "🇬🇷", name: "TYBA Yacht Charter Show", url: "https://www.tybachartershow.com" },
+  { flag: "🇬🇷", name: "East Med Multihull & Yacht Charter Show", url: "https://www.emmys.gr" },
+  { flag: "🇬🇧", name: "Southampton International Boat Show", url: "https://www.southamptonboatshow.com" },
+  { flag: "🇬🇧", name: "British Motor Yacht Show", url: "https://www.britishmotoryachtshow.com" },
+  { flag: "🇦🇺", name: "Sanctuary Cove International Boat Show", url: "https://www.sanctuarycoveboatshow.com.au" },
+  { flag: "🇺🇸", name: "Newport Charter Yacht Show", url: "https://www.newportchartershow.com" },
+  { flag: "🌍", name: "International Charter Expo", url: "https://www.internationalcharterexpo.com" },
+  { flag: "🌍", name: "MYBA Charter Show", url: "https://www.myba.org" },
+  { flag: "🇸🇬", name: "Singapore Yachting Festival", url: "https://www.singaporeyachtingfestival.com" },
+  { flag: "🇳🇱", name: "METSTRADE (B2B Marine)", url: "https://www.metstrade.com" },
+  { flag: "🇹🇷", name: "Superyacht Summit Türkiye", url: "https://www.cnryachtdesign.com" },
+  { flag: "🇦🇬", name: "Antigua Charter Yacht Show", url: "https://www.antiguayachtshow.com" },
+];
+
 const faqItems = [
   {
     question: "What is an off-market yacht?",
@@ -198,6 +299,11 @@ const faqItems = [
     question: "What types of yachts do you handle?",
     answer:
       "We specialise in superyachts (30m+), motor yachts, luxury catamarans, trimarans, explorer yachts, and other significant marine assets. Both power and sail vessels are considered.",
+  },
+  {
+    question: "What are the best yacht shows in the world for serious buyers?",
+    answer:
+      "The Monaco Yacht Show, Fort Lauderdale International Boat Show (FLIBS), Cannes Yachting Festival, Palm Beach International Boat Show, and Dubai International Boat Show are the most significant global events for qualified yacht buyers. Serious private transactions and off-market introductions take place through broker and owner networks during — and often ahead of — these shows. Access to genuine off-market opportunities typically requires an established buyer profile before show season.",
   },
 ];
 
@@ -234,10 +340,26 @@ const faqSchema = {
   })),
 };
 
+const eventSchemas = yachtShowsATier
+  .filter((s) => s.tier === "flagship")
+  .map((s) => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: s.name,
+    location: {
+      "@type": "Place",
+      name: s.location,
+      address: { "@type": "PostalAddress", addressLocality: s.location },
+    },
+    url: s.url,
+    description: s.note,
+    organizer: { "@type": "Organization", name: s.name, url: s.url },
+  }));
+
 export default function HomePage() {
   return (
     <>
-      <SchemaOrg schema={[organizationSchema, websiteSchema, faqSchema]} />
+      <SchemaOrg schema={[organizationSchema, websiteSchema, faqSchema, ...eventSchemas]} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#0a1628] pb-24 pt-20 sm:pb-32 sm:pt-28">
@@ -949,6 +1071,179 @@ export default function HomePage() {
                 </span>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Yacht Shows & Events */}
+      <section id="yacht-shows" className="section bg-white" aria-labelledby="shows-heading">
+        <div className="container-site">
+          <div className="mb-12 text-center">
+            <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
+              Events Calendar
+            </div>
+            <h2
+              id="shows-heading"
+              className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
+            >
+              Global Yacht Shows &amp; Yachting Events (2026–2028)
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-[#4a5568]">
+              Where global yacht deals, UHNW buyers, and off-market opportunities converge.
+              Private deal flow runs parallel to — and often ahead of — the public event calendar.
+            </p>
+          </div>
+
+          {/* A-tier label */}
+          <div className="mb-6 flex items-center gap-4">
+            <span className="shrink-0 rounded-full bg-[#c9a96e]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+              Core Deal Flow Events
+            </span>
+            <div className="h-px flex-1 bg-[#e8ecf0]" />
+          </div>
+
+          {/* A-tier event cards */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {yachtShowsATier.map((event) => (
+              <div
+                key={event.name}
+                className="group flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-5 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+              >
+                <div className="mb-3 flex items-start justify-between gap-2">
+                  <span className="text-xl">{event.flag}</span>
+                  {event.tier === "flagship" && (
+                    <span className="shrink-0 rounded-full bg-[#c9a96e]/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#c9a96e]">
+                      Top Tier
+                    </span>
+                  )}
+                </div>
+                <h3 className="mb-2 text-sm font-bold text-[#0a1628] transition group-hover:text-[#c9a96e]">
+                  {event.name}
+                </h3>
+                <p className="mb-0.5 text-xs text-[#4a5568]">📅 {event.date}</p>
+                <p className="mb-3 text-xs text-[#4a5568]">📍 {event.location}</p>
+                <p className="mb-4 flex-1 text-xs leading-relaxed text-[#8b97a5]">
+                  {event.note}
+                </p>
+                <a
+                  href={event.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="self-start text-xs font-semibold uppercase tracking-widest text-[#c9a96e] transition hover:text-[#0a1628]"
+                >
+                  Visit Official Site →
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Q1–Q4 Timeline */}
+          <div className="mt-10 rounded-xl border border-[#e8ecf0] bg-[#f5f7fa] p-6">
+            <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
+              Annual Event Calendar
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  quarter: "Q1",
+                  months: "Jan – Mar",
+                  events: ["boot Düsseldorf", "Miami Boat Show", "Dubai Boat Show"],
+                },
+                {
+                  quarter: "Q2",
+                  months: "Apr – Jun",
+                  events: ["Palma Boat Show", "Mediterranean Cluster", "MYBA Charter Show"],
+                },
+                {
+                  quarter: "Q3",
+                  months: "Jul – Sep",
+                  events: ["Cannes Yachting Festival", "Monaco Yacht Show", "Southampton"],
+                },
+                {
+                  quarter: "Q4",
+                  months: "Oct – Dec",
+                  events: ["Genoa Boat Show", "Fort Lauderdale (FLIBS)", "Qatar Boat Show"],
+                },
+              ].map(({ quarter, months, events }) => (
+                <div key={quarter} className="rounded-lg border border-[#e8ecf0] bg-white p-4">
+                  <div className="mb-3 flex items-center gap-2">
+                    <span className="text-base font-bold text-[#c9a96e]">{quarter}</span>
+                    <span className="text-xs text-[#8b97a5]">{months}</span>
+                  </div>
+                  <ul className="space-y-1.5">
+                    {events.map((e) => (
+                      <li key={e} className="flex items-center gap-1.5 text-xs text-[#4a5568]">
+                        <span className="text-[8px] text-[#c9a96e]">▶</span>
+                        {e}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Strategic callout */}
+          <div className="mt-6 rounded-xl border border-[#1e3052] bg-[#0a1628] p-6">
+            <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
+              Where Deals Actually Happen
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  event: "Monaco",
+                  role: "Deal Closing",
+                  desc: "Ultra-high-end private transactions. €25M+ deals closed through private networks during show week.",
+                },
+                {
+                  event: "Cannes",
+                  role: "Broker Acquisition",
+                  desc: "New launches, dealer ecosystem, and broker deal sourcing ahead of the open market.",
+                },
+                {
+                  event: "Miami / FLIBS",
+                  role: "Buyer Acquisition",
+                  desc: "Largest buyer volume in North America. Mid to high segment qualified principals.",
+                },
+                {
+                  event: "Dubai",
+                  role: "Liquidity",
+                  desc: "High liquidity UHNW buyers. Gulf region principals and sovereign wealth adjacent mandates.",
+                },
+              ].map(({ event, role, desc }) => (
+                <div key={event} className="rounded-lg border border-[#1e3052] bg-[#112040] p-4">
+                  <p className="mb-1 text-sm font-bold text-white">{event}</p>
+                  <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
+                    {role}
+                  </p>
+                  <p className="text-xs leading-relaxed text-[#8b97a5]">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* B-tier label + pill list */}
+          <div className="mt-10">
+            <div className="mb-6 flex items-center gap-4">
+              <span className="shrink-0 rounded-full border border-[#e8ecf0] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#4a5568]">
+                Network &amp; Niche Deal Flow Events
+              </span>
+              <div className="h-px flex-1 bg-[#e8ecf0]" />
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {yachtShowsBTier.map((show) => (
+                <a
+                  key={show.name}
+                  href={show.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e8ecf0] bg-white px-4 py-2 text-xs font-medium text-[#4a5568] transition hover:border-[#c9a96e] hover:text-[#0a1628]"
+                >
+                  <span>{show.flag}</span>
+                  {show.name}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -74,6 +74,33 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Yacht Shows row */}
+        <div className="mt-8 border-t border-[#1a2940] pt-8">
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+            Yacht Shows &amp; Events
+          </h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {[
+              { label: "Miami Boat Show", href: "/#yacht-shows" },
+              { label: "Palm Beach Boat Show", href: "/#yacht-shows" },
+              { label: "Monaco Yacht Show", href: "/#yacht-shows" },
+              { label: "Cannes Yachting Festival", href: "/#yacht-shows" },
+              { label: "Fort Lauderdale Boat Show", href: "/#yacht-shows" },
+              { label: "Dubai Boat Show", href: "/#yacht-shows" },
+              { label: "Genoa Boat Show", href: "/#yacht-shows" },
+              { label: "Yacht Events Calendar", href: "/#yacht-shows" },
+            ].map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-sm text-[#8b97a5] transition hover:text-white"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Disclaimer */}
         <div className="mt-12 border-t border-[#112040] pt-8">
           <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[#c9a96e]/60">
