@@ -81,14 +81,14 @@ export default function Footer() {
           </h3>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             {[
-              { label: "Miami Boat Show", href: "/#yacht-shows" },
-              { label: "Palm Beach Boat Show", href: "/#yacht-shows" },
-              { label: "Monaco Yacht Show", href: "/#yacht-shows" },
-              { label: "Cannes Yachting Festival", href: "/#yacht-shows" },
-              { label: "Fort Lauderdale Boat Show", href: "/#yacht-shows" },
-              { label: "Dubai Boat Show", href: "/#yacht-shows" },
-              { label: "Genoa Boat Show", href: "/#yacht-shows" },
-              { label: "Yacht Events Calendar", href: "/#yacht-shows" },
+              { label: "Miami Boat Show", href: "/yacht-shows" },
+              { label: "Palm Beach Boat Show", href: "/yacht-shows" },
+              { label: "Monaco Yacht Show", href: "/yacht-shows" },
+              { label: "Cannes Yachting Festival", href: "/yacht-shows" },
+              { label: "Fort Lauderdale Boat Show", href: "/yacht-shows" },
+              { label: "Dubai Boat Show", href: "/yacht-shows" },
+              { label: "Genoa Boat Show", href: "/yacht-shows" },
+              { label: "Yacht Events Calendar", href: "/yacht-shows" },
             ].map(({ label, href }) => (
               <Link
                 key={label}

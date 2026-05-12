@@ -26,10 +26,29 @@ const breadcrumbSchema = {
   ],
 };
 
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact OffMarketYachts.com",
+  url: "https://www.offmarketyachts.com/contact",
+  description: "Contact OffMarketYachts.com for buyer access requests, yacht submissions, broker cooperation, and general enquiries. All messages handled privately.",
+  mainEntity: {
+    "@type": "Organization",
+    name: "OffMarketYachts.com",
+    url: "https://www.offmarketyachts.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      url: "https://www.offmarketyachts.com/contact",
+      availableLanguage: "English",
+    },
+  },
+};
+
 export default function ContactPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, contactPageSchema]} />
       <Breadcrumb items={[{ label: "Contact" }]} />
       <ContactClient />
     </>

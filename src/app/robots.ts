@@ -10,6 +10,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: "https://www.offmarketyachts.com/sitemap.xml",
-    host: "https://www.offmarketyachts.com",
   };
 }
