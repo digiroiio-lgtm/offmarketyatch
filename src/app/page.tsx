@@ -1089,7 +1089,7 @@ export default function HomePage() {
       </section>
 
       {/* Global Yacht Shows & Events */}
-      <section id="yacht-shows" className="section bg-white" aria-labelledby="shows-heading">
+      <section id="yacht-shows" className="section bg-white" aria-labelledby="shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 1200px" }}>
         <div className="container-site">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">

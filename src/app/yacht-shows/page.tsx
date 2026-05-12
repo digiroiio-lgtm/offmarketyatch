@@ -187,7 +187,7 @@ export default function YachtShowsPage() {
       />
 
       {/* Core Deal Flow Events */}
-      <section className="section bg-white" aria-labelledby="core-shows-heading">
+      <section className="section bg-white" aria-labelledby="core-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 800px" }}>
         <div className="container-site">
           <div className="mb-6 flex items-center gap-4">
             <span className="shrink-0 rounded-full bg-[#c9a96e]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
@@ -237,7 +237,7 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Annual Calendar */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="calendar-heading">
+      <section className="section bg-[#f5f7fa]" aria-labelledby="calendar-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 400px" }}>
         <div className="container-site">
           <h2
             id="calendar-heading"
@@ -288,7 +288,7 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Other Shows */}
-      <section className="section bg-white" aria-labelledby="other-shows-heading">
+      <section className="section bg-white" aria-labelledby="other-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 500px" }}>
         <div className="container-site">
           <div className="mb-8 flex items-center gap-4">
             <span className="shrink-0 rounded-full border border-[#e8ecf0] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#4a5568]">
@@ -318,7 +318,7 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Strategic context */}
-      <section className="section bg-[#0a1628]" aria-labelledby="strategy-heading">
+      <section className="section bg-[#0a1628]" aria-labelledby="strategy-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 450px" }}>
         <div className="container-site">
           <div className="mb-10 text-center">
             <h2
