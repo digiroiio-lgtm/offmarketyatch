@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+// ─── Nav data ────────────────────────────────────────────────────────────────
+
 const navLinks = [
   { href: "/buy-off-market-yachts", label: "Buy" },
   { href: "/sell-off-market-yacht", label: "Sell" },
@@ -28,6 +30,8 @@ const navLinks = [
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
+
+// ─── Sub-components ───────────────────────────────────────────────────────────
 
 function SunIcon() {
   return (
@@ -75,6 +79,18 @@ function ThemeToggle({ darkMode, onToggle }: { darkMode: boolean; onToggle: () =
   );
 }
 
+// ─── Shared nav-link styles ───────────────────────────────────────────────────
+const NAV_LINK =
+  "flex h-full items-center whitespace-nowrap text-[13px] font-medium tracking-wide text-[#8b97a5] transition-colors duration-200 ease-out hover:text-[#c9a96e]";
+
+// Navbar CTA buttons — fixed height so they never shift the row
+const BTN_OUTLINE =
+  "inline-flex h-9 items-center justify-center rounded border border-[#c9a96e] px-4 text-[11px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors duration-200 ease-out hover:bg-[#c9a96e] hover:text-[#0a1628] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a96e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]";
+const BTN_SOLID =
+  "inline-flex h-9 items-center justify-center rounded bg-[#c9a96e] px-4 text-[11px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors duration-200 ease-out hover:bg-[#e2c99a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a96e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a1628]";
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -100,45 +116,59 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#0a1628] shadow-lg">
-      <div className="container-site flex h-16 items-center justify-between gap-4 md:h-20">
-        {/* Logo */}
+      {/*
+        Single fixed height (72 px) on both the <header> and the inner row
+        eliminates the h-16 → h-20 breakpoint jump that causes CLS.
+        max-w-[1520px] gives breathing room on 1920 px+ displays.
+      */}
+      <div className="mx-auto flex h-[72px] max-w-[1520px] items-center px-6 sm:px-10 lg:px-14">
+
+        {/* ── Logo ───────────────────────────────────────────────────────── */}
         <Link
           href="/"
-          className="flex shrink-0 flex-col leading-none"
+          className="flex shrink-0 flex-col justify-center leading-none"
           aria-label="OffMarketYachts home"
         >
-          <span className="text-base font-bold tracking-wider text-white sm:text-lg">
+          <span className="text-[15px] font-bold tracking-wider text-white sm:text-[17px]">
             OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
           </span>
-          <span className="text-[10px] tracking-widest text-[#8b97a5] uppercase">
+          <span className="mt-[3px] text-[9px] uppercase tracking-[0.18em] text-[#8b97a5]">
             Private Yacht Platform
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-5 md:flex" aria-label="Main navigation">
+        {/* ── Desktop nav — flex-1 + justify-center balances logo ↔ CTAs ── */}
+        <nav
+          className="hidden h-full flex-1 items-center justify-center gap-6 md:flex lg:gap-8"
+          aria-label="Main navigation"
+        >
           {navLinks.map((link) =>
             link.children ? (
-              <div key={link.label} className="relative">
+              <div key={link.label} className="relative flex h-full items-center">
                 <button
-                  className="flex items-center gap-1 whitespace-nowrap text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
+                  className={`${NAV_LINK} gap-1`}
                   onClick={() => toggleDropdown(link.label)}
                   aria-expanded={openDropdown === link.label}
                   aria-haspopup="true"
                 >
                   {link.label}
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className={`h-3 w-3 transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 {openDropdown === link.label && (
-                  <div className="absolute left-0 top-full mt-1 w-52 rounded border border-[#112040] bg-[#0a1628] py-1 shadow-xl">
+                  <div className="absolute left-0 top-full mt-0 w-52 rounded-b border border-t-0 border-[#112040] bg-[#0a1628] py-1 shadow-2xl">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
                         onClick={() => setOpenDropdown(null)}
-                        className="block px-4 py-2 text-sm text-[#8b97a5] transition hover:bg-[#112040] hover:text-[#c9a96e]"
+                        className="block px-4 py-2.5 text-[13px] text-[#8b97a5] transition-colors duration-150 hover:bg-[#112040] hover:text-[#c9a96e]"
                       >
                         {child.label}
                       </Link>
@@ -147,54 +177,61 @@ export default function Header() {
                 )}
               </div>
             ) : (
-              <Link
-                key={link.href}
-                href={link.href!}
-                className="whitespace-nowrap text-sm font-medium text-[#8b97a5] transition hover:text-[#c9a96e]"
-              >
+              <Link key={link.href} href={link.href!} className={NAV_LINK}>
                 {link.label}
               </Link>
             )
           )}
         </nav>
 
-        {/* Desktop CTAs + Theme Toggle */}
+        {/* ── Desktop right rail: theme + badge + CTAs ───────────────────── */}
         <div className="hidden shrink-0 items-center gap-3 md:flex">
+          {/* Theme toggle */}
           <ThemeToggle darkMode={darkMode} onToggle={toggleTheme} />
-          <span className="whitespace-nowrap text-xs text-[#8b97a5]/60">
-            Member Access{" "}
-            <span className="rounded-sm bg-[#112040] px-1 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]/60">
+
+          {/* Vertical divider */}
+          <span className="mx-1 h-5 w-px bg-[#1e3052]" aria-hidden="true" />
+
+          {/* Member Access badge — inline-flex keeps it on the baseline */}
+          <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-[11px] leading-none text-[#8b97a5]/60">
+            Member Access
+            <span className="rounded-sm bg-[#112040] px-1.5 py-[3px] text-[9px] font-semibold uppercase tracking-widest text-[#c9a96e]/60">
               Soon
             </span>
           </span>
-          <Link href="/submit-yacht" className="btn-outline-gold py-2 text-xs">
+
+          {/* Vertical divider */}
+          <span className="mx-1 h-5 w-px bg-[#1e3052]" aria-hidden="true" />
+
+          {/* CTA buttons — h-9 gives them a unified, predictable height */}
+          <Link href="/submit-yacht" className={BTN_OUTLINE}>
             Submit Confidentially
           </Link>
-          <Link href="/private-access" className="btn-gold py-2 text-xs">
+          <Link href="/private-access" className={BTN_SOLID}>
             Apply for Access
           </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {/* ── Mobile hamburger ───────────────────────────────────────────── */}
         <button
-          className="flex flex-col gap-1.5 p-2 md:hidden"
+          className="ml-auto flex flex-col gap-[5px] p-2 md:hidden"
           onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle navigation menu"
           aria-expanded={mobileOpen}
         >
-          <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
-          <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block h-0.5 w-6 bg-white transition-all ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
         </button>
       </div>
 
-      {/* Mobile nav */}
+      {/* ── Mobile nav ─────────────────────────────────────────────────────── */}
       {mobileOpen && (
-        <nav className="border-t border-[#112040] bg-[#0a1628] px-5 pb-5" aria-label="Mobile navigation">
+        <nav className="border-t border-[#112040] bg-[#0a1628] px-6 pb-6 pt-2" aria-label="Mobile navigation">
           {navLinks.map((link) =>
             link.children ? (
-              <div key={link.label} className="pt-3">
-                <span className="block text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+              <div key={link.label} className="pt-4">
+                <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]">
                   {link.label}
                 </span>
                 {link.children.map((child) => (
@@ -202,7 +239,7 @@ export default function Header() {
                     key={child.href}
                     href={child.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-2 pl-3 text-sm text-[#8b97a5] transition hover:text-white"
+                    className="block py-2 pl-3 text-sm text-[#8b97a5] transition-colors duration-150 hover:text-white"
                   >
                     {child.label}
                   </Link>
@@ -213,13 +250,13 @@ export default function Header() {
                 key={link.href}
                 href={link.href!}
                 onClick={() => setMobileOpen(false)}
-                className="block py-2.5 text-sm font-medium text-[#8b97a5] transition hover:text-white"
+                className="block py-2.5 text-sm font-medium text-[#8b97a5] transition-colors duration-150 hover:text-white"
               >
                 {link.label}
               </Link>
             )
           )}
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-5 flex flex-col gap-3">
             <div className="flex items-center justify-between rounded border border-[#112040] px-4 py-3">
               <span className="text-sm font-medium text-[#8b97a5]">
                 {darkMode ? "Night Mode" : "Day Mode"}
