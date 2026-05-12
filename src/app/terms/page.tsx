@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
@@ -7,12 +8,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.offmarketyachts.com/terms",
   },
-  robots: { index: false, follow: false },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
+    { "@type": "ListItem", position: 2, name: "Terms of Use", item: "https://www.offmarketyachts.com/terms" },
+  ],
 };
 
 export default function TermsPage() {
   return (
     <>
+      <SchemaOrg schema={[breadcrumbSchema]} />
       <Breadcrumb items={[{ label: "Terms of Use" }]} />
       <section className="section bg-white">
         <div className="container-site">

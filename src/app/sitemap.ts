@@ -21,6 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/private-yacht-brokerage", priority: 0.85, changeFrequency: "monthly" as const },
     { url: "/about", priority: 0.6, changeFrequency: "monthly" as const },
     { url: "/contact", priority: 0.6, changeFrequency: "monthly" as const },
+    { url: "/yacht-shows", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
+    { url: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
   return pages.map(({ url, priority, changeFrequency }) => ({

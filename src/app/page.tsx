@@ -340,21 +340,34 @@ const faqSchema = {
   })),
 };
 
+const eventDateRanges: Record<string, { start: string; end: string }> = {
+  "September": { start: "09-01", end: "09-30" },
+  "October – November": { start: "10-01", end: "11-30" },
+  "March": { start: "03-01", end: "03-31" },
+  "February – March": { start: "02-01", end: "03-31" },
+  "February (Annual)": { start: "02-01", end: "02-28" },
+};
+
 const eventSchemas = yachtShowsATier
   .filter((s) => s.tier === "flagship")
-  .map((s) => ({
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: s.name,
-    location: {
-      "@type": "Place",
-      name: s.location,
-      address: { "@type": "PostalAddress", addressLocality: s.location },
-    },
-    url: s.url,
-    description: s.note,
-    organizer: { "@type": "Organization", name: s.name, url: s.url },
-  }));
+  .map((s) => {
+    const range = eventDateRanges[s.date] ?? { start: "01-01", end: "01-31" };
+    return {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: s.name,
+      startDate: `2026-${range.start}`,
+      endDate: `2026-${range.end}`,
+      location: {
+        "@type": "Place",
+        name: s.location,
+        address: { "@type": "PostalAddress", addressLocality: s.location },
+      },
+      url: s.url,
+      description: s.note,
+      organizer: { "@type": "Organization", name: s.name, url: s.url },
+    };
+  });
 
 export default function HomePage() {
   return (

@@ -12,6 +12,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.offmarketyachts.com/owner-representation",
   },
+  openGraph: {
+    url: "https://www.offmarketyachts.com/owner-representation",
+    title: "Owner-Side Representation for Private Yacht Sales | OffMarketYachts.com",
+    description:
+      "Confidential support for yacht owners and their representatives who want to explore private sale opportunities without public listing exposure, uncontrolled circulation, or price speculation.",
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "OffMarketYachts.com" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Owner-Side Representation for Private Yacht Sales | OffMarketYachts.com",
+    description:
+      "Confidential support for yacht owners and their representatives exploring private sale opportunities without public listing exposure.",
+    images: ["/og-default.jpg"],
+  },
 };
 
 const pageSchema = {
@@ -26,6 +40,15 @@ const pageSchema = {
   description:
     "Confidential support for yacht owners and their representatives exploring private sale opportunities without public listing exposure.",
   url: "https://www.offmarketyachts.com/owner-representation",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
+    { "@type": "ListItem", position: 2, name: "Owner-Side Representation", item: "https://www.offmarketyachts.com/owner-representation" },
+  ],
 };
 
 const whyChoose = [
@@ -61,7 +84,7 @@ const process = [
 export default function OwnerRepresentationPage() {
   return (
     <>
-      <SchemaOrg schema={pageSchema} />
+      <SchemaOrg schema={[breadcrumbSchema, pageSchema]} />
 
       <PageHero
         h1="Owner-Side Representation for Private Yacht Sales"

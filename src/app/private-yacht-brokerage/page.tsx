@@ -12,6 +12,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.offmarketyachts.com/private-yacht-brokerage",
   },
+  openGraph: {
+    url: "https://www.offmarketyachts.com/private-yacht-brokerage",
+    title: "Private Yacht Brokerage Without Public Market Exposure | OffMarketYachts.com",
+    description:
+      "A controlled brokerage environment for qualified buyers, verified brokers, and owner representatives seeking discreet yacht transactions without public listing exposure.",
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "OffMarketYachts.com" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Private Yacht Brokerage Without Public Market Exposure | OffMarketYachts.com",
+    description:
+      "A controlled brokerage environment for qualified buyers, verified brokers, and owner representatives seeking discreet yacht transactions.",
+    images: ["/og-default.jpg"],
+  },
 };
 
 const pageSchema = {
@@ -26,6 +40,15 @@ const pageSchema = {
   description:
     "A controlled brokerage environment for qualified buyers, verified brokers, and owner representatives seeking discreet yacht transactions.",
   url: "https://www.offmarketyachts.com/private-yacht-brokerage",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
+    { "@type": "ListItem", position: 2, name: "Private Yacht Brokerage", item: "https://www.offmarketyachts.com/private-yacht-brokerage" },
+  ],
 };
 
 const brokerageFeatures = [
@@ -71,7 +94,7 @@ const cobrokerageSteps = [
 export default function PrivateYachtBrokeragePage() {
   return (
     <>
-      <SchemaOrg schema={pageSchema} />
+      <SchemaOrg schema={[breadcrumbSchema, pageSchema]} />
 
       <PageHero
         h1="Private Yacht Brokerage Without Public Market Exposure"
