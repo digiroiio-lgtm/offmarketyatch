@@ -133,7 +133,7 @@ export default function Header() {
             OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
           </span>
           <span className="mt-[3px] text-[9px] uppercase tracking-[0.18em] text-[#8b97a5]">
-            Private Yacht Platform
+            Confidential Yacht Network
           </span>
         </Link>
 
