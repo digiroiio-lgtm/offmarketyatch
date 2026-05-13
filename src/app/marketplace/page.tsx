@@ -158,7 +158,7 @@ function ListingCard({ listing }: { listing: Listing }) {
   const [liked, setLiked] = useState(false);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#1e3052]/60 bg-[#0a1628] transition-all duration-500 hover:-translate-y-1 hover:border-[#c9a96e]/25 hover:shadow-2xl hover:shadow-[#c9a96e]/8">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#1e3052]/60 bg-[#0D1B2A] transition-all duration-500 hover:-translate-y-1 hover:border-[#c9a96e]/25 hover:shadow-2xl hover:shadow-[#c9a96e]/8">
       {/* Card image */}
       <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${listing.gradient}`}>
         {/* Silhouette — zooms on hover */}
@@ -215,7 +215,7 @@ function ListingCard({ listing }: { listing: Listing }) {
           <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[#8b97a5]/70">
             {listing.year} · {listing.type}
           </p>
-          <h3 className="text-[17px] font-bold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-[#f0e6d3]">
+          <h3 className="text-[17px] font-bold leading-snug tracking-tight text-[#F3F1EC] transition-colors duration-300 group-hover:text-[#e8dcca]">
             {listing.builder} {listing.model}
           </h3>
         </div>
@@ -245,7 +245,7 @@ function ListingCard({ listing }: { listing: Listing }) {
 
 function SkeletonCard() {
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#1e3052]/40 bg-[#0a1628]">
+    <div className="overflow-hidden rounded-2xl border border-[#1e3052]/40 bg-[#0D1B2A]">
       <div className="aspect-[16/10] animate-pulse bg-[#112040]" />
       <div className="space-y-3 p-6">
         <div className="h-3 w-1/3 animate-pulse rounded bg-[#112040]" />
@@ -445,7 +445,7 @@ export default function MarketplacePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060e1a] text-white">
+    <div className="min-h-screen bg-[#07111f] text-[#F3F1EC]">
       {/* ── Member bar ─────────────────────────────────────────────────────── */}
       <div className="border-b border-[#1e3052]/80 bg-[#0a1628]">
         <div className="mx-auto flex h-10 max-w-[1520px] items-center justify-between px-6 sm:px-10">
@@ -467,7 +467,7 @@ export default function MarketplacePage() {
       <div className="sticky top-0 z-40 border-b border-[#112040] bg-[#0a1628]/95 shadow-lg backdrop-blur-md">
         <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-4 px-6 sm:px-10">
           <Link href="/" className="flex shrink-0 flex-col leading-none">
-            <span className="text-[15px] font-bold tracking-wider text-white">
+            <span className="text-[15px] font-bold tracking-wider text-[#F3F1EC]">
               OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
             </span>
             <span className="mt-[3px] text-[9px] uppercase tracking-[0.16em] text-[#8b97a5]">
@@ -511,7 +511,7 @@ export default function MarketplacePage() {
           <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">
             Private Member Inventory
           </p>
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mb-4 text-3xl font-bold tracking-tight text-[#F3F1EC] sm:text-4xl lg:text-5xl">
             Off-Market Yachts
           </h1>
           <p className="mb-10 text-[15px] leading-relaxed text-[#8b97a5]">
@@ -531,7 +531,7 @@ export default function MarketplacePage() {
                 onChange={(e) => setDraftQuery(e.target.value)}
                 onKeyDown={handleSearchKeyDown}
                 placeholder='Try: "45m explorer under €18M" or "Benetti Monaco"'
-                className="flex-1 bg-transparent px-4 py-5 text-[14px] text-white placeholder-[#4a5568] focus:outline-none"
+                className="flex-1 bg-transparent px-4 py-5 text-[14px] text-[#F3F1EC] placeholder-[#4a5568] focus:outline-none"
               />
               {draftQuery && (
                 <button onClick={() => { setDraftQuery(""); setQuery(""); }} className="shrink-0 p-3 text-[#4a5568] hover:text-white">
@@ -634,7 +634,7 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Listing grid ───────────────────────────────────────────────────── */}
-      <section className="px-6 py-16 sm:px-10 sm:py-20">
+      <section className="bg-[#07111f] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           {/* AI insight bar */}
           {query && !loadingSearch && (
@@ -669,19 +669,19 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Popular categories ─────────────────────────────────────────────── */}
-      <section id="categories" className="border-t border-[#112040] bg-[#060e1a] px-6 py-16 sm:px-10 sm:py-20">
+      <section id="categories" className="border-t border-[#E2DDD5] bg-[#F7F4EF] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Browse By</p>
-          <h2 className="mb-8 text-2xl font-bold text-white">Popular Categories</h2>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#8a6b3a]">Browse By</p>
+          <h2 className="mb-8 text-2xl font-bold text-[#0d1b2a]">Popular Categories</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.label}
                 onClick={() => handleCategoryClick(cat)}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-[#1e3052]/80 bg-[#0a1628] px-4 py-7 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:bg-[#0d1f35] hover:shadow-lg hover:shadow-[#c9a96e]/5"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-[#D5CFC4] bg-white px-4 py-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#b89660]/40 hover:shadow-md hover:shadow-[#8a6b3a]/10"
               >
                 <span className="text-3xl">{cat.icon}</span>
-                <span className="text-[12px] font-medium tracking-wide text-[#8b97a5] transition-colors group-hover:text-[#c9a96e]">
+                <span className="text-[12px] font-medium tracking-wide text-[#5a6070] transition-colors group-hover:text-[#8a6b3a]">
                   {cat.label}
                 </span>
               </button>
@@ -694,7 +694,7 @@ export default function MarketplacePage() {
       <section id="locations" className="border-t border-[#112040] bg-[#0a1628] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Global Reach</p>
-          <h2 className="mb-8 text-2xl font-bold text-white">Browse by Location</h2>
+          <h2 className="mb-8 text-2xl font-bold text-[#F3F1EC]">Browse by Location</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
             {LOCATIONS.map((loc) => {
               const count = LISTINGS.filter((l) => l.location === loc).length;
@@ -704,7 +704,7 @@ export default function MarketplacePage() {
                   onClick={() => { clearFilters(); setLocationFilter(loc); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   className="group flex flex-col items-center gap-2 rounded-xl border border-[#1e3052]/80 bg-[#060e1a] py-5 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:shadow-md hover:shadow-[#c9a96e]/5"
                 >
-                  <span className="text-[13px] font-semibold text-white transition-colors group-hover:text-[#c9a96e]">
+                  <span className="text-[13px] font-semibold text-[#F3F1EC] transition-colors group-hover:text-[#c9a96e]">
                     {loc}
                   </span>
                   <span className="text-[10px] text-[#4a5568]">
@@ -721,7 +721,7 @@ export default function MarketplacePage() {
       <section id="builders" className="border-t border-[#112040] bg-[#07111f] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">By Shipyard</p>
-          <h2 className="mb-8 text-2xl font-bold text-white">Yacht Builders</h2>
+          <h2 className="mb-8 text-2xl font-bold text-[#F3F1EC]">Yacht Builders</h2>
           <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9">
             {BUILDERS.map((builder) => {
               const count = LISTINGS.filter((l) => l.builder === builder).length;
@@ -731,7 +731,7 @@ export default function MarketplacePage() {
                   onClick={() => { clearFilters(); setBuilderFilter(builder); window.scrollTo({ top: 0, behavior: "smooth" }); }}
                   className="group flex flex-col items-center gap-2 rounded-xl border border-[#1e3052]/80 bg-[#0a1628] py-5 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:bg-[#0d1f35] hover:shadow-md hover:shadow-[#c9a96e]/5"
                 >
-                  <span className="text-[12px] font-semibold text-white transition-colors group-hover:text-[#c9a96e]">
+                  <span className="text-[12px] font-semibold text-[#F3F1EC] transition-colors group-hover:text-[#c9a96e]">
                     {builder}
                   </span>
                   {count > 0 && (
@@ -759,7 +759,7 @@ export default function MarketplacePage() {
         <div className="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e]/[0.05] blur-[120px]" />
         <div className="relative mx-auto max-w-xl">
           <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Discreet Representation</p>
-          <h2 className="mb-4 text-2xl font-bold text-white sm:text-3xl">
+          <h2 className="mb-4 text-2xl font-bold text-[#F3F1EC] sm:text-3xl">
             Have a Yacht to Sell Off-Market?
           </h2>
           <p className="mb-7 text-[15px] leading-relaxed text-[#8b97a5]">
@@ -801,7 +801,7 @@ export default function MarketplacePage() {
       <footer className="border-t border-[#112040] bg-[#0a1628] px-6 py-8 sm:px-10">
         <div className="mx-auto flex max-w-[1520px] flex-col items-center justify-between gap-4 sm:flex-row">
           <Link href="/" className="flex flex-col items-center gap-0.5 sm:items-start">
-            <span className="text-[14px] font-bold tracking-wider text-white">
+            <span className="text-[14px] font-bold tracking-wider text-[#F3F1EC]">
               OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
             </span>
             <span className="text-[9px] uppercase tracking-[0.18em] text-[#4a5568]">Confidential Yacht Network</span>
