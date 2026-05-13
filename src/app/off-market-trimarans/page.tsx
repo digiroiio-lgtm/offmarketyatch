@@ -47,6 +47,15 @@ const breadcrumbSchema = {
   ],
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Off-Market Trimaran Acquisition – Private Buyer Access",
+  provider: { "@type": "Organization", name: "OffMarketYachts.com", url: "https://www.offmarketyachts.com" },
+  description: "Specialist off-market trimaran and performance multihull acquisition. Private trimaran opportunities for qualified buyers through exclusive off-market channels.",
+  url: "https://www.offmarketyachts.com/off-market-trimarans",
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -60,7 +69,7 @@ const faqSchema = {
 export default function TrimaransPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, serviceSchema, faqSchema]} />
       <Breadcrumb items={[{ label: "Off-Market Trimarans" }]} />
       <PageHero
         h1="Off-Market Trimarans for Private Acquisition"

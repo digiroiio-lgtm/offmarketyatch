@@ -52,6 +52,15 @@ const breadcrumbSchema = {
   ],
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Private Yacht Acquisition Support for Family Offices",
+  provider: { "@type": "Organization", name: "OffMarketYachts.com", url: "https://www.offmarketyachts.com" },
+  description: "Discreet yacht acquisition support for family offices and wealth management advisors. Private introductions, NDA-governed transactions, and full confidentiality for UHNW principals.",
+  url: "https://www.offmarketyachts.com/family-offices",
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -65,7 +74,7 @@ const faqSchema = {
 export default function FamilyOfficesPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, serviceSchema, faqSchema]} />
       <Breadcrumb items={[{ label: "Family Offices" }]} />
       <PageHero
         h1="Private Yacht Acquisition Support for Family Offices"

@@ -47,6 +47,15 @@ const breadcrumbSchema = {
   ],
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Off-Market Superyacht Acquisition – Private Buyer Access",
+  provider: { "@type": "Organization", name: "OffMarketYachts.com", url: "https://www.offmarketyachts.com" },
+  description: "Private access to off-market superyachts (30m+) for qualified UHNW buyers and family offices. Discreet introductions and NDA-based information sharing.",
+  url: "https://www.offmarketyachts.com/off-market-superyachts",
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -60,7 +69,7 @@ const faqSchema = {
 export default function SuperyachtsPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, serviceSchema, faqSchema]} />
       <Breadcrumb items={[{ label: "Off-Market Superyachts" }]} />
       <PageHero
         h1="Off-Market Superyachts for Qualified Buyers"

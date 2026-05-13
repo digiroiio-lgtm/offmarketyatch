@@ -47,6 +47,15 @@ const breadcrumbSchema = {
   ],
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Off-Market Motor Yacht Acquisition – Private Buyer Access",
+  provider: { "@type": "Organization", name: "OffMarketYachts.com", url: "https://www.offmarketyachts.com" },
+  description: "Private motor yacht acquisition opportunities sourced through owner networks and broker relationships. Off-market motor yachts not publicly listed.",
+  url: "https://www.offmarketyachts.com/off-market-motor-yachts",
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -60,7 +69,7 @@ const faqSchema = {
 export default function MotorYachtsPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, serviceSchema, faqSchema]} />
       <Breadcrumb items={[{ label: "Off-Market Motor Yachts" }]} />
       <PageHero
         h1="Off-Market Motor Yachts Available Through Private Channels"

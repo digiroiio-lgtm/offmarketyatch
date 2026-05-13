@@ -52,6 +52,15 @@ const breadcrumbSchema = {
   ],
 };
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Private Off-Market Yacht Deal Flow for Brokers",
+  provider: { "@type": "Organization", name: "OffMarketYachts.com", url: "https://www.offmarketyachts.com" },
+  description: "Private off-market deal flow, co-brokerage opportunities, and a qualified buyer and seller network for licensed yacht brokers. Confidential broker cooperation available.",
+  url: "https://www.offmarketyachts.com/yacht-brokers",
+};
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -65,7 +74,7 @@ const faqSchema = {
 export default function BrokersPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg schema={[breadcrumbSchema, serviceSchema, faqSchema]} />
       <Breadcrumb items={[{ label: "Yacht Brokers" }]} />
       <PageHero
         h1="Private Off-Market Yacht Deal Flow for Brokers"

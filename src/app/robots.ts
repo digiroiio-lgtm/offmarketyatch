@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/static/", "/_next/image/"],
+        disallow: ["/api/", "/_next/static/", "/_next/image/", "/access", "/marketplace"],
       },
     ],
     sitemap: "https://www.offmarketyachts.com/sitemap.xml",

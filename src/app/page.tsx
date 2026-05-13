@@ -315,6 +315,9 @@ const organizationSchema = {
   logo: "https://www.offmarketyachts.com/logo.png",
   description:
     "A private, high-trust platform for off-market yachts, superyachts, motor yachts, catamarans, and luxury marine assets not publicly listed.",
+  sameAs: [
+    "https://www.linkedin.com/company/offmarketyachts",
+  ],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
