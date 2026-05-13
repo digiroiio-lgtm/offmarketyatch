@@ -117,11 +117,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-[#0a1628] shadow-lg">
       {/*
-        Single fixed height (72 px) on both the <header> and the inner row
+        Single fixed height (80 px) on both the <header> and the inner row
         eliminates the h-16 → h-20 breakpoint jump that causes CLS.
         max-w-[1520px] gives breathing room on 1920 px+ displays.
       */}
-      <div className="mx-auto flex h-[72px] max-w-[1520px] items-center px-6 sm:px-10 lg:px-14">
+      <div className="mx-auto flex h-[80px] max-w-[1520px] items-center px-6 sm:px-10 lg:px-14">
 
         {/* ── Logo ───────────────────────────────────────────────────────── */}
         <Link

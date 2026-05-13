@@ -15,7 +15,7 @@ const CAPABILITIES = [
 
 export default function FeaturedSponsorBlock() {
   return (
-    <section className="my-8 overflow-hidden rounded-2xl border border-[#c9a96e]/15 bg-[#0a1628]">
+    <section className="my-10 overflow-hidden rounded-2xl border border-[#c9a96e]/15 bg-[#0a1628]">
       {/* Top label */}
       <div className="flex items-center gap-3 border-b border-[#112040] px-8 py-3">
         <SponsorBadge />
@@ -24,28 +24,28 @@ export default function FeaturedSponsorBlock() {
         </span>
       </div>
 
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-[58%_42%]">
         {/* Left: cinematic visual */}
-        <div className="relative min-h-[280px] overflow-hidden lg:min-h-[360px]">
+        <div className="relative min-h-[300px] overflow-hidden lg:min-h-[400px]">
           <Image
             src={heroImg}
             alt="MOX YACHT Antalya shipyard operations — aerial view"
             fill
             placeholder="blur"
-            className="object-cover object-center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-center transition-transform duration-700 hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 60vw"
           />
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060e1a]/85 via-[#060e1a]/25 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#0a1628]/10 lg:to-[#0a1628]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060e1a]/90 via-[#060e1a]/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#0a1628]/15 lg:to-[#0a1628]" />
           {/* MOX logo mark */}
-          <div className="absolute bottom-6 left-8">
-            <span className="block text-[28px] font-bold tracking-[0.35em] text-white/60">MOX</span>
-            <span className="block text-[10px] uppercase tracking-[0.4em] text-[#c9a96e]/70">YACHT</span>
+          <div className="absolute bottom-8 left-8">
+            <span className="block text-[38px] font-bold tracking-[0.38em] text-white/85">MOX</span>
+            <span className="block text-[11px] uppercase tracking-[0.38em] text-[#c9a96e]">YACHT</span>
           </div>
           {/* Top-right location */}
           <div className="absolute right-6 top-6 text-right">
-            <p className="text-[9px] uppercase tracking-[0.22em] text-[#c9a96e]/80">Antalya</p>
-            <p className="text-[9px] uppercase tracking-[0.22em] text-white/50">Mediterranean</p>
+            <p className="text-[9px] uppercase tracking-[0.22em] text-[#c9a96e]/90">Antalya</p>
+            <p className="text-[9px] uppercase tracking-[0.22em] text-white/60">Mediterranean</p>
           </div>
         </div>
 

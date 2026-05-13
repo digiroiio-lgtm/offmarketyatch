@@ -158,20 +158,23 @@ function ListingCard({ listing }: { listing: Listing }) {
   const [liked, setLiked] = useState(false);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-[#1e3052]/70 bg-[#0a1628] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/30 hover:shadow-xl hover:shadow-[#c9a96e]/5">
-      {/* Card image / gradient hero */}
-      <div className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${listing.gradient}`}>
-        {/* Abstract yacht silhouette overlay */}
-        <div className="absolute inset-0 flex items-end justify-center pb-6 opacity-20">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#1e3052]/60 bg-[#0a1628] transition-all duration-500 hover:-translate-y-1 hover:border-[#c9a96e]/25 hover:shadow-2xl hover:shadow-[#c9a96e]/8">
+      {/* Card image */}
+      <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${listing.gradient}`}>
+        {/* Silhouette — zooms on hover */}
+        <div className="absolute inset-0 flex items-end justify-center pb-8 opacity-[0.18] transition-transform duration-700 group-hover:scale-110">
           <svg viewBox="0 0 240 80" className="w-3/4" fill={listing.accentColor}>
             <path d="M20 70 L30 40 L60 35 L120 30 L180 35 L210 40 L230 70 Z" />
             <path d="M80 35 L90 5 L110 10 L110 35 Z" />
           </svg>
         </div>
 
+        {/* Dark bottom gradient for legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#060e1a]/70 to-transparent" />
+
         {/* Builder watermark */}
         <div className="absolute left-4 top-4">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ color: listing.accentColor }}>
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em]" style={{ color: listing.accentColor }}>
             {listing.builder}
           </span>
         </div>
@@ -179,7 +182,7 @@ function ListingCard({ listing }: { listing: Listing }) {
         {/* Tag */}
         {listing.tag && (
           <div className="absolute right-4 top-4">
-            <span className="rounded-full bg-[#0a1628]/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider text-[#c9a96e] backdrop-blur-sm">
+            <span className="rounded-full border border-[#c9a96e]/30 bg-[#060e1a]/70 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider text-[#c9a96e] backdrop-blur-sm">
               {listing.tag}
             </span>
           </div>
@@ -188,10 +191,10 @@ function ListingCard({ listing }: { listing: Listing }) {
         {/* Favorite */}
         <button
           onClick={() => setLiked((v) => !v)}
-          className={`absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center rounded-full border transition-colors duration-200 ${
+          className={`absolute bottom-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-sm transition-all duration-200 ${
             liked
-              ? "border-red-400/60 bg-[#0a1628]/90 text-red-400"
-              : "border-[#1e3052] bg-[#0a1628]/80 text-[#4a5568] hover:border-red-400/40 hover:text-red-400"
+              ? "border-[#c9a96e]/60 bg-[#0a1628]/90 text-[#c9a96e]"
+              : "border-[#1e3052]/80 bg-[#060e1a]/60 text-[#4a5568] hover:border-[#c9a96e]/40 hover:text-[#c9a96e]/70"
           }`}
           aria-label="Save listing"
         >
@@ -200,35 +203,36 @@ function ListingCard({ listing }: { listing: Listing }) {
 
         {/* Length badge */}
         <div className="absolute bottom-4 left-4">
-          <span className="rounded bg-[#060e1a]/80 px-2 py-0.5 text-[10px] font-medium text-[#8b97a5] backdrop-blur-sm">
+          <span className="rounded-lg bg-[#060e1a]/80 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-white backdrop-blur-sm">
             {listing.lengthM}m
           </span>
         </div>
       </div>
 
       {/* Card body */}
-      <div className="flex flex-1 flex-col p-5">
-        <div className="mb-1 flex items-start justify-between gap-2">
-          <div>
-            <p className="text-[11px] uppercase tracking-wider text-[#8b97a5]">
-              {listing.year} · {listing.type}
-            </p>
-            <h3 className="mt-0.5 text-[15px] font-semibold leading-snug text-white">
-              {listing.builder} {listing.model}
-            </h3>
-          </div>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-3">
+          <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.2em] text-[#8b97a5]/70">
+            {listing.year} · {listing.type}
+          </p>
+          <h3 className="text-[17px] font-bold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-[#f0e6d3]">
+            {listing.builder} {listing.model}
+          </h3>
         </div>
 
-        <p className="mb-4 text-[12px] text-[#8b97a5]">
-          📍 {listing.location}
+        <p className="mb-5 flex items-center gap-1.5 text-[12px] text-[#8b97a5]">
+          <svg className="h-3 w-3 shrink-0 text-[#c9a96e]/50" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+          </svg>
+          {listing.location}
         </p>
 
         <div className="mt-auto flex items-end justify-between">
           <div>
-            <p className="text-[10px] uppercase tracking-widest text-[#4a5568]">Asking Price</p>
-            <p className="text-lg font-bold tracking-tight text-[#c9a96e]">{listing.price}</p>
+            <p className="mb-0.5 text-[9px] font-medium uppercase tracking-[0.22em] text-[#4a5568]">Asking Price</p>
+            <p className="text-[22px] font-bold leading-none tracking-tight text-[#c9a96e]">{listing.price}</p>
           </div>
-          <button className="rounded-lg border border-[#c9a96e]/30 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-all duration-200 hover:bg-[#c9a96e] hover:text-[#0a1628]">
+          <button className="rounded-xl border border-[#c9a96e]/25 px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-[#c9a96e] transition-all duration-200 hover:border-[#c9a96e] hover:bg-[#c9a96e] hover:text-[#0a1628] active:scale-95">
             Enquire
           </button>
         </div>
@@ -241,15 +245,15 @@ function ListingCard({ listing }: { listing: Listing }) {
 
 function SkeletonCard() {
   return (
-    <div className="overflow-hidden rounded-xl border border-[#1e3052]/40 bg-[#0a1628]">
-      <div className="aspect-[4/3] animate-pulse bg-[#112040]" />
-      <div className="p-5 space-y-3">
+    <div className="overflow-hidden rounded-2xl border border-[#1e3052]/40 bg-[#0a1628]">
+      <div className="aspect-[16/10] animate-pulse bg-[#112040]" />
+      <div className="space-y-3 p-6">
         <div className="h-3 w-1/3 animate-pulse rounded bg-[#112040]" />
-        <div className="h-4 w-2/3 animate-pulse rounded bg-[#112040]" />
+        <div className="h-5 w-2/3 animate-pulse rounded bg-[#112040]" />
         <div className="h-3 w-1/4 animate-pulse rounded bg-[#112040]" />
-        <div className="mt-4 flex justify-between">
-          <div className="h-6 w-1/3 animate-pulse rounded bg-[#112040]" />
-          <div className="h-8 w-1/4 animate-pulse rounded bg-[#112040]" />
+        <div className="mt-6 flex justify-between">
+          <div className="h-7 w-1/3 animate-pulse rounded bg-[#112040]" />
+          <div className="h-9 w-1/4 animate-pulse rounded bg-[#112040]" />
         </div>
       </div>
     </div>
@@ -288,7 +292,7 @@ function ListingGridWithAds({ listings }: { listings: Listing[] }) {
   });
 
   return (
-    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
       {items.map((item, idx) => {
         if (item.kind === "listing") {
           return <ListingCard key={`l-${item.listing.id}`} listing={item.listing} />;
@@ -296,7 +300,7 @@ function ListingGridWithAds({ listings }: { listings: Listing[] }) {
         if (item.kind === "banner") {
           return (
             // Banner spans full row — use col-span-full trick inside the grid
-            <div key={`banner-${idx}`} className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+            <div key={`banner-${idx}`} className="sm:col-span-2 lg:col-span-3">
               <SponsoredBanner />
             </div>
           );
@@ -323,7 +327,7 @@ function FilterSelect({ label, options, value, onChange }: FilterSelectProps) {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full appearance-none rounded-xl border border-[#1e3052] bg-[#060e1a] py-3 pl-4 pr-9 text-[13px] text-white transition-colors focus:border-[#c9a96e] focus:outline-none focus:ring-1 focus:ring-[#c9a96e]/20"
+        className="w-full appearance-none rounded-xl border border-[#1e3052] bg-[#060e1a]/80 py-[18px] pl-5 pr-10 text-[13px] font-medium text-white backdrop-blur-sm transition-all duration-200 hover:border-[#c9a96e]/30 hover:shadow-[0_0_16px_rgba(201,169,110,0.06)] focus:border-[#c9a96e]/70 focus:outline-none focus:ring-2 focus:ring-[#c9a96e]/10"
       >
         <option value="">{label}</option>
         {options.map((o) => (
@@ -332,7 +336,7 @@ function FilterSelect({ label, options, value, onChange }: FilterSelectProps) {
           </option>
         ))}
       </select>
-      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#4a5568]">
+      <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#c9a96e]/50">
         <ChevronDown />
       </span>
     </div>
@@ -464,7 +468,7 @@ export default function MarketplacePage() {
         <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-4 px-6 sm:px-10">
           <Link href="/" className="flex shrink-0 flex-col leading-none">
             <span className="text-[15px] font-bold tracking-wider text-white">
-              OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
+              OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
             </span>
             <span className="mt-[3px] text-[9px] uppercase tracking-[0.16em] text-[#8b97a5]">
               Member Marketplace
@@ -491,7 +495,7 @@ export default function MarketplacePage() {
       </div>
 
       {/* ── Hero search ────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-[#112040] bg-[#060e1a] px-6 py-14 sm:px-10 sm:py-20">
+      <section className="relative overflow-hidden bg-[#060e1a] px-6 pb-12 pt-14 sm:px-10 sm:pb-16 sm:pt-20">
         {/* Grid */}
         <div
           className="absolute inset-0 opacity-[0.025]"
@@ -557,13 +561,16 @@ export default function MarketplacePage() {
             ))}
           </div>
         </div>
+
+        {/* Bottom fade — visually blends into filter bar */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0a1628] to-transparent" />
       </section>
 
       {/* ── Filters bar ────────────────────────────────────────────────────── */}
-      <section id="listings" className="border-b border-[#112040] bg-[#0a1628] px-6 py-4 sm:px-10">
+      <section id="listings" className="border-b border-[#112040] bg-[#0a1628] px-6 py-5 sm:px-10 sm:py-6">
         <div className="mx-auto max-w-[1520px]">
           {/* Toggle filters button (mobile) */}
-          <div className="mb-3 flex items-center justify-between md:hidden">
+          <div className="mb-4 flex items-center justify-between md:hidden">
             <button
               onClick={() => setFiltersOpen((v) => !v)}
               className="flex items-center gap-2 text-[13px] font-medium text-[#8b97a5]"
@@ -571,13 +578,14 @@ export default function MarketplacePage() {
               Filters {activeFilterCount > 0 && <span className="rounded-full bg-[#c9a96e] px-1.5 py-0.5 text-[10px] text-[#0a1628]">{activeFilterCount}</span>}
               <ChevronDown />
             </button>
-            <p className="text-[12px] text-[#4a5568]">
-              {filtered.length} {filtered.length === 1 ? "yacht" : "yachts"}
-            </p>
+            <div className="flex items-center gap-1.5 rounded-full border border-[#1e3052]/80 bg-[#060e1a]/60 px-3 py-1.5">
+              <span className="text-[13px] font-bold text-white">{filtered.length}</span>
+              <span className="text-[11px] text-[#8b97a5]">{filtered.length === 1 ? "yacht" : "yachts"}</span>
+            </div>
           </div>
 
           {/* Desktop: always visible; Mobile: collapsible */}
-          <div className={`gap-3 md:flex ${filtersOpen ? "flex flex-col" : "hidden md:flex"}`}>
+          <div className={`gap-4 md:flex ${filtersOpen ? "flex flex-col" : "hidden md:flex"}`}>
             <div className="grid flex-1 grid-cols-2 gap-3 sm:grid-cols-4">
               <FilterSelect
                 label="Yacht Type"
@@ -605,11 +613,12 @@ export default function MarketplacePage() {
               />
             </div>
 
-            {/* Result count + clear */}
+            {/* Result count pill + clear */}
             <div className="flex shrink-0 items-center gap-3">
-              <span className="hidden text-[13px] text-[#8b97a5] md:block">
-                {filtered.length} {filtered.length === 1 ? "yacht" : "yachts"}
-              </span>
+              <div className="hidden items-center gap-1.5 rounded-full border border-[#1e3052]/80 bg-[#060e1a]/60 px-4 py-2.5 md:flex">
+                <span className="text-[15px] font-bold leading-none text-white">{filtered.length}</span>
+                <span className="text-[11px] leading-none text-[#8b97a5]">{filtered.length === 1 ? "yacht" : "yachts"}</span>
+              </div>
               {(activeFilterCount > 0 || query) && (
                 <button
                   onClick={clearFilters}
@@ -625,11 +634,11 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Listing grid ───────────────────────────────────────────────────── */}
-      <section className="px-6 py-12 sm:px-10">
+      <section className="px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           {/* AI insight bar */}
           {query && !loadingSearch && (
-            <div className="mb-6 flex items-center gap-3 rounded-xl border border-[#c9a96e]/15 bg-[#0a1628] px-5 py-3">
+            <div className="mb-8 flex items-center gap-3 rounded-xl border border-[#c9a96e]/15 bg-[#0a1628] px-5 py-3">
               <span className="text-[#c9a96e]"><SparkleIcon /></span>
               <p className="text-[13px] text-[#8b97a5]">
                 Showing <span className="text-white">{filtered.length} results</span> matching &ldquo;{query}&rdquo;
@@ -641,8 +650,8 @@ export default function MarketplacePage() {
           {!query && activeFilterCount === 0 && <FeaturedSponsorBlock />}
 
           {loadingSearch ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
             </div>
           ) : filtered.length > 0 ? (
             <ListingGridWithAds listings={filtered} />
@@ -660,19 +669,19 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Popular categories ─────────────────────────────────────────────── */}
-      <section id="categories" className="border-t border-[#112040] px-6 py-14 sm:px-10">
+      <section id="categories" className="border-t border-[#112040] bg-[#060e1a] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Browse By</p>
           <h2 className="mb-8 text-2xl font-bold text-white">Popular Categories</h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.label}
                 onClick={() => handleCategoryClick(cat)}
-                className="group flex flex-col items-center gap-3 rounded-xl border border-[#1e3052] bg-[#0a1628] px-4 py-6 text-center transition-all duration-200 hover:border-[#c9a96e]/30 hover:bg-[#0d1f35]"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-[#1e3052]/80 bg-[#0a1628] px-4 py-7 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:bg-[#0d1f35] hover:shadow-lg hover:shadow-[#c9a96e]/5"
               >
                 <span className="text-3xl">{cat.icon}</span>
-                <span className="text-[12px] font-medium text-[#8b97a5] transition-colors group-hover:text-[#c9a96e]">
+                <span className="text-[12px] font-medium tracking-wide text-[#8b97a5] transition-colors group-hover:text-[#c9a96e]">
                   {cat.label}
                 </span>
               </button>
@@ -682,7 +691,7 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Location browse ────────────────────────────────────────────────── */}
-      <section id="locations" className="border-t border-[#112040] bg-[#0a1628] px-6 py-14 sm:px-10">
+      <section id="locations" className="border-t border-[#112040] bg-[#0a1628] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Global Reach</p>
           <h2 className="mb-8 text-2xl font-bold text-white">Browse by Location</h2>
@@ -693,12 +702,12 @@ export default function MarketplacePage() {
                 <button
                   key={loc}
                   onClick={() => { clearFilters(); setLocationFilter(loc); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  className="group flex flex-col items-center gap-1.5 rounded-xl border border-[#1e3052] bg-[#060e1a] py-5 text-center transition-all duration-200 hover:border-[#c9a96e]/30"
+                  className="group flex flex-col items-center gap-2 rounded-xl border border-[#1e3052]/80 bg-[#060e1a] py-5 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:shadow-md hover:shadow-[#c9a96e]/5"
                 >
                   <span className="text-[13px] font-semibold text-white transition-colors group-hover:text-[#c9a96e]">
                     {loc}
                   </span>
-                  <span className="text-[11px] text-[#4a5568]">
+                  <span className="text-[10px] text-[#4a5568]">
                     {count} {count === 1 ? "yacht" : "yachts"}
                   </span>
                 </button>
@@ -709,7 +718,7 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Yacht builders ─────────────────────────────────────────────────── */}
-      <section id="builders" className="border-t border-[#112040] px-6 py-14 sm:px-10">
+      <section id="builders" className="border-t border-[#112040] bg-[#07111f] px-6 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto max-w-[1520px]">
           <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">By Shipyard</p>
           <h2 className="mb-8 text-2xl font-bold text-white">Yacht Builders</h2>
@@ -720,7 +729,7 @@ export default function MarketplacePage() {
                 <button
                   key={builder}
                   onClick={() => { clearFilters(); setBuilderFilter(builder); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  className="group flex flex-col items-center gap-1.5 rounded-xl border border-[#1e3052] bg-[#0a1628] py-5 text-center transition-all duration-200 hover:border-[#c9a96e]/30 hover:bg-[#0d1f35]"
+                  className="group flex flex-col items-center gap-2 rounded-xl border border-[#1e3052]/80 bg-[#0a1628] py-5 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-[#c9a96e]/25 hover:bg-[#0d1f35] hover:shadow-md hover:shadow-[#c9a96e]/5"
                 >
                   <span className="text-[12px] font-semibold text-white transition-colors group-hover:text-[#c9a96e]">
                     {builder}
@@ -738,32 +747,49 @@ export default function MarketplacePage() {
       </section>
 
       {/* ── Footer CTA ─────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-t border-[#112040] bg-[#060e1a] px-6 py-20 text-center sm:px-10">
+      <section className="relative overflow-hidden border-t border-[#112040] bg-[#060e1a] px-6 py-24 text-center sm:px-10">
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage: "linear-gradient(#c9a96e 1px, transparent 1px), linear-gradient(90deg, #c9a96e 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
+        {/* Radial glow */}
+        <div className="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9a96e]/[0.05] blur-[120px]" />
         <div className="relative mx-auto max-w-xl">
           <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Discreet Representation</p>
           <h2 className="mb-4 text-2xl font-bold text-white sm:text-3xl">
             Have a Yacht to Sell Off-Market?
           </h2>
-          <p className="mb-8 text-[15px] leading-relaxed text-[#8b97a5]">
+          <p className="mb-7 text-[15px] leading-relaxed text-[#8b97a5]">
             Submit your vessel confidentially. We match qualified buyers discreetly — no public listing required.
           </p>
+
+          {/* Trust signals */}
+          <div className="mb-8 flex flex-wrap items-center justify-center gap-6">
+            {[
+              { mark: "◈", label: "NDA-Protected" },
+              { mark: "—", label: "Principal-Only" },
+              { mark: "◇", label: "Confidential Process" },
+            ].map(({ mark, label }) => (
+              <div key={label} className="flex items-center gap-2 text-[11px] text-[#8b97a5]">
+                <span className="text-[#c9a96e]/60">{mark}</span>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/submit-yacht"
-              className="inline-flex h-12 items-center justify-center rounded-xl bg-[#c9a96e] px-8 text-[12px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
+              className="inline-flex h-14 items-center justify-center rounded-xl bg-[#c9a96e] px-10 text-[12px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
             >
               Submit Confidentially
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-xl border border-[#c9a96e]/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
+              className="inline-flex h-14 items-center justify-center rounded-xl border border-[#c9a96e]/30 px-10 text-[12px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
             >
               Contact Advisory
             </Link>
@@ -776,9 +802,9 @@ export default function MarketplacePage() {
         <div className="mx-auto flex max-w-[1520px] flex-col items-center justify-between gap-4 sm:flex-row">
           <Link href="/" className="flex flex-col items-center gap-0.5 sm:items-start">
             <span className="text-[14px] font-bold tracking-wider text-white">
-              OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
+              OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
             </span>
-            <span className="text-[9px] uppercase tracking-[0.18em] text-[#4a5568]">Private Yacht Platform</span>
+            <span className="text-[9px] uppercase tracking-[0.18em] text-[#4a5568]">Confidential Yacht Network</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-[11px] text-[#4a5568] hover:text-[#8b97a5]">Privacy</Link>
