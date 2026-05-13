@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import SponsorBadge from "./SponsorBadge";
+import heroImg from "../../public/DJI_0502_JPG.jpeg";
 
 const CAPABILITIES = [
   "Antalya Freezone",
@@ -10,42 +12,6 @@ const CAPABILITIES = [
   "Owner Representation",
   "Shipyard Network",
 ];
-
-// Abstract cinematic hull cross-section SVG
-function HullGraphic() {
-  return (
-    <svg viewBox="0 0 480 320" className="h-full w-full opacity-20" fill="none" preserveAspectRatio="xMidYMid slice">
-      {/* Technical grid */}
-      {[0, 80, 160, 240, 320, 400, 480].map((x) => (
-        <line key={`v${x}`} x1={x} y1="0" x2={x} y2="320" stroke="#c9a96e" strokeWidth="0.5" />
-      ))}
-      {[0, 80, 160, 240, 320].map((y) => (
-        <line key={`h${y}`} x1="0" y1={y} x2="480" y2={y} stroke="#c9a96e" strokeWidth="0.5" />
-      ))}
-      {/* Hull profile */}
-      <path
-        d="M30 240 Q100 180 240 170 Q380 180 450 240 L450 280 Q380 260 240 255 Q100 260 30 280 Z"
-        fill="#c9a96e"
-        opacity="0.15"
-        stroke="#c9a96e"
-        strokeWidth="1.5"
-      />
-      {/* Waterline */}
-      <line x1="0" y1="260" x2="480" y2="260" stroke="#c9a96e" strokeWidth="1" strokeDasharray="16 8" opacity="0.6" />
-      {/* Mast */}
-      <line x1="240" y1="270" x2="240" y2="60" stroke="#c9a96e" strokeWidth="2" />
-      <line x1="240" y1="60" x2="360" y2="120" stroke="#c9a96e" strokeWidth="1.5" />
-      <line x1="240" y1="100" x2="340" y2="140" stroke="#c9a96e" strokeWidth="1" />
-      {/* Crane arm */}
-      <line x1="380" y1="320" x2="380" y2="80" stroke="#c9a96e" strokeWidth="2.5" />
-      <line x1="380" y1="80" x2="460" y2="80" stroke="#c9a96e" strokeWidth="2" />
-      <line x1="460" y1="80" x2="460" y2="160" stroke="#c9a96e" strokeWidth="1.5" strokeDasharray="6 4" />
-      {/* Center cross */}
-      <circle cx="240" cy="170" r="8" stroke="#c9a96e" strokeWidth="1.5" />
-      <circle cx="240" cy="170" r="2" fill="#c9a96e" />
-    </svg>
-  );
-}
 
 export default function FeaturedSponsorBlock() {
   return (
@@ -60,19 +26,26 @@ export default function FeaturedSponsorBlock() {
 
       <div className="grid lg:grid-cols-2">
         {/* Left: cinematic visual */}
-        <div className="relative min-h-[280px] overflow-hidden bg-gradient-to-br from-[#060e1a] via-[#0a1628] to-[#112040] lg:min-h-[360px]">
-          <HullGraphic />
+        <div className="relative min-h-[280px] overflow-hidden lg:min-h-[360px]">
+          <Image
+            src={heroImg}
+            alt="MOX YACHT Antalya shipyard operations — aerial view"
+            fill
+            placeholder="blur"
+            className="object-cover object-center"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060e1a]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#0a1628]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060e1a]/85 via-[#060e1a]/25 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#0a1628]/10 lg:to-[#0a1628]" />
           {/* MOX logo mark */}
           <div className="absolute bottom-6 left-8">
-            <span className="block text-[28px] font-bold tracking-[0.35em] text-white/25">MOX</span>
-            <span className="block text-[10px] uppercase tracking-[0.4em] text-[#c9a96e]/40">YACHT</span>
+            <span className="block text-[28px] font-bold tracking-[0.35em] text-white/60">MOX</span>
+            <span className="block text-[10px] uppercase tracking-[0.4em] text-[#c9a96e]/70">YACHT</span>
           </div>
           {/* Top-right location */}
           <div className="absolute right-6 top-6 text-right">
-            <p className="text-[9px] uppercase tracking-[0.22em] text-[#c9a96e]/50">Antalya</p>
-            <p className="text-[9px] uppercase tracking-[0.22em] text-[#4a5568]">Mediterranean</p>
+            <p className="text-[9px] uppercase tracking-[0.22em] text-[#c9a96e]/80">Antalya</p>
+            <p className="text-[9px] uppercase tracking-[0.22em] text-white/50">Mediterranean</p>
           </div>
         </div>
 

@@ -1,6 +1,14 @@
 "use client";
 
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import Link from "next/link";
+import imgHero from "../../../../public/79e4fc_88ac6abe180a48f29fe40286db74ee4a%7Emv2.jpeg";
+import imgGallery0 from "../../../../public/DJI_0502_JPG.jpeg";
+import imgGallery1 from "../../../../public/c691b9_b155493f544b4beba7b6f42fdb3ac71b~mv2.jpeg";
+import imgGallery2 from "../../../../public/79e4fc_40ad6acdc49d4d9db4eb420d0a884b96f000.jpeg";
+import imgGallery3 from "../../../../public/DJI_0499_edited.jpeg";
+import imgAntalya from "../../../../public/Screenshot 2026-05-13 at 10.35.53.png";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -50,54 +58,18 @@ const HIGHLIGHTS = [
   { label: "Language", value: "EN / TR / IT" },
 ];
 
-const GALLERY_ITEMS = [
-  { label: "Refit Operations", sub: "Antalya Shipyard", gradient: "from-[#0a1628] via-[#112040] to-[#162840]" },
-  { label: "Hull Engineering", sub: "Technical Infrastructure", gradient: "from-[#060e1a] via-[#0a1628] to-[#0d1f35]" },
-  { label: "Interior Fit-Out", sub: "Owner Specification", gradient: "from-[#0d1f35] via-[#0a1628] to-[#060e1a]" },
-  { label: "Sea Trials", sub: "Mediterranean Waters", gradient: "from-[#0a1628] via-[#162030] to-[#0a1628]" },
+const GALLERY_ITEMS: {
+  label: string;
+  sub: string;
+  image: StaticImageData;
+  alt: string;
+  objectPosition: string;
+}[] = [
+  { label: "Refit Operations", sub: "Antalya Shipyard", image: imgGallery0, alt: "Aerial drone view of MOX YACHT Antalya shipyard refit operations", objectPosition: "object-center" },
+  { label: "Hull Engineering", sub: "Technical Infrastructure", image: imgGallery1, alt: "Yacht hull engineering and technical refit close-up", objectPosition: "object-center" },
+  { label: "Production Operations", sub: "Owner Specification", image: imgGallery2, alt: "MOX YACHT production and fit-out operations", objectPosition: "object-center" },
+  { label: "Sea Trials", sub: "Mediterranean Waters", image: imgGallery3, alt: "Mediterranean sea trials — drone aerial view", objectPosition: "object-center" },
 ];
-
-// ─── Abstract SVG visuals ──────────────────────────────────────────────────────
-
-function HeroSVG() {
-  return (
-    <svg viewBox="0 0 1200 400" className="absolute inset-0 h-full w-full opacity-[0.06]" fill="none" preserveAspectRatio="xMidYMid slice">
-      {[0, 150, 300, 450, 600, 750, 900, 1050, 1200].map((x) => (
-        <line key={x} x1={x} y1="0" x2={x} y2="400" stroke="#c9a96e" strokeWidth="0.8" />
-      ))}
-      {[0, 100, 200, 300, 400].map((y) => (
-        <line key={y} x1="0" y1={y} x2="1200" y2={y} stroke="#c9a96e" strokeWidth="0.8" />
-      ))}
-      <path d="M100 300 Q300 220 600 210 Q900 205 1100 300 L1100 360 Q900 310 600 305 Q300 310 100 360 Z" fill="#c9a96e" opacity="0.15" />
-      <line x1="0" y1="330" x2="1200" y2="330" stroke="#c9a96e" strokeWidth="1.5" strokeDasharray="20 10" />
-      <line x1="600" y1="310" x2="600" y2="40" stroke="#c9a96e" strokeWidth="2.5" />
-      <line x1="600" y1="40" x2="800" y2="120" stroke="#c9a96e" strokeWidth="2" />
-      <line x1="600" y1="80" x2="760" y2="140" stroke="#c9a96e" strokeWidth="1.5" />
-      <line x1="1000" y1="400" x2="1000" y2="60" stroke="#c9a96e" strokeWidth="3" />
-      <line x1="1000" y1="60" x2="1150" y2="60" stroke="#c9a96e" strokeWidth="2.5" />
-      <line x1="1150" y1="60" x2="1150" y2="160" stroke="#c9a96e" strokeWidth="2" strokeDasharray="8 6" />
-      <circle cx="600" cy="210" r="12" stroke="#c9a96e" strokeWidth="1.5" />
-      <circle cx="600" cy="210" r="3" fill="#c9a96e" />
-    </svg>
-  );
-}
-
-function GalleryCardSVG({ gradient }: { gradient: string }) {
-  return (
-    <div className={`h-full w-full bg-gradient-to-br ${gradient} relative overflow-hidden`}>
-      <svg viewBox="0 0 300 200" className="absolute inset-0 h-full w-full opacity-10" fill="none">
-        <rect x="10" y="130" width="280" height="6" rx="2" fill="#c9a96e" />
-        <rect x="30" y="110" width="240" height="4" rx="2" fill="#c9a96e" />
-        <rect x="60" y="90" width="180" height="4" rx="2" fill="#c9a96e" />
-        <line x1="20" y1="130" x2="20" y2="180" stroke="#c9a96e" strokeWidth="2" />
-        <line x1="280" y1="130" x2="280" y2="180" stroke="#c9a96e" strokeWidth="2" />
-        <circle cx="150" cy="60" r="10" stroke="#c9a96e" strokeWidth="1.5" />
-        <circle cx="150" cy="60" r="3" fill="#c9a96e" />
-        <line x1="150" y1="70" x2="150" y2="90" stroke="#c9a96e" strokeWidth="1.5" />
-      </svg>
-    </div>
-  );
-}
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -105,8 +77,21 @@ export default function MoxYachtClient() {
   return (
     <div className="min-h-screen bg-[#060e1a] text-white">
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-[#112040] bg-[#060e1a] px-6 py-24 sm:px-10 sm:py-32">
-        <HeroSVG />
+      <section className="relative overflow-hidden border-b border-[#112040] px-6 py-24 sm:px-10 sm:py-32">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src={imgHero}
+            alt="MOX YACHT — refit and production operations, Mediterranean"
+            fill
+            placeholder="blur"
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-[#060e1a]/80" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,transparent_40%,#000_100%)]" />
 
         <div className="relative mx-auto max-w-4xl text-center">
@@ -203,15 +188,15 @@ export default function MoxYachtClient() {
                 <div className="aspect-square overflow-hidden">
                   {/* Video/cinematic placeholder */}
                   <div className="relative h-full w-full transition-transform duration-500 group-hover:scale-105">
-                    <GalleryCardSVG gradient={item.gradient} />
-                    {/* Play/cinema overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c9a96e]/30 bg-[#060e1a]/60 text-[#c9a96e]/60 backdrop-blur-sm">
-                        <svg className="h-4 w-4 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      placeholder="blur"
+                      className={`object-cover ${item.objectPosition}`}
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-[#060e1a]/40" />
                   </div>
                 </div>
                 <div className="border-t border-[#1e3052] bg-[#0a1628] px-4 py-3">
@@ -252,31 +237,22 @@ export default function MoxYachtClient() {
               </ul>
             </div>
 
-            {/* Abstract map visual */}
-            <div className="relative overflow-hidden rounded-2xl border border-[#1e3052] bg-gradient-to-br from-[#060e1a] via-[#0a1628] to-[#112040]">
-              <div className="aspect-[4/3] p-8">
-                <svg viewBox="0 0 400 300" className="h-full w-full opacity-20" fill="none">
-                  {/* Mediterranean outline — abstract */}
-                  <path d="M10 150 Q100 100 200 120 Q300 140 390 110" stroke="#c9a96e" strokeWidth="2" fill="none" />
-                  <path d="M10 170 Q100 130 200 150 Q300 170 390 140" stroke="#c9a96e" strokeWidth="1" fill="none" strokeDasharray="8 4" />
-                  {/* Antalya marker */}
-                  <circle cx="270" cy="130" r="8" stroke="#c9a96e" strokeWidth="2" />
-                  <circle cx="270" cy="130" r="3" fill="#c9a96e" />
-                  <line x1="270" y1="138" x2="270" y2="165" stroke="#c9a96e" strokeWidth="1.5" strokeDasharray="4 3" />
-                  {/* Monaco marker */}
-                  <circle cx="140" cy="115" r="4" stroke="#c9a96e" strokeWidth="1.5" />
-                  <circle cx="140" cy="115" r="1.5" fill="#c9a96e" />
-                  {/* Viareggio marker */}
-                  <circle cx="110" cy="125" r="4" stroke="#c9a96e" strokeWidth="1.5" />
-                  <circle cx="110" cy="125" r="1.5" fill="#c9a96e" />
-                  {/* Route lines */}
-                  <line x1="140" y1="115" x2="270" y2="130" stroke="#c9a96e" strokeWidth="1" strokeDasharray="6 4" opacity="0.6" />
-                  <line x1="110" y1="125" x2="270" y2="130" stroke="#c9a96e" strokeWidth="1" strokeDasharray="6 4" opacity="0.6" />
-                </svg>
+            {/* Antalya operations image */}
+            <div className="relative overflow-hidden rounded-2xl border border-[#1e3052]">
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={imgAntalya}
+                  alt="MOX YACHT Antalya Freezone operations overview"
+                  fill
+                  placeholder="blur"
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-[#060e1a]/40" />
                 {/* Label */}
                 <div className="absolute bottom-6 right-8 text-right">
-                  <p className="text-[11px] font-medium text-[#c9a96e]/70">Antalya, TR</p>
-                  <p className="text-[10px] text-[#4a5568]">Mediterranean Hub</p>
+                  <p className="text-[11px] font-medium text-[#c9a96e]/90">Antalya, TR</p>
+                  <p className="text-[10px] text-white/60">Mediterranean Hub</p>
                 </div>
               </div>
             </div>

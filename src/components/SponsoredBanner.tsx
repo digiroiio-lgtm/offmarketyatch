@@ -1,46 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import SponsorBadge from "./SponsorBadge";
-
-// Abstract cinematic shipyard SVG background
-function ShipyardSVG() {
-  return (
-    <svg
-      viewBox="0 0 900 300"
-      className="absolute inset-0 h-full w-full opacity-[0.07]"
-      fill="none"
-      preserveAspectRatio="xMidYMid slice"
-    >
-      {/* Crane silhouette */}
-      <line x1="700" y1="300" x2="700" y2="50" stroke="#c9a96e" strokeWidth="3" />
-      <line x1="700" y1="50" x2="820" y2="50" stroke="#c9a96e" strokeWidth="3" />
-      <line x1="820" y1="50" x2="820" y2="120" stroke="#c9a96e" strokeWidth="2" strokeDasharray="8 4" />
-      <line x1="700" y1="50" x2="620" y2="90" stroke="#c9a96e" strokeWidth="2" />
-      {/* Hull outline */}
-      <path d="M50 200 Q200 160 450 155 Q650 152 850 200 L850 240 Q650 200 450 195 Q200 200 50 240 Z" fill="#c9a96e" />
-      {/* Waterline */}
-      <line x1="0" y1="250" x2="900" y2="250" stroke="#c9a96e" strokeWidth="1" strokeDasharray="12 6" />
-      {/* Technical grid lines */}
-      {[0, 100, 200, 300].map((x) => (
-        <line key={x} x1={x} y1="0" x2={x} y2="300" stroke="#c9a96e" strokeWidth="0.5" />
-      ))}
-      {[0, 100, 200].map((y) => (
-        <line key={y} x1="0" y1={y} x2="900" y2={y} stroke="#c9a96e" strokeWidth="0.5" />
-      ))}
-    </svg>
-  );
-}
+import bannerImg from "../../public/DJI_0499_edited.jpeg";
 
 export default function SponsoredBanner() {
   return (
-    <article className="col-span-full my-3 overflow-hidden rounded-2xl border border-[#c9a96e]/15 bg-gradient-to-r from-[#060e1a] via-[#0a1628] to-[#0d1f35] transition-all duration-300 hover:border-[#c9a96e]/30 hover:shadow-2xl hover:shadow-[#c9a96e]/5">
+    <article className="col-span-full my-3 overflow-hidden rounded-2xl border border-[#c9a96e]/15 transition-all duration-300 hover:border-[#c9a96e]/30 hover:shadow-2xl hover:shadow-[#c9a96e]/5">
       <div className="relative">
-        {/* Background SVG */}
-        <ShipyardSVG />
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src={bannerImg}
+            alt="MOX YACHT Mediterranean drone view — Antalya shipyard"
+            fill
+            placeholder="blur"
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
 
-        {/* Gradient overlay — left heavy for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1a]/90 via-[#060e1a]/60 to-transparent" />
+        {/* Heavy dark overlay — left heavy for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1a]/95 via-[#060e1a]/80 to-[#060e1a]/50" />
 
         {/* Gold top edge */}
         <div className="absolute left-0 top-0 h-[1px] w-full bg-gradient-to-r from-[#c9a96e]/50 via-[#c9a96e]/20 to-transparent" />
