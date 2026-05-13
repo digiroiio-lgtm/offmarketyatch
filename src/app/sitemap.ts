@@ -23,6 +23,7 @@ const PAGE_DATES: Record<string, string> = {
   "/yacht-shows":               "2026-05-12",
   "/privacy":                   "2026-05-12",
   "/terms":                     "2026-05-12",
+  "/partners/mox-yacht":        "2026-05-12",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -45,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/yacht-shows", priority: 0.8, changeFrequency: "monthly" as const },
     { url: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
     { url: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
+    { url: "/partners/mox-yacht", priority: 0.7, changeFrequency: "monthly" as const },
   ];
 
   return pages.map(({ url, priority, changeFrequency }) => ({
