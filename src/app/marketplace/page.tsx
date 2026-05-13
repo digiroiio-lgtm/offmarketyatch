@@ -468,7 +468,7 @@ export default function MarketplacePage() {
         <div className="mx-auto flex h-[64px] max-w-[1520px] items-center justify-between gap-4 px-6 sm:px-10">
           <Link href="/" className="flex shrink-0 flex-col leading-none">
             <span className="text-[15px] font-bold tracking-wider text-[#F3F1EC]">
-              OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
+              OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
             </span>
             <span className="mt-[3px] text-[9px] uppercase tracking-[0.16em] text-[#8b97a5]">
               Member Marketplace
@@ -802,7 +802,7 @@ export default function MarketplacePage() {
         <div className="mx-auto flex max-w-[1520px] flex-col items-center justify-between gap-4 sm:flex-row">
           <Link href="/" className="flex flex-col items-center gap-0.5 sm:items-start">
             <span className="text-[14px] font-bold tracking-wider text-[#F3F1EC]">
-              OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
+              OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
             </span>
             <span className="text-[9px] uppercase tracking-[0.18em] text-[#4a5568]">Confidential Yacht Network</span>
           </Link>
