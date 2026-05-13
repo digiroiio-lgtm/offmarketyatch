@@ -12,6 +12,9 @@ import {
   CATEGORIES,
   type Listing,
 } from "@/data/listings";
+import SponsoredCard from "@/components/SponsoredCard";
+import SponsoredBanner from "@/components/SponsoredBanner";
+import FeaturedSponsorBlock from "@/components/FeaturedSponsorBlock";
 
 // ─── Auth helpers ─────────────────────────────────────────────────────────────
 
@@ -249,6 +252,58 @@ function SkeletonCard() {
           <div className="h-8 w-1/4 animate-pulse rounded bg-[#112040]" />
         </div>
       </div>
+    </div>
+  );
+}
+
+// ─── Listing grid with ad injection ──────────────────────────────────────────
+
+// Inserts: SponsoredCard every ~9 listings, SponsoredBanner every 6 listings (full-row)
+const BANNER_AFTER = 6;      // insert horizontal banner after every N listings
+const CARD_EVERY = 9;        // insert a sponsor card every N listings (in-grid)
+
+function ListingGridWithAds({ listings }: { listings: Listing[] }) {
+  // Build a mixed array of listing nodes + sponsor nodes
+  type GridItem =
+    | { kind: "listing"; listing: Listing }
+    | { kind: "card"; variantIndex: number }
+    | { kind: "banner" };
+
+  const items: GridItem[] = [];
+  let cardVariant = 0;
+  let cardCounter = 0;
+
+  listings.forEach((listing, i) => {
+    items.push({ kind: "listing", listing });
+    cardCounter++;
+
+    // Inline banner after every BANNER_AFTER listings
+    if ((i + 1) % BANNER_AFTER === 0) {
+      items.push({ kind: "banner" });
+      cardCounter = 0; // reset card counter after banner
+    } else if (cardCounter % CARD_EVERY === 0 && i > 0) {
+      // Sponsored card instead of banner
+      items.push({ kind: "card", variantIndex: cardVariant++ % 3 });
+    }
+  });
+
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {items.map((item, idx) => {
+        if (item.kind === "listing") {
+          return <ListingCard key={`l-${item.listing.id}`} listing={item.listing} />;
+        }
+        if (item.kind === "banner") {
+          return (
+            // Banner spans full row — use col-span-full trick inside the grid
+            <div key={`banner-${idx}`} className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+              <SponsoredBanner />
+            </div>
+          );
+        }
+        // Sponsored card — same grid cell as a listing
+        return <SponsoredCard key={`sc-${idx}`} variantIndex={item.variantIndex} />;
+      })}
     </div>
   );
 }
@@ -582,16 +637,15 @@ export default function MarketplacePage() {
             </div>
           )}
 
+          {/* Featured sponsor block — below search/filter area */}
+          {!query && activeFilterCount === 0 && <FeaturedSponsorBlock />}
+
           {loadingSearch ? (
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)}
             </div>
           ) : filtered.length > 0 ? (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((listing) => (
-                <ListingCard key={listing.id} listing={listing} />
-              ))}
-            </div>
+            <ListingGridWithAds listings={filtered} />
           ) : (
             <div className="flex flex-col items-center py-24 text-center">
               <p className="mb-2 text-[40px] opacity-20">⚓</p>
