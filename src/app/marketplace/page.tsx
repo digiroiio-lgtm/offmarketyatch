@@ -344,16 +344,17 @@ export default function MarketplacePage() {
     }
   };
 
-  // Debounced auto-search
+  // Debounced auto-search — only draftQuery is an external dep;
+  // state setters (setLoadingSearch, setQuery) are guaranteed stable by React.
   useEffect(() => {
     if (queryTimerRef.current) clearTimeout(queryTimerRef.current);
-    queryTimerRef.current = setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoadingSearch(true);
       setQuery(draftQuery);
       setTimeout(() => setLoadingSearch(false), 600);
     }, 500);
-    return () => { if (queryTimerRef.current) clearTimeout(queryTimerRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    queryTimerRef.current = timer;
+    return () => clearTimeout(timer);
   }, [draftQuery]);
 
   const clearFilters = () => {
