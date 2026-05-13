@@ -127,10 +127,10 @@ export default function Header() {
         <Link
           href="/"
           className="flex shrink-0 flex-col justify-center leading-none"
-          aria-label="OffMarketYachts home"
+          aria-label="OffMarketYacht home"
         >
           <span className="text-[15px] font-bold tracking-wider text-white sm:text-[17px]">
-            OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
+            OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
           </span>
           <span className="mt-[3px] text-[9px] uppercase tracking-[0.18em] text-[#8b97a5]">
             Confidential Yacht Network
