@@ -207,7 +207,7 @@ export default function Header() {
           <Link href="/submit-yacht" className={BTN_OUTLINE}>
             Submit Confidentially
           </Link>
-          <Link href="/private-access" className={BTN_SOLID}>
+          <Link href="/access" className={BTN_SOLID}>
             Apply for Access
           </Link>
         </div>
@@ -266,7 +266,7 @@ export default function Header() {
             <Link href="/submit-yacht" className="btn-outline-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
               Submit Confidentially
             </Link>
-            <Link href="/private-access" className="btn-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
+            <Link href="/access" className="btn-gold py-3 text-xs" onClick={() => setMobileOpen(false)}>
               Apply for Access
             </Link>
           </div>

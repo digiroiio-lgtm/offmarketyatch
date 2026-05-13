@@ -12,7 +12,7 @@ export default function StickyMobileCTA() {
         Submit Confidentially
       </Link>
       <Link
-        href="/private-access"
+        href="/access"
         className="btn-gold flex-1 py-3 text-xs"
       >
         Apply for Access
