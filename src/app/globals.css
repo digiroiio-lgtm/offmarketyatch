@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* Register class-based dark mode variant for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  /* Brand colours */
+  --color-navy:      #0a1628;
+  --color-navy-deep: #060e1a;
+  --color-navy-mid:  #112040;
+  --color-gold:      #c9a96e;
+  --color-gold-light:#e2c99a;
+  --color-grey:      #8b97a5;
+  --color-grey-light:#f5f7fa;
+  --color-grey-mid:  #e8ecf0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: #0a1628;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* smooth focus rings */
+*:focus-visible {
+  outline: 2px solid #c9a96e;
+  outline-offset: 2px;
+}
+
+/* utility helpers */
+.text-gold   { color: #c9a96e; }
+.bg-navy     { background-color: #0a1628; }
+.bg-navy-mid { background-color: #112040; }
+.border-gold { border-color: #c9a96e; }
+
+/* form base */
+.form-input {
+  @apply w-full rounded border border-[#e8ecf0] bg-white px-4 py-3 text-[#0a1628]
+         placeholder-[#8b97a5] transition focus:border-[#c9a96e] focus:outline-none
+         focus:ring-1 focus:ring-[#c9a96e];
+}
+
+.form-label {
+  @apply mb-1 block text-sm font-medium text-[#0a1628];
+}
+
+/* gold button */
+.btn-gold {
+  @apply inline-flex items-center justify-center rounded bg-[#c9a96e] px-7 py-3.5
+         text-sm font-semibold uppercase tracking-widest text-[#0a1628] transition
+         hover:bg-[#e2c99a] focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-2;
+}
+
+.btn-outline-gold {
+  @apply inline-flex items-center justify-center rounded border border-[#c9a96e] px-7 py-3.5
+         text-sm font-semibold uppercase tracking-widest text-[#c9a96e] transition
+         hover:bg-[#c9a96e] hover:text-[#0a1628] focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-2;
+}
+
+.btn-white {
+  @apply inline-flex items-center justify-center rounded bg-white px-7 py-3.5
+         text-sm font-semibold uppercase tracking-widest text-[#0a1628] transition
+         hover:bg-[#f5f7fa] focus:ring-2 focus:ring-white focus:ring-offset-2;
+}
+
+/* section spacing */
+.section { @apply py-16 lg:py-24; }
+.section-narrow { @apply py-12 lg:py-16; }
+.container-site { @apply mx-auto max-w-6xl px-5 sm:px-8; }
+
+/* ─── Dark mode overrides ─── */
+html.dark body {
+  background-color: #0a1628;
+  color: #e8ecf0;
+}
+
+/* Light section backgrounds */
+html.dark .bg-white {
+  background-color: #0d1f35 !important;
+}
+html.dark .bg-\[\#f5f7fa\] {
+  background-color: #080f1d !important;
+}
+
+/* Primary text on light backgrounds */
+html.dark .text-\[\#0a1628\] {
+  color: #e8ecf0 !important;
+}
+html.dark .text-\[\#4a5568\] {
+  color: #8b97a5 !important;
+}
+
+/* Borders */
+html.dark .border-\[\#e8ecf0\] {
+  border-color: #1e3052 !important;
+}
+
+/* Dividers (FAQ, etc.) */
+html.dark .divide-\[\#e8ecf0\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1e3052 !important;
+}
+
+/* Form elements */
+html.dark .form-input {
+  background-color: #0d1f35 !important;
+  color: #e8ecf0 !important;
+  border-color: #1e3052 !important;
+}
+html.dark .form-input::placeholder {
+  color: #4a5568;
+}
+html.dark .form-label {
+  color: #e8ecf0 !important;
+}
+html.dark select.form-input option {
+  background-color: #0d1f35;
+}
+
+/* White button variant in dark mode */
+html.dark .btn-white {
+  background-color: #1e3052;
+  color: #e8ecf0;
+}
+html.dark .btn-white:hover {
+  background-color: #243d66;
+}
