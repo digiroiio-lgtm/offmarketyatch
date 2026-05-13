@@ -5,8 +5,8 @@
 
 @theme inline {
   /* Brand colours */
-  --color-navy:      #0a1628;
-  --color-navy-deep: #060e1a;
+  --color-navy:      #0C1B2D;
+  --color-navy-deep: #07111f;
   --color-navy-mid:  #112040;
   --color-gold:      #c9a96e;
   --color-gold-light:#e2c99a;
@@ -74,7 +74,7 @@ body {
 
 /* ─── Dark mode overrides ─── */
 html.dark body {
-  background-color: #0a1628;
+  background-color: #0C1B2D;
   color: #e8ecf0;
 }
 

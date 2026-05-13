@@ -22,7 +22,7 @@ export default function SponsoredBanner() {
         </div>
 
         {/* Heavy dark overlay — left heavy for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#060e1a]/95 via-[#060e1a]/80 to-[#060e1a]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07111f]/95 via-[#07111f]/80 to-[#07111f]/50" />
 
         {/* Gold top edge */}
         <div className="absolute left-0 top-0 h-[1px] w-full bg-gradient-to-r from-[#c9a96e]/50 via-[#c9a96e]/20 to-transparent" />

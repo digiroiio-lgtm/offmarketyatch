@@ -115,7 +115,7 @@ export default function Header() {
     setOpenDropdown((prev) => (prev === label ? null : label));
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0a1628] shadow-lg">
+    <header className="sticky top-0 z-50 bg-[#0C1B2D] shadow-lg">
       {/*
         Single fixed height (80 px) on both the <header> and the inner row
         eliminates the h-16 → h-20 breakpoint jump that causes CLS.
@@ -129,7 +129,7 @@ export default function Header() {
           className="flex shrink-0 flex-col justify-center leading-none"
           aria-label="OffMarketYacht home"
         >
-          <span className="text-[15px] font-bold tracking-wider text-white sm:text-[17px]">
+          <span className="text-[15px] font-bold tracking-wider text-[#F3F0EA] sm:text-[17px]">
             OFFMARKET<span className="text-[#c9a96e]">YACHT</span>
           </span>
           <span className="mt-[3px] text-[9px] uppercase tracking-[0.18em] text-[#8b97a5]">
@@ -162,7 +162,7 @@ export default function Header() {
                   </svg>
                 </button>
                 {openDropdown === link.label && (
-                  <div className="absolute left-0 top-full mt-0 w-52 rounded-b border border-t-0 border-[#112040] bg-[#0a1628] py-1 shadow-2xl">
+                  <div className="absolute left-0 top-full mt-0 w-52 rounded-b border border-t-0 border-[#112040] bg-[#0C1B2D] py-1 shadow-2xl">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
@@ -219,15 +219,15 @@ export default function Header() {
           aria-label="Toggle navigation menu"
           aria-expanded={mobileOpen}
         >
-          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block h-0.5 w-6 bg-white transition-all duration-200 ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-[#F3F0EA] transition-all duration-200 ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-[#F3F0EA] transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-0.5 w-6 bg-[#F3F0EA] transition-all duration-200 ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
         </button>
       </div>
 
       {/* ── Mobile nav ─────────────────────────────────────────────────────── */}
       {mobileOpen && (
-        <nav className="border-t border-[#112040] bg-[#0a1628] px-6 pb-6 pt-2" aria-label="Mobile navigation">
+        <nav className="border-t border-[#112040] bg-[#0C1B2D] px-6 pb-6 pt-2" aria-label="Mobile navigation">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label} className="pt-4">

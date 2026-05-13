@@ -375,7 +375,7 @@ export default function HomePage() {
       <SchemaOrg schema={[organizationSchema, websiteSchema, faqSchema, ...eventSchemas]} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#0a1628] pb-24 pt-20 sm:pb-32 sm:pt-28">
+      <section className="relative overflow-hidden bg-[#071421] pb-24 pt-20 sm:pb-32 sm:pt-28">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-5"
@@ -389,7 +389,7 @@ export default function HomePage() {
           <div className="mb-5 inline-block rounded-full border border-[#c9a96e]/40 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
             Deal Flow · Private · Selective
           </div>
-          <h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mx-auto max-w-3xl text-4xl font-bold leading-tight tracking-tight text-[#F3F0EA] sm:text-5xl lg:text-6xl">
             Off-Market Yacht Deal Flow
             <span className="block mt-2 text-[#c9a96e]">For Qualified Principals Only</span>
           </h1>
@@ -415,7 +415,7 @@ export default function HomePage() {
       </section>
 
       {/* Access is Selective */}
-      <section className="section bg-[#0a1628]" aria-labelledby="selective-heading">
+      <section className="section bg-[#0C1B2D]" aria-labelledby="selective-heading">
         <div className="container-site">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-5 inline-block rounded-full border border-[#c9a96e]/40 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
@@ -423,7 +423,7 @@ export default function HomePage() {
             </div>
             <h2
               id="selective-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-[#F3F0EA] sm:text-3xl"
             >
               We do not accept all requests.
             </h2>
@@ -453,7 +453,7 @@ export default function HomePage() {
       </section>
 
       {/* Private Deal Flow Snapshot */}
-      <section className="section relative overflow-hidden bg-[#060e1a]" aria-labelledby="snapshot-heading">
+      <section className="section relative overflow-hidden bg-[#07111f]" aria-labelledby="snapshot-heading">
         {/* Dot-grid background */}
         <div
           aria-hidden="true"
@@ -472,7 +472,7 @@ export default function HomePage() {
             </div>
             <h2
               id="snapshot-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-[#F3F0EA] sm:text-3xl"
             >
               Private Deal Flow Snapshot
             </h2>
@@ -491,14 +491,14 @@ export default function HomePage() {
             {dealFlowSnapshot.map((card, i) => (
               <div
                 key={i}
-                className="flex cursor-default select-none flex-col overflow-hidden rounded-xl border border-[#1e3052] bg-[#0a1628]"
+                className="flex cursor-default select-none flex-col overflow-hidden rounded-xl border border-[#1e3052] bg-[#0D1B2A]"
               >
                 {/* Gold gradient top line */}
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-[#c9a96e]/35 to-transparent" />
 
                 {/* LOA + status */}
                 <div className="flex items-start justify-between gap-2 px-4 pb-2 pt-4">
-                  <span className="text-xl font-bold leading-none text-white">
+                  <span className="text-xl font-bold leading-none text-[#F3F0EA]">
                     {card.loa}
                   </span>
                   <span
@@ -537,7 +537,7 @@ export default function HomePage() {
           </div>
 
           {/* Access Protocol bar */}
-          <div className="mt-10 rounded-xl border border-[#1e3052] bg-[#0a1628] px-6 py-6">
+          <div className="mt-10 rounded-xl border border-[#1e3052] bg-[#0D1B2A] px-6 py-6">
             <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
               Access Protocol
             </p>
@@ -606,10 +606,10 @@ export default function HomePage() {
       </section>
 
       {/* Buyer / Seller split */}
-      <section className="section bg-white">
+      <section className="section bg-[#F4F1EB]">
         <div className="container-site">
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-lg border border-[#e8ecf0] p-8 shadow-sm">
+            <div className="rounded-lg border border-[#DDD8CE] bg-white p-8 shadow-sm">
               <div className="mb-4 text-3xl">🔍</div>
               <h2 className="mb-3 text-xl font-bold text-[#0a1628]">
                 Looking to Buy Off-Market?
@@ -637,9 +637,9 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="rounded-lg bg-[#0a1628] p-8 shadow-sm">
+            <div className="rounded-lg bg-[#0C1B2D] p-8 shadow-sm">
               <div className="mb-4 text-3xl">🛥</div>
-              <h2 className="mb-3 text-xl font-bold text-white">
+              <h2 className="mb-3 text-xl font-bold text-[#F3F0EA]">
                 Selling Privately?
               </h2>
               <p className="mb-5 text-sm leading-relaxed text-[#8b97a5]">
@@ -669,7 +669,7 @@ export default function HomePage() {
       </section>
 
       {/* Who We Work With */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="who-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="who-heading">
         <div className="container-site">
           <div className="mb-10 text-center">
             <h2
@@ -693,7 +693,7 @@ export default function HomePage() {
             ].map(({ icon, label }) => (
               <div
                 key={label}
-                className="flex flex-col items-center rounded-lg border border-[#e8ecf0] bg-white p-5 text-center shadow-sm"
+                className="flex flex-col items-center rounded-lg border border-[#DDD8CE] bg-white p-5 text-center shadow-sm"
               >
                 <span className="mb-3 text-2xl">{icon}</span>
                 <span className="text-sm font-semibold text-[#0a1628]">{label}</span>
@@ -704,7 +704,7 @@ export default function HomePage() {
       </section>
 
       {/* Our Private Advisory Services */}
-      <section className="section bg-white" aria-labelledby="services-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="services-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
@@ -754,9 +754,9 @@ export default function HomePage() {
             ].map(({ icon, title, body, ctaLabel, ctaHref }) => (
               <div
                 key={title}
-                className="group flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-8 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+                className="group flex flex-col rounded-xl border border-[#DDD8CE] bg-white p-8 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#f5f7fa] text-2xl">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-[#EDE8E0] text-2xl">
                   {icon}
                 </div>
                 <h3 className="mb-3 text-lg font-bold text-[#0a1628] transition group-hover:text-[#c9a96e]">
@@ -776,12 +776,12 @@ export default function HomePage() {
       </section>
 
       {/* Why Principals Choose Us */}
-      <section className="section bg-[#0a1628]" aria-labelledby="principals-heading">
+      <section className="section bg-[#0C1B2D]" aria-labelledby="principals-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
               id="principals-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-[#F3F0EA] sm:text-3xl"
             >
               Why Principals Choose OffMarketYachts
             </h2>
@@ -827,7 +827,7 @@ export default function HomePage() {
       </section>
 
       {/* Yacht Categories */}
-      <section className="section bg-white" aria-labelledby="categories-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="categories-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
@@ -846,7 +846,7 @@ export default function HomePage() {
               <Link
                 key={href}
                 href={href}
-                className="group rounded-lg border border-[#e8ecf0] bg-white p-6 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+                className="group rounded-lg border border-[#DDD8CE] bg-white p-6 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
               >
                 <div className="mb-4 text-3xl">{icon}</div>
                 <h3 className="mb-2 text-base font-bold text-[#0a1628] transition group-hover:text-[#c9a96e]">
@@ -865,13 +865,13 @@ export default function HomePage() {
       </section>
 
       {/* What We Don't Do */}
-      <section className="section bg-[#0a1628]" aria-labelledby="wdnd-heading">
+      <section className="section bg-[#0C1B2D]" aria-labelledby="wdnd-heading">
         <div className="container-site">
           <div className="mx-auto max-w-2xl">
             <div className="mb-10 text-center">
               <h2
                 id="wdnd-heading"
-                className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                className="text-2xl font-bold tracking-tight text-[#F3F0EA] sm:text-3xl"
               >
                 What We Don&apos;t Do
               </h2>
@@ -896,7 +896,7 @@ export default function HomePage() {
       </section>
 
       {/* Why Off-Market */}
-      <section className="section bg-white" aria-labelledby="why-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="why-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
@@ -914,7 +914,7 @@ export default function HomePage() {
             {whyOffMarket.map(({ title, body }) => (
               <div
                 key={title}
-                className="rounded-lg border border-[#e8ecf0] p-6"
+                className="rounded-lg border border-[#DDD8CE] bg-white p-6"
               >
                 <h3 className="mb-2 text-base font-bold text-[#0a1628]">
                   {title}
@@ -927,7 +927,7 @@ export default function HomePage() {
       </section>
 
       {/* Broker & Family Office */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="advisory-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="advisory-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <h2
@@ -942,7 +942,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            <div className="rounded-lg border border-[#e8ecf0] bg-white p-8 shadow-sm">
+            <div className="rounded-lg border border-[#DDD8CE] bg-white p-8 shadow-sm">
               <div className="mb-4 text-3xl">📋</div>
               <h3 className="mb-3 text-lg font-bold text-[#0a1628]">
                 Yacht Brokers
@@ -955,7 +955,7 @@ export default function HomePage() {
                 Broker Cooperation
               </Link>
             </div>
-            <div className="rounded-lg border border-[#e8ecf0] bg-white p-8 shadow-sm">
+            <div className="rounded-lg border border-[#DDD8CE] bg-white p-8 shadow-sm">
               <div className="mb-4 text-3xl">🏦</div>
               <h3 className="mb-3 text-lg font-bold text-[#0a1628]">
                 Family Offices
@@ -973,7 +973,7 @@ export default function HomePage() {
       </section>
 
       {/* Trust & Discretion */}
-      <section className="section bg-white" aria-labelledby="trust-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="trust-heading">
         <div className="container-site text-center">
           <h2
             id="trust-heading"
@@ -991,7 +991,7 @@ export default function HomePage() {
       </section>
 
       {/* Lead Capture Form */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="access-form-heading">
+      <section className="section bg-[#F4F1EB]" aria-labelledby="access-form-heading">
         <div className="container-site">
           <div className="mx-auto max-w-2xl">
             <div className="mb-8 text-center">
@@ -1012,7 +1012,7 @@ export default function HomePage() {
       </section>
 
       {/* Private Yacht Market Insights */}
-      <section id="insights" className="section bg-[#f5f7fa]" aria-labelledby="insights-heading">
+      <section id="insights" className="section bg-[#F4F1EB]" aria-labelledby="insights-heading">
         <div className="container-site">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
@@ -1070,9 +1070,9 @@ export default function HomePage() {
             ].map(({ category, title, excerpt }) => (
               <div
                 key={title}
-                className="flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-6 shadow-sm"
+                className="flex flex-col rounded-xl border border-[#DDD8CE] bg-white p-6 shadow-sm"
               >
-                <span className="mb-3 self-start rounded-full bg-[#f5f7fa] px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
+                <span className="mb-3 self-start rounded-full bg-[#EDE8E0] px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
                   {category}
                 </span>
                 <h3 className="mb-3 flex-1 text-sm font-bold leading-snug text-[#0a1628]">
@@ -1089,7 +1089,7 @@ export default function HomePage() {
       </section>
 
       {/* Global Yacht Shows & Events */}
-      <section id="yacht-shows" className="section bg-white" aria-labelledby="shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 1200px" }}>
+      <section id="yacht-shows" className="section bg-[#F4F1EB]" aria-labelledby="shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 1200px" }}>
         <div className="container-site">
           <div className="mb-12 text-center">
             <div className="mb-4 inline-block rounded-full border border-[#c9a96e]/30 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-[#c9a96e]">
@@ -1112,7 +1112,7 @@ export default function HomePage() {
             <span className="shrink-0 rounded-full bg-[#c9a96e]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
               Core Deal Flow Events
             </span>
-            <div className="h-px flex-1 bg-[#e8ecf0]" />
+            <div className="h-px flex-1 bg-[#DDD8CE]" />
           </div>
 
           {/* A-tier event cards */}
@@ -1120,7 +1120,7 @@ export default function HomePage() {
             {yachtShowsATier.map((event) => (
               <div
                 key={event.name}
-                className="group flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-5 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+                className="group flex flex-col rounded-xl border border-[#DDD8CE] bg-white p-5 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
               >
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <span className="text-xl">{event.flag}</span>
@@ -1151,7 +1151,7 @@ export default function HomePage() {
           </div>
 
           {/* Q1–Q4 Timeline */}
-          <div className="mt-10 rounded-xl border border-[#e8ecf0] bg-[#f5f7fa] p-6">
+          <div className="mt-10 rounded-xl border border-[#DDD8CE] bg-[#ECE7DF] p-6">
             <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
               Annual Event Calendar
             </p>
@@ -1178,7 +1178,7 @@ export default function HomePage() {
                   events: ["Genoa Boat Show", "Fort Lauderdale (FLIBS)", "Qatar Boat Show"],
                 },
               ].map(({ quarter, months, events }) => (
-                <div key={quarter} className="rounded-lg border border-[#e8ecf0] bg-white p-4">
+                <div key={quarter} className="rounded-lg border border-[#DDD8CE] bg-white p-4">
                   <div className="mb-3 flex items-center gap-2">
                     <span className="text-base font-bold text-[#c9a96e]">{quarter}</span>
                     <span className="text-xs text-[#8b97a5]">{months}</span>
@@ -1197,7 +1197,7 @@ export default function HomePage() {
           </div>
 
           {/* Strategic callout */}
-          <div className="mt-6 rounded-xl border border-[#1e3052] bg-[#0a1628] p-6">
+          <div className="mt-6 rounded-xl border border-[#1e3052] bg-[#0C1B2D] p-6">
             <p className="mb-5 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c9a96e]/70">
               Where Deals Actually Happen
             </p>
@@ -1225,7 +1225,7 @@ export default function HomePage() {
                 },
               ].map(({ event, role, desc }) => (
                 <div key={event} className="rounded-lg border border-[#1e3052] bg-[#112040] p-4">
-                  <p className="mb-1 text-sm font-bold text-white">{event}</p>
+                  <p className="mb-1 text-sm font-bold text-[#F3F0EA]">{event}</p>
                   <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]">
                     {role}
                   </p>
@@ -1238,10 +1238,10 @@ export default function HomePage() {
           {/* B-tier label + pill list */}
           <div className="mt-10">
             <div className="mb-6 flex items-center gap-4">
-              <span className="shrink-0 rounded-full border border-[#e8ecf0] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#4a5568]">
+              <span className="shrink-0 rounded-full border border-[#DDD8CE] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#4a5568]">
                 Network &amp; Niche Deal Flow Events
               </span>
-              <div className="h-px flex-1 bg-[#e8ecf0]" />
+              <div className="h-px flex-1 bg-[#DDD8CE]" />
             </div>
             <div className="flex flex-wrap gap-3">
               {yachtShowsBTier.map((show) => (
@@ -1250,7 +1250,7 @@ export default function HomePage() {
                   href={show.url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e8ecf0] bg-white px-4 py-2 text-xs font-medium text-[#4a5568] transition hover:border-[#c9a96e] hover:text-[#0a1628]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#DDD8CE] bg-white px-4 py-2 text-xs font-medium text-[#4a5568] transition hover:border-[#c9a96e] hover:text-[#0a1628]"
                 >
                   <span>{show.flag}</span>
                   {show.name}
@@ -1265,9 +1265,9 @@ export default function HomePage() {
       <FAQSection items={faqItems} />
 
       {/* Final CTA */}
-      <section className="section bg-[#0a1628]">
+      <section className="section bg-[#0C1B2D]">
         <div className="container-site text-center">
-          <h2 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+          <h2 className="mb-4 text-2xl font-bold tracking-tight text-[#F3F0EA] sm:text-3xl">
             Ready to Enter the Private Network?
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-[#8b97a5]">

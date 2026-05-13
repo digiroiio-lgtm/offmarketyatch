@@ -29,14 +29,14 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#060e1a] text-[#8b97a5]">
+    <footer className="bg-[#07111f] text-[#8b97a5]">
       <div className="container-site py-16">
         {/* Top row */}
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="mb-4 flex flex-col leading-none">
-              <span className="text-lg font-bold tracking-wider text-white">
+              <span className="text-lg font-bold tracking-wider text-[#F3F0EA]">
                 OFFMARKET<span className="text-[#c9a96e]">YACHTS</span>
               </span>
               <span className="text-[10px] tracking-widest text-[#8b97a5] uppercase">
