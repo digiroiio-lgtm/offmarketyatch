@@ -232,7 +232,7 @@ export default function MoxYachtClient() {
               <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Operational Base</p>
               <h2 className="mb-4 text-2xl font-bold text-white">Antalya Freezone Advantage</h2>
               <p className="mb-6 text-[15px] leading-relaxed text-[#8b97a5]">
-                Operating from Turkey&apos;s premier yacht hub, MOX YACHT leverages the Antalya
+                Operating from Turkey's premier yacht hub, MOX YACHT leverages the Antalya
                 Freezone for cost-efficient, high-quality yacht projects. The Freezone status enables
                 VAT-exempt operations and streamlined international logistics.
               </p>

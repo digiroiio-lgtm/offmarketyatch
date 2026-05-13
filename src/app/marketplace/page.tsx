@@ -259,8 +259,8 @@ function SkeletonCard() {
 // ─── Listing grid with ad injection ──────────────────────────────────────────
 
 // Inserts: SponsoredCard every ~9 listings, SponsoredBanner every 6 listings (full-row)
-const BANNER_AFTER = 6;      // insert horizontal banner after every N listings
-const CARD_EVERY = 9;        // insert a sponsor card every N listings (in-grid)
+const BANNER_AFTER = 6;               // insert horizontal banner after every N listings
+const CARD_INSERTION_INTERVAL = 9;    // insert a sponsor card every N listings (in-grid)
 
 function ListingGridWithAds({ listings }: { listings: Listing[] }) {
   // Build a mixed array of listing nodes + sponsor nodes
@@ -281,7 +281,7 @@ function ListingGridWithAds({ listings }: { listings: Listing[] }) {
     if ((i + 1) % BANNER_AFTER === 0) {
       items.push({ kind: "banner" });
       cardCounter = 0; // reset card counter after banner
-    } else if (cardCounter % CARD_EVERY === 0 && i > 0) {
+    } else if (cardCounter % CARD_INSERTION_INTERVAL === 0 && i > 0) {
       // Sponsored card instead of banner
       items.push({ kind: "card", variantIndex: cardVariant++ % 3 });
     }
