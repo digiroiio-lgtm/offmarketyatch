@@ -67,7 +67,7 @@ const GALLERY_ITEMS: {
 }[] = [
   { label: "Refit Operations", sub: "Antalya Shipyard", image: imgGallery0, alt: "Aerial drone view of MOX YACHT Antalya shipyard refit operations", objectPosition: "object-center" },
   { label: "Hull Engineering", sub: "Technical Infrastructure", image: imgGallery1, alt: "Yacht hull engineering and technical refit close-up", objectPosition: "object-center" },
-  { label: "Production Operations", sub: "Owner Specification", image: imgGallery2, alt: "MOX YACHT production and fit-out operations", objectPosition: "object-center" },
+  { label: "Production Operations", sub: "Production Facility", image: imgGallery2, alt: "MOX YACHT production and fit-out operations", objectPosition: "object-center" },
   { label: "Sea Trials", sub: "Mediterranean Waters", image: imgGallery3, alt: "Mediterranean sea trials — drone aerial view", objectPosition: "object-center" },
 ];
 
