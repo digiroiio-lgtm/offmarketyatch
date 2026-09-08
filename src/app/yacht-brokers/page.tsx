@@ -1,166 +1,112 @@
 import type { Metadata } from "next";
-import BuyerForm from "@/components/BuyerForm";
-import FAQSection from "@/components/FAQSection";
-import PageHero from "@/components/PageHero";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQSection from "@/components/FAQSection";
+import FinalCTA from "@/components/FinalCTA";
+import PageHero from "@/components/PageHero";
 import SchemaOrg from "@/components/SchemaOrg";
+import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Private Off-Market Yacht Deal Flow for Brokers",
+export const metadata: Metadata = pageMetadata({
+  title: "Broker Cooperation | Off-Market Yacht Introductions",
   description:
-    "Yacht brokers: access private off-market deal flow, co-brokerage opportunities, and a qualified buyer and seller network. Confidential broker cooperation available.",
-  keywords: ["yacht broker private listings", "yacht deal flow", "yacht broker co-brokerage", "off market yacht broker"],
-  alternates: {
-    canonical: "https://www.offmarketyachts.com/yacht-brokers",
-  },
-  openGraph: {
-    url: "https://www.offmarketyachts.com/yacht-brokers",
-    title: "Private Off-Market Yacht Deal Flow for Brokers",
-    description: "Confidential co-brokerage and off-market deal flow for qualified yacht brokers.",
-  },
-};
+    "Cooperation for yacht brokers holding unadvertised mandates or representing qualified buyers. Masked presentation, standard co-brokerage terms.",
+  path: "/yacht-brokers",
+});
 
-const faqItems = [
+const FAQS = [
   {
-    question: "How does broker cooperation work?",
+    question: "How does co-brokerage work here?",
     answer:
-      "We cooperate with qualified, licensed brokers on a confidential co-brokerage basis. Commission arrangements are agreed in advance of any introduction. Please contact us to discuss the specifics.",
+      "On standard industry terms, agreed in writing before any introduction. Where you hold the mandate, you remain the central agent and we represent the buyer; where we hold it, the reverse. Commission splits are settled before disclosure, not after.",
   },
   {
-    question: "Can I submit buyer or seller clients on their behalf?",
+    question: "Will my mandate be published?",
     answer:
-      "Yes. Brokers may submit buyer access requests and seller/vessel submissions on behalf of their clients. Please indicate your broker status and relationship in the relevant form.",
+      "Only in the masked form you authorise, and only if you want it published at all. Many cooperating mandates are held privately and matched against registered buyer criteria without any public entry.",
   },
   {
-    question: "Do you require broker accreditation or membership?",
+    question: "Do you contact owners directly?",
     answer:
-      "We prefer to work with brokers holding recognised industry accreditations (YBAA, ABYA, MYBA, etc.) but will consider all experienced professionals. A brief qualification discussion is standard.",
+      "Not on a vessel where another broker holds a mandate. Where a buyer instructs a retained search and a target vessel turns out to be represented, we approach the broker rather than the owner.",
   },
   {
-    question: "Is the deal flow exclusive to registered brokers?",
+    question: "What buyer information will you share?",
     answer:
-      "Our off-market opportunities are shared based on matching requirements — brokers who register and are qualified receive relevant introductions for their buyer and seller clients.",
+      "Enough to establish that the buyer is genuine and qualified — budget, size, timeline and position — without naming them until they agree to be named. The same discretion we extend to owners applies to buyers.",
   },
 ];
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "Yacht Brokers", item: "https://www.offmarketyachts.com/yacht-brokers" },
-  ],
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-};
-
-export default function BrokersPage() {
+export default function BrokerCooperationPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
-      <Breadcrumb items={[{ label: "Yacht Brokers" }]} />
+      <SchemaOrg
+        schema={[
+          breadcrumbSchema([{ name: "Broker Cooperation", path: "/yacht-brokers" }]),
+          faqSchema(FAQS),
+        ]}
+      />
+      <Breadcrumb items={[{ label: "Broker Cooperation" }]} />
+
       <PageHero
-        h1="Private Off-Market Yacht Deal Flow for Brokers"
-        subheadline="Expand your off-market yacht pipeline. Access confidential deal flow, co-brokerage opportunities, and a qualified buyer and seller network — by invitation and approval only."
-        ctaLabel="Apply for Broker Access"
-        ctaHref="/private-access"
-        secondaryCtaLabel="Submit a Client Listing"
-        secondaryCtaHref="/submit-yacht"
+        eyebrow="For Brokers"
+        h1="Cooperation, on standard terms."
+        standfirst="For brokers holding unadvertised mandates, and those representing buyers."
+        ctaLabel="Get in Touch"
+        ctaHref="/contact"
+        secondaryCtaLabel="Browse the Private Market"
+        secondaryCtaHref="/off-market-yachts"
       />
 
-      <section className="section bg-white">
-        <div className="container-site">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div>
-              <h2 className="mb-4 text-2xl font-bold text-[#0a1628]">
-                Broker Cooperation Programme
-              </h2>
-              <p className="mb-4 text-sm leading-relaxed text-[#4a5568]">
-                OffMarketYachts.com works with qualified yacht brokers to expand
-                off-market deal flow for both buyer and seller clients. We operate
-                on a co-brokerage basis with transparent commission structures
-                agreed before any introduction.
-              </p>
-              <p className="mb-6 text-sm leading-relaxed text-[#4a5568]">
-                Registered brokers benefit from access to off-market
-                opportunities aligned with their client requirements, plus the
-                ability to submit seller clients for confidential representation.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { title: "Buyer Representation", desc: "Submit qualified buyer clients for off-market introductions" },
-                  { title: "Seller Submission", desc: "Represent seller clients confidentially without public exposure" },
-                  { title: "Co-Brokerage", desc: "Transparent commission arrangements agreed in advance" },
-                  { title: "Confidential Process", desc: "All cooperation handled with full professional discretion" },
-                ].map(({ title, desc }) => (
-                  <div key={title} className="rounded-lg border border-[#e8ecf0] p-4">
-                    <h3 className="mb-1.5 text-sm font-bold text-[#0a1628]">{title}</h3>
-                    <p className="text-xs text-[#4a5568]">{desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <BuyerForm title="Apply for Broker Access" />
-            </div>
-          </div>
+      <section className="section">
+        <div className="container-prose prose-editorial">
+          <h2>If you hold a mandate</h2>
+          <p>
+            We maintain registered acquisition criteria from qualified buyers across the US,
+            Caribbean and Mediterranean markets. If you are holding a vessel privately at the
+            owner&rsquo;s request, we can match it against those criteria without publishing
+            anything.
+          </p>
+          <p>
+            Where you do want a public entry, it appears in masked form under a reference number,
+            attributed as broker-sourced, with the disclosure boundary you specify.
+          </p>
+
+          <h2>If you represent a buyer</h2>
+          <p>
+            Enquire against any published reference on behalf of your client. Cooperation terms
+            are agreed before disclosure, and your client relationship is yours — we do not
+            approach a buyer introduced by another broker.
+          </p>
+
+          <h2>What we ask</h2>
+          <ul>
+            <li>
+              That a mandate described as off-market genuinely is one, with the seller position
+              confirmed and attributable.
+            </li>
+            <li>
+              That availability claims are accurate. We label unconfirmed entries as potential
+              opportunities and expect the same candour in return.
+            </li>
+            <li>
+              That commission arrangements are settled in writing before an introduction, not
+              renegotiated after one.
+            </li>
+          </ul>
         </div>
       </section>
 
-      {/* Broker Protocol */}
-      <section className="section bg-[#0a1628]" aria-labelledby="broker-protocol-heading">
-        <div className="container-site">
-          <div className="mb-10 text-center">
-            <h2
-              id="broker-protocol-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
-            >
-              Broker Cooperation Protocol
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
-              Our cooperation standards protect all parties and ensure
-              professional, structured introductions.
-            </p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {[
-              {
-                step: "01",
-                title: "NDA Required Before Sharing",
-                body: "No vessel information, pricing, or principal details are shared without a signed confidentiality agreement. This is non-negotiable.",
-              },
-              {
-                step: "02",
-                title: "Commission Agreed Pre-Introduction",
-                body: "Co-brokerage commission arrangements are agreed in writing before any introduction is made. Transparent, documented, and enforceable.",
-              },
-              {
-                step: "03",
-                title: "Buyer Qualification Mandatory",
-                body: "All buyer clients must be qualified and verified before receiving access. Unverified enquiries are not accepted regardless of claimed budget.",
-              },
-            ].map(({ step, title, body }) => (
-              <div key={step} className="rounded-lg border border-[#112040] bg-[#112040] p-6">
-                <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#c9a96e]/10 text-sm font-bold text-[#c9a96e]">
-                  {step}
-                </div>
-                <h3 className="mb-2 font-bold text-white">{title}</h3>
-                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="defer-render">
+        <FAQSection faqs={FAQS} />
+      </div>
 
-      <FAQSection items={faqItems} title="Broker Cooperation FAQs" />
+      <FinalCTA
+        title="Have a mandate that should not be advertised?"
+        body="We can match it against registered buyer criteria without publishing anything at all."
+        primaryLabel="Get in Touch"
+        primaryHref="/contact"
+      />
     </>
   );
 }

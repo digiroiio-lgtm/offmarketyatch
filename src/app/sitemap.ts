@@ -1,55 +1,98 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://www.offmarketyachts.com";
+import { ARTICLES } from "@/data/articles";
+import { getIndexableLandingPages } from "@/data/landing";
+import { getAllOpportunitySlugs } from "@/lib/opportunities";
+import { SITE } from "@/lib/site";
 
-// Static dates prevent every deploy from marking all pages as "modified today".
-// Update the date for a specific page only when its content meaningfully changes.
-const PAGE_DATES: Record<string, string> = {
-  "/":                          "2026-05-12",
-  "/buy-off-market-yachts":     "2026-05-12",
-  "/sell-off-market-yacht":     "2026-05-12",
-  "/off-market-superyachts":    "2026-05-12",
-  "/off-market-motor-yachts":   "2026-05-12",
-  "/off-market-catamarans":     "2026-05-12",
-  "/off-market-trimarans":      "2026-05-12",
-  "/yacht-brokers":             "2026-05-12",
-  "/family-offices":            "2026-05-12",
-  "/submit-yacht":              "2026-05-12",
-  "/private-access":            "2026-05-12",
-  "/owner-representation":      "2026-05-12",
-  "/private-yacht-brokerage":   "2026-05-12",
-  "/about":                     "2026-05-12",
-  "/contact":                   "2026-05-12",
-  "/yacht-shows":               "2026-05-12",
-  "/privacy":                   "2026-05-12",
-  "/terms":                     "2026-05-12",
-};
+/**
+ * The sitemap lists only pages we actually want indexed.
+ *
+ * Excluded by design (§26): lead funnels and confirmation pages, admin, and
+ * any masked opportunity page that lacks enough unique public content to be
+ * useful on its own. A URL in a sitemap is a request to index it, so a page
+ * that carries `noindex` must never appear here.
+ */
+
+interface Entry {
+  path: string;
+  priority: number;
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  lastModified?: string;
+}
+
+/**
+ * Fixed dates for evergreen pages, so a deploy does not claim every page
+ * changed today. Bump one only when its content genuinely changes.
+ */
+const STATIC_PAGES: Entry[] = [
+  { path: "/", priority: 1.0, changeFrequency: "daily", lastModified: "2026-09-08" },
+  {
+    path: "/off-market-yachts",
+    priority: 0.95,
+    changeFrequency: "daily",
+    lastModified: "2026-09-08",
+  },
+  {
+    path: "/sell-your-yacht-privately",
+    priority: 0.9,
+    changeFrequency: "monthly",
+    lastModified: "2026-09-08",
+  },
+  {
+    path: "/private-market-intelligence",
+    priority: 0.8,
+    changeFrequency: "weekly",
+    lastModified: "2026-09-08",
+  },
+  { path: "/owner-representation", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-09-08" },
+  { path: "/yacht-brokers", priority: 0.65, changeFrequency: "monthly", lastModified: "2026-09-08" },
+  { path: "/family-offices", priority: 0.65, changeFrequency: "monthly", lastModified: "2026-09-08" },
+  { path: "/yacht-shows", priority: 0.6, changeFrequency: "monthly", lastModified: "2026-09-08" },
+  { path: "/about", priority: 0.5, changeFrequency: "yearly", lastModified: "2026-09-08" },
+  { path: "/contact", priority: 0.5, changeFrequency: "yearly", lastModified: "2026-09-08" },
+  { path: "/partners/mox-yacht", priority: 0.4, changeFrequency: "yearly", lastModified: "2026-09-08" },
+  { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastModified: "2026-09-08" },
+  { path: "/terms", priority: 0.2, changeFrequency: "yearly", lastModified: "2026-09-08" },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = [
-    { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
-    { url: "/buy-off-market-yachts", priority: 0.9, changeFrequency: "weekly" as const },
-    { url: "/sell-off-market-yacht", priority: 0.9, changeFrequency: "weekly" as const },
-    { url: "/off-market-superyachts", priority: 0.85, changeFrequency: "weekly" as const },
-    { url: "/off-market-motor-yachts", priority: 0.85, changeFrequency: "weekly" as const },
-    { url: "/off-market-catamarans", priority: 0.85, changeFrequency: "weekly" as const },
-    { url: "/off-market-trimarans", priority: 0.8, changeFrequency: "weekly" as const },
-    { url: "/yacht-brokers", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/family-offices", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/submit-yacht", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/private-access", priority: 0.9, changeFrequency: "monthly" as const },
-    { url: "/owner-representation", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/private-yacht-brokerage", priority: 0.85, changeFrequency: "monthly" as const },
-    { url: "/about", priority: 0.6, changeFrequency: "monthly" as const },
-    { url: "/contact", priority: 0.6, changeFrequency: "monthly" as const },
-    { url: "/yacht-shows", priority: 0.8, changeFrequency: "monthly" as const },
-    { url: "/privacy", priority: 0.3, changeFrequency: "yearly" as const },
-    { url: "/terms", priority: 0.3, changeFrequency: "yearly" as const },
-  ];
+  const entries: Entry[] = [...STATIC_PAGES];
 
-  return pages.map(({ url, priority, changeFrequency }) => ({
-    url: `${BASE_URL}${url}`,
-    lastModified: new Date(PAGE_DATES[url] ?? "2026-05-12"),
+  // Commercial-intent landing pages.
+  for (const page of getIndexableLandingPages()) {
+    entries.push({
+      path: `/${page.slug}`,
+      priority: 0.85,
+      changeFrequency: "weekly",
+      lastModified: "2026-09-08",
+    });
+  }
+
+  // Opportunity detail pages — only those with enough unique public content.
+  for (const { slug, indexable, updatedAt } of getAllOpportunitySlugs()) {
+    if (!indexable) continue;
+    entries.push({
+      path: `/off-market-yachts/${slug}`,
+      priority: 0.7,
+      changeFrequency: "weekly",
+      lastModified: updatedAt,
+    });
+  }
+
+  // Editorial cluster.
+  for (const article of ARTICLES) {
+    entries.push({
+      path: `/private-market-intelligence/${article.slug}`,
+      priority: 0.6,
+      changeFrequency: "monthly",
+      lastModified: article.updated,
+    });
+  }
+
+  return entries.map(({ path, priority, changeFrequency, lastModified }) => ({
+    url: `${SITE.url}${path === "/" ? "" : path}`,
+    lastModified: new Date(lastModified ?? "2026-09-08"),
     changeFrequency,
     priority,
   }));

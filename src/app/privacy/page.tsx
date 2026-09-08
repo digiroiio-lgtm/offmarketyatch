@@ -24,17 +24,17 @@ export default function PrivacyPage() {
     <>
       <SchemaOrg schema={[breadcrumbSchema]} />
       <Breadcrumb items={[{ label: "Privacy Policy" }]} />
-      <section className="section bg-white">
+      <section className="section bg-paper-raised">
         <div className="container-site">
           <div className="mx-auto max-w-3xl">
-            <h1 className="mb-6 text-3xl font-bold text-[#0a1628]">
+            <h1 className="mb-6 text-3xl font-bold text-ink">
               Privacy Policy
             </h1>
-            <p className="mb-4 text-sm text-[#4a5568]">
+            <p className="mb-4 text-sm text-ink-muted">
               Last updated: {new Date().getFullYear()}
             </p>
 
-            <p className="mb-6 text-sm leading-relaxed text-[#4a5568]">
+            <p className="mb-6 text-sm leading-relaxed text-ink-muted">
               OffMarketYachts.com is committed to protecting your privacy. This
               policy explains how we collect, use, and safeguard your personal
               information when you use our platform.
@@ -75,10 +75,10 @@ export default function PrivacyPage() {
               },
             ].map(({ title, body }) => (
               <div key={title} className="mb-6">
-                <h2 className="mb-2 text-base font-bold text-[#0a1628]">
+                <h2 className="mb-2 text-base font-bold text-ink">
                   {title}
                 </h2>
-                <p className="text-sm leading-relaxed text-[#4a5568]">{body}</p>
+                <p className="text-sm leading-relaxed text-ink-muted">{body}</p>
               </div>
             ))}
           </div>

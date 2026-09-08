@@ -1,55 +1,51 @@
 import type { Metadata } from "next";
-import ContactClient from "./ContactClient";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import PageHero from "@/components/PageHero";
 import SchemaOrg from "@/components/SchemaOrg";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
+import { SITE, canonical } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact OffMarketYachts.com",
+import ContactClient from "./ContactClient";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Contact | Private Yacht Acquisition Enquiries",
   description:
-    "Contact OffMarketYachts.com for buyer access requests, yacht submissions, broker cooperation, and general enquiries. All messages handled privately.",
-  alternates: {
-    canonical: "https://www.offmarketyachts.com/contact",
-  },
-  openGraph: {
-    url: "https://www.offmarketyachts.com/contact",
-    title: "Contact OffMarketYachts.com",
-    description: "Get in touch with OffMarketYachts.com — all enquiries handled privately.",
-  },
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://www.offmarketyachts.com/contact" },
-  ],
-};
-
-const contactPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  name: "Contact OffMarketYachts.com",
-  url: "https://www.offmarketyachts.com/contact",
-  description: "Contact OffMarketYachts.com for buyer access requests, yacht submissions, broker cooperation, and general enquiries. All messages handled privately.",
-  mainEntity: {
-    "@type": "Organization",
-    name: "OffMarketYachts.com",
-    url: "https://www.offmarketyachts.com",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer service",
-      url: "https://www.offmarketyachts.com/contact",
-      availableLanguage: "English",
-    },
-  },
-};
+    "Contact OffMarketYacht for confidential yacht acquisition and private sale enquiries. All inquiries handled discreetly.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, contactPageSchema]} />
+      <SchemaOrg
+        schema={[
+          breadcrumbSchema([{ name: "Contact", path: "/contact" }]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            url: canonical("/contact"),
+            name: "Contact OffMarketYacht",
+            mainEntity: {
+              "@type": "Organization",
+              "@id": `${SITE.url}/#organization`,
+              email: SITE.email,
+              telephone: SITE.phoneDisplay,
+            },
+          },
+        ]}
+      />
       <Breadcrumb items={[{ label: "Contact" }]} />
+
+      <PageHero
+        eyebrow="Contact"
+        h1="Start a confidential conversation."
+        standfirst="Acquisition enquiries, private sale discussions and broker cooperation."
+        ctaLabel="Request Private Access"
+        secondaryCtaLabel="Sell Privately"
+        secondaryCtaHref="/sell-your-yacht-privately"
+      />
+
       <ContactClient />
     </>
   );

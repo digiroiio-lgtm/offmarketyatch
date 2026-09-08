@@ -103,40 +103,40 @@ function GalleryCardSVG({ gradient }: { gradient: string }) {
 
 export default function MoxYachtClient() {
   return (
-    <div className="min-h-screen bg-[#060e1a] text-white">
+    <div className="min-h-screen bg-deal-room text-ink-inverse">
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-[#112040] bg-[#060e1a] px-6 py-24 sm:px-10 sm:py-32">
+      <section className="relative overflow-hidden border-b border-deal-room-line bg-deal-room px-6 py-24 sm:px-10 sm:py-32">
         <HeroSVG />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,transparent_40%,#000_100%)]" />
 
         <div className="relative mx-auto max-w-4xl text-center">
           {/* Breadcrumb */}
-          <p className="mb-8 flex items-center justify-center gap-2 text-[11px] text-[#4a5568]">
-            <Link href="/marketplace" className="hover:text-[#c9a96e]">Marketplace</Link>
+          <p className="mb-8 flex items-center justify-center gap-2 text-[11px] text-ink-muted">
+            <Link href="/off-market-yachts" className="hover:text-accent">Private Market</Link>
             <span>/</span>
-            <span className="text-[#8b97a5]">Partners</span>
+            <span className="text-ink-inverse-muted">Partners</span>
             <span>/</span>
-            <span className="text-[#c9a96e]">MOX YACHT</span>
+            <span className="text-accent">MOX YACHT</span>
           </p>
 
           {/* Sponsor indicator */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#c9a96e]/15 px-4 py-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#c9a96e]" />
-            <span className="text-[10px] uppercase tracking-[0.28em] text-[#c9a96e]/70">Verified Marine Partner</span>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/15 px-4 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="text-[10px] uppercase tracking-[0.28em] text-accent/70">Verified Marine Partner</span>
           </div>
 
           {/* MOX wordmark */}
           <div className="mb-6">
-            <h1 className="text-[52px] font-bold tracking-[0.18em] text-white sm:text-[64px]">
+            <h1 className="text-[52px] font-bold tracking-[0.18em] text-ink-inverse sm:text-[64px]">
               MOX
             </h1>
-            <p className="text-[14px] uppercase tracking-[0.45em] text-[#c9a96e]">YACHT</p>
+            <p className="text-[14px] uppercase tracking-[0.45em] text-accent">YACHT</p>
           </div>
 
-          <p className="mb-4 text-[11px] uppercase tracking-[0.3em] text-[#8b97a5]">
+          <p className="mb-4 text-[11px] uppercase tracking-[0.3em] text-ink-inverse-muted">
             Yacht Production · Refit · Project Management
           </p>
-          <p className="mx-auto mb-10 max-w-xl text-[16px] leading-relaxed text-[#8b97a5]">
+          <p className="mx-auto mb-10 max-w-xl text-[16px] leading-relaxed text-ink-inverse-muted">
             Engineering confidence at sea. MOX YACHT supports complex yacht projects across the
             Mediterranean with uncompromising technical expertise.
           </p>
@@ -144,13 +144,13 @@ export default function MoxYachtClient() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center rounded-xl bg-[#c9a96e] px-8 text-[12px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
+              className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-[12px] font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-[#e2c99a]"
             >
               Schedule Consultation
             </Link>
             <a
               href="#services"
-              className="inline-flex h-12 items-center rounded-xl border border-[#c9a96e]/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
+              className="inline-flex h-12 items-center rounded-xl border border-accent/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-ink"
             >
               View Capabilities
             </a>
@@ -159,12 +159,12 @@ export default function MoxYachtClient() {
       </section>
 
       {/* ── Stats strip ───────────────────────────────────────────────────── */}
-      <section className="border-b border-[#112040] bg-[#0a1628]">
+      <section className="border-b border-deal-room-line bg-deal-room">
         <div className="mx-auto grid max-w-[1200px] grid-cols-2 divide-x divide-y divide-[#112040] md:grid-cols-4 md:divide-y-0">
           {HIGHLIGHTS.map(({ label, value }) => (
             <div key={label} className="flex flex-col items-center py-8 text-center">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-[#4a5568]">{label}</p>
-              <p className="mt-1 text-[14px] font-semibold text-white">{value}</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-ink-muted">{label}</p>
+              <p className="mt-1 text-[14px] font-semibold text-ink-inverse">{value}</p>
             </div>
           ))}
         </div>
@@ -173,18 +173,18 @@ export default function MoxYachtClient() {
       {/* ── Services ─────────────────────────────────────────────────────── */}
       <section id="services" className="px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-[1200px]">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">What We Do</p>
-          <h2 className="mb-12 text-2xl font-bold text-white">Core Capabilities</h2>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">What We Do</p>
+          <h2 className="mb-12 text-2xl font-bold text-ink-inverse">Core Capabilities</h2>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((svc) => (
               <div
                 key={svc.title}
-                className="rounded-xl border border-[#1e3052] bg-[#0a1628] p-7 transition-colors hover:border-[#c9a96e]/20"
+                className="rounded-xl border border-deal-room-line bg-deal-room p-7 transition-colors hover:border-accent/20"
               >
                 <span className="mb-4 block text-3xl">{svc.icon}</span>
-                <h3 className="mb-2 text-[16px] font-semibold text-white">{svc.title}</h3>
-                <p className="text-[13px] leading-relaxed text-[#8b97a5]">{svc.description}</p>
+                <h3 className="mb-2 text-[16px] font-semibold text-ink-inverse">{svc.title}</h3>
+                <p className="text-[13px] leading-relaxed text-ink-inverse-muted">{svc.description}</p>
               </div>
             ))}
           </div>
@@ -192,21 +192,21 @@ export default function MoxYachtClient() {
       </section>
 
       {/* ── Gallery ──────────────────────────────────────────────────────── */}
-      <section className="border-t border-[#112040] bg-[#0a1628] px-6 py-20 sm:px-10">
+      <section className="border-t border-deal-room-line bg-deal-room px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-[1200px]">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Operations</p>
-          <h2 className="mb-10 text-2xl font-bold text-white">Yacht Project Gallery</h2>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Operations</p>
+          <h2 className="mb-10 text-2xl font-bold text-ink-inverse">Yacht Project Gallery</h2>
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {GALLERY_ITEMS.map((item) => (
-              <div key={item.label} className="group overflow-hidden rounded-xl border border-[#1e3052]">
+              <div key={item.label} className="group overflow-hidden rounded-xl border border-deal-room-line">
                 <div className="aspect-square overflow-hidden">
                   {/* Video/cinematic placeholder */}
                   <div className="relative h-full w-full transition-transform duration-500 group-hover:scale-105">
                     <GalleryCardSVG gradient={item.gradient} />
                     {/* Play/cinema overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#c9a96e]/30 bg-[#060e1a]/60 text-[#c9a96e]/60 backdrop-blur-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-deal-room/60 text-accent/60 backdrop-blur-sm">
                         <svg className="h-4 w-4 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
@@ -214,9 +214,9 @@ export default function MoxYachtClient() {
                     </div>
                   </div>
                 </div>
-                <div className="border-t border-[#1e3052] bg-[#0a1628] px-4 py-3">
-                  <p className="text-[12px] font-medium text-white">{item.label}</p>
-                  <p className="text-[10px] text-[#4a5568]">{item.sub}</p>
+                <div className="border-t border-deal-room-line bg-deal-room px-4 py-3">
+                  <p className="text-[12px] font-medium text-ink-inverse">{item.label}</p>
+                  <p className="text-[10px] text-ink-muted">{item.sub}</p>
                 </div>
               </div>
             ))}
@@ -225,14 +225,14 @@ export default function MoxYachtClient() {
       </section>
 
       {/* ── Antalya section ──────────────────────────────────────────────── */}
-      <section className="border-t border-[#112040] px-6 py-20 sm:px-10">
+      <section className="border-t border-deal-room-line px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-[1200px]">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Operational Base</p>
-              <h2 className="mb-4 text-2xl font-bold text-white">Antalya Freezone Advantage</h2>
-              <p className="mb-6 text-[15px] leading-relaxed text-[#8b97a5]">
-                Operating from Turkey's premier yacht hub, MOX YACHT leverages the Antalya
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Operational Base</p>
+              <h2 className="mb-4 text-2xl font-bold text-ink-inverse">Antalya Freezone Advantage</h2>
+              <p className="mb-6 text-[15px] leading-relaxed text-ink-inverse-muted">
+                Operating from Turkey&rsquo;s premier yacht hub, MOX YACHT leverages the Antalya
                 Freezone for cost-efficient, high-quality yacht projects. The Freezone status enables
                 VAT-exempt operations and streamlined international logistics.
               </p>
@@ -244,8 +244,8 @@ export default function MoxYachtClient() {
                   "Year-round Mediterranean climate",
                   "Direct IALA maritime route access",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[13px] text-[#8b97a5]">
-                    <span className="mt-[5px] h-px w-5 shrink-0 bg-[#c9a96e]/50" />
+                  <li key={item} className="flex items-start gap-3 text-[13px] text-ink-inverse-muted">
+                    <span className="mt-[5px] h-px w-5 shrink-0 bg-accent/50" />
                     {item}
                   </li>
                 ))}
@@ -253,7 +253,7 @@ export default function MoxYachtClient() {
             </div>
 
             {/* Abstract map visual */}
-            <div className="relative overflow-hidden rounded-2xl border border-[#1e3052] bg-gradient-to-br from-[#060e1a] via-[#0a1628] to-[#112040]">
+            <div className="relative overflow-hidden rounded-2xl border border-deal-room-line bg-gradient-to-br from-[#060e1a] via-[#0a1628] to-[#112040]">
               <div className="aspect-[4/3] p-8">
                 <svg viewBox="0 0 400 300" className="h-full w-full opacity-20" fill="none">
                   {/* Mediterranean outline — abstract */}
@@ -275,8 +275,8 @@ export default function MoxYachtClient() {
                 </svg>
                 {/* Label */}
                 <div className="absolute bottom-6 right-8 text-right">
-                  <p className="text-[11px] font-medium text-[#c9a96e]/70">Antalya, TR</p>
-                  <p className="text-[10px] text-[#4a5568]">Mediterranean Hub</p>
+                  <p className="text-[11px] font-medium text-accent/70">Antalya, TR</p>
+                  <p className="text-[10px] text-ink-muted">Mediterranean Hub</p>
                 </div>
               </div>
             </div>
@@ -285,24 +285,24 @@ export default function MoxYachtClient() {
       </section>
 
       {/* ── Contact CTA ──────────────────────────────────────────────────── */}
-      <section className="border-t border-[#112040] bg-[#0a1628] px-6 py-20 sm:px-10">
+      <section className="border-t border-deal-room-line bg-deal-room px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-xl text-center">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-[#c9a96e]">Work With Us</p>
-          <h2 className="mb-4 text-2xl font-bold text-white">Start Your Yacht Project</h2>
-          <p className="mb-8 text-[15px] leading-relaxed text-[#8b97a5]">
+          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-accent">Work With Us</p>
+          <h2 className="mb-4 text-2xl font-bold text-ink-inverse">Start Your Yacht Project</h2>
+          <p className="mb-8 text-[15px] leading-relaxed text-ink-inverse-muted">
             Speak confidentially with the MOX YACHT team about your refit, production, or project
             management requirements.
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center rounded-xl bg-[#c9a96e] px-8 text-[12px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
+              className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-[12px] font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-[#e2c99a]"
             >
               Contact MOX YACHT
             </Link>
             <Link
-              href="/marketplace"
-              className="inline-flex h-12 items-center rounded-xl border border-[#c9a96e]/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
+              href="/off-market-yachts"
+              className="inline-flex h-12 items-center rounded-xl border border-accent/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-ink"
             >
               Back to Marketplace
             </Link>

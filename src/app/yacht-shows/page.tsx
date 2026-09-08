@@ -179,18 +179,18 @@ export default function YachtShowsPage() {
 
       <PageHero
         h1="Global Yacht Shows & Yachting Events 2026–2028"
-        subheadline="Where UHNW buyers, yacht owners, and off-market deal flow converge. Private transactions run parallel to — and often ahead of — the public event calendar."
+        standfirst="Where UHNW buyers, yacht owners, and off-market deal flow converge. Private transactions run parallel to — and often ahead of — the public event calendar."
         ctaLabel="Request Private Access"
-        ctaHref="/private-access"
-        secondaryCtaLabel="Submit a Yacht"
-        secondaryCtaHref="/submit-yacht"
+        ctaHref="/request-private-access"
+        secondaryCtaLabel="Sell Privately"
+        secondaryCtaHref="/sell-your-yacht-privately"
       />
 
       {/* Core Deal Flow Events */}
-      <section className="section bg-white" aria-labelledby="core-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 800px" }}>
+      <section className="section bg-paper-raised" aria-labelledby="core-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 800px" }}>
         <div className="container-site">
           <div className="mb-6 flex items-center gap-4">
-            <span className="shrink-0 rounded-full bg-[#c9a96e]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#c9a96e]">
+            <span className="shrink-0 rounded-full bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
               Core Deal Flow Events
             </span>
             <div className="h-px flex-1 bg-[#e8ecf0]" />
@@ -204,29 +204,29 @@ export default function YachtShowsPage() {
             {showsATier.map((event) => (
               <div
                 key={event.name}
-                className="group flex flex-col rounded-xl border border-[#e8ecf0] bg-white p-5 shadow-sm transition hover:border-[#c9a96e] hover:shadow-md"
+                className="group flex flex-col rounded-xl border border-line bg-paper-raised p-5 shadow-sm transition hover:border-accent hover:shadow-md"
               >
                 <div className="mb-3 flex items-start justify-between gap-2">
                   <span className="text-xl">{event.flag}</span>
                   {event.tier === "flagship" && (
-                    <span className="shrink-0 rounded-full bg-[#c9a96e]/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-[#c9a96e]">
+                    <span className="shrink-0 rounded-full bg-accent/15 px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest text-accent">
                       Top Tier
                     </span>
                   )}
                 </div>
-                <h3 className="mb-2 text-sm font-bold text-[#0a1628] transition group-hover:text-[#c9a96e]">
+                <h3 className="mb-2 text-sm font-bold text-ink transition group-hover:text-accent">
                   {event.name}
                 </h3>
-                <p className="mb-0.5 text-xs text-[#4a5568]">📅 {event.date}</p>
-                <p className="mb-3 text-xs text-[#4a5568]">📍 {event.location}</p>
-                <p className="mb-4 flex-1 text-xs leading-relaxed text-[#8b97a5]">
+                <p className="mb-0.5 text-xs text-ink-muted">📅 {event.date}</p>
+                <p className="mb-3 text-xs text-ink-muted">📍 {event.location}</p>
+                <p className="mb-4 flex-1 text-xs leading-relaxed text-ink-muted">
                   {event.note}
                 </p>
                 <a
                   href={event.url}
                   target="_blank"
                   rel="noopener noreferrer nofollow"
-                  className="self-start text-xs font-semibold uppercase tracking-widest text-[#c9a96e] transition hover:text-[#0a1628]"
+                  className="self-start text-xs font-semibold uppercase tracking-widest text-accent transition hover:text-ink"
                 >
                   Visit Official Site →
                 </a>
@@ -237,11 +237,11 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Annual Calendar */}
-      <section className="section bg-[#f5f7fa]" aria-labelledby="calendar-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 400px" }}>
+      <section className="section bg-paper-sunken" aria-labelledby="calendar-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 400px" }}>
         <div className="container-site">
           <h2
             id="calendar-heading"
-            className="mb-8 text-center text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl"
+            className="mb-8 text-center text-2xl font-bold tracking-tight text-ink sm:text-3xl"
           >
             Annual Event Calendar
           </h2>
@@ -268,15 +268,15 @@ export default function YachtShowsPage() {
                 events: ["Genoa Boat Show", "Fort Lauderdale (FLIBS)", "Qatar Boat Show"],
               },
             ].map(({ quarter, months, events }) => (
-              <div key={quarter} className="rounded-lg border border-[#e8ecf0] bg-white p-5">
+              <div key={quarter} className="rounded-lg border border-line bg-paper-raised p-5">
                 <div className="mb-3 flex items-center gap-2">
-                  <span className="text-base font-bold text-[#c9a96e]">{quarter}</span>
-                  <span className="text-xs text-[#8b97a5]">{months}</span>
+                  <span className="text-base font-bold text-accent">{quarter}</span>
+                  <span className="text-xs text-ink-muted">{months}</span>
                 </div>
                 <ul className="space-y-1.5">
                   {events.map((e) => (
-                    <li key={e} className="flex items-center gap-1.5 text-xs text-[#4a5568]">
-                      <span className="text-[8px] text-[#c9a96e]">▶</span>
+                    <li key={e} className="flex items-center gap-1.5 text-xs text-ink-muted">
+                      <span className="text-[8px] text-accent">▶</span>
                       {e}
                     </li>
                   ))}
@@ -288,10 +288,10 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Other Shows */}
-      <section className="section bg-white" aria-labelledby="other-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 500px" }}>
+      <section className="section bg-paper-raised" aria-labelledby="other-shows-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 500px" }}>
         <div className="container-site">
           <div className="mb-8 flex items-center gap-4">
-            <span className="shrink-0 rounded-full border border-[#e8ecf0] px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#4a5568]">
+            <span className="shrink-0 rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-ink-muted">
               Additional Events
             </span>
             <div className="h-px flex-1 bg-[#e8ecf0]" />
@@ -306,11 +306,11 @@ export default function YachtShowsPage() {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="flex items-center gap-3 rounded-lg border border-[#e8ecf0] px-4 py-3 text-sm transition hover:border-[#c9a96e]"
+                className="flex items-center gap-3 rounded-lg border border-line px-4 py-3 text-sm transition hover:border-accent"
               >
                 <span className="text-lg">{flag}</span>
-                <span className="font-medium text-[#0a1628]">{name}</span>
-                <span className="ml-auto text-xs text-[#c9a96e]">→</span>
+                <span className="font-medium text-ink">{name}</span>
+                <span className="ml-auto text-xs text-accent">→</span>
               </a>
             ))}
           </div>
@@ -318,16 +318,16 @@ export default function YachtShowsPage() {
       </section>
 
       {/* Strategic context */}
-      <section className="section bg-[#0a1628]" aria-labelledby="strategy-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 450px" }}>
+      <section className="section bg-deal-room" aria-labelledby="strategy-heading" style={{ contentVisibility: "auto", containIntrinsicSize: "0 450px" }}>
         <div className="container-site">
           <div className="mb-10 text-center">
             <h2
               id="strategy-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-ink-inverse sm:text-3xl"
             >
               Where Deals Actually Happen
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-[#8b97a5]">
+            <p className="mx-auto mt-3 max-w-2xl text-ink-inverse-muted">
               Public yacht shows surface marketed listings. The real off-market deal flow happens
               through private networks — before, during, and after each event.
             </p>
@@ -339,10 +339,10 @@ export default function YachtShowsPage() {
               { event: "FLIBS", role: "Buyer Profiling", desc: "World's largest in-water show. The best event to build qualified US buyer relationships." },
               { event: "Dubai", role: "Gulf Mandates", desc: "Gulf principals, sovereign wealth-adjacent buyers, and high-liquidity acquisition mandates." },
             ].map(({ event, role, desc }) => (
-              <div key={event} className="rounded-xl border border-[#112040] bg-[#112040] p-5">
-                <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-[#c9a96e]/70">{role}</p>
-                <h3 className="mb-3 text-base font-bold text-white">{event}</h3>
-                <p className="text-xs leading-relaxed text-[#8b97a5]">{desc}</p>
+              <div key={event} className="rounded-xl border border-deal-room-line bg-deal-room-raised p-5">
+                <p className="mb-1 text-[10px] font-semibold uppercase tracking-widest text-accent/70">{role}</p>
+                <h3 className="mb-3 text-base font-bold text-ink-inverse">{event}</h3>
+                <p className="text-xs leading-relaxed text-ink-inverse-muted">{desc}</p>
               </div>
             ))}
           </div>
@@ -350,20 +350,20 @@ export default function YachtShowsPage() {
       </section>
 
       {/* CTA */}
-      <section className="section bg-white">
+      <section className="section bg-paper-raised">
         <div className="container-site text-center">
-          <h2 className="mb-4 text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl">
+          <h2 className="mb-4 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             Access Off-Market Opportunities Around Show Season
           </h2>
-          <p className="mx-auto mb-8 max-w-xl text-[#4a5568]">
+          <p className="mx-auto mb-8 max-w-xl text-ink-muted">
             The most significant private transactions are made through established buyer profiles before
             public show season begins. Request access now to be positioned ahead of the calendar.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/private-access" className="btn-gold text-base">
+            <Link href="/request-private-access" className="btn-primary">
               Request Private Access
             </Link>
-            <Link href="/submit-yacht" className="btn-outline-gold text-base">
+            <Link href="/sell-your-yacht-privately" className="btn-onDark">
               Submit a Yacht
             </Link>
           </div>

@@ -1,181 +1,133 @@
 import type { Metadata } from "next";
-import BuyerForm from "@/components/BuyerForm";
-import FAQSection from "@/components/FAQSection";
-import PageHero from "@/components/PageHero";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQSection from "@/components/FAQSection";
+import FinalCTA from "@/components/FinalCTA";
+import PageHero from "@/components/PageHero";
 import SchemaOrg from "@/components/SchemaOrg";
+import PrivateAccessForm from "@/components/forms/PrivateAccessForm";
+import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Private Yacht Acquisition Support for Family Offices",
+export const metadata: Metadata = pageMetadata({
+  title: "Family Offices | Private Yacht Acquisition Advisory",
   description:
-    "Discreet yacht acquisition support for family offices and wealth management advisors. Private introductions, NDA-governed transactions, and full confidentiality for UHNW principals.",
-  keywords: ["family office yacht acquisition", "UHNW yacht purchase", "private yacht advisory family office"],
-  alternates: {
-    canonical: "https://www.offmarketyachts.com/family-offices",
-  },
-  openGraph: {
-    url: "https://www.offmarketyachts.com/family-offices",
-    title: "Private Yacht Acquisition Support for Family Offices",
-    description: "Discreet yacht acquisition for family offices and UHNW principals.",
-  },
-};
+    "Yacht acquisition advisory for family offices: confidential sourcing, structured diligence, ownership structure considerations and discreet execution.",
+  path: "/family-offices",
+});
 
-const faqItems = [
+const FAQS = [
   {
-    question: "How do you support family office yacht acquisitions?",
+    question: "Do you work with the family office rather than the principal?",
     answer:
-      "We provide private access to off-market opportunities, coordinate with legal and advisory teams, facilitate NDA-based due diligence, and support confidential negotiations — all with full discretion.",
+      "Routinely. A significant share of activity above $10 million runs through a family office or its advisors, and the principal is frequently not involved until a shortlist exists.",
   },
   {
-    question: "Can you work with our existing legal and advisory team?",
+    question: "Can the principal remain unnamed during a search?",
     answer:
-      "Yes. We regularly coordinate with family office legal counsel, asset advisors, and management teams to ensure a smooth and discreet acquisition process.",
+      "Through the search and initial negotiation, yes. Identity is generally required at closing for title and anti-money-laundering purposes, and purchases through corporate structures are standard.",
   },
   {
-    question: "Do you handle superyacht acquisitions for family offices?",
+    question: "What ongoing costs should be modelled?",
     answer:
-      "Yes. Our primary focus for family office clients is the superyacht and significant motor yacht segment (typically $5M+). All introductions are handled with full confidentiality.",
+      "Plan on roughly ten percent of purchase price annually as a starting figure — crew, dockage, insurance, fuel, maintenance and a refit reserve — then refine it against the specific vessel, crew complement and usage pattern. Depreciation sits outside that figure and typically exceeds it in the early years.",
   },
   {
-    question: "Is the identity of the purchasing principal protected?",
+    question: "Do you advise on ownership structure?",
     answer:
-      "Absolutely. Buyer identity protection is a priority for all family office clients. We never disclose principal identity without explicit authorisation.",
+      "We coordinate with maritime counsel and tax advisors who do. Vessels above roughly $10 million are commonly held in a special purpose company, and transactions are frequently structured as share sales, which changes the diligence materially.",
   },
 ];
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "Family Offices", item: "https://www.offmarketyachts.com/family-offices" },
-  ],
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-};
 
 export default function FamilyOfficesPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, faqSchema]} />
+      <SchemaOrg
+        schema={[
+          breadcrumbSchema([{ name: "Family Offices", path: "/family-offices" }]),
+          faqSchema(FAQS),
+        ]}
+      />
       <Breadcrumb items={[{ label: "Family Offices" }]} />
+
       <PageHero
-        h1="Private Yacht Acquisition Support for Family Offices"
-        subheadline="Discreet, confidential yacht acquisition services for family offices and UHNW principals. Principal identity protected. NDA-standard process throughout. Access subject to review."
-        ctaLabel="Request Family Office Consultation"
-        ctaHref="/private-access"
-        secondaryCtaLabel="Contact Us"
-        secondaryCtaHref="/contact"
+        eyebrow="Family Offices"
+        h1="Yacht acquisition, run as an acquisition."
+        standfirst="A defined brief, a target universe, structured diligence and discreet execution."
+        secondaryCtaLabel="Private Market Intelligence"
+        secondaryCtaHref="/private-market-intelligence"
       />
 
-      <section className="section bg-white">
+      <section className="section">
+        <div className="container-prose prose-editorial">
+          <p>
+            A yacht purchase above ten million dollars has more in common with a private company
+            acquisition than a consumer transaction. There is an asset with staff, a compliance
+            calendar, a corporate wrapper, an annual operating budget and a resale market with
+            almost no public price data.
+          </p>
+
+          <h2>How we structure a mandate</h2>
+          <ul>
+            <li>
+              <strong>Brief.</strong> Length range, hull form, build era and region, cruising
+              intent, crew tolerance, purchase budget and — separately — annual operating budget.
+            </li>
+            <li>
+              <strong>Target universe.</strong> Every vessel worldwide that fits, typically ten to
+              fifty yachts, whether or not any of them are for sale.
+            </li>
+            <li>
+              <strong>Approach.</strong> Discreet, representative-led contact with owners, giving
+              each an easy way to decline. Most will.
+            </li>
+            <li>
+              <strong>Diligence.</strong> Independent survey and machinery specialist, class and
+              flag standing, crew contracts, management agreements and — on a share sale — the
+              corporate entity itself.
+            </li>
+            <li>
+              <strong>Execution.</strong> Offer subject to survey, deposit in escrow, negotiation
+              on findings, closing through counsel.
+            </li>
+          </ul>
+
+          <h2>Reporting</h2>
+          <p>
+            Every approach is reported, including the declines. A search that produces three
+            serious engagements from thirty approaches has worked as intended, and the record of
+            who said no is itself useful — it tells you where the market genuinely is.
+          </p>
+
+          <h2>Where we are candid</h2>
+          <p>
+            Comparable transaction data at this level is poor, because private sales are not
+            published. Any valuation is a triangulation, and we will show you the working rather
+            than present a number as settled fact.
+          </p>
+        </div>
+      </section>
+
+      <section className="section border-y border-line bg-paper-sunken">
         <div className="container-site">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <h2 className="mb-4 text-2xl font-bold text-[#0a1628]">
-                Family Office Advisory Services
+              <h2 className="display text-[30px] text-ink sm:text-[36px]">
+                Register an acquisition brief.
               </h2>
-              <p className="mb-4 text-sm leading-relaxed text-[#4a5568]">
-                Family offices and wealth management advisors require a different
-                level of discretion and service when managing luxury marine asset
-                acquisitions. We understand the confidentiality requirements,
-                legal structures, and principal protection protocols involved.
+              <p className="mt-5 text-[16px] leading-relaxed text-ink-muted">
+                Five questions to open the file. The detailed brief follows in conversation.
               </p>
-              <p className="mb-6 text-sm leading-relaxed text-[#4a5568]">
-                Our team coordinates with family office legal counsel, asset
-                managers, and advisors to facilitate private introductions,
-                manage NDA processes, and support confidential negotiations
-                without principal exposure.
-              </p>
-              <div className="space-y-4">
-                {[
-                  {
-                    title: "Principal Identity Protection",
-                    body: "Buyer identity is never disclosed without explicit authorisation. All principal information is handled under confidentiality protocols.",
-                  },
-                  {
-                    title: "Legal Team Coordination",
-                    body: "We coordinate directly with your legal counsel, trustees, and advisory team throughout the acquisition process.",
-                  },
-                  {
-                    title: "Holding Structure Compatibility",
-                    body: "We are experienced with acquisitions through BVI, Cayman, and other offshore holding structures. Compliance and flag registry guidance available.",
-                  },
-                  {
-                    title: "Post-Acquisition Advisory",
-                    body: "Introductions to management companies, crew agencies, and flag administrators available upon request.",
-                  },
-                ].map(({ title, body }) => (
-                  <div key={title} className="flex gap-4">
-                    <span className="mt-1 shrink-0 text-[#c9a96e]">✓</span>
-                    <div>
-                      <h3 className="font-bold text-[#0a1628]">{title}</h3>
-                      <p className="text-sm leading-relaxed text-[#4a5568]">{body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
-            <div>
-              <BuyerForm title="Request Family Office Consultation" />
-            </div>
+            <PrivateAccessForm />
           </div>
         </div>
       </section>
 
-      {/* Principal Protection Protocol */}
-      <section className="section bg-[#0a1628]" aria-labelledby="ppp-heading">
-        <div className="container-site">
-          <div className="mb-10 text-center">
-            <h2
-              id="ppp-heading"
-              className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
-            >
-              Principal Protection Protocol
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl text-[#8b97a5]">
-              Family office acquisitions require a higher standard of
-              confidentiality. Our protocol is designed to protect the principal
-              at every stage.
-            </p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {[
-              {
-                icon: "👤",
-                title: "Identity Not Disclosed Without Consent",
-                body: "Principal identity is never disclosed to sellers, brokers, or third parties without explicit written authorisation from your office.",
-              },
-              {
-                icon: "🏛",
-                title: "Acquisition via Legal Structures",
-                body: "We are experienced with acquisitions through BVI, Cayman, and other offshore holding structures. Compliance and flag registry guidance available.",
-              },
-              {
-                icon: "⚖️",
-                title: "Legal Team Coordination",
-                body: "We coordinate directly with your legal counsel, trustees, and advisory team throughout the acquisition process — ensuring a seamless and discreet experience.",
-              },
-            ].map(({ icon, title, body }) => (
-              <div key={title} className="rounded-lg border border-[#112040] bg-[#112040] p-6">
-                <div className="mb-3 text-2xl">{icon}</div>
-                <h3 className="mb-2 font-bold text-white">{title}</h3>
-                <p className="text-sm leading-relaxed text-[#8b97a5]">{body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="defer-render">
+        <FAQSection faqs={FAQS} />
+      </div>
 
-      <FAQSection items={faqItems} title="Family Office FAQs" />
+      <FinalCTA />
     </>
   );
 }

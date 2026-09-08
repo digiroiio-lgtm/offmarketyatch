@@ -1,83 +1,66 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
-import Header from "@/components/Header";
+import AttributionTracker from "@/components/AttributionTracker";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import SchemaOrg from "@/components/SchemaOrg";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.offmarketyachts.com"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default:
-      "OffMarketYachts.com – Private Off-Market Yachts for Qualified Buyers & Sellers",
-    template: "%s | OffMarketYachts.com",
+    default: "Off-Market Yachts for Sale | Private Yacht Opportunities — OffMarketYacht",
+    template: `%s | ${SITE.name}`,
   },
-  description:
-    "OffMarketYachts.com is a private platform for off-market yachts, superyachts, motor yachts, catamarans, and luxury marine assets not publicly listed. Buyer access and discreet seller representation available.",
-  keywords: [
-    "off market yachts",
-    "off market yacht",
-    "off market superyachts",
-    "private yacht listings",
-    "luxury yachts for sale off market",
-    "private yacht deals",
-    "exclusive yacht opportunities",
-    "off market motor yacht",
-    "off market catamaran",
-    "off market trimaran",
-  ],
-  authors: [{ name: "OffMarketYachts.com" }],
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.legalName }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.offmarketyachts.com",
-    siteName: "OffMarketYachts.com",
-    title:
-      "OffMarketYachts.com – Private Off-Market Yachts for Qualified Buyers & Sellers",
-    description:
-      "A private, high-trust platform for off-market yachts and superyachts not publicly listed. Buyer access and discreet seller representation.",
+    url: SITE.url,
+    siteName: SITE.name,
+    title: "Off-Market Yachts for Sale | Private Yacht Opportunities",
+    description: SITE.description,
     images: [
       {
         url: "/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "OffMarketYachts.com – Private Yacht Opportunities",
+        alt: `${SITE.name} — ${SITE.tagline}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "OffMarketYachts.com – Private Off-Market Yachts",
-    description:
-      "Private platform for off-market yachts and superyachts. Qualified buyers and discreet seller representation.",
+    title: "Off-Market Yachts for Sale | Private Yacht Opportunities",
+    description: SITE.description,
     images: ["/og-default.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
-  },
-  alternates: {
-    canonical: "https://www.offmarketyachts.com",
-  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  alternates: { canonical: SITE.url },
+  formatDetection: { telephone: false },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
-      <body className="flex min-h-full flex-col bg-white text-[#0a1628]">
-        {/* Inline script runs before hydration to set the correct theme class without flash */}
+      <body className="flex min-h-full flex-col bg-paper text-ink">
+        {/* Applies the stored theme before paint so there is no flash. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`,
           }}
         />
+        <SchemaOrg schema={[organizationSchema(), websiteSchema()]} />
+        <AttributionTracker />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1 pb-[68px] md:pb-0">
+          {children}
+        </main>
         <Footer />
         <StickyMobileCTA />
       </body>

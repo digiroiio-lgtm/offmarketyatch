@@ -1,130 +1,96 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import PageHero from "@/components/PageHero";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import FinalCTA from "@/components/FinalCTA";
+import PageHero from "@/components/PageHero";
 import SchemaOrg from "@/components/SchemaOrg";
+import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "A Private Marketplace for Off-Market Yacht Opportunities",
+export const metadata: Metadata = pageMetadata({
+  title: "About | The Private Side of the Yacht Market",
   description:
-    "About OffMarketYachts.com — a private, high-trust platform connecting qualified buyers, owners, and brokers with off-market yacht and superyacht opportunities.",
-  alternates: {
-    canonical: "https://www.offmarketyachts.com/about",
-  },
-  openGraph: {
-    url: "https://www.offmarketyachts.com/about",
-    title: "About OffMarketYachts.com",
-    description: "A private, high-trust platform for off-market yacht opportunities.",
-  },
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "About", item: "https://www.offmarketyachts.com/about" },
-  ],
-};
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "OffMarketYachts.com",
-  url: "https://www.offmarketyachts.com",
-  description: "A private, high-trust platform for off-market yachts, superyachts, motor yachts, catamarans, and luxury marine assets not publicly listed.",
-  contactPoint: {
-    "@type": "ContactPoint",
-    contactType: "customer service",
-    url: "https://www.offmarketyachts.com/contact",
-  },
-};
+    "OffMarketYacht is a private acquisition platform for confidential and off-market yacht opportunities, built for qualified buyers in the United States and internationally.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <>
-      <SchemaOrg schema={[breadcrumbSchema, organizationSchema]} />
+      <SchemaOrg schema={breadcrumbSchema([{ name: "About", path: "/about" }])} />
       <Breadcrumb items={[{ label: "About" }]} />
+
       <PageHero
-        h1="A Private Marketplace for Off-Market Yacht Opportunities"
-        subheadline="Built for discretion, trust, and qualified introductions. We connect serious buyers, owners, and advisors away from the noise of public markets."
-        ctaLabel="Request Private Access"
-        ctaHref="/private-access"
-        secondaryCtaLabel="Submit a Yacht"
-        secondaryCtaHref="/submit-yacht"
+        eyebrow="About"
+        h1="The private side of the yacht market."
+        standfirst="A confidential acquisition platform, not a listing site."
+        secondaryCtaLabel="Contact Us"
+        secondaryCtaHref="/contact"
       />
 
-      <section className="section bg-white">
-        <div className="container-site">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-6 text-2xl font-bold text-[#0a1628]">
-              Our Mission
-            </h2>
-            <p className="mb-4 text-base leading-relaxed text-[#4a5568]">
-              OffMarketYachts.com was created to serve a specific need in the
-              yacht market: connecting qualified buyers and serious sellers
-              through private, confidential channels — without the exposure,
-              speculation, and inefficiency of public marketplaces.
-            </p>
-            <p className="mb-4 text-base leading-relaxed text-[#4a5568]">
-              A significant proportion of the world&apos;s most desirable yachts
-              and superyachts are acquired and sold privately, through owner
-              networks, broker relationships, and confidential introductions.
-              We exist to facilitate these transactions professionally.
-            </p>
-            <p className="mb-10 text-base leading-relaxed text-[#4a5568]">
-              We are not a listing platform. We are a private, high-trust
-              introduction service for qualified principals. All information
-              shared through our platform is handled with strict
-              confidentiality, and NDA-based processes are standard for
-              significant transactions.
-            </p>
+      <section className="section">
+        <div className="container-prose prose-editorial">
+          <p>
+            {SITE.legalName} exists because the yacht market has two layers and only one of them
+            is visible. Public marketplaces show the yachts whose owners have decided to
+            advertise. Alongside that sits a larger, quieter population of vessels whose owners
+            would transact at the right number and have chosen not to be listed.
+          </p>
 
-            <h2 className="mb-6 text-2xl font-bold text-[#0a1628]">
-              Who We Serve
-            </h2>
-            <div className="grid gap-5 sm:grid-cols-3">
-              {[
-                {
-                  title: "Qualified Buyers",
-                  body: "UHNW individuals, family offices, and institutional investors seeking private access to premium yacht acquisitions.",
-                },
-                {
-                  title: "Owners & Representatives",
-                  body: "Yacht owners, owner advisors, and legal representatives who require discreet, qualified buyer introductions.",
-                },
-                {
-                  title: "Yacht Brokers",
-                  body: "Licensed brokers seeking off-market deal flow, buyer introductions, and co-brokerage cooperation.",
-                },
-              ].map(({ title, body }) => (
-                <div key={title} className="rounded-lg border border-[#e8ecf0] p-5">
-                  <h3 className="mb-2 font-bold text-[#0a1628]">{title}</h3>
-                  <p className="text-sm leading-relaxed text-[#4a5568]">{body}</p>
-                </div>
-              ))}
-            </div>
+          <h2>What we do</h2>
+          <p>
+            We source confidential and privately available yacht opportunities through a network
+            of owners, captains, managers and cooperating brokers, and present them to qualified
+            buyers in masked form. Where a buyer&rsquo;s requirement is not met by what is
+            available, we run retained acquisition searches — approaching the owners of matching
+            vessels directly, on the buyer&rsquo;s behalf.
+          </p>
+          <p>
+            On the sell side, we help owners test buyer demand privately before deciding whether
+            a public listing is warranted at all.
+          </p>
 
-            <div className="mt-12 rounded-lg border border-[#c9a96e]/30 bg-[#f5f7fa] p-6 text-sm leading-relaxed text-[#4a5568]">
-              <strong className="text-[#0a1628]">Disclaimer:</strong>{" "}
-              OffMarketYachts.com is a private lead-generation and advisory
-              platform. Yacht availability, pricing, and specifications are
-              subject to verification and owner approval. We do not claim
-              ownership of any listed or represented vessels. All enquiries
-              are handled in confidence.
-            </div>
+          <h2>How we handle confidentiality</h2>
+          <p>
+            Masking on this platform is architectural rather than cosmetic. Identity, shipyard,
+            exact asking price, full specification and current position are held server-side and
+            never enter a page, a structured-data block, a sitemap entry or an API response. There
+            is nothing hidden in the source to uncover, because it was never sent.
+          </p>
+          <p>
+            Disclosure follows qualification. A form submission does not release confidential
+            information; a person reviews every request against the terms the owner has set.
+          </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/private-access" className="btn-gold">
-                Request Private Access
-              </Link>
-              <Link href="/contact" className="btn-outline-gold">
-                Contact Us
-              </Link>
-            </div>
-          </div>
+          <h2>What we will not do</h2>
+          <ul>
+            <li>
+              Present an inferred opportunity as a confirmed seller. Entries where availability is
+              unconfirmed are labelled <strong>Potential Opportunity</strong> and say so plainly.
+            </li>
+            <li>
+              Manufacture urgency. No countdowns, no viewer counts, no &ldquo;seller
+              motivated&rdquo; unless the record genuinely supports it.
+            </li>
+            <li>
+              Use a photograph of a similar yacht and let a buyer assume it is the vessel. Where
+              no authorised imagery exists, the card carries a generated profile study, labelled.
+            </li>
+            <li>
+              Value a yacht from a web form, or tell an owner a buyer exists when one does not.
+            </li>
+          </ul>
+
+          <h2>Who we work with</h2>
+          <p>
+            Principals, family offices and their advisors, and cooperating brokers representing
+            buyers. Most of what we handle is in the United States — Florida in particular — with
+            secondary inventory in the Bahamas, the Caribbean, the Mediterranean and the Gulf.
+          </p>
         </div>
       </section>
+
+      <FinalCTA />
     </>
   );
 }

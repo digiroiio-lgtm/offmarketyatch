@@ -1,32 +1,37 @@
 import Link from "next/link";
 
-interface BreadcrumbItem {
+export interface Crumb {
   label: string;
   href?: string;
 }
 
-export default function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+export default function Breadcrumb({ items }: { items: Crumb[] }) {
   return (
-    <nav
-      aria-label="Breadcrumb"
-      className="border-b border-[#e8ecf0] bg-[#f5f7fa] py-3"
-    >
+    <nav aria-label="Breadcrumb" className="border-b border-line bg-paper-sunken">
       <div className="container-site">
-        <ol className="flex flex-wrap items-center gap-1 text-xs text-[#8b97a5]">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 py-3">
           <li>
-            <Link href="/" className="transition hover:text-[#c9a96e]">
+            <Link
+              href="/"
+              className="label-mono text-ink-faint transition-colors hover:text-accent"
+            >
               Home
             </Link>
           </li>
-          {items.map((item, i) => (
-            <li key={i} className="flex items-center gap-1">
-              <span aria-hidden="true">›</span>
+          {items.map((item, index) => (
+            <li key={`${item.label}-${index}`} className="flex items-center gap-2">
+              <span aria-hidden="true" className="text-ink-faint">
+                /
+              </span>
               {item.href ? (
-                <Link href={item.href} className="transition hover:text-[#c9a96e]">
+                <Link
+                  href={item.href}
+                  className="label-mono text-ink-faint transition-colors hover:text-accent"
+                >
                   {item.label}
                 </Link>
               ) : (
-                <span aria-current="page" className="text-[#0a1628]">
+                <span aria-current="page" className="label-mono text-ink">
                   {item.label}
                 </span>
               )}

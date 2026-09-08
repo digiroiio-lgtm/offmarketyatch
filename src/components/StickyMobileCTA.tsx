@@ -1,22 +1,38 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { track } from "@/lib/analytics";
+
+/** Routes where a second, competing CTA would just be in the way. */
+const SUPPRESSED_PREFIXES = [
+  "/request-private-access",
+  "/sell-your-yacht-privately",
+  "/admin",
+];
 
 export default function StickyMobileCTA() {
+  const pathname = usePathname();
+  if (SUPPRESSED_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
+
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 flex gap-2 border-t border-[#112040] bg-[#0a1628] px-4 py-3 md:hidden">
-      <Link
-        href="/submit-yacht"
-        className="btn-outline-gold flex-1 py-3 text-xs"
-      >
-        Submit Confidentially
-      </Link>
-      <Link
-        href="/access"
-        className="btn-gold flex-1 py-3 text-xs"
-      >
-        Apply for Access
-      </Link>
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-deal-room-line bg-deal-room/95 px-4 py-3 backdrop-blur md:hidden">
+      <div className="flex gap-2.5">
+        <Link
+          href="/off-market-yachts"
+          className="btn-onDark flex-1 py-3 text-[11px]"
+        >
+          Browse Market
+        </Link>
+        <Link
+          href="/request-private-access"
+          onClick={() => track("request_access_click", { form: "sticky_mobile" })}
+          className="btn-primary flex-1 py-3 text-[11px]"
+        >
+          Private Access
+        </Link>
+      </div>
     </div>
   );
 }

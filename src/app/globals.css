@@ -1,130 +1,371 @@
 @import "tailwindcss";
 
-/* Register class-based dark mode variant for Tailwind v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+  ─────────────────────────────────────────────────────────────────────────────
+  OFFMARKETYACHT — DESIGN TOKENS
+  ─────────────────────────────────────────────────────────────────────────────
+  The reference points are a private-equity deal room and a terminal-style
+  information hierarchy, not the navy-and-gold vocabulary the yacht industry
+  defaults to. Ink and paper carry the page; a single copper accent marks
+  action; a muted green marks live system state and nothing else.
+
+  Every colour is a token. Dark mode re-points the tokens rather than
+  overriding painted classes, so there are no `!important` cascades.
+*/
+
+:root {
+  /* Surfaces */
+  --paper: #f7f6f3;
+  --paper-raised: #ffffff;
+  --paper-sunken: #efedE8;
+  --deal-room: #0c0f13;
+  --deal-room-raised: #141920;
+  --deal-room-line: #232a33;
+
+  /* Ink */
+  --ink: #0c0f13;
+  --ink-strong: #000000;
+  --ink-muted: #5b6672;
+  --ink-faint: #8d97a2;
+  --ink-inverse: #f4f3f0;
+  --ink-inverse-muted: #97a1ad;
+
+  /* Lines */
+  --line: #e2e0da;
+  --line-strong: #cfccc4;
+
+  /* Accent — burnt copper. Used for action and emphasis only. */
+  --accent: #a85c2c;
+  --accent-hover: #8f4c22;
+  --accent-soft: #f0e3d8;
+  --accent-ink: #ffffff;
+
+  /* Status — reserved for genuine system state */
+  --signal: #2f7d5f;
+  --signal-soft: #e3f0ea;
+  --lock: #7a6a55;
+
+  --radius: 2px;
+  --radius-lg: 4px;
+}
+
+.dark {
+  --paper: #0a0d10;
+  --paper-raised: #12171d;
+  --paper-sunken: #070a0c;
+  --deal-room: #070a0c;
+  --deal-room-raised: #12171d;
+  --deal-room-line: #212832;
+
+  --ink: #eceae5;
+  --ink-strong: #ffffff;
+  --ink-muted: #9aa4b0;
+  --ink-faint: #6e7883;
+  --ink-inverse: #eceae5;
+  --ink-inverse-muted: #9aa4b0;
+
+  --line: #212832;
+  --line-strong: #2d3540;
+
+  --accent: #d08750;
+  --accent-hover: #e09a66;
+  --accent-soft: #2a1f16;
+  --accent-ink: #0a0d10;
+
+  --signal: #52b98d;
+  --signal-soft: #10251d;
+  --lock: #a08d72;
+}
+
 @theme inline {
-  /* Brand colours */
-  --color-navy:      #0a1628;
-  --color-navy-deep: #060e1a;
-  --color-navy-mid:  #112040;
-  --color-gold:      #c9a96e;
-  --color-gold-light:#e2c99a;
-  --color-grey:      #8b97a5;
-  --color-grey-light:#f5f7fa;
-  --color-grey-mid:  #e8ecf0;
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-deal-room: var(--deal-room);
+  --color-deal-room-raised: var(--deal-room-raised);
+  --color-deal-room-line: var(--deal-room-line);
+  --color-ink: var(--ink);
+  --color-ink-strong: var(--ink-strong);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-ink-inverse-muted: var(--ink-inverse-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-lock: var(--lock);
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+    Georgia, ui-serif, serif;
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter,
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+.dark html,
+html.dark {
+  color-scheme: dark;
 }
 
 body {
-  background: #ffffff;
-  color: #0a1628;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
 }
 
-/* smooth focus rings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
 *:focus-visible {
-  outline: 2px solid #c9a96e;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
+  border-radius: 1px;
 }
 
-/* utility helpers */
-.text-gold   { color: #c9a96e; }
-.bg-navy     { background-color: #0a1628; }
-.bg-navy-mid { background-color: #112040; }
-.border-gold { border-color: #c9a96e; }
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
 
-/* form base */
+/* ─── Layout ──────────────────────────────────────────────────────────────── */
+
+.container-site {
+  @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8;
+}
+.container-wide {
+  @apply mx-auto w-full max-w-[1480px] px-5 sm:px-8;
+}
+.container-prose {
+  @apply mx-auto w-full max-w-[720px] px-5 sm:px-8;
+}
+.section {
+  @apply py-16 lg:py-24;
+}
+.section-tight {
+  @apply py-12 lg:py-16;
+}
+
+/* ─── Typography ──────────────────────────────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-weight: 400;
+}
+
+/* Terminal-style micro-label. The workhorse of the data hierarchy. */
+.label-mono {
+  font-family: var(--font-mono);
+  @apply text-[10px] font-medium uppercase leading-none tracking-[0.18em];
+}
+
+.data-value {
+  font-family: var(--font-mono);
+  @apply text-sm tabular-nums;
+}
+
+.prose-editorial {
+  @apply text-[17px] leading-[1.75] text-ink-muted;
+}
+.prose-editorial p + p {
+  @apply mt-5;
+}
+.prose-editorial h2 {
+  font-family: var(--font-display);
+  @apply mt-12 mb-4 text-2xl leading-tight tracking-tight text-ink sm:text-[28px];
+}
+.prose-editorial h3 {
+  @apply mt-9 mb-3 text-lg font-semibold text-ink;
+}
+.prose-editorial ul {
+  @apply mt-4 space-y-2 pl-0;
+}
+.prose-editorial li {
+  @apply relative pl-5;
+}
+.prose-editorial li::before {
+  content: "";
+  @apply absolute left-0 top-[0.7em] h-px w-3 bg-accent;
+}
+.prose-editorial a {
+  @apply text-ink underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-accent;
+}
+.prose-editorial strong {
+  @apply font-semibold text-ink;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+
+/*
+  Tailwind v4 cannot `@apply` a plain CSS class, so the shared button base is
+  declared once here and composed by each variant.
+*/
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-onDark {
+  @apply inline-flex items-center justify-center gap-2 rounded-[2px] px-6 py-3.5
+         text-[12px] font-semibold uppercase leading-none tracking-[0.12em]
+         transition-colors duration-150;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-secondary {
+  @apply border;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: var(--paper-raised);
+}
+/* For use on deal-room (dark) panels regardless of theme */
+.btn-onDark {
+  @apply border;
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #f4f3f0;
+}
+.btn-onDark:hover {
+  border-color: #f4f3f0;
+  background: rgba(255, 255, 255, 0.07);
+}
+.btn-sm {
+  @apply px-4 py-2.5 text-[11px];
+}
+
+/* ─── Forms ───────────────────────────────────────────────────────────────── */
+
 .form-input {
-  @apply w-full rounded border border-[#e8ecf0] bg-white px-4 py-3 text-[#0a1628]
-         placeholder-[#8b97a5] transition focus:border-[#c9a96e] focus:outline-none
-         focus:ring-1 focus:ring-[#c9a96e];
+  @apply w-full rounded-[2px] border px-4 py-3 text-[15px] transition-colors;
+  border-color: var(--line-strong);
+  background: var(--paper-raised);
+  color: var(--ink);
 }
-
+.form-input::placeholder {
+  color: var(--ink-faint);
+}
+.form-input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--accent);
+}
 .form-label {
-  @apply mb-1 block text-sm font-medium text-[#0a1628];
+  @apply mb-1.5 block text-[13px] font-medium;
+  color: var(--ink);
+}
+.form-hint {
+  @apply mt-1 text-[12px];
+  color: var(--ink-faint);
+}
+select.form-input option {
+  background: var(--paper-raised);
+  color: var(--ink);
 }
 
-/* gold button */
-.btn-gold {
-  @apply inline-flex items-center justify-center rounded bg-[#c9a96e] px-7 py-3.5
-         text-sm font-semibold uppercase tracking-widest text-[#0a1628] transition
-         hover:bg-[#e2c99a] focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-2;
+/* Choice tiles used by the qualification funnel */
+.choice-tile {
+  @apply flex w-full items-center justify-between gap-3 rounded-[2px] border px-4 py-3.5
+         text-left text-[15px] transition-colors;
+  border-color: var(--line-strong);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+.choice-tile:hover {
+  border-color: var(--accent);
+}
+.choice-tile[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
-.btn-outline-gold {
-  @apply inline-flex items-center justify-center rounded border border-[#c9a96e] px-7 py-3.5
-         text-sm font-semibold uppercase tracking-widest text-[#c9a96e] transition
-         hover:bg-[#c9a96e] hover:text-[#0a1628] focus:ring-2 focus:ring-[#c9a96e] focus:ring-offset-2;
+/* ─── Surfaces ────────────────────────────────────────────────────────────── */
+
+.panel {
+  @apply rounded-[2px] border;
+  border-color: var(--line);
+  background: var(--paper-raised);
+}
+.deal-panel {
+  background: var(--deal-room);
+  color: var(--ink-inverse);
+}
+.hairline {
+  border-color: var(--line);
 }
 
-.btn-white {
-  @apply inline-flex items-center justify-center rounded bg-white px-7 py-3.5
-         text-sm font-semibold uppercase tracking-widest text-[#0a1628] transition
-         hover:bg-[#f5f7fa] focus:ring-2 focus:ring-white focus:ring-offset-2;
+/* Fine grid texture for deal-room panels */
+.grid-texture {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-/* section spacing */
-.section { @apply py-16 lg:py-24; }
-.section-narrow { @apply py-12 lg:py-16; }
-.container-site { @apply mx-auto max-w-6xl px-5 sm:px-8; }
+/* ─── Motion ──────────────────────────────────────────────────────────────── */
 
-/* ─── Dark mode overrides ─── */
-html.dark body {
-  background-color: #0a1628;
-  color: #e8ecf0;
+@keyframes pulse-signal {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
 }
-
-/* Light section backgrounds */
-html.dark .bg-white {
-  background-color: #0d1f35 !important;
-}
-html.dark .bg-\[\#f5f7fa\] {
-  background-color: #080f1d !important;
+.signal-dot {
+  animation: pulse-signal 2.4s ease-in-out infinite;
 }
 
-/* Primary text on light backgrounds */
-html.dark .text-\[\#0a1628\] {
-  color: #e8ecf0 !important;
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-html.dark .text-\[\#4a5568\] {
-  color: #8b97a5 !important;
+.ticker-track {
+  animation: ticker-scroll 48s linear infinite;
 }
-
-/* Borders */
-html.dark .border-\[\#e8ecf0\] {
-  border-color: #1e3052 !important;
-}
-
-/* Dividers (FAQ, etc.) */
-html.dark .divide-\[\#e8ecf0\] > :not([hidden]) ~ :not([hidden]) {
-  border-color: #1e3052 !important;
+.ticker-track:hover,
+.ticker-viewport:focus-within .ticker-track {
+  animation-play-state: paused;
 }
 
-/* Form elements */
-html.dark .form-input {
-  background-color: #0d1f35 !important;
-  color: #e8ecf0 !important;
-  border-color: #1e3052 !important;
-}
-html.dark .form-input::placeholder {
-  color: #4a5568;
-}
-html.dark .form-label {
-  color: #e8ecf0 !important;
-}
-html.dark select.form-input option {
-  background-color: #0d1f35;
-}
-
-/* White button variant in dark mode */
-html.dark .btn-white {
-  background-color: #1e3052;
-  color: #e8ecf0;
-}
-html.dark .btn-white:hover {
-  background-color: #243d66;
+/* Below-the-fold sections skip layout/paint work until scrolled near */
+.defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 900px;
 }
