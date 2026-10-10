@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AttributionTracker from "@/components/AttributionTracker";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Header from "@/components/Header";
 import SchemaOrg from "@/components/SchemaOrg";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <SchemaOrg schema={[organizationSchema(), websiteSchema()]} />
+        <GoogleAnalytics />
         <AttributionTracker />
         <Header />
         <main id="main" className="flex-1 pb-[68px] md:pb-0">
