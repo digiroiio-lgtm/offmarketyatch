@@ -17,6 +17,8 @@ export default function GoogleAnalytics() {
       <Script id="ga4-init" strategy="afterInteractive">
         {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_ID}');`}
       </Script>
+      {/* Event values (ev_v1 model); see public/omy-ga4-values.js. */}
+      <Script src="/omy-ga4-values.js" strategy="afterInteractive" />
     </>
   );
 }
