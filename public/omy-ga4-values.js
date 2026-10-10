@@ -126,7 +126,8 @@
       var c = ctxNow();
       if (isListing) send('view_listing', build('view_listing', c));
       else if (path === '/request-private-access') send('view_request_access', build('view_request_access', c));
-      else if (path === '/sell-your-yacht-privately') send('view_sell_private', build('view_sell_private', c));
+      // Seller-side events never inherit a buyer's listing context.
+      else if (path === '/sell-your-yacht-privately') send('view_sell_private', build('view_sell_private', null));
       else if (path === '/contact') send('view_contact', build('view_contact', c));
       else if (/^\/private-market-intelligence\/.+/.test(path)) send('view_market_intel', build('view_market_intel', c));
     })();
@@ -166,7 +167,7 @@
   // accepted the submission, so invalid or rejected submits are not counted.
   window.omyLead = function (kind) {
     var name = kind === 'seller' ? 'generate_seller_lead' : 'generate_lead';
-    send(name, build(name, ctxNow()));
+    send(name, build(name, kind === 'seller' ? null : ctxNow()));
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', onPage);
