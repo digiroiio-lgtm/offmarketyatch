@@ -139,6 +139,11 @@ if (staticFiles.length === 0 && htmlFiles.length === 0) {
 scan(staticFiles, "browser bundle");
 scan(htmlFiles, "prerendered HTML");
 scan(rscFiles, "RSC payload");
+// llms.txt / llms-full.txt are route handlers: their bodies are public too.
+scan(
+  ["llms.txt", "llms-full.txt"].map((name) => join(APP_DIR, `${name}.body`)),
+  "llms text file"
+);
 
 // Exact lengths of confidential listings must not appear on their own pages —
 // they are published as a band, and alt text is the classic place they slip out.
