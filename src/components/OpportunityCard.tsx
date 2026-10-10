@@ -4,8 +4,7 @@ import Link from "next/link";
 
 import { BadgeRow } from "@/components/Badge";
 import OpportunityVisual from "@/components/OpportunityVisual";
-import { track } from "@/lib/analytics";
-import { lengthBandFor, priceBandFor, relativeDayLabel } from "@/lib/format";
+import { relativeDayLabel } from "@/lib/format";
 import type { PublicOpportunity } from "@/lib/types";
 
 /**
@@ -25,18 +24,7 @@ export default function OpportunityCard({
   compact?: boolean;
 }) {
   const href = `/off-market-yachts/${opportunity.slug}`;
-  const priceBand = priceBandFor(opportunity.priceMin, opportunity.priceMax);
   const isPotential = opportunity.availabilityType === "POTENTIAL OPPORTUNITY";
-
-  function onOpen() {
-    track("listing_view", {
-      listing_id: opportunity.reference,
-      price_band: priceBand?.key ?? "on-request",
-      length_band: lengthBandFor(opportunity.lengthFt).key,
-      location: opportunity.locationPublic,
-      type: opportunity.type,
-    });
-  }
 
   return (
     <article className="group relative flex flex-col border border-line bg-paper-raised transition-colors hover:border-line-strong">
@@ -75,7 +63,7 @@ export default function OpportunityCard({
         </p>
 
         <h3 className="mt-2.5 text-[19px] font-semibold leading-snug tracking-tight text-ink">
-          <Link href={href} onClick={onOpen} className="after:absolute after:inset-0">
+          <Link href={href} className="after:absolute after:inset-0">
             {opportunity.titlePublic}
           </Link>
         </h3>

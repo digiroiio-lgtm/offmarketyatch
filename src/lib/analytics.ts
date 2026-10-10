@@ -16,8 +16,6 @@ export type AnalyticsEvent =
   | "search_started"
   | "search_completed"
   | "filter_used"
-  | "listing_view"
-  | "private_listing_view"
   | "request_access_click"
   | "request_access_started"
   | "request_access_completed"

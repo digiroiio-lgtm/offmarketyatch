@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import {
   Field,
@@ -51,19 +51,6 @@ export default function ListingInquiryForm({
 
   const priceBand = priceBandFor(opportunity.priceMin, opportunity.priceMax);
   const lengthBand = lengthBandFor(opportunity.lengthFt);
-
-  // A confidential detail page is a distinct, higher-intent view.
-  useEffect(() => {
-    if (opportunity.confidentialityLevel === "confidential") {
-      track("private_listing_view", {
-        listing_id: opportunity.reference,
-        price_band: priceBand?.key ?? "on-request",
-        length_band: lengthBand.key,
-        location: opportunity.locationPublic,
-        type: opportunity.type,
-      });
-    }
-  }, [opportunity, priceBand, lengthBand]);
 
   function markStarted() {
     if (started.current) return;
