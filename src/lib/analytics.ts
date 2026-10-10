@@ -60,6 +60,7 @@ interface Attribution {
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -131,14 +132,22 @@ export function getAttribution(): Attribution {
   return safeSessionRead() ?? captureAttribution();
 }
 
-/** Push a GA4 event with attribution and page context attached. */
+/**
+ * Send a GA4 event with attribution and page context attached. Uses gtag when
+ * GA4 is loaded; otherwise the object is queued on dataLayer so Google Tag
+ * Manager (or a later gtag load) can still consume it.
+ */
 export function track(event: AnalyticsEvent, payload: EventPayload = {}): void {
   if (typeof window === "undefined") return;
-  window.dataLayer = window.dataLayer ?? [];
-  window.dataLayer.push({
-    event,
+  const params = {
     ...getAttribution(),
     page_path: window.location.pathname,
     ...payload,
-  });
+  };
+  if (typeof window.gtag === "function") {
+    window.gtag("event", event, params);
+    return;
+  }
+  window.dataLayer = window.dataLayer ?? [];
+  window.dataLayer.push({ event, ...params });
 }
