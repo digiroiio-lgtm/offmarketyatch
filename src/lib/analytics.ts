@@ -16,17 +16,13 @@ export type AnalyticsEvent =
   | "search_started"
   | "search_completed"
   | "filter_used"
-  | "listing_view"
-  | "private_listing_view"
   | "request_access_click"
   | "request_access_started"
   | "request_access_completed"
   | "private_search_started"
   | "private_search_completed"
   | "sell_yacht_started"
-  | "sell_yacht_completed"
-  | "phone_click"
-  | "email_click";
+  | "sell_yacht_completed";
 
 export interface EventPayload {
   listing_id?: string;

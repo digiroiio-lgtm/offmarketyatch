@@ -47,7 +47,6 @@ export default function ContactClient() {
                 <dd className="mt-1">
                   <a
                     href={`mailto:${SITE.email}`}
-                    onClick={() => track("email_click", { form: "contact" })}
                     className="text-[16px] text-ink underline decoration-accent underline-offset-4 hover:text-accent"
                   >
                     {SITE.email}
@@ -59,7 +58,6 @@ export default function ContactClient() {
                 <dd className="mt-1">
                   <a
                     href={`tel:${SITE.phoneHref}`}
-                    onClick={() => track("phone_click", { form: "contact" })}
                     className="text-[16px] text-ink underline decoration-accent underline-offset-4 hover:text-accent"
                   >
                     {SITE.phoneDisplay}
