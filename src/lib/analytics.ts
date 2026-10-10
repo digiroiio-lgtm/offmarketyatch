@@ -61,6 +61,8 @@ declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
     gtag?: (...args: unknown[]) => void;
+    /** Provided by public/omy-ga4-values.js; sends a valued lead event. */
+    omyLead?: (kind: "buyer" | "seller") => void;
   }
 }
 
@@ -139,6 +141,15 @@ export function getAttribution(): Attribution {
  */
 export function track(event: AnalyticsEvent, payload: EventPayload = {}): void {
   if (typeof window === "undefined") return;
+
+  // Completed events fire only after the server accepted the lead, so they are
+  // the right moment for the valued GA4 lead events.
+  if (event === "request_access_completed" || event === "private_search_completed") {
+    window.omyLead?.("buyer");
+  } else if (event === "sell_yacht_completed") {
+    window.omyLead?.("seller");
+  }
+
   const params = {
     ...getAttribution(),
     page_path: window.location.pathname,
