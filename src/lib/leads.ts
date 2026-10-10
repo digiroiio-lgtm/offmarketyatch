@@ -213,13 +213,75 @@ async function forwardToWebhook(lead: StoredLead): Promise<void> {
   }
 }
 
+/**
+ * Formspree delivers each lead to the team's inbox and keeps a durable copy in
+ * its dashboard, which covers the gap left by the per-instance buffer below.
+ * Called server-side so the funnel keeps its validation, honeypot and
+ * attribution. The endpoint is public by design; override via env if needed.
+ */
+const FORMSPREE_ENDPOINT = process.env.FORMSPREE_ENDPOINT ?? "https://formspree.io/f/xwlvbqdo";
+
+const KIND_LABELS: Record<LeadKind, string> = {
+  "private-access": "Private access request",
+  "listing-inquiry": "Listing inquiry",
+  "private-search": "Private search",
+  "sell-side": "Sell-side submission",
+};
+
+async function forwardToFormspree(lead: StoredLead): Promise<void> {
+  if (!FORMSPREE_ENDPOINT) return;
+
+  // Formspree renders flat fields best, so answers and attribution are
+  // prefixed rather than nested.
+  const payload: Record<string, string> = {
+    _subject: `[OffMarketYacht] ${KIND_LABELS[lead.kind]}${
+      lead.listingReference ? ` — ${lead.listingReference}` : ""
+    }`,
+    lead_id: lead.id,
+    kind: lead.kind,
+    received_at: lead.receivedAt,
+    name: lead.contact.name,
+    email: lead.contact.email,
+    phone: lead.contact.phone,
+  };
+  if (lead.contact.country) payload.country = lead.contact.country;
+  if (lead.contact.preferredContact) payload.preferred_contact = lead.contact.preferredContact;
+  if (lead.contact.company) payload.company = lead.contact.company;
+  if (lead.listingReference) payload.listing_reference = lead.listingReference;
+  if (lead.sourceUrl) payload.source_url = lead.sourceUrl;
+  for (const [key, value] of Object.entries(lead.answers)) payload[`answer_${key}`] = value;
+  for (const [key, value] of Object.entries(lead.attribution)) payload[key] = value;
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) {
+      console.error(
+        JSON.stringify({ event: "lead_formspree_failed", id: lead.id, status: response.status })
+      );
+    }
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        event: "lead_formspree_error",
+        id: lead.id,
+        message: error instanceof Error ? error.message : "unknown",
+      })
+    );
+  }
+}
+
 export async function persistLead(lead: StoredLead): Promise<void> {
   console.info(JSON.stringify({ event: "lead_received", lead }));
 
   buffer.unshift(lead);
   if (buffer.length > MAX_BUFFERED_LEADS) buffer.length = MAX_BUFFERED_LEADS;
 
-  await forwardToWebhook(lead);
+  await Promise.all([forwardToFormspree(lead), forwardToWebhook(lead)]);
 }
 
 export function listLeads(limit = 100): StoredLead[] {
