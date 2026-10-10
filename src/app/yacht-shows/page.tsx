@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
+import { canonical, SITE } from "@/lib/site";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYachts.com",
+  title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
   description:
     "The world's most important yacht shows and yachting events for serious buyers and sellers. Monaco Yacht Show, FLIBS, Cannes, Dubai, Palm Beach — where private off-market deals are made.",
   alternates: {
-    canonical: "https://www.offmarketyachts.com/yacht-shows",
+    canonical: canonical("/yacht-shows"),
   },
   openGraph: {
-    url: "https://www.offmarketyachts.com/yacht-shows",
-    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYachts.com",
+    url: canonical("/yacht-shows"),
+    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
     description:
       "Monaco Yacht Show, FLIBS, Cannes, Dubai, Palm Beach — where qualified buyers and off-market deal flow converge.",
-    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "OffMarketYachts.com" }],
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "OffMarketYacht.com" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYachts.com",
+    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
     description:
       "Where global yacht deals, UHNW buyers, and off-market opportunities converge. Private deal flow runs ahead of the public event calendar.",
     images: ["/og-default.jpg"],
@@ -31,8 +32,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "Global Yacht Shows", item: "https://www.offmarketyachts.com/yacht-shows" },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Global Yacht Shows", item: canonical("/yacht-shows") },
   ],
 };
 

@@ -3,7 +3,7 @@
 export const SITE = {
   name: "OffMarketYacht",
   legalName: "OffMarketYacht.com",
-  url: "https://www.offmarketyachts.com",
+  url: "https://offmarketyacht.com",
   tagline: "The Private Side of the Yacht Market",
   description:
     "Confidential and off-market yacht opportunities sourced through a private international network. Explore privately available motor yachts, explorer yachts and superyachts across Florida, the USA and beyond — by private inquiry.",
