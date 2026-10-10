@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { canonical, SITE } from "@/lib/site";
 import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for OffMarketYachts.com — how we collect, use, and protect your personal information.",
+  description: "Privacy Policy for OffMarketYacht.com — how we collect, use, and protect your personal information.",
   alternates: {
-    canonical: "https://www.offmarketyachts.com/privacy",
+    canonical: canonical("/privacy"),
   },
 };
 
@@ -14,8 +15,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.offmarketyachts.com" },
-    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://www.offmarketyachts.com/privacy" },
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: canonical("/privacy") },
   ],
 };
 
@@ -35,7 +36,7 @@ export default function PrivacyPage() {
             </p>
 
             <p className="mb-6 text-sm leading-relaxed text-ink-muted">
-              OffMarketYachts.com is committed to protecting your privacy. This
+              OffMarketYacht.com is committed to protecting your privacy. This
               policy explains how we collect, use, and safeguard your personal
               information when you use our platform.
             </p>
@@ -71,7 +72,7 @@ export default function PrivacyPage() {
               },
               {
                 title: "8. Contact",
-                body: "For privacy-related enquiries, please contact us through our Contact page at offmarketyachts.com/contact.",
+                body: "For privacy-related enquiries, please contact us through our Contact page at offmarketyacht.com/contact.",
               },
             ].map(({ title, body }) => (
               <div key={title} className="mb-6">

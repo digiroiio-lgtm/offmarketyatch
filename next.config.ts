@@ -8,6 +8,17 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // ── Non-canonical hosts → https://offmarketyacht.com ─────────────────
+      // One canonical host keeps search signals and GA4 sessions together.
+      ...["www.offmarketyacht.com", "offmarketyachts.com", "www.offmarketyachts.com"].map(
+        (host) => ({
+          source: "/:path*",
+          has: [{ type: "host" as const, value: host }],
+          destination: "https://offmarketyacht.com/:path*",
+          permanent: true,
+        })
+      ),
+
       // ── Previous IA → new commercial-intent pages ────────────────────────
       { source: "/buy-off-market-yachts", destination: "/off-market-yachts-for-sale", permanent: true },
       { source: "/sell-off-market-yacht", destination: "/sell-your-yacht-privately", permanent: true },
