@@ -7,7 +7,7 @@ export const SITE = {
   tagline: "The Private Side of the Yacht Market",
   description:
     "Confidential and off-market yacht opportunities sourced through a private international network. Explore privately available motor yachts, explorer yachts and superyachts across Florida, the USA and beyond — by private inquiry.",
-  email: "private@offmarketyachts.com",
+  email: "private@offmarketyacht.com",
   phoneDisplay: "+1 (954) 388-0129",
   phoneHref: "+19543880129",
 } as const;
