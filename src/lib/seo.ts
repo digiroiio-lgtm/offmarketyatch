@@ -70,10 +70,21 @@ export function organizationSchema() {
     name: SITE.legalName,
     alternateName: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/logo.png`,
+    logo: { "@type": "ImageObject", url: `${SITE.url}/logo.png` },
+    image: `${SITE.url}/og-default.jpg`,
     description: SITE.description,
     email: SITE.email,
     telephone: SITE.phoneDisplay,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: SITE.email,
+        telephone: SITE.phoneDisplay,
+        areaServed: ["US", "Worldwide"],
+        availableLanguage: ["English"],
+      },
+    ],
     areaServed: [
       { "@type": "Country", name: "United States" },
       { "@type": "Place", name: "Caribbean" },
@@ -99,14 +110,6 @@ export function websiteSchema() {
     description: SITE.description,
     publisher: { "@id": `${SITE.url}/#organization` },
     inLanguage: "en-US",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE.url}/off-market-yachts?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -172,6 +175,7 @@ export function articleSchema(input: {
     mainEntityOfPage: { "@type": "WebPage", "@id": canonical(input.path) },
     datePublished: input.published,
     dateModified: input.modified,
+    image: `${SITE.url}/og-default.jpg`,
     author: { "@id": `${SITE.url}/#organization` },
     publisher: { "@id": `${SITE.url}/#organization` },
     inLanguage: "en-US",

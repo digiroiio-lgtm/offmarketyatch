@@ -25,35 +25,38 @@ interface Entry {
  * Fixed dates for evergreen pages, so a deploy does not claim every page
  * changed today. Bump one only when its content genuinely changes.
  */
+/** Bump when evergreen or landing-page content genuinely changes. */
+const SITE_LASTMOD = "2026-10-10";
+
 const STATIC_PAGES: Entry[] = [
-  { path: "/", priority: 1.0, changeFrequency: "daily", lastModified: "2026-09-08" },
+  { path: "/", priority: 1.0, changeFrequency: "daily", lastModified: SITE_LASTMOD },
   {
     path: "/off-market-yachts",
     priority: 0.95,
     changeFrequency: "daily",
-    lastModified: "2026-09-08",
+    lastModified: SITE_LASTMOD,
   },
   {
     path: "/sell-your-yacht-privately",
     priority: 0.9,
     changeFrequency: "monthly",
-    lastModified: "2026-09-08",
+    lastModified: SITE_LASTMOD,
   },
   {
     path: "/private-market-intelligence",
     priority: 0.8,
     changeFrequency: "weekly",
-    lastModified: "2026-09-08",
+    lastModified: SITE_LASTMOD,
   },
-  { path: "/owner-representation", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-09-08" },
-  { path: "/yacht-brokers", priority: 0.65, changeFrequency: "monthly", lastModified: "2026-09-08" },
-  { path: "/family-offices", priority: 0.65, changeFrequency: "monthly", lastModified: "2026-09-08" },
-  { path: "/yacht-shows", priority: 0.6, changeFrequency: "monthly", lastModified: "2026-09-08" },
-  { path: "/about", priority: 0.5, changeFrequency: "yearly", lastModified: "2026-09-08" },
-  { path: "/contact", priority: 0.5, changeFrequency: "yearly", lastModified: "2026-09-08" },
-  { path: "/partners/mox-yacht", priority: 0.4, changeFrequency: "yearly", lastModified: "2026-09-08" },
-  { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastModified: "2026-09-08" },
-  { path: "/terms", priority: 0.2, changeFrequency: "yearly", lastModified: "2026-09-08" },
+  { path: "/owner-representation", priority: 0.7, changeFrequency: "monthly", lastModified: SITE_LASTMOD },
+  { path: "/yacht-brokers", priority: 0.65, changeFrequency: "monthly", lastModified: SITE_LASTMOD },
+  { path: "/family-offices", priority: 0.65, changeFrequency: "monthly", lastModified: SITE_LASTMOD },
+  { path: "/yacht-shows", priority: 0.6, changeFrequency: "monthly", lastModified: SITE_LASTMOD },
+  { path: "/about", priority: 0.5, changeFrequency: "yearly", lastModified: SITE_LASTMOD },
+  { path: "/contact", priority: 0.5, changeFrequency: "yearly", lastModified: SITE_LASTMOD },
+  { path: "/partners/mox-yacht", priority: 0.4, changeFrequency: "yearly", lastModified: SITE_LASTMOD },
+  { path: "/privacy", priority: 0.2, changeFrequency: "yearly", lastModified: SITE_LASTMOD },
+  { path: "/terms", priority: 0.2, changeFrequency: "yearly", lastModified: SITE_LASTMOD },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -65,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       path: `/${page.slug}`,
       priority: 0.85,
       changeFrequency: "weekly",
-      lastModified: "2026-09-08",
+      lastModified: SITE_LASTMOD,
     });
   }
 
@@ -92,7 +95,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return entries.map(({ path, priority, changeFrequency, lastModified }) => ({
     url: `${SITE.url}${path === "/" ? "" : path}`,
-    lastModified: new Date(lastModified ?? "2026-09-08"),
+    lastModified: new Date(lastModified ?? SITE_LASTMOD),
     changeFrequency,
     priority,
   }));
