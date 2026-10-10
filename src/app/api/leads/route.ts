@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
   try {
     const lead = parseLead(body);
-    await persistLead(lead);
+    await persistLead(lead, request.headers.get("user-agent") ?? undefined);
     return NextResponse.json({ ok: true, id: lead.id });
   } catch (error) {
     if (error instanceof LeadValidationError) {

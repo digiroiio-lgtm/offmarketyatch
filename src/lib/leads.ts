@@ -234,7 +234,7 @@ const KIND_LABELS: Record<LeadKind, string> = {
   "sell-side": "Sell-side submission",
 };
 
-async function forwardToFormspree(lead: StoredLead): Promise<boolean> {
+async function forwardToFormspree(lead: StoredLead, userAgent?: string): Promise<boolean> {
   if (!FORMSPREE_ENDPOINT) return false;
 
   // Formspree renders flat fields best, so answers and attribution are
@@ -268,6 +268,9 @@ async function forwardToFormspree(lead: StoredLead): Promise<boolean> {
         // "restrict to domain" setting rejects those without one.
         Origin: SITE.url,
         Referer: `${SITE.url}/`,
+        // Pass the visitor's browser identity through. A bare server UA is
+        // what Formspree's spam filter most often flags.
+        ...(userAgent ? { "User-Agent": userAgent } : {}),
       },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
@@ -296,14 +299,14 @@ async function forwardToFormspree(lead: StoredLead): Promise<boolean> {
   }
 }
 
-export async function persistLead(lead: StoredLead): Promise<void> {
+export async function persistLead(lead: StoredLead, userAgent?: string): Promise<void> {
   console.info(JSON.stringify({ event: "lead_received", lead }));
 
   buffer.unshift(lead);
   if (buffer.length > MAX_BUFFERED_LEADS) buffer.length = MAX_BUFFERED_LEADS;
 
   const [formspree, webhook] = await Promise.all([
-    forwardToFormspree(lead),
+    forwardToFormspree(lead, userAgent),
     forwardToWebhook(lead),
   ]);
 
