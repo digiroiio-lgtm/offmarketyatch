@@ -1,5 +1,7 @@
 import "server-only";
 
+import { SITE } from "@/lib/site";
+
 /**
  * ─────────────────────────────────────────────────────────────────────────────
  *  LEAD INTAKE
@@ -179,9 +181,10 @@ export function parseLead(body: unknown): StoredLead {
 
 // ─── Persistence ─────────────────────────────────────────────────────────────
 
-async function forwardToWebhook(lead: StoredLead): Promise<void> {
+/** Resolves `null` when no webhook is configured, otherwise whether delivery succeeded. */
+async function forwardToWebhook(lead: StoredLead): Promise<boolean | null> {
   const url = process.env.LEAD_WEBHOOK_URL;
-  if (!url) return;
+  if (!url) return null;
 
   try {
     const response = await fetch(url, {
@@ -199,7 +202,9 @@ async function forwardToWebhook(lead: StoredLead): Promise<void> {
       console.error(
         JSON.stringify({ event: "lead_webhook_failed", id: lead.id, status: response.status })
       );
+      return false;
     }
+    return true;
   } catch (error) {
     // Never fail the visitor's submission because a downstream CRM is down —
     // the log line above is the durable record either way.
@@ -210,6 +215,7 @@ async function forwardToWebhook(lead: StoredLead): Promise<void> {
         message: error instanceof Error ? error.message : "unknown",
       })
     );
+    return false;
   }
 }
 
@@ -228,8 +234,8 @@ const KIND_LABELS: Record<LeadKind, string> = {
   "sell-side": "Sell-side submission",
 };
 
-async function forwardToFormspree(lead: StoredLead): Promise<void> {
-  if (!FORMSPREE_ENDPOINT) return;
+async function forwardToFormspree(lead: StoredLead): Promise<boolean> {
+  if (!FORMSPREE_ENDPOINT) return false;
 
   // Formspree renders flat fields best, so answers and attribution are
   // prefixed rather than nested.
@@ -255,15 +261,29 @@ async function forwardToFormspree(lead: StoredLead): Promise<void> {
   try {
     const response = await fetch(FORMSPREE_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        // Server-side requests carry no browser Origin; Formspree's
+        // "restrict to domain" setting rejects those without one.
+        Origin: SITE.url,
+        Referer: `${SITE.url}/`,
+      },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
     });
     if (!response.ok) {
       console.error(
-        JSON.stringify({ event: "lead_formspree_failed", id: lead.id, status: response.status })
+        JSON.stringify({
+          event: "lead_formspree_failed",
+          id: lead.id,
+          status: response.status,
+          body: (await response.text().catch(() => "")).slice(0, 500),
+        })
       );
+      return false;
     }
+    return true;
   } catch (error) {
     console.error(
       JSON.stringify({
@@ -272,6 +292,7 @@ async function forwardToFormspree(lead: StoredLead): Promise<void> {
         message: error instanceof Error ? error.message : "unknown",
       })
     );
+    return false;
   }
 }
 
@@ -281,7 +302,16 @@ export async function persistLead(lead: StoredLead): Promise<void> {
   buffer.unshift(lead);
   if (buffer.length > MAX_BUFFERED_LEADS) buffer.length = MAX_BUFFERED_LEADS;
 
-  await Promise.all([forwardToFormspree(lead), forwardToWebhook(lead)]);
+  const [formspree, webhook] = await Promise.all([
+    forwardToFormspree(lead),
+    forwardToWebhook(lead),
+  ]);
+
+  // The in-process buffer is not durable, so if no durable channel accepted
+  // the lead, say so rather than confirming a request nobody will see.
+  if (!formspree && webhook !== true) {
+    throw new Error("lead_delivery_failed");
+  }
 }
 
 export function listLeads(limit = 100): StoredLead[] {
