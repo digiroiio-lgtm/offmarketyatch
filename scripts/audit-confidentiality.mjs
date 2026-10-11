@@ -104,6 +104,66 @@ function confidentialDescriptionCities() {
   return hits;
 }
 
+/**
+ * Research candidates (`src/data/research-candidates.ts`) are internal. Their
+ * vessel names, source URLs, exact prices and ids must not appear anywhere a
+ * browser, crawler or model can read, and none may sit in the public store.
+ */
+function researchTokens() {
+  let source;
+  try {
+    source = readFileSync(join(ROOT, "src", "data", "research-candidates.ts"), "utf8");
+  } catch {
+    return { names: [], urls: [], prices: [], ids: [] };
+  }
+  const grab = (re) => [...source.matchAll(re)].map((m) => m[1]);
+  // Names that are also ordinary words are matched only in capitals form
+  // below; the others are matched as written.
+  const names = grab(/namePrivate: "([^"]+)"/g).flatMap((n) => n.split(/\s+\(/)[0]).filter(Boolean);
+  const urls = grab(/(?:url|sourceUrl): "(https?:[^"]+)"/g);
+  const prices = grab(/amount(?:High)?: ([\d_]+)/g)
+    .map((n) => Number(n.replaceAll("_", "")))
+    .filter((n) => n >= 1_000_000)
+    .flatMap((n) => [n.toLocaleString("en-US")]);
+  const ids = grab(/id: "(RC-\d{3})"/g);
+  return { names, urls: [...new Set(urls)], prices: [...new Set(prices)], ids };
+}
+
+const RESEARCH = researchTokens();
+const COMMON_WORD_NAMES = new Set(["Optimism", "Seven Seas"]);
+
+function scanResearch(files, label) {
+  for (const file of files) {
+    let content;
+    try {
+      content = readFileSync(file, "utf8");
+    } catch {
+      continue;
+    }
+    for (const name of RESEARCH.names) {
+      const needle = COMMON_WORD_NAMES.has(name) ? name.toUpperCase() : name;
+      if (content.includes(needle)) {
+        findings.push(`${label}: research vessel name "${name}" in ${file}`);
+      }
+    }
+    for (const url of RESEARCH.urls) {
+      if (content.includes(url)) findings.push(`${label}: research source URL ${url} in ${file}`);
+    }
+    for (const price of RESEARCH.prices) {
+      if (content.includes(price)) findings.push(`${label}: research price ${price} in ${file}`);
+    }
+    for (const id of RESEARCH.ids) {
+      if (content.includes(id)) findings.push(`${label}: research id ${id} in ${file}`);
+    }
+  }
+}
+
+/** A candidate may enter the public store only once it has been approved. */
+function researchLeaksIntoStore() {
+  const source = readFileSync(join(ROOT, "src", "data", "opportunities.ts"), "utf8");
+  return RESEARCH.ids.filter((id) => source.includes(id));
+}
+
 function walk(dir, extensions) {
   let files = [];
   let entries;
@@ -164,6 +224,16 @@ if (staticFiles.length === 0 && htmlFiles.length === 0) {
 scan(staticFiles, "browser bundle");
 scan(htmlFiles, "prerendered HTML");
 scan(rscFiles, "RSC payload");
+scanResearch(staticFiles, "browser bundle");
+scanResearch(htmlFiles, "prerendered HTML");
+scanResearch(rscFiles, "RSC payload");
+scanResearch(
+  ["llms.txt", "llms-full.txt", "sitemap.xml", "robots.txt"].map((n) => join(APP_DIR, `${n}.body`)),
+  "text/xml body"
+);
+for (const id of researchLeaksIntoStore()) {
+  findings.push(`store: research candidate ${id} appears in the public opportunity store`);
+}
 // llms.txt / llms-full.txt are route handlers: their bodies are public too.
 scan(
   ["llms.txt", "llms-full.txt"].map((name) => join(APP_DIR, `${name}.body`)),
@@ -195,6 +265,7 @@ for (const { slug, city } of confidentialDescriptionCities()) {
 console.log(`  browser bundles : ${staticFiles.length} file(s)`);
 console.log(`  prerendered HTML: ${htmlFiles.length} file(s)`);
 console.log(`  RSC payloads    : ${rscFiles.length} file(s)`);
+console.log(`  research tokens : ${RESEARCH.names.length} name(s), ${RESEARCH.urls.length} url(s), ${RESEARCH.prices.length} price(s)`);
 console.log("");
 
 if (findings.length > 0) {

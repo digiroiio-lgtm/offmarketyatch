@@ -116,7 +116,7 @@ export default function OpportunityCard({
             {relativeDayLabel(opportunity.createdAt)}
           </span>
           <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-accent transition-transform group-hover:translate-x-0.5">
-            {isPotential ? "Investigate →" : "Request Details →"}
+            {isPotential ? "Investigate Privately →" : "Request Details →"}
           </span>
         </div>
       </div>

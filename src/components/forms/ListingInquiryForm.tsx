@@ -224,7 +224,7 @@ export default function ListingInquiryForm({
         {status === "sending"
           ? "Sending…"
           : isPotential
-            ? "Request Private Investigation"
+            ? "Investigate Privately →"
             : "Request Confidential Details"}
       </button>
 

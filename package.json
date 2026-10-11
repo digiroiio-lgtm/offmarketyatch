@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "audit:confidentiality": "node scripts/audit-confidentiality.mjs",
-    "verify": "next build && node scripts/audit-confidentiality.mjs && eslint"
+    "verify": "next build && node scripts/audit-confidentiality.mjs && npm run test:research && eslint",
+    "test:research": "node --experimental-strip-types --test scripts/research-rules.test.mjs"
   },
   "dependencies": {
     "next": "^16.2.6",
