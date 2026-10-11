@@ -20,6 +20,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               Opportunities
             </Link>
             <Link
+              href="/admin/intake"
+              className="text-[13px] text-ink-inverse-muted hover:text-white"
+            >
+              Intake
+            </Link>
+            <Link
               href="/admin/research"
               className="text-[13px] text-ink-inverse-muted hover:text-white"
             >

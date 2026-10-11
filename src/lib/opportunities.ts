@@ -230,6 +230,15 @@ function toPublicOpportunity(record: OpportunityRecord, now: Date): PublicOpport
   };
 }
 
+/**
+ * Render any record, published or not, through the public masking. Admin
+ * preview only: it lets a reviewer see exactly what the public DTO would
+ * contain before anything is approved.
+ */
+export function previewPublicOpportunity(record: OpportunityRecord): PublicOpportunity {
+  return toPublicOpportunity(record, new Date());
+}
+
 // ─── Queries ─────────────────────────────────────────────────────────────────
 
 /**

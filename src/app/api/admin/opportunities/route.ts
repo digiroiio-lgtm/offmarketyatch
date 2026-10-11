@@ -2,6 +2,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 import { LANDING_PAGES } from "@/data/landing";
+import { checkAdminAuth } from "@/lib/admin-auth";
 import { clearOverride, setOverride, type OpportunityOverride } from "@/lib/admin-store";
 import { getAllRecordsForAdmin } from "@/lib/opportunities";
 
@@ -13,21 +14,7 @@ import { getAllRecordsForAdmin } from "@/lib/opportunities";
 export const dynamic = "force-dynamic";
 
 function authorized(request: Request): boolean {
-  const user = process.env.ADMIN_USER;
-  const password = process.env.ADMIN_PASSWORD;
-  if (!user || !password) return false;
-
-  const header = request.headers.get("authorization");
-  if (!header?.startsWith("Basic ")) return false;
-  try {
-    const decoded = atob(header.slice(6));
-    const separator = decoded.indexOf(":");
-    return (
-      decoded.slice(0, separator) === user && decoded.slice(separator + 1) === password
-    );
-  } catch {
-    return false;
-  }
+  return checkAdminAuth(request.headers.get("authorization")) === "ok";
 }
 
 const ALLOWED_FIELDS = [

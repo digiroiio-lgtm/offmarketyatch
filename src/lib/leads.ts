@@ -1,5 +1,8 @@
 import "server-only";
 
+import { brokerClaimsFromAnswers, intakeSourceFor, submitterFromLead } from "@/lib/intake/from-lead";
+import { validateBrokerClaims } from "@/lib/intake/rules";
+import { recordIntake } from "@/lib/intake/service";
 import { SITE } from "@/lib/site";
 
 /**
@@ -22,7 +25,12 @@ import { SITE } from "@/lib/site";
  *  keeping the webhook configured. That trade-off is stated rather than hidden.
  */
 
-export type LeadKind = "private-access" | "listing-inquiry" | "private-search" | "sell-side";
+export type LeadKind =
+  | "private-access"
+  | "listing-inquiry"
+  | "private-search"
+  | "sell-side"
+  | "broker-submission";
 
 export interface LeadAttribution {
   utm_source?: string;
@@ -127,6 +135,7 @@ const LEAD_KINDS: LeadKind[] = [
   "listing-inquiry",
   "private-search",
   "sell-side",
+  "broker-submission",
 ];
 
 /**
@@ -157,7 +166,7 @@ export function parseLead(body: unknown): StoredLead {
     throw new LeadValidationError("phone", "Please enter a contact phone number.");
   }
 
-  return {
+  const lead: StoredLead = {
     id: `LEAD-${Date.now().toString(36).toUpperCase()}-${Math.random()
       .toString(36)
       .slice(2, 7)
@@ -177,6 +186,17 @@ export function parseLead(body: unknown): StoredLead {
     sourceUrl: clean(input.sourceUrl, 500) || undefined,
     attribution: cleanAttribution(input.attribution),
   };
+
+  // A broker submission carries claims about authority. They are required, but
+  // they stay claims: only a reviewer can verify them.
+  if (kind === "broker-submission") {
+    const check = validateBrokerClaims(
+      submitterFromLead(lead),
+      brokerClaimsFromAnswers(lead.answers)
+    );
+    if (!check.ok) throw new LeadValidationError(check.field ?? "broker", check.message ?? "Invalid.");
+  }
+  return lead;
 }
 
 // ─── Persistence ─────────────────────────────────────────────────────────────
@@ -232,6 +252,7 @@ const KIND_LABELS: Record<LeadKind, string> = {
   "listing-inquiry": "Listing inquiry",
   "private-search": "Private search",
   "sell-side": "Sell-side submission",
+  "broker-submission": "Broker submission",
 };
 
 async function forwardToFormspree(lead: StoredLead, userAgent?: string): Promise<boolean> {
@@ -315,6 +336,22 @@ export async function persistLead(lead: StoredLead, userAgent?: string): Promise
   if (!formspree && webhook !== true) {
     throw new Error("lead_delivery_failed");
   }
+
+  // Owner and broker submissions also open a private intake record. A failure
+  // here is logged but never loses the lead, which has already been delivered.
+  if (intakeSourceFor(lead.kind)) {
+    try {
+      await recordIntake(lead);
+    } catch (error) {
+      console.error(
+        JSON.stringify({
+          event: "intake_record_failed",
+          id: lead.id,
+          message: error instanceof Error ? error.message : "unknown",
+        })
+      );
+    }
+  }
 }
 
 export function listLeads(limit = 100): StoredLead[] {
@@ -338,6 +375,7 @@ export function leadCountsByKind(): Record<LeadKind, number> {
     "listing-inquiry": 0,
     "private-search": 0,
     "sell-side": 0,
+    "broker-submission": 0,
   } as Record<LeadKind, number>;
   for (const lead of buffer) counts[lead.kind] += 1;
   return counts;

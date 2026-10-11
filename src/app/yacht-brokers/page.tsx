@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
+import BrokerIntakeForm from "@/components/forms/BrokerIntakeForm";
 import PageHero from "@/components/PageHero";
 import SchemaOrg from "@/components/SchemaOrg";
 import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
@@ -15,6 +16,16 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const FAQS = [
+  {
+    question: "What happens after I submit a vessel?",
+    answer:
+      "Your submission is held privately and we verify your firm and your authority over the vessel. Nothing is published, matched or shared at that point. Internal matching, a masked public entry and disclosure of identity are each approved separately, with the evidence recorded, and each can be withdrawn.",
+  },
+  {
+    question: "Does submitting a vessel give you permission to share it?",
+    answer:
+      "No. The permissions on the form are requests. We act on a permission only after we have verified your authority and recorded a separate approval for it.",
+  },
   {
     question: "How does co-brokerage work here?",
     answer:
@@ -52,8 +63,8 @@ export default function BrokerCooperationPage() {
         eyebrow="For Brokers"
         h1="Cooperation, on standard terms."
         standfirst="For brokers holding unadvertised mandates, and those representing buyers."
-        ctaLabel="Get in Touch"
-        ctaHref="/contact"
+        ctaLabel="Submit a Mandate"
+        ctaHref="#submit"
         secondaryCtaLabel="Browse the Private Market"
         secondaryCtaHref="/off-market-yachts"
       />
@@ -79,6 +90,24 @@ export default function BrokerCooperationPage() {
             approach a buyer introduced by another broker.
           </p>
 
+          <h2>What happens to a submission</h2>
+          <ol>
+            <li>
+              It is held privately. Nothing is published, matched or shared because a form was
+              submitted.
+            </li>
+            <li>
+              We verify your firm and your authority over the vessel: credentials, representation
+              status and mandate evidence.
+            </li>
+            <li>
+              Three permissions are approved separately and recorded against your submission:
+              private matching against registered buyer criteria, a masked public entry, and
+              disclosure of identity to a qualified buyer. Each can be withdrawn.
+            </li>
+            <li>Terms are agreed in writing before any introduction.</li>
+          </ol>
+
           <h2>What we ask</h2>
           <ul>
             <li>
@@ -97,6 +126,12 @@ export default function BrokerCooperationPage() {
         </div>
       </section>
 
+      <section className="section-tight bg-paper-sunken">
+        <div className="container-site">
+          <BrokerIntakeForm />
+        </div>
+      </section>
+
       <div className="defer-render">
         <FAQSection faqs={FAQS} />
       </div>
@@ -104,8 +139,8 @@ export default function BrokerCooperationPage() {
       <FinalCTA
         title="Have a mandate that should not be advertised?"
         body="We can match it against registered buyer criteria without publishing anything at all."
-        primaryLabel="Get in Touch"
-        primaryHref="/contact"
+        primaryLabel="Submit a Mandate"
+        primaryHref="#submit"
       />
     </>
   );

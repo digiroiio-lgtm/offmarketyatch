@@ -217,3 +217,20 @@ band, location, type and full attribution.
 
 Primary KPI: **qualified private access requests.** The site is optimised for
 that, not for page views.
+
+---
+
+## Private intake (owners and brokers)
+
+Owner submissions (`/sell-your-yacht-privately`) and broker submissions
+(`/yacht-brokers#submit`) both arrive through `/api/leads` and open one private
+record in the intake store (`src/lib/intake/`). Submitting a form publishes,
+matches and discloses nothing. Three permissions are approved separately, with
+evidence, and can be revoked: `INTERNAL_BUYER_MATCHING`, `MASKED_PUBLICATION`,
+`IDENTITY_DISCLOSURE`. Review happens in `/admin/intake`; the strongest output is
+a draft record built by `src/lib/draft-record.ts`.
+
+Durable storage needs Postgres (Neon): set `DATABASE_URL`, then run
+`npm run db:migrate` once. Without it the store is in memory and is lost on
+restart. Checks: `npm run test:research` (rules) and, after a build,
+`npm run test:intake-e2e` (full flow against `next start`).
