@@ -35,6 +35,20 @@ function link(path: string, label: string, note?: string): string {
   return `- [${label}](${canonical(path)})${note ? `: ${note}` : ""}`;
 }
 
+const DISCLAIMER =
+  "General information only, not legal, tax or financial advice. Tax, duty and timeline points vary by " +
+  "vessel, flag and jurisdiction; take advice from a qualified marine attorney or tax adviser before acting.";
+
+/** Q&A blocks, skipping any question already listed in the same section. */
+function qa(...groups: { question: string; answer: string }[][]): string[] {
+  const seen = new Set<string>();
+  return groups.flat().flatMap((item) => {
+    if (seen.has(item.question)) return [];
+    seen.add(item.question);
+    return [`#### ${item.question}`, "", item.answer, ""];
+  });
+}
+
 function header(): string[] {
   const lines = [`# ${SITE.name}`, "", `> ${SUMMARY}`, ""];
   if (IS_SAMPLE_INVENTORY) lines.push(`Note: ${SAMPLE_INVENTORY_NOTICE}`, "");
@@ -73,15 +87,22 @@ export function buildLlmsTxt(): string {
 
 export function buildLlmsFullTxt(): string {
   const lines = header();
+  lines.push(`Disclaimer: ${DISCLAIMER}`, "");
+  lines.push(
+    "Contents: Opportunities (masked public view); Landing pages; Market intelligence articles.",
+    ""
+  );
 
   lines.push("## Opportunities (masked public view)", "");
   for (const o of getOpportunities()) {
     lines.push(
-      `### ${o.reference}: ${o.titlePublic}`,
+      `### ${o.reference}: ${o.titlePublic}${IS_SAMPLE_INVENTORY ? " (sample record)" : ""}`,
       "",
       `- URL: ${canonical(`/off-market-yachts/${o.slug}`)}`,
       `- Type: ${o.type}; length: ${o.lengthDisplay}; cruising area: ${o.locationPublic}`,
-      `- Price: ${o.priceLabel}; status: ${o.availabilityType}`,
+      IS_SAMPLE_INVENTORY
+        ? `- Price: ${o.priceLabel}; sample status label: ${o.availabilityType} (sample record, not an offer)`
+        : `- Price: ${o.priceLabel}; status: ${o.availabilityType}`,
       "",
       o.descriptionPublic,
       ""
@@ -91,7 +112,7 @@ export function buildLlmsFullTxt(): string {
   lines.push("## Landing pages", "");
   for (const page of getIndexableLandingPages()) {
     lines.push(`### ${page.h1}`, "", canonical(`/${page.slug}`), "", page.standfirst, "", ...page.intro.flatMap((p) => [p, ""]));
-    for (const faq of page.faqs) lines.push(`**${faq.question}**`, "", faq.answer, "");
+    lines.push(...qa(page.answers, page.faqs));
   }
 
   lines.push("## Market intelligence articles", "");
@@ -110,7 +131,7 @@ export function buildLlmsFullTxt(): string {
       lines.push(`#### ${section.heading}`, "", ...section.paragraphs.flatMap((p) => [p, ""]));
       if (section.bullets) lines.push(...section.bullets.map((b) => `- ${b}`), "");
     }
-    for (const faq of article.faqs) lines.push(`**${faq.question}**`, "", faq.answer, "");
+    lines.push(...qa(article.answers, article.faqs));
   }
 
   lines.push(`Contact: ${SITE.email}`, "");

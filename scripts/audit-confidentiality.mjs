@@ -79,6 +79,31 @@ function confidentialExactLengths() {
   return lengths;
 }
 
+/**
+ * Cities and marinas must not appear in the public description of a
+ * `confidential` listing: its cruising area is deliberately generalised, and a
+ * city in the prose would undo that. `restricted` listings may name a city.
+ */
+const CITY_NAMES = [
+  "Miami", "Palm Beach", "Fort Lauderdale", "San Diego", "Newport", "Naples",
+  "Tampa", "Antigua", "Monaco", "St Maarten", "St Barths", "Annapolis",
+];
+
+function confidentialDescriptionCities() {
+  const source = readFileSync(join(ROOT, "src", "data", "opportunities.ts"), "utf8");
+  const records = source.split(/\n  \{\n/).slice(1);
+  const hits = [];
+  for (const record of records) {
+    if (!/confidentialityLevel: "confidential"/.test(record)) continue;
+    const slug = record.match(/slug: "([^"]+)"/)?.[1];
+    const description = record.match(/descriptionPublic:\s*"([^"]+)"/)?.[1] ?? "";
+    for (const city of CITY_NAMES) {
+      if (new RegExp(`\\b${city}\\b`).test(description)) hits.push({ slug, city });
+    }
+  }
+  return hits;
+}
+
 function walk(dir, extensions) {
   let files = [];
   let entries;
@@ -161,6 +186,10 @@ for (const { slug, ft } of confidentialExactLengths()) {
       `masking: exact length "${ft} ft" of confidential listing ${slug} appears on its own page`
     );
   }
+}
+
+for (const { slug, city } of confidentialDescriptionCities()) {
+  findings.push(`masking: confidential listing ${slug} names "${city}" in its public description`);
 }
 
 console.log(`  browser bundles : ${staticFiles.length} file(s)`);
