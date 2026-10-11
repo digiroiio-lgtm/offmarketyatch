@@ -153,7 +153,7 @@ export default async function OpportunityDetailPage(
 
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href="#request-details" className="btn-primary">
-                {isPotential ? "Request Private Investigation" : "Request Confidential Details"}
+                {isPotential ? "Investigate Privately →" : "Request Confidential Details"}
               </Link>
               <Link href="/request-private-access" className="btn-onDark">
                 Register Your Criteria
