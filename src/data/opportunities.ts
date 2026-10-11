@@ -1305,7 +1305,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     currency: "USD",
     availabilityType: "PRIVATE LISTING",
     descriptionPublic:
-      "A 2024 American-built express cruiser with under 120 hours, kept in Palm Beach and used for Bahamas crossings. Owner-operable with a single crew cabin, joystick docking and the full electronics package.",
+      "A 2024 American-built express cruiser with under 120 hours, kept in South Florida and used for Bahamas crossings. Owner-operable with a single crew cabin, joystick docking and the full electronics package.",
     opportunityNotes:
       "Current-year condition without the current-year delivery queue. At this size the buyer is usually the operator, and the joystick and stabiliser specification is what makes that realistic.",
     usageProfile: "Low-hour, owner-operated",
@@ -1358,7 +1358,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     currency: "USD",
     availabilityType: "VERIFIED OFF-MARKET",
     descriptionPublic:
-      "An Italian tri-deck refitted in 2022, based in Fort Lauderdale and run privately with a full-time crew. Documented maintenance from new and a single ownership since delivery.",
+      "An Italian tri-deck refitted in 2022, based in South Florida and run privately with a full-time crew. Documented maintenance from new and a single ownership since delivery.",
     opportunityNotes:
       "Single ownership from new with continuous records is the cleanest history a buyer can get at this size, and it shortens the diligence process considerably.",
     usageProfile: "Private use, no charter history",
