@@ -6,6 +6,7 @@ import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
+import SourcesNote from "@/components/SourcesNote";
 import MarketExplorer from "@/components/MarketExplorer";
 import SampleInventoryNotice from "@/components/SampleInventoryNotice";
 import SchemaOrg from "@/components/SchemaOrg";
@@ -201,6 +202,8 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
           </div>
         </div>
       </section>
+
+      {page.sources && <SourcesNote sources={page.sources} />}
 
       <FinalCTA />
     </>

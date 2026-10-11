@@ -1,4 +1,5 @@
 import type { LandingPage } from "@/data/landing/types";
+import { FLORIDA_TAX_SOURCES } from "@/data/sources";
 
 /** USA-first geography pages. Florida carries the deepest intent. */
 export const USA_PAGES: LandingPage[] = [
@@ -143,6 +144,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-florida",
+    sources: FLORIDA_TAX_SOURCES,
     title: "Yachts for Sale Florida | Private & Off-Market Florida Yachts",
     metaDescription:
       "Yachts for sale in Florida through private channels. Off-market opportunities in Fort Lauderdale, Miami, Palm Beach, Naples and Tampa. Masked listings, private inquiry.",
@@ -166,7 +168,7 @@ export const USA_PAGES: LandingPage[] = [
       {
         question: "How much is sales tax on a yacht in Florida?",
         answer:
-          "Florida charges state sales tax on vessel purchases with a statutory cap on the amount payable, plus potential county surtax. The cap is one of the reasons large vessels are frequently closed in Florida. Rates and thresholds change, so confirm the current position with a Florida marine tax attorney rather than relying on a general figure.",
+          "Florida caps the total sales and use tax, including any discretionary county surtax, on a vessel sale at $18,000, according to the Florida Department of Revenue. The cap is one of the reasons large vessels are frequently closed in Florida. Rates and thresholds change, so confirm the current position with a Florida marine tax attorney rather than relying on a general figure.",
       },
       {
         question: "Where in Florida should I look for a yacht?",
@@ -236,9 +238,9 @@ export const USA_PAGES: LandingPage[] = [
       "No verified off-market Florida opportunities are published right now. This is the fastest-moving category we track — submit your criteria and we will approach the market directly.",
     answers: [
       {
-        question: "How do I find off-market yachts in Florida?",
+        question: "How does a private introduction usually happen in Florida?",
         answer:
-          "The realistic routes are a broker with genuine owner relationships in South Florida, captains and yacht managers who know which vessels are coming available, and a retained acquisition search in which someone approaches owners of matching yachts on your behalf. Public search will not surface them, because they are not published.",
+          "Typically through a chain of people who already know the yacht: an owner mentions a planned move to a larger vessel to their captain, the captain mentions it to a broker, and the broker introduces a buyer who has been looking. Because Florida's captains, managers, yards and brokers sit within a few miles of each other, that chain is short. A buyer reaches it through a broker with real owner relationships or a retained acquisition search; public listing sites will not show these yachts because they are never published.",
       },
       {
         question: "Are off-market Florida yachts better value?",
@@ -288,6 +290,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "superyachts-for-sale-florida",
+    sources: FLORIDA_TAX_SOURCES,
     title: "Superyachts for Sale Florida | Private Florida Superyacht Market",
     metaDescription:
       "Superyachts for sale in Florida. Confidential opportunities over 100 ft in Fort Lauderdale, Miami and Palm Beach, presented to qualified buyers.",
@@ -316,7 +319,7 @@ export const USA_PAGES: LandingPage[] = [
       {
         question: "What is the Florida sales tax cap on large yachts?",
         answer:
-          "Florida applies a statutory maximum to the sales tax payable on a vessel purchase, which makes closing in Florida attractive for high-value yachts compared with states that levy tax on the full price. The cap amount and its conditions change, so confirm the current position with a Florida marine tax attorney.",
+          "Florida caps the total sales and use tax payable on a vessel sale at $18,000, which makes closing in Florida attractive for high-value yachts compared with states that levy tax on the full price. The cap amount and its conditions change, so confirm the current position with a Florida marine tax attorney.",
       },
     ],
     faqs: [
@@ -395,9 +398,9 @@ export const USA_PAGES: LandingPage[] = [
           "Usually, though haul-out slots at the major yards can book out weeks ahead in peak season. Building survey scheduling into your offer's acceptance period is sensible.",
       },
       {
-        question: "Are there off-market yachts in Fort Lauderdale?",
+        question: "Where can I see Fort Lauderdale's privately available yachts?",
         answer:
-          "A great many. The concentration of the industry means owner intentions circulate professionally well before they become public listings.",
+          "Opportunities where the owner has authorised a masked description are published on our Off-Market Yachts in Fort Lauderdale page. This page covers the Fort Lauderdale market more broadly: the yards, dockage, survey logistics and how the city compares with Miami.",
       },
       {
         question: "How does Fort Lauderdale compare with Miami for buyers?",
@@ -436,9 +439,9 @@ export const USA_PAGES: LandingPage[] = [
       "Nothing verified is published for this area right now. Tell us what you are looking for and we will approach the Fort Lauderdale network directly.",
     answers: [
       {
-        question: "How do I find off-market yachts in Fort Lauderdale?",
+        question: "Who in Fort Lauderdale knows a yacht is coming available first?",
         answer:
-          "Through the professional network rather than through search. Captains, yacht managers, refit yard project managers and brokers with genuine owner relationships all know which vessels are coming available. A retained acquisition search gives a buyer structured access to that network.",
+          "Usually the people who work on it: its captain, the yacht manager, the engineers and the refit yard project manager, followed by the brokers they talk to. Within the New River community that information travels in days. A retained acquisition search gives a buyer structured access to those same people instead of hearing it second-hand.",
       },
       {
         question: "Do Fort Lauderdale brokers hold pocket listings?",
@@ -571,9 +574,9 @@ export const USA_PAGES: LandingPage[] = [
       "Nothing is published for Miami right now. This category turns over fast — tell us what you are looking for and we will search directly.",
     answers: [
       {
-        question: "How do I find off-market yachts in Miami?",
+        question: "How does owner turnover in Miami affect a private search?",
         answer:
-          "Through brokers with active owner relationships in South Florida, through captains and management companies, and through a retained acquisition search that approaches owners of matching vessels on your behalf. Public listing sites will not show them.",
+          "Miami owners tend to change boats more often than the national average, stepping up in size, moving from sport to flybridge or refreshing every few seasons. That produces a steady flow of vessels that change hands before they are listed, so a search brief that is specific and kept current is more likely to meet one at the right moment than a one-off enquiry. Brokers with active South Florida owner relationships and retained searches are the usual routes in.",
       },
       {
         question: "Why do Miami owners sell privately?",
@@ -581,9 +584,9 @@ export const USA_PAGES: LandingPage[] = [
           "Commercial reasons — protecting negotiating position and crew stability — and frequently personal ones. Many owners simply prefer that their business and social circle not learn from a listing that they are selling.",
       },
       {
-        question: "How quickly do off-market Miami yachts sell?",
+        question: "Is a private purchase in Miami different from one in Fort Lauderdale?",
         answer:
-          "Faster than listed inventory. Where the buyer pool is pre-qualified and the yacht is realistically priced, weeks rather than months is normal.",
+          "The process is the same, an offer subject to survey and sea trial, but the emphasis differs. Miami's inventory skews to sport yachts, express cruisers and flybridges that are used year-round, so hours, service intervals and how the yacht has been run deserve closer scrutiny. Fort Lauderdale holds more yachts above 100 feet and far more refit capacity.",
       },
     ],
     faqs: [
@@ -726,9 +729,9 @@ export const USA_PAGES: LandingPage[] = [
           "The Pacific Northwest and Alaska in summer, and Baja California and mainland Mexico in winter. Both favour vessels with genuine range and capable systems rather than pure day boats.",
       },
       {
-        question: "Is there off-market inventory in California?",
+        question: "How does the California private market differ from Florida's?",
         answer:
-          "Yes, and proportionally more than in Florida, because the smaller broker community means a higher share of transactions happen through direct relationships.",
+          "It is smaller, with fewer comparable vessels and fewer brokers, so transactions lean more heavily on relationships and often take longer to assemble. Cruising from California also favours vessels with genuine range, because the grounds are the Pacific Northwest and Baja rather than short hops to the Bahamas.",
       },
       {
         question: "Can yachts be surveyed on the West Coast?",
@@ -790,9 +793,9 @@ export const USA_PAGES: LandingPage[] = [
           "Yachts cruising Mexico require a temporary import permit and appropriate insurance. It is routine but should be planned, and it influences which vessels are practical.",
       },
       {
-        question: "Are there off-market yachts in San Diego?",
+        question: "Why does San Diego's private market rely on direct relationships?",
         answer:
-          "Yes. The small broker community means a high proportion of activity happens through direct relationships rather than listings.",
+          "The broker community is small, so a high proportion of activity happens through direct relationships rather than listings. In practice that means a representative who knows the owners and captains matters more than a listing search.",
       },
       {
         question: "Do you cover Los Angeles and Long Beach?",
@@ -854,9 +857,9 @@ export const USA_PAGES: LandingPage[] = [
           "Typically less than the national average, which is the main attraction for a buyer. Verify with engine hours and service records rather than assuming.",
       },
       {
-        question: "Is inventory here mostly off-market?",
+        question: "Why do Newport owners prefer to sell privately?",
         answer:
-          "A high proportion, yes. The community is small and owners often prefer a private sale to a listing their neighbours will see.",
+          "The community is close and the harbour is small, so owners often prefer a private sale to a listing their neighbours will see. A high proportion of the inventory changes hands that way.",
       },
       {
         question: "Should I look in San Diego as well?",

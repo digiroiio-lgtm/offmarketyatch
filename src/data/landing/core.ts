@@ -395,9 +395,9 @@ export const CORE_PAGES: LandingPage[] = [
           "Crew contracts do not transfer automatically. Retaining an experienced captain and chief engineer through a sale is often valuable to a buyer, and it is a point to raise early rather than at closing.",
       },
       {
-        question: "Can these yachts be viewed?",
+        question: "Can a mega yacht be viewed before an offer is made?",
         answer:
-          "Viewings at this level are arranged individually, after qualification, and usually at a time that does not disrupt the yacht's programme. They are not open to browsing.",
+          "Viewings are arranged individually after qualification and are not open to browsing. Whether one happens before or after an offer depends on the owner's terms, but any offer is made subject to survey and sea trial.",
       },
       {
         question: "Do you work with family offices directly?",

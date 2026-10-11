@@ -1,6 +1,7 @@
 import "server-only";
 
 import { ARTICLES } from "@/data/articles";
+import type { SourceNotes } from "@/data/sources";
 import { getIndexableLandingPages } from "@/data/landing";
 import { IS_SAMPLE_INVENTORY, SAMPLE_INVENTORY_NOTICE } from "@/lib/inventory-mode";
 import { getOpportunities } from "@/lib/opportunities";
@@ -47,6 +48,14 @@ function qa(...groups: { question: string; answer: string }[][]): string[] {
     seen.add(item.question);
     return [`#### ${item.question}`, "", item.answer, ""];
   });
+}
+
+function sourceLines(sources?: SourceNotes): string[] {
+  if (!sources) return [];
+  const lines = ["**Sources and notes**", ""];
+  for (const link of sources.links ?? []) lines.push(`- [${link.label}](${link.url})`);
+  for (const note of sources.notes ?? []) lines.push(`- ${note}`);
+  return [...lines, ""];
 }
 
 function header(): string[] {
@@ -112,7 +121,7 @@ export function buildLlmsFullTxt(): string {
   lines.push("## Landing pages", "");
   for (const page of getIndexableLandingPages()) {
     lines.push(`### ${page.h1}`, "", canonical(`/${page.slug}`), "", page.standfirst, "", ...page.intro.flatMap((p) => [p, ""]));
-    lines.push(...qa(page.answers, page.faqs));
+    lines.push(...qa(page.answers, page.faqs), ...sourceLines(page.sources));
   }
 
   lines.push("## Market intelligence articles", "");
@@ -131,7 +140,7 @@ export function buildLlmsFullTxt(): string {
       lines.push(`#### ${section.heading}`, "", ...section.paragraphs.flatMap((p) => [p, ""]));
       if (section.bullets) lines.push(...section.bullets.map((b) => `- ${b}`), "");
     }
-    lines.push(...qa(article.answers, article.faqs));
+    lines.push(...qa(article.answers, article.faqs), ...sourceLines(article.sources));
   }
 
   lines.push(`Contact: ${SITE.email}`, "");

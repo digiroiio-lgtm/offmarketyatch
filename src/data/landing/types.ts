@@ -1,4 +1,5 @@
 import type { OpportunityQuery } from "@/lib/opportunities";
+import type { SourceNotes } from "@/data/sources";
 
 /**
  * A commercial-intent landing page.
@@ -37,4 +38,6 @@ export interface LandingPage {
    * indexing (§26). Nothing is indexed by default just because it exists.
    */
   indexable?: boolean;
+  /** References and caveats for tax, duty or contract claims on this page. */
+  sources?: SourceNotes;
 }

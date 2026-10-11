@@ -1,4 +1,5 @@
 import type { LandingPage } from "@/data/landing/types";
+import { EU_VAT_SOURCES, DEPOSIT_NOTES } from "@/data/sources";
 
 /** International regions, budget bands, size bands and yacht classes. */
 export const SEGMENT_PAGES: LandingPage[] = [
@@ -133,6 +134,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-mediterranean",
+    sources: EU_VAT_SOURCES,
     title: "Yachts for Sale Mediterranean | Private European Opportunities",
     metaDescription:
       "Yachts for sale in the Mediterranean through private channels. Confidential opportunities in Monaco, France, Italy, Spain, Greece and Turkey for US and international buyers.",
@@ -140,7 +142,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
     standfirst: "Deep inventory, and a tax position that has to be understood first.",
     intro: [
       "The Mediterranean holds the largest concentration of yachts above 130 feet anywhere in the world, and for an American buyer it is genuinely worth looking at. The choice at the top of the market is broader than Florida's, and the build quality of the European fleet reflects yards that have been doing this for a century.",
-      "The complication is fiscal rather than technical. Every European yacht carries a VAT status — paid, unpaid, or held under a temporary admission regime — and it materially affects both value and what you can legally do with the vessel. Two identical yachts can differ in price by a fifth on VAT status alone.",
+      "The complication is fiscal rather than technical. Every European yacht carries a VAT status — paid, unpaid, or held under a temporary admission regime — and it materially affects both value and what you can legally do with the vessel. Two otherwise identical yachts can differ materially in price on VAT status alone, because EU VAT rates run from roughly 17% to 27%.",
       "For a buyer intending to bring the yacht to the United States, that can work in your favour, but only if the export and import mechanics are planned before closing rather than discovered afterwards.",
     ],
     query: { locationPrefix: "Mediterranean", sort: "recent" },
@@ -151,7 +153,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       {
         question: "What is VAT status on a yacht and why does it matter?",
         answer:
-          "VAT status records whether European value added tax has been paid on a vessel. A VAT-paid yacht can circulate freely in EU waters; a VAT-unpaid yacht is restricted to temporary admission periods or non-EU ownership. Because VAT can represent around twenty percent of value, the status materially affects the price and the buyer pool.",
+          "VAT status records whether European value added tax has been paid on a vessel. A VAT-paid yacht can circulate freely in EU waters; a VAT-unpaid yacht is restricted to temporary admission periods or non-EU ownership. Because standard EU VAT rates run from roughly 17% to 27% depending on the country, the status materially affects the price and the buyer pool.",
       },
       {
         question: "Can an American buy a yacht in the Mediterranean?",
@@ -326,6 +328,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-10-million-25-million",
+    sources: DEPOSIT_NOTES,
     title: "Yachts for Sale $10M – $25M | Private Superyacht Opportunities",
     metaDescription:
       "Yachts for sale between $10 million and $25 million. Confidential superyacht opportunities from 120 to 165 ft, presented privately to qualified buyers.",
@@ -376,7 +379,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       {
         question: "What is a typical deposit?",
         answer:
-          "Ten percent held in escrow on signing the memorandum of agreement is the market norm, released or returned according to the survey outcome and the agreed acceptance terms.",
+          "A deposit of around ten percent held in escrow on signing the memorandum of agreement is common, released or returned according to the survey outcome and the agreed acceptance terms. The amount and refund terms are set in the contract.",
       },
     ],
     related: [
@@ -433,9 +436,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
           "With principals, family offices and their advisors. A significant share of activity at this level runs through a family office rather than the principal directly.",
       },
       {
-        question: "Can these yachts be viewed?",
+        question: "How are viewings arranged above $25 million?",
         answer:
-          "Yes, after qualification and by arrangement, at a time that does not disrupt the vessel's programme. Viewings are individual, not scheduled.",
+          "By arrangement, after qualification, at a time that does not disrupt the vessel's programme. Each viewing is individual rather than scheduled.",
       },
       {
         question: "Is there a market above $100 million?",

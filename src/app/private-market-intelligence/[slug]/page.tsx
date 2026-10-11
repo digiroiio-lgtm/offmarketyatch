@@ -6,6 +6,7 @@ import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
+import SourcesNote from "@/components/SourcesNote";
 import SchemaOrg from "@/components/SchemaOrg";
 import { ARTICLES, getArticle } from "@/data/articles";
 import { articleSchema, breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
@@ -184,6 +185,8 @@ export default async function ArticlePage(
           </div>
         )}
       </article>
+
+      {article.sources && <SourcesNote sources={article.sources} />}
 
       <FinalCTA />
     </>

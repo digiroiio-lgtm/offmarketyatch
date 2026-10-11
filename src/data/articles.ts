@@ -7,6 +7,8 @@
  * copy says so rather than inventing precision.
  */
 
+import { FLORIDA_TAX_SOURCES, DEPOSIT_NOTES, mergeSources, type SourceNotes } from "@/data/sources";
+
 export interface ArticleSection {
   heading: string;
   paragraphs: string[];
@@ -32,6 +34,8 @@ export interface Article {
   related: string[];
   /** Contextual links into inventory and funnels. */
   inventoryLinks: { href: string; label: string }[];
+  /** References and caveats for tax, duty or contract claims in this article. */
+  sources?: SourceNotes;
 }
 
 export const ARTICLES: Article[] = [
@@ -421,6 +425,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "how-to-buy-a-yacht-privately",
+    sources: DEPOSIT_NOTES,
     title: "How to Buy a Yacht Privately",
     metaTitle: "How to Buy a Yacht Privately | The Confidential Purchase Process",
     metaDescription:
@@ -509,7 +514,7 @@ export const ARTICLES: Article[] = [
       {
         question: "What deposit is normal?",
         answer:
-          "Ten percent held in escrow on signing the memorandum of agreement is the market standard, refundable according to the agreed survey acceptance terms.",
+          "Around ten percent held in escrow on signing the memorandum of agreement is common practice, refundable according to the agreed survey acceptance terms. The amount and refund terms are set in the contract.",
       },
       {
         question: "Can I remain anonymous as a buyer?",
@@ -535,6 +540,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "how-to-buy-a-yacht-in-florida",
+    sources: FLORIDA_TAX_SOURCES,
     title: "How to Buy a Yacht in Florida",
     metaTitle: "How to Buy a Yacht in Florida | Tax, Survey & Market Guide",
     metaDescription:
@@ -551,7 +557,7 @@ export const ARTICLES: Article[] = [
       {
         question: "How much is sales tax on a yacht in Florida?",
         answer:
-          "Florida levies state sales tax on vessel purchases with a statutory cap on the total amount payable, plus a potential county discretionary surtax. The cap is one of the main reasons high-value yachts are closed in Florida rather than in states that tax the full purchase price. Rates and thresholds change, so confirm the current position with a Florida marine tax attorney.",
+          "Florida levies state sales tax on vessel purchases, with a cap of $18,000 on the total tax payable, including any county discretionary surtax, according to the Florida Department of Revenue. The cap is one of the main reasons high-value yachts are closed in Florida rather than in states that tax the full purchase price. Rates and thresholds change, so confirm the current position with a Florida marine tax attorney.",
       },
       {
         question: "Where should I survey a yacht in Florida?",
@@ -629,6 +635,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "best-places-to-buy-a-yacht-in-the-usa",
+    sources: FLORIDA_TAX_SOURCES,
     title: "Best Places to Buy a Yacht in the USA",
     metaTitle: "Best Places to Buy a Yacht in the USA | Market by Market",
     metaDescription:
@@ -718,6 +725,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "fort-lauderdale-yacht-buying-guide",
+    sources: FLORIDA_TAX_SOURCES,
     title: "Fort Lauderdale Yacht Buying Guide",
     metaTitle: "Fort Lauderdale Yacht Buying Guide | Yards, Dockage & Market",
     metaDescription:
@@ -1172,6 +1180,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "how-to-buy-a-superyacht",
+    sources: DEPOSIT_NOTES,
     title: "How to Buy a Superyacht",
     metaTitle: "How to Buy a Superyacht | Process, Diligence & Structure",
     metaDescription:
@@ -1198,7 +1207,7 @@ export const ARTICLES: Article[] = [
       {
         question: "What is the deposit on a superyacht purchase?",
         answer:
-          "Ten percent held in escrow on signing the memorandum of agreement is the market standard, released or returned according to the survey acceptance terms agreed in the contract.",
+          "Around ten percent held in escrow on signing the memorandum of agreement is common practice, released or returned according to the survey acceptance terms agreed in the contract. The amount is a convention, not a legal requirement.",
       },
     ],
     sections: [
@@ -1272,6 +1281,7 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "yacht-purchase-process-united-states",
+    sources: mergeSources(FLORIDA_TAX_SOURCES, DEPOSIT_NOTES),
     title: "The Yacht Purchase Process in the United States",
     metaTitle: "Yacht Purchase Process in the USA | Step by Step",
     metaDescription:
@@ -1311,7 +1321,7 @@ export const ARTICLES: Article[] = [
       {
         heading: "2. Deposit and escrow",
         paragraphs: [
-          "Ten percent is standard, held by an independent escrow agent. It is refundable in accordance with the agreement's terms — typically if the buyer rejects the vessel within the acceptance period.",
+          "Around ten percent is common, held by an independent escrow agent. It is refundable in accordance with the agreement's terms — typically if the buyer rejects the vessel within the acceptance period.",
         ],
       },
       {
@@ -1357,7 +1367,7 @@ export const ARTICLES: Article[] = [
       {
         question: "Do I pay sales tax at closing?",
         answer:
-          "It depends on the state, the delivery location and the intended use. Florida caps the sales tax on vessels; other states do not. Take advice from a marine tax specialist before setting the closing location.",
+          "It depends on the state, the delivery location and the intended use. Florida caps the total sales and use tax on a vessel sale at $18,000; the rules in other states differ. Take advice from a marine tax specialist before setting the closing location.",
       },
       {
         question: "Can I back out after the survey?",
