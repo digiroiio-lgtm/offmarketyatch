@@ -22,7 +22,9 @@ export type AnalyticsEvent =
   | "private_search_started"
   | "private_search_completed"
   | "sell_yacht_started"
-  | "sell_yacht_completed";
+  | "sell_yacht_completed"
+  | "broker_intake_started"
+  | "broker_intake_completed";
 
 export interface EventPayload {
   listing_id?: string;

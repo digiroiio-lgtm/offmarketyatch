@@ -8,10 +8,13 @@
     "start": "next start",
     "lint": "eslint",
     "audit:confidentiality": "node scripts/audit-confidentiality.mjs",
-    "verify": "next build && node scripts/audit-confidentiality.mjs && npm run test:research && eslint",
-    "test:research": "node --experimental-strip-types --test scripts/research-rules.test.mjs"
+    "verify": "next build && node scripts/audit-confidentiality.mjs && npm run test:research && npm run test:intake-e2e && eslint",
+    "test:research": "node --experimental-strip-types --test scripts/research-rules.test.mjs scripts/intake-rules.test.mjs",
+    "db:migrate": "node scripts/migrate-intake.mjs",
+    "test:intake-e2e": "node scripts/intake-e2e.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
     "next": "^16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",

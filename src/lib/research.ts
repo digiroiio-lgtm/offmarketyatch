@@ -7,7 +7,8 @@ import {
   type ResearchCandidate,
 } from "@/data/research-candidates";
 import type { OpportunityRecord } from "@/data/opportunities";
-import { generaliseForPublication, publicationBlockers } from "@/lib/research-rules";
+import { buildDraftRecord } from "@/lib/draft-record";
+import { publicationBlockers } from "@/lib/research-rules";
 
 export { publicationBlockers };
 
@@ -68,69 +69,21 @@ export function promoteToDraftRecord(candidate: ResearchCandidate): OpportunityR
     throw new Error(`${candidate.id} cannot be promoted: ${blockers.join("; ")}`);
   }
 
-  const general = generaliseForPublication({
-    year: candidate.year,
-    nominalLengthFt: candidate.nominalLengthFt,
-    advertisedPublicly: candidate.verification.advertisedPublicly,
-    currency: candidate.suppliedPrice.currency,
-    priceBandApproved: proposed.priceBand !== null,
-  });
-  const band = general.priceVisibility === "band" ? proposed.priceBand : null;
-  const now = new Date().toISOString();
-
-  return {
+  return buildDraftRecord({
     id: `research-${candidate.id}`,
     slug: proposed.slug,
     publicReference: proposed.publicReference,
-    status: "draft",
-    confidentialityLevel: "confidential",
-    titlePublic: proposed.type,
+    nominalLengthFt: candidate.nominalLengthFt,
+    year: candidate.year,
+    advertisedPublicly: candidate.verification.advertisedPublicly,
+    currency: candidate.suppliedPrice.currency,
+    priceBand: proposed.priceBand,
     type: proposed.type,
-    lengthFt: candidate.nominalLengthFt,
-    lengthM: Math.round(candidate.nominalLengthFt * 0.3048),
-    year: general.year,
-    refitYear: null,
-    builderPublic: null,
     buildRegion: proposed.buildRegion,
-    hullMaterial: null,
-    cabins: null,
-    guests: null,
-    crew: null,
     locationPublic: proposed.locationPublic,
     country: proposed.country,
-    locationGranularity: "region",
-    priceVisibility: general.priceVisibility,
-    askingPrice: null,
-    priceMin: band?.min ?? null,
-    priceMax: band?.max ?? null,
-    currency: "USD",
-    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic: proposed.descriptionPublic,
     opportunityNotes: proposed.opportunityNotes,
-    usageProfile: null,
-    condition: null,
-    featured: false,
-    verified: false,
-    imagesPublic: [
-      {
-        alt: `Profile study of a ${proposed.type.toLowerCase()}`,
-        treatment: "silhouette",
-        seed: proposed.publicReference,
-      },
-    ],
-    createdAt: now,
-    updatedAt: now,
-    publishedAt: null,
-    yachtNamePrivate: null,
-    builderPrivate: null,
-    locationPrivate: null,
-    descriptionPrivate: null,
-    sellerSignal: "unconfirmed",
     sellerSignalSource: "Research candidate; no contact with the seller",
-    imagesPrivate: [],
-    brokerContactPrivate: null,
-    imoPrivate: null,
-    mmsiPrivate: null,
-    registrationPrivate: null,
-  };
+  });
 }

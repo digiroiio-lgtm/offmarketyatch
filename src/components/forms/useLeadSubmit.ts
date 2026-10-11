@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getAttribution } from "@/lib/analytics";
 
 export interface LeadSubmission {
-  kind: "private-access" | "listing-inquiry" | "private-search" | "sell-side";
+  kind: "private-access" | "listing-inquiry" | "private-search" | "sell-side" | "broker-submission";
   answers: Record<string, string>;
   contact: {
     name: string;

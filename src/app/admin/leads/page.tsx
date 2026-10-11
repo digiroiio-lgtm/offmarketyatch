@@ -5,6 +5,7 @@ const KIND_LABEL: Record<string, string> = {
   "listing-inquiry": "Listing inquiry",
   "private-search": "Private search",
   "sell-side": "Seller",
+  "broker-submission": "Broker",
 };
 
 export default function AdminLeadsPage() {
@@ -30,7 +31,7 @@ export default function AdminLeadsPage() {
         </p>
       )}
 
-      <dl className="mt-8 grid gap-px border border-line bg-line sm:grid-cols-4">
+      <dl className="mt-8 grid gap-px border border-line bg-line sm:grid-cols-5">
         {Object.entries(counts).map(([kind, value]) => (
           <div key={kind} className="bg-paper-raised px-5 py-5">
             <dt className="label-mono text-ink-faint">{KIND_LABEL[kind] ?? kind}</dt>

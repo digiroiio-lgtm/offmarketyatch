@@ -59,6 +59,12 @@ const CONFIDENTIAL_VALUES = [
   "open-to-offers",
 ];
 
+/**
+ * Credentials and server-only configuration must never be inlined into
+ * anything a browser or crawler can fetch.
+ */
+const SECRET_PATTERNS = [/postgres(?:ql)?:\/\/[^\s"']+/i, /\bDATABASE_URL\b/, /\bADMIN_PASSWORD\b/];
+
 /** Internal record ids (`int-0001`…) must never be published either. */
 const ID_PATTERN = /\bint-\d{4}\b/;
 
@@ -202,6 +208,10 @@ function scan(files, label) {
       if (content.includes(value)) {
         findings.push(`${label}: confidential value "${value}" in ${file}`);
       }
+    }
+    for (const pattern of SECRET_PATTERNS) {
+      const secret = content.match(pattern);
+      if (secret) findings.push(`${label}: server-only configuration "${secret[0].slice(0, 40)}" in ${file}`);
     }
     const idMatch = content.match(ID_PATTERN);
     if (idMatch) {

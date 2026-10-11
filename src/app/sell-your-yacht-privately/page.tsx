@@ -19,7 +19,7 @@ const FAQS = [
   {
     question: "Will my yacht be listed publicly?",
     answer:
-      "No. Nothing is published, circulated or advertised as a result of contacting us. If we later agree that a public listing is the right route, that is a separate decision you make explicitly.",
+      "No. Nothing is published, circulated or advertised as a result of contacting us, and your first enquiry shares nothing. Private buyer matching, any masked entry and any disclosure of your yacht's identity each need your separate, explicit authorisation. If we later agree that a public listing is the right route, that is a further decision you make explicitly.",
   },
   {
     question: "Will you tell me what my yacht is worth?",
@@ -93,9 +93,9 @@ export default function SellPrivatelyPage() {
               every subsequent negotiation.
             </p>
             <p>
-              Testing the private market first costs you none of that. Your yacht is described to
-              a defined set of qualified buyers rather than advertised to everyone, and if nothing
-              comes of it you have lost nothing — no listing history, no price reductions, no
+              Testing the private market first costs you none of that. If you authorise it, your yacht
+              is described to a defined set of qualified buyers rather than advertised to
+              everyone, and if nothing comes of it you have lost nothing — no listing history, no price reductions, no
               market memory.
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function SellPrivatelyPage() {
               },
               {
                 title: "Confidential buyer matching",
-                body: "Your yacht is presented in masked form to buyers whose registered criteria it fits. Identity is released on your terms.",
+                body: "Only if you choose it. With your separate authorisation, your yacht can be matched privately against buyers\u2019 registered criteria in masked form, and its identity is released only on terms you approve.",
               },
               {
                 title: "No unnecessary public exposure",
@@ -143,7 +143,7 @@ export default function SellPrivatelyPage() {
             <AnswerBlock
               as="h3"
               question="How do you sell a yacht without listing it?"
-              answer="By describing the vessel in masked form to buyers whose registered acquisition criteria it matches, and disclosing its identity only to those who qualify and agree to appropriate terms. The transaction itself — offer, survey, sea trial, closing — is identical to a public sale."
+              answer="Once you have authorised it, by describing the vessel in masked form to buyers whose registered acquisition criteria it matches, and disclosing its identity only to those who qualify and agree to appropriate terms. Your first enquiry shares nothing; each of those steps needs your separate authorisation. The transaction itself — offer, survey, sea trial, closing — is identical to a public sale."
             />
             <AnswerBlock
               as="h3"

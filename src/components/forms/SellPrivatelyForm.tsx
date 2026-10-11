@@ -9,34 +9,11 @@ import {
   SelectField,
   SuccessPanel,
 } from "@/components/forms/FormParts";
+import { EXPECTED_VALUE, SALE_TIMELINE, YACHT_TYPE } from "@/components/forms/intake-options";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
 
 /** Sell-side funnel (§12). Positioned as private exploration, not a mandate. */
-
-const YACHT_TYPE = [
-  "Motor Yacht",
-  "Explorer Yacht",
-  "Sailing Yacht",
-  "Catamaran",
-  "Sport Yacht",
-  "Superyacht",
-];
-const EXPECTED_VALUE = [
-  "Under $5M",
-  "$5M–$10M",
-  "$10M–$25M",
-  "$25M–$50M",
-  "$50M+",
-  "Prefer to discuss",
-];
-const SALE_TIMELINE = [
-  "Immediately",
-  "This season",
-  "Within 12 months",
-  "Testing the market",
-  "Undecided",
-];
 
 export default function SellPrivatelyForm() {
   const [yacht, setYacht] = useState({
@@ -97,7 +74,7 @@ export default function SellPrivatelyForm() {
       <SuccessPanel
         title="Your private sale enquiry has been received."
         body="A member of our team will contact you to understand the vessel and discuss whether a private approach makes sense before any public listing."
-        footnote="We have not valued your yacht and we have not represented that a buyer exists for it. Any view on demand or price will come from a person, after we have seen the specification."
+        footnote="We have not valued your yacht and we have not represented that a buyer exists for it. Nothing about your yacht has been shared: matching, any masked entry and any disclosure of its identity each need your separate authorisation. Any view on demand or price will come from a person, after we have seen the specification."
       />
     );
   }
@@ -115,7 +92,9 @@ export default function SellPrivatelyForm() {
       </h2>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-muted">
         Nothing is published, circulated or listed as a result of this form. It starts a private
-        conversation about whether there is buyer demand worth exploring.
+        conversation about whether there is buyer demand worth exploring. Matching your yacht to
+        buyers, any masked entry and any disclosure of its identity each need your separate
+        authorisation later.
       </p>
 
       <Honeypot value={honeypot} onChange={setHoneypot} />
@@ -220,7 +199,7 @@ export default function SellPrivatelyForm() {
 
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
         Confidential. We do not publish your yacht, circulate its details, or contact your crew
-        or marina without your instruction.
+        or marina without your instruction, and we record each authorisation you give.
       </p>
     </form>
   );
