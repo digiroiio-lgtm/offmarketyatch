@@ -4,7 +4,7 @@ import type { LandingPage } from "@/data/landing/types";
 export const CORE_PAGES: LandingPage[] = [
   {
     slug: "off-market-yachts-for-sale",
-    title: "Off-Market Yachts for Sale | Confidential Yacht Opportunities",
+    title: "Off-Market Yachts for Sale | Confidential",
     metaDescription:
       "Off-market yachts for sale, presented confidentially: motor yachts, explorer yachts and superyachts in the USA, Caribbean and Mediterranean. Private inquiry.",
     h1: "Off-Market Yachts for Sale",
@@ -84,7 +84,7 @@ export const CORE_PAGES: LandingPage[] = [
 
   {
     slug: "private-yachts-for-sale",
-    title: "Private Yachts for Sale | Confidential Yacht Sales",
+    title: "Private Yachts for Sale | Confidential Sales",
     metaDescription:
       "Private yachts for sale through confidential channels across the USA, Bahamas, Caribbean and Mediterranean. Masked listings, private inquiry only.",
     h1: "Private Yachts for Sale",
@@ -151,7 +151,7 @@ export const CORE_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale",
-    title: "Yachts for Sale | Private & Off-Market Yacht Opportunities",
+    title: "Yachts for Sale | Private & Off-Market",
     metaDescription:
       "Yachts for sale via a private acquisition platform: motor, explorer, sailing yachts and superyachts from $2M to $50M+ in the USA, Caribbean and Mediterranean.",
     h1: "Yachts for Sale",
@@ -217,7 +217,7 @@ export const CORE_PAGES: LandingPage[] = [
 
   {
     slug: "luxury-yachts-for-sale",
-    title: "Luxury Yachts for Sale | Private Market Opportunities",
+    title: "Luxury Yachts for Sale | Private Market",
     metaDescription:
       "Luxury yachts for sale via private, off-market channels. Confidential opportunities from $5M to $50M+ in Florida, the USA, Caribbean and Mediterranean.",
     h1: "Luxury Yachts for Sale",
@@ -284,7 +284,7 @@ export const CORE_PAGES: LandingPage[] = [
 
   {
     slug: "superyachts-for-sale",
-    title: "Superyachts for Sale | Off-Market & Private Superyacht Opportunities",
+    title: "Superyachts for Sale | Off-Market",
     metaDescription:
       "Superyachts for sale through private channels. Confidential 100 ft+ opportunities in Florida, the Caribbean and the Mediterranean; qualified buyers only.",
     h1: "Superyachts for Sale",
@@ -352,7 +352,7 @@ export const CORE_PAGES: LandingPage[] = [
 
   {
     slug: "mega-yachts-for-sale",
-    title: "Mega Yachts for Sale | Private Opportunities Over 165 ft",
+    title: "Mega Yachts for Sale | Over 165 ft",
     metaDescription:
       "Mega yachts for sale through confidential channels. Private opportunities over 165 ft / 50 m, presented to qualified buyers only. Price on request.",
     h1: "Mega Yachts for Sale",

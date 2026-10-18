@@ -9,7 +9,7 @@ import SellPrivatelyForm from "@/components/forms/SellPrivatelyForm";
 import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Sell Your Yacht Privately | Confidential Yacht Sales",
+  title: "Sell Your Yacht Privately",
   description:
     "Sell your yacht quietly. Test buyer demand confidentially before going public, with private sale exploration and confidential buyer matching.",
   path: "/sell-your-yacht-privately",

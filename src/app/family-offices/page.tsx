@@ -9,7 +9,7 @@ import PrivateAccessForm from "@/components/forms/PrivateAccessForm";
 import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Family Offices | Private Yacht Acquisition Advisory",
+  title: "Family Offices | Yacht Acquisition Advisory",
   description:
     "Yacht acquisition advisory for family offices: confidential sourcing, structured diligence, ownership structure considerations and discreet execution.",
   path: "/family-offices",

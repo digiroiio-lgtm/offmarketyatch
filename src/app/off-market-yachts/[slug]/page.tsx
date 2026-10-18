@@ -43,6 +43,8 @@ export async function generateMetadata(
   // confidential can reach <title>, the meta description or OpenGraph.
   return pageMetadata({
     title: `${opportunity.titlePublic}, ${opportunity.locationPublic} — ${opportunity.reference}`,
+    // Listing titles already carry the length, class, area and reference; the brand suffix would push them past ~60 characters.
+    absoluteTitle: true,
     description: `Confidential ${opportunity.type.toLowerCase()} opportunity. ${
       opportunity.lengthDisplay
     }, ${opportunity.buildRegion}, ${opportunity.yearLabel}. ${

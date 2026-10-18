@@ -6,7 +6,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   // ── International regions ─────────────────────────────────────────────────
   {
     slug: "yachts-for-sale-bahamas",
-    title: "Yachts for Sale Bahamas | Private Bahamas Opportunities",
+    title: "Yachts for Sale Bahamas | Private Market",
     metaDescription:
       "Yachts for sale in the Bahamas through private channels. Confidential opportunities suited to Exumas and Abacos cruising, an afternoon from South Florida.",
     h1: "Yachts for Sale in the Bahamas",
@@ -70,7 +70,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-caribbean",
-    title: "Yachts for Sale Caribbean | Private Caribbean Opportunities",
+    title: "Yachts for Sale Caribbean | Private Market",
     metaDescription:
       "Yachts for sale in the Caribbean through private channels. Confidential opportunities across the Eastern Caribbean, BVI, Antigua and St Maarten.",
     h1: "Yachts for Sale in the Caribbean",
@@ -135,7 +135,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   {
     slug: "yachts-for-sale-mediterranean",
     sources: EU_VAT_SOURCES,
-    title: "Yachts for Sale Mediterranean | Private European Opportunities",
+    title: "Yachts for Sale Mediterranean | Private",
     metaDescription:
       "Yachts for sale in the Mediterranean through private channels. Confidential opportunities in Monaco, France, Italy, Spain, Greece and Turkey.",
     h1: "Yachts for Sale in the Mediterranean",
@@ -200,7 +200,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   // ── Budget bands ──────────────────────────────────────────────────────────
   {
     slug: "yachts-for-sale-under-5-million",
-    title: "Yachts for Sale Under $5 Million | Private Opportunities",
+    title: "Yachts for Sale Under $5 Million",
     metaDescription:
       "Yachts for sale under $5 million through private channels. Confidential opportunities from 60 to 100 ft in Florida, the Bahamas and the USA.",
     h1: "Yachts for Sale Under $5 Million",
@@ -264,7 +264,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-under-10-million",
-    title: "Yachts for Sale Under $10 Million | Private Opportunities",
+    title: "Yachts for Sale Under $10 Million",
     metaDescription:
       "Yachts for sale under $10 million through private channels. Confidential opportunities from 90 to 130 ft with permanent crew, in the USA and internationally.",
     h1: "Yachts for Sale Under $10 Million",
@@ -329,7 +329,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   {
     slug: "yachts-for-sale-10-million-25-million",
     sources: DEPOSIT_NOTES,
-    title: "Yachts for Sale $10M – $25M | Private Superyacht Opportunities",
+    title: "Yachts for Sale $10M–$25M | Private Market",
     metaDescription:
       "Yachts for sale between $10 million and $25 million. Confidential superyacht opportunities from 120 to 165 ft, presented privately to qualified buyers.",
     h1: "Yachts for Sale $10M – $25M",
@@ -393,7 +393,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "superyachts-for-sale-over-25-million",
-    title: "Superyachts for Sale Over $25 Million | Private Market",
+    title: "Superyachts for Sale Over $25 Million",
     metaDescription:
       "Superyachts for sale over $25 million. Confidential opportunities above 160 ft presented privately to qualified buyers. Price frequently on request.",
     h1: "Superyachts for Sale Over $25 Million",
@@ -458,7 +458,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   // ── Size bands ────────────────────────────────────────────────────────────
   {
     slug: "yachts-for-sale-80-100-feet",
-    title: "Yachts for Sale 80–100 Feet | Private Opportunities",
+    title: "Yachts for Sale 80–100 Feet | Private",
     metaDescription:
       "Yachts for sale between 80 and 100 feet through private channels. Confidential opportunities in the most liquid segment of the large-yacht market.",
     h1: "Yachts for Sale 80–100 Feet",
@@ -522,7 +522,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-100-130-feet",
-    title: "Yachts for Sale 100–130 Feet | Private Superyacht Opportunities",
+    title: "Yachts for Sale 100–130 Feet | Private",
     metaDescription:
       "Yachts for sale between 100 and 130 feet through private channels. Confidential opportunities at the entry point to the superyacht market.",
     h1: "Yachts for Sale 100–130 Feet",
@@ -586,7 +586,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-130-165-feet",
-    title: "Yachts for Sale 130–165 Feet | Private Superyacht Opportunities",
+    title: "Yachts for Sale 130–165 Feet | Private",
     metaDescription:
       "Yachts for sale between 130 and 165 feet through private channels. Confidential superyacht opportunities with full crew and ocean-crossing capability.",
     h1: "Yachts for Sale 130–165 Feet",
@@ -650,7 +650,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-over-165-feet",
-    title: "Yachts for Sale Over 165 Feet | Private Mega Yacht Opportunities",
+    title: "Yachts for Sale Over 165 Feet | Private",
     metaDescription:
       "Yachts for sale over 165 feet / 50 metres through private channels. Confidential mega yacht opportunities presented to qualified buyers. Price often on request.",
     h1: "Yachts for Sale Over 165 Feet",
@@ -715,7 +715,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
   // ── Yacht classes ─────────────────────────────────────────────────────────
   {
     slug: "motor-yachts-for-sale",
-    title: "Motor Yachts for Sale | Private & Off-Market Opportunities",
+    title: "Motor Yachts for Sale | Off-Market",
     metaDescription:
       "Motor yachts for sale through private channels. Confidential opportunities from 60 to 200+ ft across the USA, Bahamas, Caribbean and Mediterranean.",
     h1: "Motor Yachts for Sale",
@@ -779,7 +779,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "explorer-yachts-for-sale",
-    title: "Explorer Yachts for Sale | Private Expedition Yacht Opportunities",
+    title: "Explorer Yachts for Sale | Private Market",
     metaDescription:
       "Explorer yachts for sale through private channels. Confidential expedition yacht opportunities with long range, heavy tankage and high-latitude capability.",
     h1: "Explorer Yachts for Sale",
@@ -843,7 +843,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "sailing-yachts-for-sale",
-    title: "Sailing Yachts for Sale | Private Sailing & Catamaran Opportunities",
+    title: "Sailing Yachts for Sale | Private Market",
     metaDescription:
       "Sailing yachts and luxury catamarans for sale through private channels. Confidential opportunities in the Caribbean, Mediterranean and USA.",
     h1: "Sailing Yachts for Sale",
