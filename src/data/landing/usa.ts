@@ -7,7 +7,7 @@ export const USA_PAGES: LandingPage[] = [
     slug: "yachts-for-sale-usa",
     title: "Yachts for Sale USA | Private & Off-Market US Opportunities",
     metaDescription:
-      "Yachts for sale in the USA through private channels. Off-market opportunities in Florida, the Northeast, California and the Bahamas — masked listings for qualified US buyers.",
+      "Yachts for sale in the USA through private channels. Off-market opportunities in Florida, the Northeast, California and the Bahamas for qualified US buyers.",
     h1: "Yachts for Sale in the USA",
     standfirst: "The largest concentration of privately available yachts in the world.",
     intro: [
@@ -147,7 +147,7 @@ export const USA_PAGES: LandingPage[] = [
     sources: FLORIDA_TAX_SOURCES,
     title: "Yachts for Sale Florida | Private & Off-Market Florida Yachts",
     metaDescription:
-      "Yachts for sale in Florida through private channels. Off-market opportunities in Fort Lauderdale, Miami, Palm Beach, Naples and Tampa. Masked listings, private inquiry.",
+      "Yachts for sale in Florida through private channels. Off-market opportunities in Fort Lauderdale, Miami, Palm Beach, Naples and Tampa. Private inquiry.",
     h1: "Yachts for Sale in Florida",
     standfirst: "The deepest private yacht market in the world, by some distance.",
     intro: [
@@ -224,7 +224,7 @@ export const USA_PAGES: LandingPage[] = [
     slug: "off-market-yachts-florida",
     title: "Off-Market Yachts Florida | Confidential Florida Opportunities",
     metaDescription:
-      "Off-market yachts in Florida. Confidential, privately available Florida yacht opportunities never listed publicly. Fort Lauderdale, Miami, Palm Beach and the Bahamas.",
+      "Off-market yachts in Florida: confidential, privately available opportunities never listed publicly. Fort Lauderdale, Miami, Palm Beach and the Bahamas.",
     h1: "Off-Market Yachts in Florida",
     standfirst: "The Florida yachts that never reach a listing page.",
     intro: [
@@ -357,7 +357,7 @@ export const USA_PAGES: LandingPage[] = [
     slug: "yachts-for-sale-fort-lauderdale",
     title: "Yachts for Sale Fort Lauderdale | Private Market Opportunities",
     metaDescription:
-      "Yachts for sale in Fort Lauderdale through private channels. Off-market opportunities in the yachting capital of the world — masked listings, qualified buyer access.",
+      "Yachts for sale in Fort Lauderdale through private channels. Off-market opportunities in the yachting capital of the world. Masked listings, qualified buyers.",
     h1: "Yachts for Sale in Fort Lauderdale",
     standfirst: "The centre of the American large-yacht market.",
     intro: [
@@ -752,7 +752,7 @@ export const USA_PAGES: LandingPage[] = [
     slug: "yachts-for-sale-san-diego",
     title: "Yachts for Sale San Diego | Private West Coast Opportunities",
     metaDescription:
-      "Yachts for sale in San Diego through private channels. Confidential opportunities in California's principal large-yacht port, with Baja cruising on the doorstep.",
+      "Yachts for sale in San Diego through private channels. Confidential opportunities in California's principal large-yacht port, with Baja cruising nearby.",
     h1: "Yachts for Sale in San Diego",
     standfirst: "California's working large-yacht port.",
     intro: [

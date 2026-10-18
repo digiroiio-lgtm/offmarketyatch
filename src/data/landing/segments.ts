@@ -137,7 +137,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
     sources: EU_VAT_SOURCES,
     title: "Yachts for Sale Mediterranean | Private European Opportunities",
     metaDescription:
-      "Yachts for sale in the Mediterranean through private channels. Confidential opportunities in Monaco, France, Italy, Spain, Greece and Turkey for US and international buyers.",
+      "Yachts for sale in the Mediterranean through private channels. Confidential opportunities in Monaco, France, Italy, Spain, Greece and Turkey.",
     h1: "Yachts for Sale in the Mediterranean",
     standfirst: "Deep inventory, and a tax position that has to be understood first.",
     intro: [

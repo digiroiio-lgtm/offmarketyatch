@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = pageMetadata({
   title: "Off-Market Yachts | The Private Yacht Marketplace",
   description:
-    "Browse confidential off-market yacht opportunities. Masked listings across the USA, Florida, Bahamas, Caribbean and Mediterranean, with detail released to qualified buyers.",
+    "Browse confidential off-market yacht opportunities. Masked listings across the USA, Florida, Bahamas, Caribbean and Mediterranean; detail for qualified buyers.",
   path: "/off-market-yachts",
 });
 

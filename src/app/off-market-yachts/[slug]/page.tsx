@@ -66,6 +66,16 @@ export default async function OpportunityDetailPage(
   const related = getRelatedOpportunities(opportunity, 3);
   const isPotential = opportunity.availabilityType === "POTENTIAL OPPORTUNITY";
 
+  // The H1 is built from published fields only (same sources as the spec table),
+  // so listings in the same length band get distinct headings.
+  const headingLength =
+    opportunity.confidentialityLevel === "confidential"
+      ? opportunity.lengthDisplay
+      : `${opportunity.lengthFt} ft`;
+  const heading = `${headingLength} ${opportunity.buildRegion.replace(/ Build$/, "")} ${opportunity.type}${
+    opportunity.year !== null ? `, ${opportunity.year}` : ""
+  } — ${opportunity.locationPublic}`;
+
   const specs = [
     { term: "Length", value: opportunity.lengthDisplay },
     { term: "Class", value: opportunity.type },
@@ -136,7 +146,7 @@ export default async function OpportunityDetailPage(
             </p>
 
             <h1 className="display mt-4 text-[36px] text-ink-inverse sm:text-[46px]">
-              {opportunity.titlePublic}
+              {heading}
             </h1>
 
             <p className="mt-3 text-[17px] text-ink-inverse-muted">

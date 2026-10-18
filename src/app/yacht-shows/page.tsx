@@ -8,7 +8,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 export const metadata: Metadata = {
   title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
   description:
-    "The world's most important yacht shows and yachting events for serious buyers and sellers. Monaco Yacht Show, FLIBS, Cannes, Dubai, Palm Beach — where private off-market deals are made.",
+    "The key yacht shows and events for buyers and sellers: Monaco Yacht Show, FLIBS, Cannes, Dubai and Palm Beach, where private off-market deals are made.",
   alternates: {
     canonical: canonical("/yacht-shows"),
   },

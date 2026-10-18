@@ -10,7 +10,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = pageMetadata({
   title: "About | The Private Side of the Yacht Market",
   description:
-    "OffMarketYacht is a private acquisition platform for confidential and off-market yacht opportunities, built for qualified buyers in the United States and internationally.",
+    "OffMarketYacht is a private acquisition platform for confidential, off-market yacht opportunities, built for qualified buyers in the US and abroad.",
   path: "/about",
 });
 
