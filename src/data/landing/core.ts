@@ -6,7 +6,7 @@ export const CORE_PAGES: LandingPage[] = [
     slug: "off-market-yachts-for-sale",
     title: "Off-Market Yachts for Sale | Confidential Yacht Opportunities",
     metaDescription:
-      "Off-market yachts for sale, presented confidentially. Browse privately available motor yachts, explorer yachts and superyachts in the USA, Caribbean and Mediterranean by private inquiry.",
+      "Off-market yachts for sale, presented confidentially: motor yachts, explorer yachts and superyachts in the USA, Caribbean and Mediterranean. Private inquiry.",
     h1: "Off-Market Yachts for Sale",
     standfirst: "Yachts that are genuinely available and deliberately unadvertised.",
     intro: [
@@ -86,7 +86,7 @@ export const CORE_PAGES: LandingPage[] = [
     slug: "private-yachts-for-sale",
     title: "Private Yachts for Sale | Confidential Yacht Sales",
     metaDescription:
-      "Private yachts for sale through confidential channels. Explore privately available yachts across the USA, Bahamas, Caribbean and Mediterranean — masked listings, private inquiry only.",
+      "Private yachts for sale through confidential channels across the USA, Bahamas, Caribbean and Mediterranean. Masked listings, private inquiry only.",
     h1: "Private Yachts for Sale",
     standfirst: "Confidential sales, conducted between qualified parties.",
     intro: [
@@ -153,7 +153,7 @@ export const CORE_PAGES: LandingPage[] = [
     slug: "yachts-for-sale",
     title: "Yachts for Sale | Private & Off-Market Yacht Opportunities",
     metaDescription:
-      "Yachts for sale through a private acquisition platform. Motor yachts, explorer yachts, sailing yachts and superyachts from $2M to $50M+, in the USA, Caribbean and Mediterranean.",
+      "Yachts for sale via a private acquisition platform: motor, explorer, sailing yachts and superyachts from $2M to $50M+ in the USA, Caribbean and Mediterranean.",
     h1: "Yachts for Sale",
     standfirst: "The inventory you can find publicly is not the whole market.",
     intro: [
@@ -219,7 +219,7 @@ export const CORE_PAGES: LandingPage[] = [
     slug: "luxury-yachts-for-sale",
     title: "Luxury Yachts for Sale | Private Market Opportunities",
     metaDescription:
-      "Luxury yachts for sale through private and off-market channels. Confidential opportunities from $5M to $50M+ across Florida, the USA, Caribbean and Mediterranean.",
+      "Luxury yachts for sale via private, off-market channels. Confidential opportunities from $5M to $50M+ in Florida, the USA, Caribbean and Mediterranean.",
     h1: "Luxury Yachts for Sale",
     standfirst: "Where the specification justifies a private conversation.",
     intro: [
@@ -286,7 +286,7 @@ export const CORE_PAGES: LandingPage[] = [
     slug: "superyachts-for-sale",
     title: "Superyachts for Sale | Off-Market & Private Superyacht Opportunities",
     metaDescription:
-      "Superyachts for sale through private channels. Confidential opportunities over 100 ft in Florida, the Caribbean, the Mediterranean and beyond — masked listings, qualified buyers only.",
+      "Superyachts for sale through private channels. Confidential 100 ft+ opportunities in Florida, the Caribbean and the Mediterranean; qualified buyers only.",
     h1: "Superyachts for Sale",
     standfirst: "Above 100 feet, the private market is the market.",
     intro: [
