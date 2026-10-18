@@ -13,7 +13,7 @@ import { SITE } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Off-Market Yachts for Sale | Private Yacht Opportunities — OffMarketYacht",
+    default: "Off-Market Yachts for Sale | OffMarketYacht",
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,

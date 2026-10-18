@@ -18,6 +18,8 @@ interface PageMetaInput {
   description: string;
   path: string;
   noindex?: boolean;
+  /** Render the title as-is, without the "| OffMarketYacht" template suffix. */
+  absoluteTitle?: boolean;
   ogType?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
@@ -28,13 +30,14 @@ export function pageMetadata({
   description,
   path,
   noindex = false,
+  absoluteTitle = false,
   ogType = "website",
   publishedTime,
   modifiedTime,
 }: PageMetaInput): Metadata {
   const url = canonical(path);
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     robots: noindex

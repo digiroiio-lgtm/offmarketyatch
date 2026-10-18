@@ -42,7 +42,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "what-is-an-off-market-yacht",
     title: "What Is an Off-Market Yacht?",
-    metaTitle: "What Is an Off-Market Yacht? | Definition & How They Work",
+    metaTitle: "What Is an Off-Market Yacht?",
     metaDescription:
       "An off-market yacht is one whose owner may sell but has chosen not to advertise it publicly. How the category works, why it exists, and how buyers access it.",
     standfirst:
@@ -145,7 +145,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-to-find-off-market-yachts-for-sale",
     title: "How to Find Off-Market Yachts for Sale",
-    metaTitle: "How to Find Off-Market Yachts for Sale | Four Routes That Work",
+    metaTitle: "How to Find Off-Market Yachts for Sale",
     metaDescription:
       "The four realistic routes into off-market yacht inventory, what each one costs you, and how to make an acquisition search actually produce results.",
     standfirst: "Four routes into private inventory, and what each one realistically delivers.",
@@ -246,7 +246,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-yacht-pocket-listings-work",
     title: "How Yacht Pocket Listings Work",
-    metaTitle: "How Yacht Pocket Listings Work | Private Broker Inventory",
+    metaTitle: "How Yacht Pocket Listings Work",
     metaDescription:
       "What a yacht pocket listing is, why brokers hold them, what it means for price discovery, and how a buyer gets access to unadvertised broker inventory.",
     standfirst: "The unadvertised mandate: who holds them, why, and what it costs you.",
@@ -335,7 +335,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "off-market-vs-public-yacht-listings",
     title: "Off-Market vs Public Yacht Listings",
-    metaTitle: "Off-Market vs Public Yacht Listings | A Direct Comparison",
+    metaTitle: "Off-Market vs Public Yacht Listings",
     metaDescription:
       "A direct comparison of off-market and publicly listed yachts across price, choice, information, speed, diligence and negotiating position.",
     standfirst: "Where each route genuinely wins, and where the received wisdom is wrong.",
@@ -427,7 +427,7 @@ export const ARTICLES: Article[] = [
     slug: "how-to-buy-a-yacht-privately",
     sources: DEPOSIT_NOTES,
     title: "How to Buy a Yacht Privately",
-    metaTitle: "How to Buy a Yacht Privately | The Confidential Purchase Process",
+    metaTitle: "How to Buy a Yacht Privately",
     metaDescription:
       "How a private yacht purchase works end to end: defining criteria, accessing unlisted inventory, making an approach, diligence, and closing confidentially.",
     standfirst: "The process end to end, from defining criteria to closing.",
@@ -542,7 +542,7 @@ export const ARTICLES: Article[] = [
     slug: "how-to-buy-a-yacht-in-florida",
     sources: FLORIDA_TAX_SOURCES,
     title: "How to Buy a Yacht in Florida",
-    metaTitle: "How to Buy a Yacht in Florida | Tax, Survey & Market Guide",
+    metaTitle: "How to Buy a Yacht in Florida",
     metaDescription:
       "Buying a yacht in Florida: the sales tax position, where to survey, seasonal timing, hurricane insurance conditions, and why Florida is the deepest US market.",
     standfirst: "The deepest US market, and the practical questions specific to it.",
@@ -637,7 +637,7 @@ export const ARTICLES: Article[] = [
     slug: "best-places-to-buy-a-yacht-in-the-usa",
     sources: FLORIDA_TAX_SOURCES,
     title: "Best Places to Buy a Yacht in the USA",
-    metaTitle: "Best Places to Buy a Yacht in the USA | Market by Market",
+    metaTitle: "Best Places to Buy a Yacht in the USA",
     metaDescription:
       "Where to buy a yacht in the United States: South Florida, the Northeast, the West Coast and the Gulf compared on inventory, condition, tax and infrastructure.",
     standfirst: "Four US markets compared on what actually matters to a buyer.",
@@ -727,7 +727,7 @@ export const ARTICLES: Article[] = [
     slug: "fort-lauderdale-yacht-buying-guide",
     sources: FLORIDA_TAX_SOURCES,
     title: "Fort Lauderdale Yacht Buying Guide",
-    metaTitle: "Fort Lauderdale Yacht Buying Guide | Yards, Dockage & Market",
+    metaTitle: "Fort Lauderdale Yacht Buying Guide",
     metaDescription:
       "Buying a yacht in Fort Lauderdale: the yards, dockage reality, survey logistics, boat show timing, and how the off-market network actually works.",
     standfirst: "The yachting capital, and how to use it as a buyer.",
@@ -820,7 +820,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "miami-yacht-buying-guide",
     title: "Miami Yacht Buying Guide",
-    metaTitle: "Miami Yacht Buying Guide | Market, Dockage & Bahamas Access",
+    metaTitle: "Miami Yacht Buying Guide",
     metaDescription:
       "Buying a yacht in Miami: what the market holds, dockage realities, the Bahamas crossing, and what heavy year-round use means for diligence.",
     standfirst: "A faster market, a younger buyer, and boats that have worked.",
@@ -902,7 +902,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "florida-yacht-sales-market",
     title: "The Florida Yacht Sales Market",
-    metaTitle: "The Florida Yacht Sales Market | Structure & Seasonality",
+    metaTitle: "The Florida Yacht Sales Market",
     metaDescription:
       "How the Florida yacht market works: its structure, seasonality, the role of the refit industry, and why so much of it transacts before anything is listed.",
     standfirst: "How the market is structured, and why so much of it is invisible.",
@@ -991,7 +991,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-much-does-a-superyacht-cost",
     title: "How Much Does a Superyacht Cost?",
-    metaTitle: "How Much Does a Superyacht Cost? | Purchase & Running Costs",
+    metaTitle: "How Much Does a Superyacht Cost?",
     metaDescription:
       "What a superyacht costs to buy and to run, by size band, with the components of the annual operating budget broken down honestly.",
     standfirst: "Purchase price is the smaller question. Here is the whole picture.",
@@ -1098,7 +1098,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-to-buy-a-10-million-dollar-yacht",
     title: "How to Buy a $10 Million Yacht",
-    metaTitle: "How to Buy a $10 Million Yacht | What to Expect at This Level",
+    metaTitle: "How to Buy a $10 Million Yacht",
     metaDescription:
       "What $10 million buys, what it costs to run, how the diligence differs from smaller purchases, and why this bracket transacts privately so often.",
     standfirst: "What the money buys, and what the ownership actually involves.",
@@ -1182,7 +1182,7 @@ export const ARTICLES: Article[] = [
     slug: "how-to-buy-a-superyacht",
     sources: DEPOSIT_NOTES,
     title: "How to Buy a Superyacht",
-    metaTitle: "How to Buy a Superyacht | Process, Diligence & Structure",
+    metaTitle: "How to Buy a Superyacht",
     metaDescription:
       "The superyacht purchase process: representation, ownership structure, class and flag, diligence, negotiation and closing above 100 feet.",
     standfirst: "Above 100 feet the process changes shape. Here is how.",
@@ -1389,7 +1389,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "yacht-survey-and-sea-trial-explained",
     title: "Yacht Survey and Sea Trial Explained",
-    metaTitle: "Yacht Survey and Sea Trial Explained | What to Expect",
+    metaTitle: "Yacht Survey and Sea Trial Explained",
     metaDescription:
       "What a yacht survey covers, what a sea trial should test, what each costs, how to choose a surveyor, and how to use the findings in negotiation.",
     standfirst: "What each one covers, what it costs, and how to use the findings.",
@@ -1490,7 +1490,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-long-does-it-take-to-buy-a-yacht",
     title: "How Long Does It Take to Buy a Yacht?",
-    metaTitle: "How Long Does It Take to Buy a Yacht? | Realistic Timelines",
+    metaTitle: "How Long Does It Take to Buy a Yacht?",
     metaDescription:
       "Realistic timelines for buying a yacht, from search through offer, survey and closing, and what causes the delays buyers do not plan for.",
     standfirst: "Realistic timelines, and where the delays actually come from.",
@@ -1578,7 +1578,7 @@ export const ARTICLES: Article[] = [
   {
     slug: "private-yacht-acquisition-guide",
     title: "Private Yacht Acquisition Guide",
-    metaTitle: "Private Yacht Acquisition Guide | Buyer Representation",
+    metaTitle: "Private Yacht Acquisition Guide",
     metaDescription:
       "A complete guide to private yacht acquisition: defining a brief, buyer representation, approaching owners, valuation without comparables, and closing.",
     standfirst: "The complete picture, for a buyer running a serious acquisition.",

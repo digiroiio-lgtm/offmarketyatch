@@ -5,7 +5,7 @@ import { FLORIDA_TAX_SOURCES } from "@/data/sources";
 export const USA_PAGES: LandingPage[] = [
   {
     slug: "yachts-for-sale-usa",
-    title: "Yachts for Sale USA | Private & Off-Market US Opportunities",
+    title: "Yachts for Sale USA | Private & Off-Market",
     metaDescription:
       "Yachts for sale in the USA through private channels. Off-market opportunities in Florida, the Northeast, California and the Bahamas for qualified US buyers.",
     h1: "Yachts for Sale in the USA",
@@ -77,7 +77,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "off-market-yachts-usa",
-    title: "Off-Market Yachts USA | Confidential US Yacht Opportunities",
+    title: "Off-Market Yachts USA | Confidential",
     metaDescription:
       "Off-market yachts in the USA. Confidential, privately available American yacht opportunities not listed on public marketplaces. Qualified buyer access.",
     h1: "Off-Market Yachts in the USA",
@@ -145,7 +145,7 @@ export const USA_PAGES: LandingPage[] = [
   {
     slug: "yachts-for-sale-florida",
     sources: FLORIDA_TAX_SOURCES,
-    title: "Yachts for Sale Florida | Private & Off-Market Florida Yachts",
+    title: "Yachts for Sale Florida | Private & Off-Market",
     metaDescription:
       "Yachts for sale in Florida through private channels. Off-market opportunities in Fort Lauderdale, Miami, Palm Beach, Naples and Tampa. Private inquiry.",
     h1: "Yachts for Sale in Florida",
@@ -222,7 +222,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "off-market-yachts-florida",
-    title: "Off-Market Yachts Florida | Confidential Florida Opportunities",
+    title: "Off-Market Yachts Florida | Confidential",
     metaDescription:
       "Off-market yachts in Florida: confidential, privately available opportunities never listed publicly. Fort Lauderdale, Miami, Palm Beach and the Bahamas.",
     h1: "Off-Market Yachts in Florida",
@@ -291,7 +291,7 @@ export const USA_PAGES: LandingPage[] = [
   {
     slug: "superyachts-for-sale-florida",
     sources: FLORIDA_TAX_SOURCES,
-    title: "Superyachts for Sale Florida | Private Florida Superyacht Market",
+    title: "Superyachts for Sale Florida | Private Market",
     metaDescription:
       "Superyachts for sale in Florida. Confidential opportunities over 100 ft in Fort Lauderdale, Miami and Palm Beach, presented to qualified buyers.",
     h1: "Superyachts for Sale in Florida",
@@ -355,7 +355,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-fort-lauderdale",
-    title: "Yachts for Sale Fort Lauderdale | Private Market Opportunities",
+    title: "Yachts for Sale Fort Lauderdale",
     metaDescription:
       "Yachts for sale in Fort Lauderdale through private channels. Off-market opportunities in the yachting capital of the world. Masked listings, qualified buyers.",
     h1: "Yachts for Sale in Fort Lauderdale",
@@ -423,7 +423,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "off-market-yachts-fort-lauderdale",
-    title: "Off-Market Yachts Fort Lauderdale | Confidential Opportunities",
+    title: "Off-Market Yachts Fort Lauderdale",
     metaDescription:
       "Off-market yachts in Fort Lauderdale. Confidential opportunities never publicly listed, in the largest concentration of large yachts in the United States.",
     h1: "Off-Market Yachts in Fort Lauderdale",
@@ -490,7 +490,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-miami",
-    title: "Yachts for Sale Miami | Private & Off-Market Miami Opportunities",
+    title: "Yachts for Sale Miami | Private & Off-Market",
     metaDescription:
       "Yachts for sale in Miami through private channels. Confidential opportunities from sport yachts to superyachts, with Bahamas cruising on the doorstep.",
     h1: "Yachts for Sale in Miami",
@@ -558,7 +558,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "off-market-yachts-miami",
-    title: "Off-Market Yachts Miami | Confidential Miami Opportunities",
+    title: "Off-Market Yachts Miami | Confidential",
     metaDescription:
       "Off-market yachts in Miami. Confidential, privately available Miami yacht opportunities not listed on public marketplaces. Qualified buyer access only.",
     h1: "Off-Market Yachts in Miami",
@@ -622,7 +622,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-palm-beach",
-    title: "Yachts for Sale Palm Beach | Private Market Opportunities",
+    title: "Yachts for Sale Palm Beach | Private Market",
     metaDescription:
       "Yachts for sale in Palm Beach through private channels. Confidential opportunities from a market defined by long single-owner histories and private use.",
     h1: "Yachts for Sale in Palm Beach",
@@ -686,7 +686,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-california",
-    title: "Yachts for Sale California | Private West Coast Opportunities",
+    title: "Yachts for Sale California | Private Market",
     metaDescription:
       "Yachts for sale in California through private channels. Confidential West Coast opportunities in San Diego, Newport Beach and Los Angeles.",
     h1: "Yachts for Sale in California",
@@ -750,7 +750,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-san-diego",
-    title: "Yachts for Sale San Diego | Private West Coast Opportunities",
+    title: "Yachts for Sale San Diego | Private Market",
     metaDescription:
       "Yachts for sale in San Diego through private channels. Confidential opportunities in California's principal large-yacht port, with Baja cruising nearby.",
     h1: "Yachts for Sale in San Diego",
@@ -814,7 +814,7 @@ export const USA_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-newport-beach",
-    title: "Yachts for Sale Newport Beach | Private Market Opportunities",
+    title: "Yachts for Sale Newport Beach",
     metaDescription:
       "Yachts for sale in Newport Beach through private channels. Confidential Orange County opportunities from a market of long-held, lightly used vessels.",
     h1: "Yachts for Sale in Newport Beach",

@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
-  title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
+  title: "Global Yacht Shows & Events 2026–2028",
   description:
     "The key yacht shows and events for buyers and sellers: Monaco Yacht Show, FLIBS, Cannes, Dubai and Palm Beach, where private off-market deals are made.",
   alternates: {
@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: canonical("/yacht-shows"),
-    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
+    title: "Global Yacht Shows & Events 2026–2028",
     description:
       "Monaco Yacht Show, FLIBS, Cannes, Dubai, Palm Beach — where qualified buyers and off-market deal flow converge.",
     images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "OffMarketYacht.com" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Global Yacht Shows & Yachting Events 2026–2028 | OffMarketYacht.com",
+    title: "Global Yacht Shows & Events 2026–2028",
     description:
       "Where global yacht deals, UHNW buyers, and off-market opportunities converge. Private deal flow runs ahead of the public event calendar.",
     images: ["/og-default.jpg"],

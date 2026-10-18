@@ -3,7 +3,7 @@ import { canonical } from "@/lib/site";
 import MoxYachtClient from "./MoxYachtClient";
 
 export const metadata: Metadata = {
-  title: "MOX YACHT — Refit, Production & Project Management | Partner",
+  title: "MOX YACHT — Refit & Project Management",
   description:
     "MOX YACHT delivers yacht refit coordination, new build production management, and owner representation across the Mediterranean. Antalya Freezone operations.",
   robots: { index: true, follow: true },

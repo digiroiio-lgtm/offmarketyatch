@@ -9,7 +9,7 @@ import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Private Market Intelligence | How the Off-Market Yacht Market Works",
+  title: "Private Market Intelligence",
   description:
     "Editorial intelligence on the private yacht market: off-market mechanics, pocket listings, US and Florida buying guides, purchase process, survey and valuation.",
   path: "/private-market-intelligence",

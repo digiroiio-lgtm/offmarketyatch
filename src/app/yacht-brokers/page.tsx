@@ -9,7 +9,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Broker Cooperation | Off-Market Yacht Introductions",
+  title: "Broker Cooperation | Off-Market Introductions",
   description:
     "Cooperation for yacht brokers holding unadvertised mandates or representing qualified buyers. Masked presentation, standard co-brokerage terms.",
   path: "/yacht-brokers",

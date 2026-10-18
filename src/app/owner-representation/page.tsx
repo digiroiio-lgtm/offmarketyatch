@@ -8,7 +8,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 import { breadcrumbSchema, faqSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Owner Representation | Confidential Yacht Sale Advisory",
+  title: "Owner Representation | Yacht Sale Advisory",
   description:
     "Owner representation for confidential yacht sales. Test buyer demand privately, control disclosure, and decide whether a public listing is warranted at all.",
   path: "/owner-representation",
