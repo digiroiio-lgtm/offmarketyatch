@@ -293,11 +293,12 @@ export const CORE_PAGES: LandingPage[] = [
       "Superyacht is used loosely, but the practical threshold most of the industry works to is around 100 feet — the point at which permanent crew, commercial-grade systems and formal class or flag oversight become standard rather than optional.",
       "At this size the confidentiality logic becomes compelling. A visible listing reaches a buyer pool small enough that most of them will hear about the yacht anyway through their broker, while simultaneously reaching the crew, the charter market and every yard the owner will negotiate with. The information asymmetry runs against the owner.",
       "The result is that a substantial share of superyacht transactions begin privately. The opportunities below are published at the granularity each owner has authorised, with identity, exact price and current position withheld.",
+      "If none of them fits, the more useful step is to register your criteria — including a preferred builder, the length in metres and the real budget ceiling. We take that brief to the private market directly, and brokers can submit it on a client's behalf.",
     ],
     query: { types: ["Superyacht", "Motor Yacht", "Explorer Yacht"], lengthBand: undefined, sort: "length-desc" },
     inventoryHeading: "Superyacht opportunities by length",
     emptyMessage:
-      "No superyacht opportunities are currently published. Submit your criteria and we will approach the private market on your behalf.",
+      "No superyacht opportunities are currently published. Submit your criteria — builder, length, budget ceiling, timeline — and we will approach the private market on your behalf.",
     answers: [
       {
         question: "What is a superyacht?",
@@ -313,6 +314,11 @@ export const CORE_PAGES: LandingPage[] = [
         question: "How many crew does a superyacht need?",
         answer:
           "A rough guide is one crew member per ten feet of length, adjusted for the yacht's use. A 130 foot privately used yacht might run six to eight crew; a 200 foot yacht operating charter can require twenty or more, including a rotational engineering and interior team.",
+      },
+      {
+        question: "Can I search for a superyacht from a specific builder?",
+        answer:
+          "Yes. Builder names are withheld on masked profiles, so a builder-specific search is registered as criteria rather than filtered from a list. Give the yard, the length range, the real budget ceiling and the timeline, and we approach the representatives who hold relevant mandates.",
       },
     ],
     faqs: [
@@ -342,6 +348,8 @@ export const CORE_PAGES: LandingPage[] = [
       { href: "/superyachts-for-sale-florida", label: "Superyachts for Sale Florida" },
       { href: "/superyachts-for-sale-over-25-million", label: "Superyachts Over $25M" },
       { href: "/yachts-for-sale-over-165-feet", label: "Yachts Over 165 ft" },
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
+      { href: "/yacht-brokers", label: "Broker Cooperation" },
       {
         href: "/private-market-intelligence/how-to-buy-a-superyacht",
         label: "How to Buy a Superyacht",
@@ -410,6 +418,7 @@ export const CORE_PAGES: LandingPage[] = [
       { href: "/superyachts-for-sale-over-25-million", label: "Superyachts Over $25M" },
       { href: "/yachts-for-sale-over-165-feet", label: "Yachts Over 165 ft" },
       { href: "/family-offices", label: "Family Office Advisory" },
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
     ],
     breadcrumb: [{ label: "Mega Yachts for Sale" }],
   },

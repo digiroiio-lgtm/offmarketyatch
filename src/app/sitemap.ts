@@ -26,7 +26,7 @@ interface Entry {
  * changed today. Bump one only when its content genuinely changes.
  */
 /** Bump when evergreen or landing-page content genuinely changes. */
-const SITE_LASTMOD = "2026-10-10";
+const SITE_LASTMOD = "2026-11-24";
 
 const STATIC_PAGES: Entry[] = [
   { path: "/", priority: 1.0, changeFrequency: "daily", lastModified: SITE_LASTMOD },

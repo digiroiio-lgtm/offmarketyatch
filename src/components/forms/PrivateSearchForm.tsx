@@ -9,6 +9,10 @@ import {
   SelectField,
   SuccessPanel,
 } from "@/components/forms/FormParts";
+import BuyerContextFields, {
+  EMPTY_BUYER_CONTEXT,
+  buyerContextAnswers,
+} from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
 
@@ -37,6 +41,7 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
     timeline: "",
     notes: "",
   });
+  const [buyer, setBuyer] = useState(EMPTY_BUYER_CONTEXT);
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [honeypot, setHoneypot] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -69,6 +74,7 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
         "Preferred size": criteria.size,
         "Buying timeline": criteria.timeline,
         "Acquisition criteria": criteria.notes,
+        ...buyerContextAnswers(buyer),
       },
       contact,
       website: honeypot,
@@ -80,6 +86,7 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
         price_band: criteria.budget,
         length_band: criteria.size,
         type: criteria.type,
+        role: buyer.role || undefined,
       });
     }
   }
@@ -142,6 +149,10 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
           placeholder="Specific yards, a model you have been watching, cruising plans, must-have features…"
           className="form-input resize-y"
         />
+      </div>
+
+      <div className="mt-5">
+        <BuyerContextFields idPrefix="ps" value={buyer} onChange={setBuyer} />
       </div>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-3">

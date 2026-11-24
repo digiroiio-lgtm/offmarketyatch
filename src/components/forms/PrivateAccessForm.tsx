@@ -11,6 +11,10 @@ import {
   StepIndicator,
   SuccessPanel,
 } from "@/components/forms/FormParts";
+import BuyerContextFields, {
+  EMPTY_BUYER_CONTEXT,
+  buyerContextAnswers,
+} from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
 
@@ -56,6 +60,7 @@ export default function PrivateAccessForm({
     preferredContact: "",
     company: "",
   });
+  const [buyer, setBuyer] = useState(EMPTY_BUYER_CONTEXT);
   const [honeypot, setHoneypot] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const started = useRef(false);
@@ -99,6 +104,7 @@ export default function PrivateAccessForm({
         "Target budget": answers.budget,
         "Preferred size": answers.size,
         "Buying timeline": answers.timeline,
+        ...buyerContextAnswers(buyer),
       },
       contact,
       website: honeypot,
@@ -110,6 +116,7 @@ export default function PrivateAccessForm({
         price_band: answers.budget,
         length_band: answers.size,
         type: answers.lookingFor,
+        role: buyer.role || undefined,
       });
     }
   }
@@ -232,6 +239,10 @@ export default function PrivateAccessForm({
                 autoComplete="organization"
                 hint="Optional"
               />
+            </div>
+
+            <div className="mt-5">
+              <BuyerContextFields idPrefix="pa" value={buyer} onChange={setBuyer} />
             </div>
 
             <div className="mt-6">

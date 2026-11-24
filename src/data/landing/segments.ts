@@ -708,6 +708,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
       { href: "/yachts-for-sale-130-165-feet", label: "130–165 ft" },
       { href: "/family-offices", label: "Family Office Advisory" },
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
     ],
     breadcrumb: [{ label: "Yachts for Sale Over 165 Feet" }],
   },
@@ -903,5 +904,84 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
     ],
     breadcrumb: [{ label: "Sailing Yachts for Sale" }],
+  },
+
+  // ── Builders ──────────────────────────────────────────────────────────────
+  {
+    slug: "lurssen-yachts-for-sale",
+    title: "Lürssen Yachts for Sale | Private Search for Lürssen Superyachts",
+    metaDescription:
+      "Looking for a Lürssen yacht for sale? Most change hands privately. Register a confidential, builder-specific search; qualified buyers and their brokers only.",
+    h1: "Lürssen Yachts for Sale",
+    standfirst: "A small fleet, individually known, and rarely advertised.",
+    intro: [
+      "Lürssen is a family-owned German shipyard based near Bremen, building custom motor yachts since the late nineteenth century and, today, many of the largest private yachts afloat. Its yachts are full custom builds rather than series production, so no two are the same and each is known by name within the industry.",
+      "That shapes how they are sold. With a fleet this small, a public listing tells the market exactly which yacht is available, and owners at this level generally prefer to avoid that. A large share of Lürssen transactions start between representatives, before or instead of any advertisement.",
+      "If a specific yard is firm for you or your client, the efficient route is a builder-specific search: we approach the private market and the brokers who hold Lürssen mandates, rather than waiting for one to appear in a listing.",
+    ],
+    query: { buildRegion: "German Build", sort: "length-desc" },
+    inventoryHeading: "German-built opportunities",
+    emptyMessage:
+      "No German-built opportunities are currently published. Register a builder-specific search and we will approach the private market directly.",
+    answers: [
+      {
+        question: "Are the yachts listed here Lürssen yachts?",
+        answer:
+          "Not necessarily. Builder names are withheld on every masked profile because naming the yard at this size would identify the yacht. The list shows German-built opportunities; whether a given one is a Lürssen is disclosed to a qualified buyer under the owner's terms.",
+      },
+      {
+        question: "Why are so few Lürssen yachts publicly for sale?",
+        answer:
+          "The fleet is small and each yacht is known by name, so a public listing amounts to an announcement. Owners and their brokers therefore tend to circulate availability privately to a short list of qualified buyers first.",
+      },
+      {
+        question: "Is a 60 m Lürssen under $30 million realistic?",
+        answer:
+          "It can be for an older build, particularly one with a documented refit history and current class. Recent builds of that length generally trade well above it. Condition, refit history and class status move the figure more than build year alone.",
+      },
+      {
+        question: "How does a builder-specific search work?",
+        answer:
+          "You give us the yard, length range, real budget ceiling and timeline. We approach owners' representatives and brokers holding relevant mandates, and come back with what is quietly available — including when the honest answer is that nothing currently fits.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a broker register a Lürssen search for a client?",
+        answer:
+          "Yes. Submit the client's requirement through our broker cooperation page. Your client is not named or contacted, and co-brokerage terms are agreed in writing before any vessel is identified.",
+      },
+      {
+        question: "What should be checked on a used Lürssen?",
+        answer:
+          "The same things as on any large custom yacht: class status and survey cycle, machinery hours and overhaul history, refit records, flag and commercial registration, and the management and crew arrangements. On a custom build, the quality of the documentation matters as much as the yacht itself.",
+      },
+      {
+        question: "Can I see the yacht's name before making an offer?",
+        answer:
+          "Yes. The name is disclosed to a qualified buyer before any offer, under the owner's terms. What confidentiality protects is disclosure to the market at large, not to the buyer who is transacting.",
+      },
+      {
+        question: "Do you also search for other builders?",
+        answer:
+          "Yes. A builder-specific search works the same way for any yard. Name the builders that are firm and those that are acceptable alternatives.",
+      },
+    ],
+    detail: {
+      heading: "What to tell us",
+      body: [
+        "The search is only as good as the brief. The useful details are the yard and whether it is firm, the length range in metres, the real budget ceiling rather than the opening figure, the timeline, and who we are dealing with — the principal, a family office or a broker.",
+        "Those five answers let us approach the right representatives with a credible enquiry, which is what gets a private yacht shown.",
+      ],
+    },
+    related: [
+      { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
+      { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
+      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
+      { href: "/yacht-brokers", label: "Broker Cooperation" },
+      { href: "/private-market-intelligence/how-to-buy-a-superyacht", label: "How to Buy a Superyacht" },
+    ],
+    breadcrumb: [{ label: "Lürssen Yachts for Sale" }],
   },
 ];
