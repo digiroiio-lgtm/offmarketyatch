@@ -80,6 +80,7 @@ export function buildDraftRecord(input: DraftInput): OpportunityRecord {
     slug: input.slug,
     publicReference: input.publicReference,
     status: "draft",
+    sample: false,
     confidentialityLevel: "confidential",
     titlePublic: input.type,
     type: input.type,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 import { BadgeRow } from "@/components/Badge";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -17,6 +17,7 @@ import {
   getAllOpportunitySlugs,
   getOpportunityBySlug,
   getRelatedOpportunities,
+  isRetiredSampleSlug,
 } from "@/lib/opportunities";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
 import type { PublicOpportunity } from "@/lib/types";
@@ -93,7 +94,12 @@ export default async function OpportunityDetailPage(
 ) {
   const { slug } = await props.params;
   const opportunity = getOpportunityBySlug(slug);
-  if (!opportunity) notFound();
+  if (!opportunity) {
+    // A demonstration profile retired by live mode: send visitors and crawlers
+    // to the live market rather than a 404.
+    if (isRetiredSampleSlug(slug)) permanentRedirect("/off-market-yachts");
+    notFound();
+  }
 
   const related = getRelatedOpportunities(opportunity, 3);
   const isPotential = opportunity.availabilityType === "POTENTIAL OPPORTUNITY";

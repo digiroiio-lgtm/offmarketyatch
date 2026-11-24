@@ -1,6 +1,7 @@
 import "server-only";
 
 import { OPPORTUNITY_RECORDS, type OpportunityRecord } from "@/data/opportunities";
+import { IS_SAMPLE_INVENTORY } from "@/lib/inventory-mode";
 import { getOverride } from "@/lib/admin-store";
 import {
   LENGTH_BANDS,
@@ -266,8 +267,29 @@ export function getAllRecordsForAdmin(): OpportunityRecord[] {
   return OPPORTUNITY_RECORDS.map(withOverrides);
 }
 
+/**
+ * In live mode, demonstration records are never public: they drop out of
+ * listings, detail pages, the sitemap and every derived surface at once.
+ */
+function isVisibleInMode(record: OpportunityRecord): boolean {
+  return IS_SAMPLE_INVENTORY || !record.sample;
+}
+
 function publishedRecords(): OpportunityRecord[] {
-  return OPPORTUNITY_RECORDS.map(withOverrides).filter((r) => r.status === "published");
+  return OPPORTUNITY_RECORDS.map(withOverrides).filter(
+    (r) => r.status === "published" && isVisibleInMode(r)
+  );
+}
+
+/**
+ * True when a slug belonged to a demonstration record that live mode hides.
+ * Lets the detail page send a retired sample URL somewhere useful instead of
+ * a dead end.
+ */
+export function isRetiredSampleSlug(slug: string): boolean {
+  if (IS_SAMPLE_INVENTORY) return false;
+  const record = OPPORTUNITY_RECORDS.find((r) => r.slug === slug.toLowerCase());
+  return Boolean(record?.sample);
 }
 
 export interface OpportunityQuery {

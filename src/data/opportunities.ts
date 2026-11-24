@@ -29,8 +29,9 @@ import type {
  *  platform. They are not representations that specific vessels are available.
  *  `INVENTORY_MODE` (see `src/lib/inventory-mode.ts`) is "sample" until real
  *  broker-sourced records replace them, and the UI discloses that state to
- *  visitors. Replace this array — or swap the data-access layer for a database
- *  — before presenting inventory as live.
+ *  visitors. Real records are added to this array with `sample: false`; once
+ *  `INVENTORY_MODE` is "live", every `sample: true` record is excluded from
+ *  the public site, so the demonstration set never appears beside real ones.
  */
 
 export interface OpportunityRecord {
@@ -38,6 +39,13 @@ export interface OpportunityRecord {
   slug: string;
   publicReference: string;
   status: "draft" | "published" | "withdrawn";
+  /**
+   * True for the demonstration records shipped with the platform. In live
+   * inventory mode these are excluded everywhere, so real records can be
+   * added alongside them and the switch is a single environment variable.
+   * Every real record sets this to false explicitly.
+   */
+  sample: boolean;
   confidentialityLevel: ConfidentialityLevel;
 
   // ── Public-facing (still passed through masking before publication) ────────
@@ -115,6 +123,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1048",
     publicReference: "OMY-1048",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -169,6 +178,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1052",
     publicReference: "OMY-1052",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -222,6 +232,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1061",
     publicReference: "OMY-1061",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Explorer Yacht",
     type: "Explorer Yacht",
@@ -275,6 +286,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1067",
     publicReference: "OMY-1067",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Superyacht",
     type: "Superyacht",
@@ -328,6 +340,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1072",
     publicReference: "OMY-1072",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -381,6 +394,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1078",
     publicReference: "OMY-1078",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -434,6 +448,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1084",
     publicReference: "OMY-1084",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Sailing Yacht",
     type: "Sailing Yacht",
@@ -487,6 +502,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1090",
     publicReference: "OMY-1090",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -540,6 +556,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1095",
     publicReference: "OMY-1095",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Superyacht",
     type: "Superyacht",
@@ -593,6 +610,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1101",
     publicReference: "OMY-1101",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Explorer Yacht",
     type: "Explorer Yacht",
@@ -646,6 +664,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1108",
     publicReference: "OMY-1108",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -699,6 +718,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1114",
     publicReference: "OMY-1114",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -752,6 +772,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1120",
     publicReference: "OMY-1120",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -805,6 +826,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1126",
     publicReference: "OMY-1126",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Superyacht",
     type: "Superyacht",
@@ -858,6 +880,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1133",
     publicReference: "OMY-1133",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Catamaran",
     type: "Catamaran",
@@ -911,6 +934,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1139",
     publicReference: "OMY-1139",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -964,6 +988,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1145",
     publicReference: "OMY-1145",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Sport Yacht",
     type: "Sport Yacht",
@@ -1017,6 +1042,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1151",
     publicReference: "OMY-1151",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Explorer Yacht",
     type: "Explorer Yacht",
@@ -1070,6 +1096,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1158",
     publicReference: "OMY-1158",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -1123,6 +1150,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1164",
     publicReference: "OMY-1164",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -1176,6 +1204,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1170",
     publicReference: "OMY-1170",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Superyacht",
     type: "Superyacht",
@@ -1229,6 +1258,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1176",
     publicReference: "OMY-1176",
     status: "published",
+    sample: true,
     confidentialityLevel: "restricted",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -1282,6 +1312,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1182",
     publicReference: "OMY-1182",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
@@ -1335,6 +1366,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     slug: "omy-1188",
     publicReference: "OMY-1188",
     status: "published",
+    sample: true,
     confidentialityLevel: "confidential",
     titlePublic: "Motor Yacht",
     type: "Motor Yacht",
