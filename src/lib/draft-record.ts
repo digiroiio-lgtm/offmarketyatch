@@ -28,6 +28,7 @@ export const BUILD_REGIONS: BuildRegion[] = [
   "Dutch Build",
   "German Build",
   "Turkish Build",
+  "British Build",
   "North American Build",
   "Asian Build",
 ];

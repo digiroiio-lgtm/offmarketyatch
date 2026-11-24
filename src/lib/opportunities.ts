@@ -298,6 +298,8 @@ export interface OpportunityQuery {
   priceBand?: PriceBandKey;
   lengthBand?: LengthBandKey;
   country?: string;
+  /** Any of these countries — for pages that span a few neighbouring markets. */
+  countries?: string[];
   location?: CruisingArea;
   locationPrefix?: string;
   availabilityType?: AvailabilityType;
@@ -317,6 +319,7 @@ export function getOpportunities(query: OpportunityQuery = {}): PublicOpportunit
   if (query.type) items = items.filter((o) => o.type === query.type);
   if (query.types?.length) items = items.filter((o) => query.types!.includes(o.type));
   if (query.country) items = items.filter((o) => o.country === query.country);
+  if (query.countries?.length) items = items.filter((o) => query.countries!.includes(o.country));
   if (query.location) items = items.filter((o) => o.locationPublic === query.location);
   if (query.locationPrefix) {
     const prefix = query.locationPrefix;

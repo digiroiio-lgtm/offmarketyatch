@@ -127,6 +127,9 @@ export const FOOTER_NAV: { heading: string; links: NavItem[] }[] = [
 export const INTERNATIONAL_NAV: NavItem[] = [
   { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
   { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
+  { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
+  { href: "/yachts-for-sale-greece", label: "Greece" },
+  { href: "/yachts-for-sale-uk", label: "United Kingdom" },
 ];
 
 export function canonical(path: string): string {
