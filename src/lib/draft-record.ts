@@ -28,6 +28,7 @@ export const BUILD_REGIONS: BuildRegion[] = [
   "Dutch Build",
   "German Build",
   "Turkish Build",
+  "British Build",
   "North American Build",
   "Asian Build",
 ];
@@ -80,6 +81,7 @@ export function buildDraftRecord(input: DraftInput): OpportunityRecord {
     slug: input.slug,
     publicReference: input.publicReference,
     status: "draft",
+    sample: false,
     confidentialityLevel: "confidential",
     titlePublic: input.type,
     type: input.type,

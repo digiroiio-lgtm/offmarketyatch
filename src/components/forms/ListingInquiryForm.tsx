@@ -9,6 +9,11 @@ import {
   SelectField,
   SuccessPanel,
 } from "@/components/forms/FormParts";
+import BuyerContextFields, {
+  EMPTY_BUYER_CONTEXT,
+  isBrokerRole,
+  buyerContextAnswers,
+} from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
 import { lengthBandFor, priceBandFor } from "@/lib/format";
@@ -44,6 +49,7 @@ export default function ListingInquiryForm({
 }) {
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [answers, setAnswers] = useState({ buyerStatus: "", budget: "", timeline: "" });
+  const [buyer, setBuyer] = useState(EMPTY_BUYER_CONTEXT);
   const [honeypot, setHoneypot] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const started = useRef(false);
@@ -84,6 +90,7 @@ export default function ListingInquiryForm({
         "Buyer status": answers.buyerStatus,
         "Budget confirmation": answers.budget,
         "Purchase timeline": answers.timeline,
+        ...buyerContextAnswers(buyer),
         "Listing category": opportunity.type,
         "Listing price band": priceBand?.label ?? "Price on request",
         "Listing length": opportunity.lengthDisplay,
@@ -102,6 +109,7 @@ export default function ListingInquiryForm({
         length_band: lengthBand.key,
         location: opportunity.locationPublic,
         type: opportunity.type,
+        role: answers.buyerStatus || undefined,
       });
     }
   }
@@ -135,7 +143,7 @@ export default function ListingInquiryForm({
       <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
         {isPotential
           ? "Availability is not confirmed on this vessel. Tell us where you stand and our acquisition team can make a discreet approach on your behalf."
-          : "Six questions. Your answers let us qualify the request and respond with the right level of detail."}
+          : "A few questions. Your answers let us qualify the request and respond with the right level of detail."}
       </p>
 
       <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-y border-line py-4">
@@ -210,6 +218,14 @@ export default function ListingInquiryForm({
             options={TIMELINE}
           />
         </div>
+
+        <BuyerContextFields
+          idPrefix="li"
+          value={buyer}
+          onChange={setBuyer}
+          showRole={false}
+          brokerRole={isBrokerRole(answers.buyerStatus)}
+        />
       </div>
 
       <div className="mt-6">

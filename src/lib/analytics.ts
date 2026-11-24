@@ -24,7 +24,9 @@ export type AnalyticsEvent =
   | "sell_yacht_started"
   | "sell_yacht_completed"
   | "broker_intake_started"
-  | "broker_intake_completed";
+  | "broker_intake_completed"
+  | "broker_requirement_started"
+  | "broker_requirement_completed";
 
 export interface EventPayload {
   listing_id?: string;

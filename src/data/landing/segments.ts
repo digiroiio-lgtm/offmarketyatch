@@ -128,6 +128,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-florida", label: "Florida" },
       { href: "/sailing-yachts-for-sale", label: "Sailing Yachts" },
       { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
+      { href: "/private-market-intelligence/mediterranean-vs-caribbean-yacht-purchase", label: "Mediterranean vs Caribbean" },
     ],
     breadcrumb: [{ label: "Yachts for Sale Caribbean" }],
   },
@@ -193,6 +194,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
       { href: "/explorer-yachts-for-sale", label: "Explorer Yachts" },
       { href: "/mega-yachts-for-sale", label: "Mega Yachts" },
+      { href: "/private-market-intelligence/mediterranean-vs-caribbean-yacht-purchase", label: "Mediterranean vs Caribbean" },
+      { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
+      { href: "/yachts-for-sale-greece", label: "Greece" },
     ],
     breadcrumb: [{ label: "Yachts for Sale Mediterranean" }],
   },
@@ -273,6 +277,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       "Between five and ten million dollars the market changes character. Vessels are typically 90 to 130 feet, permanent crew is standard, and the yacht becomes something you operate rather than something you drive.",
       "It is also the point at which build quality starts to separate meaningfully. The difference between a well-engineered semi-custom hull and a heavily specified production one is not obvious in photographs, but it is obvious in a survey and in the running costs five years later.",
       "This bracket sees a disproportionate amount of private activity, because owners here are frequently trading up on a known timetable — a new build delivering in eighteen months creates a seller who has time to be discreet.",
+      "If nothing below fits, register your criteria with the real budget ceiling, the length range and any builder preference. We search beyond what is advertised and tell you what we find, including when the answer is that nothing currently fits.",
     ],
     query: { priceBand: "5m-10m", sort: "price-desc" },
     inventoryHeading: "Opportunities between $5M and $10M",
@@ -322,6 +327,14 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-10-million-25-million", label: "$10M – $25M" },
       { href: "/yachts-for-sale-100-130-feet", label: "100–130 ft" },
       { href: "/luxury-yachts-for-sale", label: "Luxury Yachts" },
+      {
+        href: "/private-market-intelligence/how-to-buy-a-10-million-dollar-yacht",
+        label: "Guide: 10 Million Dollar Yachts",
+      },
+      {
+        href: "/private-market-intelligence/buying-a-refitted-superyacht",
+        label: "Buying a Refitted Yacht",
+      },
     ],
     breadcrumb: [{ label: "Yachts for Sale Under $10 Million" }],
   },
@@ -708,6 +721,8 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
       { href: "/yachts-for-sale-130-165-feet", label: "130–165 ft" },
       { href: "/family-offices", label: "Family Office Advisory" },
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
+      { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
     ],
     breadcrumb: [{ label: "Yachts for Sale Over 165 Feet" }],
   },
@@ -901,7 +916,165 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
       { href: "/yachts-for-sale", label: "All Yachts for Sale" },
       { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
+      { href: "/catamarans-for-sale", label: "Catamarans for Sale" },
     ],
     breadcrumb: [{ label: "Sailing Yachts for Sale" }],
+  },
+
+  {
+    slug: "catamarans-for-sale",
+    title: "Catamarans for Sale | Private Sailing & Power Catamaran Opportunities",
+    metaDescription:
+      "Large catamarans for sale through private channels. Confidential sailing and power catamaran opportunities, plus a private search by size, propulsion and use.",
+    h1: "Catamarans for Sale",
+    standfirst: "Volume, stability and range, in a thinner second-hand market.",
+    intro: [
+      "Large catamarans offer more deck and interior volume per foot than a monohull, a stable platform at anchor and, with modern hulls, efficient long-range cruising. Those qualities have pushed them from charter fleets into private ownership, and the size range has grown with them.",
+      "The second-hand market at the larger end is still thin. Comparables are scarce, specifications vary widely — sail or power, hybrid or conventional drivetrains, owner or charter layouts — and a yacht that suits one buyer can be wrong for the next. That makes the specification and the intended use more important than the headline price.",
+      "If nothing below fits, a private search works better than waiting for a listing. Tell us whether you want sail or power, the length, how the yacht will be used and the budget ceiling, and we will approach the market directly.",
+    ],
+    query: { types: ["Catamaran", "Trimaran"], sort: "length-desc" },
+    inventoryHeading: "Multihull opportunities",
+    emptyMessage:
+      "No catamaran opportunities are currently published. Register your criteria — sail or power, length, use and budget — and we will search the private market directly.",
+    answers: [
+      {
+        question: "Why buy a catamaran instead of a monohull?",
+        answer:
+          "For volume, stability and efficiency. A catamaran offers more living space per foot, sits level at anchor and under way, and draws less water, which opens up shallower anchorages. The trade-offs are beam — which limits some marinas and haul-out facilities — and a thinner resale market at the larger sizes.",
+      },
+      {
+        question: "Sailing or power catamaran?",
+        answer:
+          "It depends on use. A sailing catamaran suits long passages and owners who want to sail; a power catamaran suits shorter hops at higher speed with less crew involvement. Hybrid drivetrains on either can reduce generator use and noise at anchor, but add systems to survey.",
+      },
+      {
+        question: "Why are large catamarans hard to value?",
+        answer:
+          "Because comparable sales are few and specifications differ widely. Builder, layout, drivetrain and charter history all move value, so a valuation should be built from the specification rather than from a single comparable.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do large catamarans need permanent crew?",
+        answer:
+          "Above roughly 70 feet, most are run with a small professional crew, typically two to four, depending on use and whether the yacht is chartered.",
+      },
+      {
+        question: "Can a charter catamaran be bought for private use?",
+        answer:
+          "Yes. Ex-charter yachts often come with a long maintenance record. Check the charter history, the layout — charter versions often have more guest cabins and less owner space — and how hard the yacht has been used.",
+      },
+      {
+        question: "What should a survey cover on a catamaran?",
+        answer:
+          "Both hulls and the bridge deck structure, the rig if it is a sailing catamaran, both engine rooms and any hybrid or battery systems. Composite construction should come with an inspection history.",
+      },
+      {
+        question: "Where is the market for large catamarans?",
+        answer:
+          "Much of it is in the Caribbean, where private and charter use overlap, and in the Mediterranean.",
+      },
+    ],
+    related: [
+      { href: "/sailing-yachts-for-sale", label: "Sailing Yachts for Sale" },
+      { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
+      { href: "/yachts-for-sale-under-5-million", label: "Under $5M" },
+      { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
+      { href: "/private-market-intelligence/yacht-survey-and-sea-trial-explained", label: "Survey & Sea Trial" },
+    ],
+    breadcrumb: [{ label: "Catamarans for Sale" }],
+  },
+
+  // ── Builders ──────────────────────────────────────────────────────────────
+  {
+    slug: "lurssen-yachts-for-sale",
+    title: "Lürssen Yachts for Sale | Private Search for Lürssen Superyachts",
+    metaDescription:
+      "Looking for a Lürssen yacht for sale? Most change hands privately. Register a confidential, builder-specific search; qualified buyers and their brokers only.",
+    h1: "Lürssen Yachts for Sale",
+    standfirst: "A small fleet, individually known, and rarely advertised.",
+    intro: [
+      "Lürssen is a family-owned German shipyard based near Bremen, building custom motor yachts since the late nineteenth century and, today, many of the largest private yachts afloat. Its yachts are full custom builds rather than series production, so no two are the same and each is known by name within the industry.",
+      "That shapes how they are sold. With a fleet this small, a public listing tells the market exactly which yacht is available, and owners at this level generally prefer to avoid that. A large share of Lürssen transactions start between representatives, before or instead of any advertisement.",
+      "If a specific yard is firm for you or your client, the efficient route is a builder-specific search: we approach the private market and the brokers who hold Lürssen mandates, rather than waiting for one to appear in a listing.",
+    ],
+    query: { buildRegion: "German Build", sort: "length-desc" },
+    inventoryHeading: "German-built opportunities",
+    emptyMessage:
+      "No German-built opportunities are currently published. Register a builder-specific search and we will approach the private market directly.",
+    answers: [
+      {
+        question: "Are the yachts listed here Lürssen yachts?",
+        answer:
+          "Not necessarily. Builder names are withheld on every masked profile because naming the yard at this size would identify the yacht. The list shows German-built opportunities; whether a given one is a Lürssen is disclosed to a qualified buyer under the owner's terms.",
+      },
+      {
+        question: "Why are so few Lürssen yachts publicly for sale?",
+        answer:
+          "The fleet is small and each yacht is known by name, so a public listing amounts to an announcement. Owners and their brokers therefore tend to circulate availability privately to a short list of qualified buyers first.",
+      },
+      {
+        question: "Is a 60 m Lürssen under $30 million realistic?",
+        answer:
+          "It can be for an older build, particularly one with a documented refit history and current class. Recent builds of that length generally trade well above it. Condition, refit history and class status move the figure more than build year alone.",
+      },
+      {
+        question: "How does a builder-specific search work?",
+        answer:
+          "You give us the yard, length range, real budget ceiling and timeline. We approach owners' representatives and brokers holding relevant mandates, and come back with what is quietly available — including when the honest answer is that nothing currently fits.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can you search for a specific size and budget?",
+        answer:
+          "Yes. Give us the length range, the real budget ceiling and how firm the yard is. We use those to decide which representatives to approach, and we will tell you if the combination is unlikely to exist in the current market, along with the nearest alternatives.",
+      },
+      {
+        question: "Can you investigate yachts outside the advertised selection?",
+        answer:
+          "Yes. Most of the search happens outside anything advertised: mandates held privately by us and by cooperating brokers, and yachts whose owners may sell on the right terms. Where a yacht is represented by another broker, we approach that broker, not the owner.",
+      },
+      {
+        question: "Can a broker register a Lürssen search for a client?",
+        answer:
+          "Yes. Submit the client's requirement through our broker cooperation page. Your client is not named or contacted, and co-brokerage terms are agreed in writing before any vessel is identified.",
+      },
+      {
+        question: "What should be checked on a used Lürssen?",
+        answer:
+          "The same things as on any large custom yacht: class status and survey cycle, machinery hours and overhaul history, refit records, flag and commercial registration, and the management and crew arrangements. On a custom build, the quality of the documentation matters as much as the yacht itself.",
+      },
+      {
+        question: "Can I see the yacht's name before making an offer?",
+        answer:
+          "Yes. The name is disclosed to a qualified buyer before any offer, under the owner's terms. What confidentiality protects is disclosure to the market at large, not to the buyer who is transacting.",
+      },
+      {
+        question: "Do you also search for other builders?",
+        answer:
+          "Yes. A builder-specific search works the same way for any yard. Name the builders that are firm and those that are acceptable alternatives.",
+      },
+    ],
+    detail: {
+      heading: "What to tell us",
+      body: [
+        "The search is only as good as the brief. The useful details are the yard and whether it is firm, the length range in metres, the real budget ceiling rather than the opening figure, the timeline, and who we are dealing with — the principal, a family office or a broker.",
+        "Those five answers let us approach the right representatives with a credible enquiry, which is what gets a private yacht shown.",
+      ],
+    },
+    related: [
+      { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
+      { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
+      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
+      { href: "/yacht-brokers", label: "Broker Cooperation" },
+      { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
+      { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
+      { href: "/feadship-yachts-for-sale", label: "Feadship Yachts for Sale" },
+      { href: "/private-market-intelligence/how-to-buy-a-superyacht", label: "How to Buy a Superyacht" },
+    ],
+    breadcrumb: [{ label: "Lürssen Yachts for Sale" }],
   },
 ];

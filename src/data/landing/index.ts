@@ -1,4 +1,5 @@
 import { CORE_PAGES } from "@/data/landing/core";
+import { INTERNATIONAL_PAGES } from "@/data/landing/international";
 import { SEGMENT_PAGES } from "@/data/landing/segments";
 import type { LandingPage } from "@/data/landing/types";
 import { USA_PAGES } from "@/data/landing/usa";
@@ -9,6 +10,7 @@ export const LANDING_PAGES: LandingPage[] = [
   ...CORE_PAGES,
   ...USA_PAGES,
   ...SEGMENT_PAGES,
+  ...INTERNATIONAL_PAGES,
 ];
 
 const BY_SLUG = new Map(LANDING_PAGES.map((page) => [page.slug, page]));

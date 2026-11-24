@@ -129,12 +129,12 @@ export default function BrokerIntakeForm() {
       onSubmit={handleSubmit}
       onFocus={markStarted}
       noValidate
-      className="relative border border-line bg-paper-raised p-6 sm:p-10"
+      className="relative scroll-mt-28 border border-line bg-paper-raised p-6 sm:p-10"
       id="submit"
     >
-      <p className="label-mono text-accent">Broker Partner Submission</p>
+      <p className="label-mono text-accent">Share a Yacht Privately</p>
       <h2 className="display mt-3 text-[28px] text-ink sm:text-[32px]">
-        Submit a private mandate.
+        Share a yacht privately.
       </h2>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-muted">
         Nothing is published, matched or shared as a result of this form. It opens a private
