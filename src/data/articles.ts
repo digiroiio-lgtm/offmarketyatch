@@ -7,7 +7,13 @@
  * copy says so rather than inventing precision.
  */
 
-import { FLORIDA_TAX_SOURCES, DEPOSIT_NOTES, mergeSources, type SourceNotes } from "@/data/sources";
+import {
+  DEPOSIT_NOTES,
+  EU_VAT_SOURCES,
+  FLORIDA_TAX_SOURCES,
+  mergeSources,
+  type SourceNotes,
+} from "@/data/sources";
 
 export interface ArticleSection {
   heading: string;
@@ -1905,7 +1911,7 @@ export const ARTICLES: Article[] = [
     ],
     related: [
       "yacht-survey-and-sea-trial-explained",
-      "how-to-buy-a-superyacht",
+      "60-metre-superyacht-buying-guide",
       "how-much-does-a-superyacht-cost",
     ],
     inventoryLinks: [
@@ -2005,6 +2011,206 @@ export const ARTICLES: Article[] = [
       { href: "/off-market-yachts", label: "Browse masked profiles" },
       { href: "/request-private-access", label: "Request private access" },
     ],
+  },
+
+  {
+    slug: "60-metre-superyacht-buying-guide",
+    title: "Buying a 60 Metre Superyacht",
+    metaTitle: "60 Metre Superyacht Buying Guide | Size, Builder, Age & Budget",
+    metaDescription:
+      "What to weigh when buying a 60 m (around 200 ft) superyacht: what the size brings, builder and build region, age against refit history, and a realistic budget.",
+    standfirst: "Size, builder, age and budget: the four choices that decide a 60 m search.",
+    cluster: "Buying",
+    readingMinutes: 7,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "Sixty metres — roughly 200 feet — sits comfortably inside the large-yacht fleet. It is big enough for a full professional crew, a beach club and serious range, and small enough to keep a choice of marinas and yards that the very largest yachts lose.",
+      "It is also a size at which almost nothing is advertised. The fleet is small, each yacht is known by name, and most transactions start between representatives. A search at this size is won or lost on how precisely the buyer can say what they want.",
+    ],
+    answers: [
+      {
+        question: "How much does a 60 m superyacht cost?",
+        answer:
+          "Prices on the secondhand market start in the tens of millions of dollars and rise steeply with build year, builder and condition. An older yacht with a documented refit sits at the lower end; a recent build from a leading yard can cost several times as much. Price is usually on request at this size.",
+      },
+      {
+        question: "How many crew does a 60 m yacht need?",
+        answer:
+          "Typically somewhere between fifteen and twenty-five, depending on use, guest numbers and whether the yacht charters. That includes a bridge team, an engineering department, an interior team and a galley.",
+      },
+      {
+        question: "Should I buy a new or a refitted 60 m yacht?",
+        answer:
+          "A refitted older yacht offers more volume and pedigree per dollar if its machinery and systems were renewed and the work is documented. A recent build costs more but carries lower near-term refit risk. The refit records decide which is the better buy, not the build year alone.",
+      },
+    ],
+    sections: [
+      {
+        heading: "What the size brings, and what it costs",
+        paragraphs: [
+          "At around 60 m a yacht is a commercial-scale operation. It usually carries a management company, a compliance calendar and an annual running budget conventionally estimated at around ten percent of its value. Crew is the largest single line.",
+          "Length is not the only measure. Gross tonnage, beam and draft decide which marinas, yards and cruising grounds are practical, and the crew complement drives both cost and the guest experience. Two 60 m yachts can differ by a wide margin in internal volume.",
+        ],
+      },
+      {
+        heading: "Builder and build region",
+        paragraphs: [
+          "At this size most yachts are custom or semi-custom. German and Dutch yards have a long record in large custom motor yachts, and Italian yards are strongly represented in semi-custom builds. The yard shapes engineering standards, resale appeal and the support available after purchase.",
+          "Decide whether a yard is firm or a preference. A firm yard narrows the field to a handful of vessels; a preference with acceptable alternatives keeps the search realistic.",
+        ],
+      },
+      {
+        heading: "Age, refit and condition",
+        paragraphs: [
+          "A 60 m yacht built fifteen or twenty years ago can be an excellent purchase if it has been through a major refit — engines, generators, electrical, navigation and paint — at a reputable yard, with the records to show it. Without them, an older yacht carries refit costs that will arrive on the next owner's watch.",
+          "Ask for the yard scope of work, invoices, class reports and the maintenance log before forming a view on price.",
+        ],
+      },
+      {
+        heading: "Turning preferences into a search",
+        paragraphs: [
+          "The brief that gets a private yacht shown is specific about the things that are fixed and open about the rest.",
+        ],
+        bullets: [
+          "Length range in metres, with the hard limits and the reason for them.",
+          "Builder: firm, preferred, or open.",
+          "Oldest acceptable build year, and tolerance for a refit after purchase.",
+          "The real budget ceiling, including an allowance for running costs and any immediate work.",
+          "Cruising grounds and timeline, which decide where the yacht needs to be and when.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What changes between 50 m and 70 m?",
+        answer:
+          "Crew numbers, tonnage and running costs rise with volume, and above about 60 m the choice of marinas and haul-out yards begins to narrow. Many buyers find the usable difference lies less in length than in internal volume and layout.",
+      },
+      {
+        question: "How long does it take to buy a 60 m yacht?",
+        answer:
+          "Finding the right yacht usually takes longest. Once terms are agreed, survey, sea trial and closing commonly take two to four months, longer where the yacht is held in a company or a suitable yard is not nearby.",
+      },
+      {
+        question: "Can you search for a specific builder, size and budget?",
+        answer:
+          "Yes. Give us the yard and how firm it is, the length range, the real budget ceiling and the timeline. We approach the representatives who hold relevant mandates and tell you if the combination is unlikely to exist, along with the nearest alternatives.",
+      },
+      {
+        question: "Is a 60 m yacht under $30 million realistic?",
+        answer:
+          "It can be for an older build with a documented refit history. Recent builds of this length generally trade well above it.",
+      },
+    ],
+    related: [
+      "buying-a-refitted-superyacht",
+      "how-much-does-a-superyacht-cost",
+      "how-to-buy-a-superyacht",
+    ],
+    inventoryLinks: [
+      { href: "/yachts-for-sale-over-165-feet", label: "Opportunities over 165 ft / 50 m" },
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen yachts for sale" },
+      { href: "/superyachts-for-sale-over-25-million", label: "Superyachts over $25M" },
+      { href: "/request-private-access", label: "Register your criteria" },
+    ],
+  },
+
+  {
+    slug: "mediterranean-vs-caribbean-yacht-purchase",
+    title: "Buying a Yacht in the Mediterranean or the Caribbean",
+    metaTitle: "Mediterranean vs Caribbean Yacht Purchase | Where to Buy and Why",
+    metaDescription:
+      "How the Mediterranean and Caribbean yacht markets differ for a buyer: seasons, where the yacht is delivered, repositioning, survey yards, charter history and tax.",
+    standfirst: "Where the yacht is today matters less than buyers expect, but it changes the process.",
+    cluster: "Buying",
+    readingMinutes: 6,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "Many large yachts spend the summer in the Mediterranean and the winter in the Caribbean, so a yacht for sale may be in either region depending on the month. Buyers often start by searching only where they intend to cruise, and narrow their choice more than they need to.",
+      "This guide covers how the two markets differ, what it means to buy a yacht that is in the other region, and the questions to settle before an offer.",
+    ],
+    answers: [
+      {
+        question: "Should I buy a yacht in the Mediterranean or the Caribbean?",
+        answer:
+          "Buy the right yacht wherever it is. Large yachts move between the two regions as a matter of course, so location affects the timing, cost and logistics of the purchase rather than which yachts are worth considering. The exceptions are tax status and where survey and closing can take place.",
+      },
+      {
+        question: "Can I buy a yacht in the Caribbean and use it in the Mediterranean?",
+        answer:
+          "Yes. The yacht is either delivered across the Atlantic under its own power by a delivery crew or carried on a transport ship. Both take planning, and the cost and timing should be agreed before closing. Its tax position in Europe needs to be settled with maritime counsel beforehand.",
+      },
+      {
+        question: "Does the region affect the price?",
+        answer:
+          "Indirectly. Tax status, in particular European VAT, can move value materially, and the cost of repositioning a yacht is a real part of the purchase. Headline prices are only comparable once those are included.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Seasons and where yachts are",
+        paragraphs: [
+          "The Mediterranean season runs broadly through the northern summer and the Caribbean season through the winter, with crossings between them in spring and autumn. A yacht's position on a given date is usually a function of its owner's or its charter programme, not of where it is for sale.",
+          "Timing a purchase around that cycle matters. A yacht mid-way through a charter season may be harder to survey and hand over until the season ends.",
+        ],
+      },
+      {
+        heading: "Survey, sea trial and closing",
+        paragraphs: [
+          "A survey usually needs a haul-out, and yards able to lift a large yacht are not everywhere. Both regions have them, but scheduling one near where the yacht is can decide the timetable.",
+          "Where the sale closes, and where the yacht is delivered, can affect the tax position. Settle both with maritime counsel before an offer is made, not after.",
+        ],
+      },
+      {
+        heading: "Tax and status",
+        paragraphs: [
+          "In Europe, a yacht's VAT status — paid, unpaid, or held under temporary admission — affects both its value and how it can be used in EU waters. In the Caribbean, the rules vary by jurisdiction and by whether the yacht is privately used or chartered.",
+          "We do not give tax advice. The practical point is that the same yacht can be a different proposition depending on where it is delivered and how it will be used, so those questions belong at the start of a purchase.",
+        ],
+      },
+      {
+        heading: "Widening the search",
+        paragraphs: [
+          "A buyer who is open to a yacht in the other region typically sees more of the market, because the same yachts appear in both depending on the season. The cost of a crossing is usually small relative to finding the right yacht.",
+          "When you register a search, tell us where you intend to cruise and whether you are open to a yacht currently elsewhere.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need to say which region I want?",
+        answer:
+          "It helps to say where you intend to cruise and whether you would consider a yacht currently elsewhere. Being open to both regions usually widens what can be shown.",
+      },
+      {
+        question: "Who organises repositioning after purchase?",
+        answer:
+          "Normally the buyer, through the yacht's captain, a delivery company or a transport operator. The timing and cost should be agreed as part of the purchase, not left until after closing.",
+      },
+      {
+        question: "Is a VAT-unpaid yacht cheaper?",
+        answer:
+          "The headline price can look lower, but the comparison is only meaningful once the cost of VAT, import duty and delivery has been modelled for how the yacht will be used.",
+      },
+      {
+        question: "Are charter yachts more common in one region?",
+        answer:
+          "Both regions have active charter markets. What matters for a buyer is the individual yacht's charter history and how it has been maintained, rather than the region it worked in.",
+      },
+    ],
+    related: [
+      "how-to-buy-a-superyacht",
+      "yacht-survey-and-sea-trial-explained",
+      "60-metre-superyacht-buying-guide",
+    ],
+    inventoryLinks: [
+      { href: "/yachts-for-sale-mediterranean", label: "Mediterranean opportunities" },
+      { href: "/yachts-for-sale-caribbean", label: "Caribbean opportunities" },
+      { href: "/catamarans-for-sale", label: "Catamarans for sale" },
+    ],
+    sources: EU_VAT_SOURCES,
   },
 ];
 

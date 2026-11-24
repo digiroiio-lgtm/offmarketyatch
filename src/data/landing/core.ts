@@ -350,6 +350,7 @@ export const CORE_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-over-165-feet", label: "Yachts Over 165 ft" },
       { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
       { href: "/yacht-brokers", label: "Broker Cooperation" },
+      { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
       {
         href: "/private-market-intelligence/how-to-buy-a-superyacht",
         label: "How to Buy a Superyacht",
