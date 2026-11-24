@@ -1072,6 +1072,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yacht-brokers", label: "Broker Cooperation" },
       { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
       { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
+      { href: "/feadship-yachts-for-sale", label: "Feadship Yachts for Sale" },
       { href: "/private-market-intelligence/how-to-buy-a-superyacht", label: "How to Buy a Superyacht" },
     ],
     breadcrumb: [{ label: "Lürssen Yachts for Sale" }],

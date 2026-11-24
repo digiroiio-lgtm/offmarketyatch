@@ -130,6 +130,8 @@ export const INTERNATIONAL_NAV: NavItem[] = [
   { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
   { href: "/yachts-for-sale-greece", label: "Greece" },
   { href: "/yachts-for-sale-uk", label: "United Kingdom" },
+  { href: "/yachts-for-sale-turkey", label: "Turkey" },
+  { href: "/yachts-for-sale-europe", label: "Europe" },
 ];
 
 export function canonical(path: string): string {

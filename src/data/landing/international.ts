@@ -68,6 +68,7 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       { href: "/sunseeker-yachts-for-sale", label: "Sunseeker Yachts for Sale" },
       { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
       { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
+      { href: "/yachts-for-sale-europe", label: "Europe" },
       { href: "/motor-yachts-for-sale", label: "Motor Yachts" },
       { href: "/sell-your-yacht-privately", label: "Sell Your Yacht Privately" },
     ],
@@ -135,6 +136,10 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
       { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
       { href: "/yacht-shows", label: "Yacht Shows" },
+      {
+        href: "/private-market-intelligence/monaco-yacht-show-buyers-guide",
+        label: "Monaco Yacht Show Buyer's Guide",
+      },
       {
         href: "/private-market-intelligence/mediterranean-vs-caribbean-yacht-purchase",
         label: "Mediterranean vs Caribbean",
@@ -205,6 +210,7 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       { href: "/sailing-yachts-for-sale", label: "Sailing Yachts" },
       { href: "/catamarans-for-sale", label: "Catamarans" },
       { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
+      { href: "/yachts-for-sale-turkey", label: "Turkey" },
       {
         href: "/private-market-intelligence/buying-a-refitted-superyacht",
         label: "Buying a Refitted Yacht",
@@ -275,6 +281,7 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       { href: "/motor-yachts-for-sale", label: "Motor Yachts" },
       { href: "/yachts-for-sale-under-10-million", label: "Under $10M" },
       { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
+      { href: "/feadship-yachts-for-sale", label: "Feadship Yachts for Sale" },
       { href: "/yacht-brokers", label: "Broker Cooperation" },
     ],
     breadcrumb: [{ label: "Sunseeker Yachts for Sale" }],
@@ -346,5 +353,222 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       },
     ],
     breadcrumb: [{ label: "Benetti Yachts for Sale" }],
+  },
+
+  {
+    slug: "feadship-yachts-for-sale",
+    title: "Feadship Yachts for Sale | Private Search for Feadship Superyachts",
+    metaDescription:
+      "Looking for a Feadship for sale? Most change hands privately. Register a confidential, builder-specific search for Feadship custom superyachts.",
+    h1: "Feadship Yachts for Sale",
+    standfirst: "Dutch full-custom yachts, very rarely advertised.",
+    intro: [
+      "Feadship is a Dutch builder of full-custom superyachts. Its name comes from the First Export Association of Dutch Shipbuilders, formed in 1949, and every yacht it delivers is designed and built for one owner.",
+      "That makes the secondhand market small and individual. There are no two identical Feadships to compare, each yacht is known by name in the industry, and owners often prefer to sell quietly to a short list of buyers rather than advertise.",
+      "If a Feadship is firm for you or your client, a builder-specific search lets us approach owners' representatives and the brokers who hold Dutch custom mandates, rather than waiting for one to be listed.",
+    ],
+    query: { buildRegion: "Dutch Build", sort: "length-desc" },
+    inventoryHeading: "Dutch-built opportunities",
+    emptyMessage:
+      "No Dutch-built opportunities are currently published. Register a builder-specific search and we will approach the private market directly.",
+    answers: [
+      {
+        question: "Are the yachts listed here Feadships?",
+        answer:
+          "Not necessarily. Builder names are withheld on masked profiles. The list shows Dutch-built opportunities; the builder is disclosed to a qualified buyer under the owner's terms.",
+      },
+      {
+        question: "Why are so few Feadships publicly for sale?",
+        answer:
+          "Because each one is a unique custom yacht known by name. A public listing identifies the yacht immediately, so owners and their brokers often circulate availability privately first.",
+      },
+      {
+        question: "Can you search for a specific size, age and budget?",
+        answer:
+          "Yes. Give us the length range, the oldest acceptable build year, the real budget ceiling and the timeline, and we will tell you what is realistically available, including when the answer is nothing yet.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a broker register a Feadship search for a client?",
+        answer:
+          "Yes, through the client requirement form on our broker cooperation page. The client is not named or contacted.",
+      },
+      {
+        question: "What should be checked on a used Feadship?",
+        answer:
+          "Class status and survey cycle, machinery hours and overhaul history, refit records, flag and commercial registration, and the management and crew arrangements, as on any large custom yacht.",
+      },
+      {
+        question: "Does a custom build hold its value?",
+        answer:
+          "It depends on condition, design and how well the yacht has been maintained. A well-documented custom yacht from a respected yard tends to be easier to resell than a less known one, but no yacht is immune to market conditions.",
+      },
+      {
+        question: "Do you search for other Dutch builders?",
+        answer:
+          "Yes. A builder-specific search works the same way for any yard; name the builders that are firm and those that are acceptable alternatives.",
+      },
+    ],
+    related: [
+      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
+      { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
+      { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
+      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      {
+        href: "/private-market-intelligence/buying-a-refitted-superyacht",
+        label: "Buying a Refitted Superyacht",
+      },
+    ],
+    breadcrumb: [{ label: "Feadship Yachts for Sale" }],
+  },
+
+  {
+    slug: "yachts-for-sale-turkey",
+    title: "Yachts for Sale Turkey | Private Motor Yacht & Superyacht Opportunities",
+    metaDescription:
+      "Yachts for sale in Turkey and the Eastern Mediterranean through private channels. Confidential motor yacht and superyacht opportunities for qualified buyers.",
+    h1: "Yachts for Sale in Turkey",
+    standfirst: "A building nation and a cruising ground, in one market.",
+    intro: [
+      "Turkey is both a major yacht-building country and one of the Mediterranean's main cruising grounds. Its yards build everything from traditional gulets to large steel motor yachts, and its southwest coast is home to a large private and charter fleet.",
+      "For a buyer, that brings two kinds of opportunity: yachts based in Turkish waters, and Turkish-built yachts based elsewhere. A yacht bought in Turkey can also be close to the yard that built it, which helps with survey and warranty questions.",
+      "Turkey is not in the EU, so a yacht's EU VAT position and how it will be used in EU waters need separate attention. The opportunities below cover Turkey and the wider Eastern Mediterranean.",
+    ],
+    query: { countries: ["Turkey", "Greece", "Croatia"], sort: "recent" },
+    inventoryHeading: "Turkey and Eastern Mediterranean opportunities",
+    emptyMessage:
+      "Nothing is currently published in Turkey or the Eastern Mediterranean. Register your criteria and we will search the market directly.",
+    answers: [
+      {
+        question: "Is Turkey a good place to buy a yacht?",
+        answer:
+          "It can be. Turkish-built yachts often offer a lot of volume per dollar, the cruising season is long, and buying near the building yard makes survey and warranty questions easier to resolve.",
+      },
+      {
+        question: "Does EU VAT apply to a yacht bought in Turkey?",
+        answer:
+          "Turkey is not in the EU, so EU VAT does not arise on a sale there in the same way. If the yacht will be used in EU waters, its EU VAT position must be settled, so confirm it with maritime counsel before an offer.",
+      },
+      {
+        question: "What should I check on a Turkish-built yacht?",
+        answer:
+          "The same as any yacht: build quality and class, machinery and systems, maintenance records and the yard's warranty history. Turkish yards vary widely, so the yard's record matters.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Can a foreign buyer keep a yacht in Turkey?",
+        answer:
+          "Yes. Foreign-flagged yachts are common in Turkish marinas. The rules on how long a yacht may stay and on commercial use should be confirmed with a local agent.",
+      },
+      {
+        question: "Are gulets included?",
+        answer:
+          "Our focus is on motor yachts, explorer yachts and superyachts. Large gulets can be included in a search if they are what you are looking for.",
+      },
+      {
+        question: "Do you cover Greece and Croatia as well?",
+        answer:
+          "Yes. Eastern Mediterranean searches usually include Greece and Croatia; tell us where you are open to buying.",
+      },
+      {
+        question: "Can I buy a Turkish-built yacht that is based elsewhere?",
+        answer:
+          "Yes. Turkish-built yachts are found across the Mediterranean and beyond. Tell us the build region you prefer and where you want the yacht.",
+      },
+    ],
+    related: [
+      { href: "/yachts-for-sale-greece", label: "Greece" },
+      { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
+      { href: "/yachts-for-sale-europe", label: "Europe" },
+      { href: "/explorer-yachts-for-sale", label: "Explorer Yachts" },
+      {
+        href: "/private-market-intelligence/mediterranean-vs-caribbean-yacht-purchase",
+        label: "Mediterranean vs Caribbean",
+      },
+    ],
+    breadcrumb: [{ label: "Yachts for Sale Turkey" }],
+    sources: EU_VAT_SOURCES,
+  },
+
+  {
+    slug: "yachts-for-sale-europe",
+    title: "Yachts for Sale Europe | Private & Off-Market European Opportunities",
+    metaDescription:
+      "Yachts for sale in Europe through private channels. Confidential opportunities in the UK, France, Monaco, Italy, Spain, Greece, Croatia, Turkey and Northern Europe.",
+    h1: "Yachts for Sale in Europe",
+    standfirst: "One continent, several markets, one recurring question: VAT.",
+    intro: [
+      "Europe holds a large share of the world's yachts, concentrated in the Western Mediterranean in summer, with active markets in the Eastern Mediterranean, the UK and Northern Europe. Many of the world's leading yards are European.",
+      "Buying in Europe is straightforward in practice — yards, surveyors and closing agents are close at hand — but a yacht's VAT status shapes its value and how it can be used, and it should be understood before an offer.",
+      "The opportunities below cover European countries. Use the country pages for a narrower view, or register your criteria and we will search the European private market directly.",
+    ],
+    query: {
+      countries: [
+        "United Kingdom",
+        "France",
+        "Monaco",
+        "Italy",
+        "Spain",
+        "Greece",
+        "Croatia",
+        "Turkey",
+        "Norway",
+      ],
+      sort: "length-desc",
+    },
+    inventoryHeading: "European opportunities",
+    emptyMessage:
+      "Nothing is currently published in Europe. Register your criteria and we will search the European private market directly.",
+    answers: [
+      {
+        question: "Where in Europe are most yachts for sale?",
+        answer:
+          "Mostly in the Western Mediterranean — the French Riviera, Monaco, Italy and Spain — with significant markets in Greece, Croatia and Turkey, and in the UK and Northern Europe for smaller and expedition yachts.",
+      },
+      {
+        question: "Why does VAT matter when buying a yacht in Europe?",
+        answer:
+          "Because a yacht's EU VAT status affects both its price and where it can be used freely. Two otherwise similar yachts can differ materially in value on VAT status alone, so confirm it with maritime counsel before an offer.",
+      },
+      {
+        question: "Can a non-European buyer purchase a yacht in Europe?",
+        answer:
+          "Yes, routinely. The structure, flag and VAT position should be settled first, particularly if the yacht will be used in EU waters or exported.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is the UK part of the EU VAT area for yachts?",
+        answer:
+          "No. Since the UK left the EU, a yacht's UK and EU VAT positions are separate questions.",
+      },
+      {
+        question: "When is the best time to buy a yacht in Europe?",
+        answer:
+          "Many conversations start around the autumn shows, and transactions often complete over the winter, before the next season.",
+      },
+      {
+        question: "Can I search several European countries at once?",
+        answer:
+          "Yes. Tell us where you intend to cruise and where you are open to buying, and the search covers all of it.",
+      },
+      {
+        question: "Do you cover European builders as well as locations?",
+        answer:
+          "Yes. Builder-specific searches work for any yard, including Dutch, German, Italian and British builders.",
+      },
+    ],
+    related: [
+      { href: "/yachts-for-sale-uk", label: "United Kingdom" },
+      { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera" },
+      { href: "/yachts-for-sale-greece", label: "Greece" },
+      { href: "/yachts-for-sale-turkey", label: "Turkey" },
+      { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
+      { href: "/feadship-yachts-for-sale", label: "Feadship Yachts for Sale" },
+    ],
+    breadcrumb: [{ label: "Yachts for Sale Europe" }],
+    sources: EU_VAT_SOURCES,
   },
 ];

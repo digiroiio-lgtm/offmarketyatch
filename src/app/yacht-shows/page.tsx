@@ -91,6 +91,7 @@ const showsATier = [
     location: "Monaco",
     note: "Ultra-high-end. €25M+ transactions closed through private networks during the show week.",
     url: "https://www.monacoyachtshow.com",
+    guide: "/private-market-intelligence/monaco-yacht-show-buyers-guide",
     tier: "flagship" as const,
   },
   {
@@ -231,6 +232,14 @@ export default function YachtShowsPage() {
                 >
                   Visit Official Site →
                 </a>
+                {event.guide && (
+                  <Link
+                    href={event.guide}
+                    className="mt-2 self-start text-xs font-semibold uppercase tracking-widest text-accent transition hover:text-ink"
+                  >
+                    Buyer&rsquo;s Guide →
+                  </Link>
+                )}
               </div>
             ))}
           </div>

@@ -2212,6 +2212,105 @@ export const ARTICLES: Article[] = [
     ],
     sources: EU_VAT_SOURCES,
   },
+
+  {
+    slug: "monaco-yacht-show-buyers-guide",
+    title: "The Monaco Yacht Show: A Buyer's Guide",
+    metaTitle: "Monaco Yacht Show Buyer's Guide | How to Use the Show to Buy a Superyacht",
+    metaDescription:
+      "How a buyer can use the Monaco Yacht Show: what is on display, how viewings work, why many deals happen away from the pontoons, and how to prepare.",
+    standfirst: "What the show is for, and how buyers actually use it.",
+    cluster: "Private Market",
+    readingMinutes: 6,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "The Monaco Yacht Show takes place each September in Port Hercule and is the best-known superyacht show in the world. Large yachts are displayed in the water, and builders, brokers, designers and service companies gather in one harbour for four days.",
+      "For a buyer, the show is useful less as a shop window than as a meeting point. Many of the conversations that lead to a purchase start there; a good share of them are about yachts that are not on display at all.",
+    ],
+    answers: [
+      {
+        question: "When is the Monaco Yacht Show?",
+        answer:
+          "Each year in September, at Port Hercule in Monaco. The exact dates for each year are published by the organiser on the official show website.",
+      },
+      {
+        question: "Can you buy a yacht at the Monaco Yacht Show?",
+        answer:
+          "Yes, but rarely on the spot. Buyers view yachts and meet brokers at the show, and the purchase follows the usual process afterwards: offer, survey, sea trial and closing, which commonly takes several weeks to a few months.",
+      },
+      {
+        question: "Are the yachts on display the only ones for sale?",
+        answer:
+          "No. Many yachts available privately are never exhibited. Brokers often use the show to discuss unadvertised yachts with qualified buyers, and viewings are arranged separately.",
+      },
+    ],
+    sections: [
+      {
+        heading: "What is on display",
+        paragraphs: [
+          "The show combines yachts for sale, yachts available for charter, new builds presented by their yards, and tenders, toys and service companies. Not every yacht on the water is for sale, and boarding is usually by appointment with the broker or builder.",
+        ],
+      },
+      {
+        heading: "How buyers use the show",
+        paragraphs: [
+          "Most serious buyers arrive with a brief and a broker, and spend the show seeing a short list of yachts and meeting the people who represent others. The show compresses weeks of meetings into a few days.",
+          "Buyers who prefer discretion often avoid the pontoons altogether and meet representatives privately in Monaco during the show week.",
+        ],
+      },
+      {
+        heading: "How to prepare",
+        paragraphs: [
+          "The most useful preparation is a clear brief, because viewings at the show are short and brokers prioritise buyers who know what they want.",
+        ],
+        bullets: [
+          "Length range, yacht type and the builders that are firm or preferred.",
+          "The real budget ceiling, including running costs.",
+          "Where and when you intend to use the yacht.",
+          "Who will represent you, and whether you want to see yachts that are not exhibited.",
+        ],
+      },
+      {
+        heading: "After the show",
+        paragraphs: [
+          "Offers made in the weeks after the show follow the normal process. Many transactions complete over the autumn and winter, after the charter season and before the next one.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Do I need a ticket for the Monaco Yacht Show?",
+        answer:
+          "Yes. Tickets and trade passes are sold through the official show website. Boarding individual yachts is usually by appointment.",
+      },
+      {
+        question: "Can I see private yachts that are not exhibited?",
+        answer:
+          "Yes. Register your criteria before the show and private viewings can be arranged with owners' representatives, once you are qualified and the owner has agreed.",
+      },
+      {
+        question: "Is the show useful for sellers too?",
+        answer:
+          "Yes. Owners and their brokers use it to meet buyers, and some prefer to present a yacht privately to qualified buyers during the show week rather than exhibit it.",
+      },
+      {
+        question: "What other shows matter for superyacht buyers?",
+        answer:
+          "The Cannes Yachting Festival, also in September, and the Fort Lauderdale International Boat Show in the autumn are the other main events. See our yacht shows page for the calendar.",
+      },
+    ],
+    related: [
+      "mediterranean-vs-caribbean-yacht-purchase",
+      "how-to-buy-a-superyacht",
+      "off-market-yacht-confidentiality",
+    ],
+    inventoryLinks: [
+      { href: "/yachts-for-sale-monaco", label: "Monaco & French Riviera opportunities" },
+      { href: "/yacht-shows", label: "Yacht shows calendar" },
+      { href: "/request-private-access", label: "Register your criteria" },
+    ],
+  },
 ];
 
 const BY_SLUG = new Map(ARTICLES.map((article) => [article.slug, article]));
