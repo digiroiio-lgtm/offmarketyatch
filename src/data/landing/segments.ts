@@ -273,6 +273,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       "Between five and ten million dollars the market changes character. Vessels are typically 90 to 130 feet, permanent crew is standard, and the yacht becomes something you operate rather than something you drive.",
       "It is also the point at which build quality starts to separate meaningfully. The difference between a well-engineered semi-custom hull and a heavily specified production one is not obvious in photographs, but it is obvious in a survey and in the running costs five years later.",
       "This bracket sees a disproportionate amount of private activity, because owners here are frequently trading up on a known timetable — a new build delivering in eighteen months creates a seller who has time to be discreet.",
+      "If nothing below fits, register your criteria with the real budget ceiling, the length range and any builder preference. We search beyond what is advertised and tell you what we find, including when the answer is that nothing currently fits.",
     ],
     query: { priceBand: "5m-10m", sort: "price-desc" },
     inventoryHeading: "Opportunities between $5M and $10M",
@@ -322,6 +323,14 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-10-million-25-million", label: "$10M – $25M" },
       { href: "/yachts-for-sale-100-130-feet", label: "100–130 ft" },
       { href: "/luxury-yachts-for-sale", label: "Luxury Yachts" },
+      {
+        href: "/private-market-intelligence/how-to-buy-a-10-million-dollar-yacht",
+        label: "Guide: 10 Million Dollar Yachts",
+      },
+      {
+        href: "/private-market-intelligence/buying-a-refitted-superyacht",
+        label: "Buying a Refitted Yacht",
+      },
     ],
     breadcrumb: [{ label: "Yachts for Sale Under $10 Million" }],
   },
@@ -902,8 +911,74 @@ export const SEGMENT_PAGES: LandingPage[] = [
       { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
       { href: "/yachts-for-sale", label: "All Yachts for Sale" },
       { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
+      { href: "/catamarans-for-sale", label: "Catamarans for Sale" },
     ],
     breadcrumb: [{ label: "Sailing Yachts for Sale" }],
+  },
+
+  {
+    slug: "catamarans-for-sale",
+    title: "Catamarans for Sale | Private Sailing & Power Catamaran Opportunities",
+    metaDescription:
+      "Large catamarans for sale through private channels. Confidential sailing and power catamaran opportunities, plus a private search by size, propulsion and use.",
+    h1: "Catamarans for Sale",
+    standfirst: "Volume, stability and range, in a thinner second-hand market.",
+    intro: [
+      "Large catamarans offer more deck and interior volume per foot than a monohull, a stable platform at anchor and, with modern hulls, efficient long-range cruising. Those qualities have pushed them from charter fleets into private ownership, and the size range has grown with them.",
+      "The second-hand market at the larger end is still thin. Comparables are scarce, specifications vary widely — sail or power, hybrid or conventional drivetrains, owner or charter layouts — and a yacht that suits one buyer can be wrong for the next. That makes the specification and the intended use more important than the headline price.",
+      "If nothing below fits, a private search works better than waiting for a listing. Tell us whether you want sail or power, the length, how the yacht will be used and the budget ceiling, and we will approach the market directly.",
+    ],
+    query: { types: ["Catamaran", "Trimaran"], sort: "length-desc" },
+    inventoryHeading: "Multihull opportunities",
+    emptyMessage:
+      "No catamaran opportunities are currently published. Register your criteria — sail or power, length, use and budget — and we will search the private market directly.",
+    answers: [
+      {
+        question: "Why buy a catamaran instead of a monohull?",
+        answer:
+          "For volume, stability and efficiency. A catamaran offers more living space per foot, sits level at anchor and under way, and draws less water, which opens up shallower anchorages. The trade-offs are beam — which limits some marinas and haul-out facilities — and a thinner resale market at the larger sizes.",
+      },
+      {
+        question: "Sailing or power catamaran?",
+        answer:
+          "It depends on use. A sailing catamaran suits long passages and owners who want to sail; a power catamaran suits shorter hops at higher speed with less crew involvement. Hybrid drivetrains on either can reduce generator use and noise at anchor, but add systems to survey.",
+      },
+      {
+        question: "Why are large catamarans hard to value?",
+        answer:
+          "Because comparable sales are few and specifications differ widely. Builder, layout, drivetrain and charter history all move value, so a valuation should be built from the specification rather than from a single comparable.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Do large catamarans need permanent crew?",
+        answer:
+          "Above roughly 70 feet, most are run with a small professional crew, typically two to four, depending on use and whether the yacht is chartered.",
+      },
+      {
+        question: "Can a charter catamaran be bought for private use?",
+        answer:
+          "Yes. Ex-charter yachts often come with a long maintenance record. Check the charter history, the layout — charter versions often have more guest cabins and less owner space — and how hard the yacht has been used.",
+      },
+      {
+        question: "What should a survey cover on a catamaran?",
+        answer:
+          "Both hulls and the bridge deck structure, the rig if it is a sailing catamaran, both engine rooms and any hybrid or battery systems. Composite construction should come with an inspection history.",
+      },
+      {
+        question: "Where is the market for large catamarans?",
+        answer:
+          "Much of it is in the Caribbean, where private and charter use overlap, and in the Mediterranean.",
+      },
+    ],
+    related: [
+      { href: "/sailing-yachts-for-sale", label: "Sailing Yachts for Sale" },
+      { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
+      { href: "/yachts-for-sale-under-5-million", label: "Under $5M" },
+      { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
+      { href: "/private-market-intelligence/yacht-survey-and-sea-trial-explained", label: "Survey & Sea Trial" },
+    ],
+    breadcrumb: [{ label: "Catamarans for Sale" }],
   },
 
   // ── Builders ──────────────────────────────────────────────────────────────
@@ -946,6 +1021,16 @@ export const SEGMENT_PAGES: LandingPage[] = [
       },
     ],
     faqs: [
+      {
+        question: "Can you search for a specific size and budget?",
+        answer:
+          "Yes. Give us the length range, the real budget ceiling and how firm the yard is. We use those to decide which representatives to approach, and we will tell you if the combination is unlikely to exist in the current market, along with the nearest alternatives.",
+      },
+      {
+        question: "Can you investigate yachts outside the advertised selection?",
+        answer:
+          "Yes. Most of the search happens outside anything advertised: mandates held privately by us and by cooperating brokers, and yachts whose owners may sell on the right terms. Where a yacht is represented by another broker, we approach that broker, not the owner.",
+      },
       {
         question: "Can a broker register a Lürssen search for a client?",
         answer:

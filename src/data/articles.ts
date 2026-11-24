@@ -1098,16 +1098,17 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-to-buy-a-10-million-dollar-yacht",
     title: "How to Buy a $10 Million Yacht",
-    metaTitle: "How to Buy a $10 Million Yacht | What to Expect at This Level",
+    metaTitle: "10 Million Dollar Yachts | What $10M Buys & How to Buy One",
     metaDescription:
-      "What $10 million buys, what it costs to run, how the diligence differs from smaller purchases, and why this bracket transacts privately so often.",
+      "What a 10 million dollar yacht looks like: typical size and age, running costs, diligence, and why so many yachts under $10 million change hands privately.",
     standfirst: "What the money buys, and what the ownership actually involves.",
     cluster: "Buying",
-    readingMinutes: 6,
+    readingMinutes: 7,
     published: "2026-08-18",
-    updated: "2026-09-01",
+    updated: "2026-11-24",
     intro: [
       "Ten million dollars is a meaningful threshold. It is roughly where a yacht stops being a large boat and starts being an operation with staff, compliance obligations and a management structure.",
+      "This guide covers what 10 million dollar yachts typically are, what they cost to run, how the purchase differs from a smaller one, and why so many yachts at and under this level are sold without ever being advertised.",
     ],
     answers: [
       {
@@ -1120,6 +1121,11 @@ export const ARTICLES: Article[] = [
         answer:
           "Around $1 million per year on the conventional ten percent estimate, with crew payroll typically the largest component, followed by dockage, insurance, maintenance and a refit reserve.",
       },
+      {
+        question: "What do yachts under $10 million look like?",
+        answer:
+          "Mostly 90 to 130 feet with permanent crew. At the lower end, recent production flybridges; towards the top, semi-custom and custom displacement yachts ten to twenty years old, where the refit history matters as much as the build year.",
+      },
     ],
     sections: [
       {
@@ -1128,6 +1134,13 @@ export const ARTICLES: Article[] = [
           "At this budget the real decision is newer and smaller against older and larger, and it is not a close-run thing once you know how you will use the yacht.",
           "Extended cruising and long passages reward volume, range and a displacement hull, which points to the older, larger option. Frequent short trips and a preference for warranty coverage and current systems point the other way.",
           "The mistake is choosing on presence. A yacht bought for how it looks at the dock and used for weekends will feel like a poor decision within two seasons.",
+        ],
+      },
+      {
+        heading: "Newer and smaller, or older and refitted",
+        paragraphs: [
+          "Two yachts at the same $10 million price can be ten years and thirty feet apart. The older one is only the better buy if its refit was substantial and documented — machinery, systems, paint and class work rather than a new interior.",
+          "Ask for the yard scope of work, invoices and class reports before forming a view on price. Our guide to buying a refitted superyacht covers which records matter.",
         ],
       },
       {
@@ -1162,6 +1175,16 @@ export const ARTICLES: Article[] = [
           "Four to eight weeks from accepted offer to closing, dominated by survey and haul-out scheduling. Finding the right yacht takes considerably longer.",
       },
       {
+        question: "Is a $10 million yacht the same as a 10 metre yacht?",
+        answer:
+          "No. A 10 metre boat is about 33 feet, a size bought and run without permanent crew. This guide is about yachts priced around $10 million, which are typically 110 to 140 feet.",
+      },
+      {
+        question: "Can I search privately for a yacht under $10 million?",
+        answer:
+          "Yes. Register your criteria — size, age, builder preferences, the real budget ceiling and timeline — and we will search beyond publicly advertised inventory and tell you what we find, including when nothing currently fits.",
+      },
+      {
         question: "Is a ten-year-old yacht at this price a risk?",
         answer:
           "Only if the refit and maintenance history is thin. A well-documented vessel through a recent major refit is frequently the better value at this budget than a newer, smaller boat.",
@@ -1169,12 +1192,14 @@ export const ARTICLES: Article[] = [
     ],
     related: [
       "how-much-does-a-superyacht-cost",
-      "how-to-buy-a-superyacht",
+      "buying-a-refitted-superyacht",
       "yacht-survey-and-sea-trial-explained",
     ],
     inventoryLinks: [
-      { href: "/yachts-for-sale-under-10-million", label: "Opportunities under $10M" },
+      { href: "/yachts-for-sale-under-10-million", label: "Yachts for sale under $10M" },
+      { href: "/yachts-for-sale-10-million-25-million", label: "$10M – $25M opportunities" },
       { href: "/yachts-for-sale-100-130-feet", label: "100–130 ft opportunities" },
+      { href: "/request-private-access", label: "Register your criteria" },
     ],
   },
 
@@ -1681,6 +1706,304 @@ export const ARTICLES: Article[] = [
     inventoryLinks: [
       { href: "/request-private-access", label: "Start a private search" },
       { href: "/owner-representation", label: "Owner representation" },
+    ],
+  },
+
+  {
+    slug: "how-to-source-a-yacht-for-a-client",
+    title: "How to Source a Yacht for a Client Off-Market",
+    metaTitle: "How to Source a Yacht for a Client | A Broker's Guide to Off-Market Search",
+    metaDescription:
+      "For brokers representing buyers: how to brief an off-market search, what a credible requirement contains, and how introductions and cooperation terms are agreed.",
+    standfirst:
+      "For brokers representing a buyer: how to turn a client's brief into yachts that are not on the market.",
+    cluster: "Process",
+    readingMinutes: 7,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "When a client's requirement is specific — a particular yard, a length band, a ceiling that rules out most of what is listed — the public market often has nothing to show. The yacht that fits may exist, but its owner has not advertised it, or it is held by another broker under a private mandate.",
+      "This guide covers how to brief that search so it gets taken seriously, what we do with a requirement once it is submitted, and how the introduction and cooperation terms work when a match is found.",
+    ],
+    answers: [
+      {
+        question: "How does a broker source an off-market yacht for a client?",
+        answer:
+          "By registering the client's requirement with people who hold or can reach unadvertised vessels, rather than waiting for a listing. A useful requirement names the yard if it is firm, the length range, the real budget ceiling and the timeline. The search is then run against privately held mandates and owners who may sell on the right terms.",
+      },
+      {
+        question: "Does the client have to be named?",
+        answer:
+          "No. A requirement can be registered without naming the client. What has to be established is that the buyer is genuine and qualified — budget, size, timeline and position — and the client is named only when they agree to be.",
+      },
+      {
+        question: "Who handles the client relationship?",
+        answer:
+          "The broker who introduced the client. We reply to the broker, not to the client, and we do not approach a buyer introduced by another broker.",
+      },
+    ],
+    sections: [
+      {
+        heading: "What a credible requirement contains",
+        paragraphs: [
+          "Owners and their representatives respond to enquiries that look like a transaction. A vague brief — a large motor yacht, budget flexible — reads as market research and is treated that way. A precise one gives the person holding a private mandate a reason to pick up the phone.",
+        ],
+        bullets: [
+          "Builder: whether a yard is firm, preferred, or simply a reference point for quality.",
+          "Length: a range in metres or feet, with the hard limits stated — berth, draft, tonnage or crew numbers often set them.",
+          "Budget: the real ceiling, not the opening figure. A search pitched below the actual budget filters out the yachts the client would buy.",
+          "Age and condition: the oldest build year acceptable and the client's tolerance for a refit after purchase.",
+          "Timeline: when the client wants to use the yacht, which decides whether a vessel in mid-season charter can be considered.",
+          "Your position: whether you hold a written buyer representation agreement, an informal retainer, or are introducing the client for the first time.",
+        ],
+      },
+      {
+        heading: "What happens after a requirement is submitted",
+        paragraphs: [
+          "We review the brief against opportunities held privately, including mandates from cooperating brokers that were never published, and against vessels the network knows to be quietly available. Where nothing fits, we say so rather than sending inventory that does not match.",
+          "Where a client wants a specific yacht that is not on the market, the approach goes through whoever represents it. If another broker holds a mandate, we approach that broker, not the owner.",
+          "Anything presented to you carries its opportunity type: whether the seller position has been confirmed, or whether the yacht is only a potential opportunity that has not been confirmed as available.",
+        ],
+      },
+      {
+        heading: "How introductions and cooperation terms are agreed",
+        paragraphs: [
+          "Terms are agreed in writing before a vessel is identified, not after. That covers who represents whom and how commission is shared. Where a cooperating broker holds the mandate, they remain the central agent and the buyer's side is represented separately; where we hold it, the reverse.",
+          "The yacht's identity, full specification and exact price are disclosed to a qualified buyer under the owner's terms. Nothing is released automatically because a form was submitted.",
+        ],
+      },
+      {
+        heading: "Common reasons a search stalls",
+        paragraphs: [
+          "Most private searches that go nowhere fail on the brief rather than on supply. The usual causes are a budget stated below the client's real ceiling, a yard named as firm when it was only a preference, and a timeline that excludes every yacht in use that season.",
+          "Revisiting those three points with the client before the search starts usually saves weeks.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can I submit a requirement on behalf of a client?",
+        answer:
+          "Yes. Use the client requirement form on our broker cooperation page. The client is not named or contacted, and we reply to you.",
+      },
+      {
+        question: "What if the client's yard and budget do not match the market?",
+        answer:
+          "We will tell you. If a firm yard and a hard ceiling rule out every realistic candidate, it is more useful to know that early, along with the nearest alternatives, than to run a search that cannot succeed.",
+      },
+      {
+        question: "Will you contact the owner directly?",
+        answer:
+          "Not where another broker holds a mandate. In that case the approach goes through the broker who represents the yacht.",
+      },
+      {
+        question: "Can I enquire against a published reference instead?",
+        answer:
+          "Yes. Any masked profile can be enquired against on a client's behalf, under the same cooperation terms.",
+      },
+    ],
+    related: [
+      "how-yacht-pocket-listings-work",
+      "off-market-yacht-confidentiality",
+      "private-yacht-acquisition-guide",
+    ],
+    inventoryLinks: [
+      { href: "/yacht-brokers#requirement", label: "Submit a client requirement" },
+      { href: "/off-market-yachts", label: "Browse masked profiles" },
+    ],
+  },
+
+  {
+    slug: "buying-a-refitted-superyacht",
+    title: "Buying a Refitted Superyacht",
+    metaTitle: "Buying a Refitted Superyacht | Build Year, Refit Scope & Records",
+    metaDescription:
+      "How to weigh build year against refit history when buying a superyacht: what counts as a major refit, which records to review, and what to ask the seller.",
+    standfirst: "Why the refit history can matter more than the build year, and how to check it.",
+    cluster: "Buying",
+    readingMinutes: 7,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "On the secondhand superyacht market, two yachts built in the same year can be very different propositions. One has had its machinery overhauled, its systems replaced and its paint renewed; the other has had a new interior and little else. The build year tells you where the yacht started. The refit history tells you where it is now.",
+      "This guide covers how to read a refit claim, which records to ask for, and how the refit history should shape your view of value.",
+    ],
+    answers: [
+      {
+        question: "Is a refitted older superyacht a good buy?",
+        answer:
+          "It can be, if the refit was substantial and documented. A well-maintained yacht that has been through a major machinery and systems refit often offers more volume and range per dollar than a newer, smaller one. Without records, a refit claim is just a claim.",
+      },
+      {
+        question: "What counts as a major refit?",
+        answer:
+          "Work that renews the yacht's systems rather than its appearance: engine and generator overhauls, electrical and navigation upgrades, plumbing and HVAC replacement, hull and paint work, and the class survey that goes with it. A new interior alone is a refurbishment, not a major refit.",
+      },
+      {
+        question: "Does a refit reset the yacht's age?",
+        answer:
+          "No. It reduces specific risks — the parts that were replaced are newer — but the hull, the structure and anything not touched retain their original age. Valuation reflects both the build year and the scope of the refit.",
+      },
+    ],
+    sections: [
+      {
+        heading: "Build year against refit scope",
+        paragraphs: [
+          "A refit is only meaningful in relation to what it covered. 'Refitted in 2021' can describe a full machinery and systems programme at a major yard or a few months of cosmetic work. The year alone does not distinguish them.",
+          "The useful question is which systems are newer than the hull, by how much, and who did the work. A yacht whose main engines, generators and electrical systems were renewed in the last few years carries different running-cost risk from one of the same age that has only been redecorated.",
+        ],
+      },
+      {
+        heading: "Which refit records to review",
+        paragraphs: [
+          "Ask for the documentation before you form a view on price, not after an offer has been accepted.",
+        ],
+        bullets: [
+          "The yard specification and final scope of work, including items that were planned and then deferred.",
+          "Invoices or a cost summary, which show the real extent of the work better than a description does.",
+          "Class survey reports and any conditions of class raised or cleared during the refit.",
+          "Machinery overhaul records and running hours before and after the work.",
+          "Warranty documents still in force from the yard or equipment makers.",
+          "The maintenance log since the refit, which shows whether the yacht has been looked after since.",
+        ],
+      },
+      {
+        heading: "What to ask the seller",
+        paragraphs: [
+          "Who managed the refit, and is that person or company still involved with the yacht? Was the work done at the yard that built the yacht, or elsewhere? What was planned and not done, and why? Have there been warranty claims?",
+          "Straight answers to those questions, backed by documents, are a good sign. Vague ones are a reason to widen the survey scope.",
+        ],
+      },
+      {
+        heading: "How the survey fits in",
+        paragraphs: [
+          "Records tell you what was done; the survey tells you what condition it is in now. A buyer's survey and sea trial are still necessary after a refit, and should be scoped with the refit records in hand so the surveyor can check the work that was claimed.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What should I ask about a yacht's refit?",
+        answer:
+          "What was included and what was deferred, which yard did the work and who managed it, what it cost, and which warranties are still in force. Ask for the documents that support each answer.",
+      },
+      {
+        question: "Which refit records should be reviewed?",
+        answer:
+          "The yard specification and final scope, invoices or a cost summary, class survey reports, machinery overhaul records and running hours, remaining warranties, and the maintenance log since the work was completed.",
+      },
+      {
+        question: "Can I see refit records before identifying the yacht?",
+        answer:
+          "Records that would identify the yacht are shared with a qualified buyer under the owner's terms. Where a masked profile publishes a refit year, it is published with the owner's authorisation; the supporting documents follow at the disclosure stage.",
+      },
+      {
+        question: "How much does a refit add to value?",
+        answer:
+          "It depends on scope and on how recently the work was done. Documented machinery and systems work tends to support value more than cosmetic work, because it lowers the cost and risk the next owner takes on.",
+      },
+    ],
+    related: [
+      "yacht-survey-and-sea-trial-explained",
+      "how-to-buy-a-superyacht",
+      "how-much-does-a-superyacht-cost",
+    ],
+    inventoryLinks: [
+      { href: "/superyachts-for-sale", label: "Superyacht opportunities" },
+      { href: "/request-private-access", label: "Register your criteria" },
+    ],
+  },
+
+  {
+    slug: "off-market-yacht-confidentiality",
+    title: "How Off-Market Yacht Confidentiality Works",
+    metaTitle: "Off-Market Yacht Confidentiality | Masked Profiles & Disclosure Stages",
+    metaDescription:
+      "Why off-market yacht profiles are masked, what is withheld and why, and the stages at which a yacht's identity, full specification and price are shared.",
+    standfirst: "What a masked profile withholds, why, and when the detail is shared.",
+    cluster: "Private Market",
+    readingMinutes: 6,
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    intro: [
+      "An off-market profile tells you less than a public listing. There is no yacht name, often no exact price, and sometimes only a length range and a cruising region. That is deliberate, and it is what makes the profile possible at all: the owner has agreed to signal availability on the condition that the yacht is not identified to the market at large.",
+      "This guide explains what is withheld, why, and how the information is released to a buyer who is ready to transact.",
+    ],
+    answers: [
+      {
+        question: "Why are off-market yacht profiles masked?",
+        answer:
+          "Because publishing the yacht's identity would defeat the reason the owner chose not to advertise it. At larger sizes the fleet is small enough that a name, an exact length or a precise location identifies the vessel, so profiles publish only what the owner has authorised.",
+      },
+      {
+        question: "What information is withheld on a masked profile?",
+        answer:
+          "Typically the yacht's name, shipyard, exact asking price, full specification, current location, additional photography and the seller or broker contact. On the most confidential profiles the length is also shown as a range rather than an exact figure.",
+      },
+      {
+        question: "When is a yacht's identity disclosed?",
+        answer:
+          "To a qualified buyer, after their request has been reviewed and where the owner has authorised disclosure. Nothing is released automatically when a form is submitted, and the name is always disclosed before any offer, because a yacht cannot be surveyed without being identified.",
+      },
+    ],
+    sections: [
+      {
+        heading: "What a masked profile publishes",
+        paragraphs: [
+          "Each profile carries a reference number, the yacht type, a length or length range, a build region rather than a shipyard, a cruising area, and whatever price detail the owner has allowed — an exact figure, an estimated range or price on request.",
+          "Fields that are withheld are withheld on the server, not hidden on the page. The confidential values never reach the browser, so they cannot be found by inspecting the page source.",
+        ],
+      },
+      {
+        heading: "Three levels of confidentiality",
+        paragraphs: [
+          "Not every profile is masked to the same degree. The level is set by what the owner has authorised.",
+        ],
+        bullets: [
+          "Open — the profile can show exact figures such as length.",
+          "Restricted — exact figures may appear, but the identity and other key details stay private.",
+          "Confidential — the length is published as a range and the cruising area is generalised, so the combination cannot identify the yacht.",
+        ],
+      },
+      {
+        heading: "How detail is released",
+        paragraphs: [
+          "A request against a profile is reviewed by a person. We establish that the buyer is genuine and qualified — budget, size, timeline and position — before any confidential detail is discussed.",
+          "Where the owner has authorised disclosure to qualified buyers, the identity, full specification and price detail are then shared under the owner's terms. Where the profile is a potential opportunity, there is no seller mandate to disclose against; we can investigate privately and report back, including when the answer is that the yacht is not available.",
+        ],
+      },
+      {
+        heading: "Confidentiality runs both ways",
+        paragraphs: [
+          "The same discretion applies to buyers. A buyer, or a broker's client, is not named to an owner until they agree to be. What is shared at the qualification stage is enough to show the enquiry is real, not who is making it.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "When can I receive the yacht's identity and full specifications?",
+        answer:
+          "After your request has been reviewed and you are qualified as a buyer, and only where the owner has authorised disclosure. It is shared under the owner's terms, never automatically on submission of a form.",
+      },
+      {
+        question: "How is availability confirmed?",
+        answer:
+          "Every profile shows its opportunity type. 'Seller position confirmed' appears only where the owner or their representative has confirmed the position and it has been recorded. A potential opportunity is labelled as such: nobody has stated that it is for sale.",
+      },
+      {
+        question: "Can I share the details with my adviser?",
+        answer:
+          "Disclosure is made under the owner's terms, which normally allow a buyer's professional advisers and surveyor to see what they need. Confirm the terms when the detail is shared.",
+      },
+    ],
+    related: [
+      "what-is-an-off-market-yacht",
+      "how-yacht-pocket-listings-work",
+      "how-to-source-a-yacht-for-a-client",
+    ],
+    inventoryLinks: [
+      { href: "/off-market-yachts", label: "Browse masked profiles" },
+      { href: "/request-private-access", label: "Request private access" },
     ],
   },
 ];

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { BadgeRow } from "@/components/Badge";
 import Breadcrumb from "@/components/Breadcrumb";
+import FAQSection, { type FAQ } from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import LockedDetails from "@/components/LockedDetails";
 import OpportunityGrid from "@/components/OpportunityGrid";
@@ -18,6 +19,37 @@ import {
   getRelatedOpportunities,
 } from "@/lib/opportunities";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
+import type { PublicOpportunity } from "@/lib/types";
+
+/**
+ * Questions every buyer asks on a masked profile. The answers describe the
+ * platform's actual disclosure process; keep them in step with the listing
+ * inquiry form and the confidentiality guide.
+ */
+function profileFaqs(opportunity: PublicOpportunity): FAQ[] {
+  const isPotential = opportunity.availabilityType === "POTENTIAL OPPORTUNITY";
+  const faqs: FAQ[] = [
+    {
+      question: "When can I receive the yacht\u2019s identity and full specifications?",
+      answer: isPotential
+        ? "This is a potential opportunity: no seller mandate is held, so there is nothing to disclose yet. Our team can investigate privately on behalf of a qualified buyer and will report back, including when the answer is that the yacht is not available."
+        : "After your request has been reviewed by a person and you are qualified as a buyer, and only where the owner has authorised disclosure. The identity, full specification and price detail are then shared under the owner\u2019s terms. Nothing is released automatically when the form is submitted.",
+    },
+    {
+      question: "How is availability confirmed?",
+      answer:
+        "Every profile shows its opportunity type. \u2018Seller position confirmed\u2019 appears only where the owner or their representative has confirmed the position and it has been recorded. A potential opportunity is labelled as such: nobody has stated that it is for sale.",
+    },
+  ];
+  if (opportunity.priceLabel === "Price on request") {
+    faqs.push({
+      question: "How do I discuss budget when the price is on request?",
+      answer:
+        "Tell us your budget range or real ceiling in the request form. We use it to qualify the enquiry and to judge whether the yacht is realistically in range before any detail is exchanged. Price detail is shared with qualified buyers under the owner\u2019s terms.",
+    });
+  }
+  return faqs;
+}
 
 /*
   `true` so a slug outside the build-time list is still resolved at request
@@ -257,6 +289,18 @@ export default async function OpportunityDetailPage(
           <ListingInquiryForm opportunity={opportunity} />
         </div>
       </section>
+
+      <div className="defer-render">
+        <FAQSection faqs={profileFaqs(opportunity)} heading="Before you enquire" />
+        <div className="container-site -mt-6 pb-10">
+          <Link
+            href="/private-market-intelligence/off-market-yacht-confidentiality"
+            className="text-[14.5px] text-ink-muted underline decoration-accent underline-offset-4 hover:text-accent"
+          >
+            How confidentiality and disclosure work →
+          </Link>
+        </div>
+      </div>
 
       {/* Related */}
       {related.length > 0 && (

@@ -37,14 +37,14 @@ const PATHS = [
 
 const FAQS = [
   {
-    question: "What happens after I submit a client requirement?",
+    question: "Can I submit a requirement on behalf of a client?",
     answer:
-      "We review it against vessels held privately by us and by cooperating brokers, and against yachts the network knows to be quietly available. We reply to you, not to your client. Your client is not named and not contacted, and terms are agreed in writing before any vessel is identified.",
+      "Yes, through the client requirement form on this page. We review it against vessels held privately by us and by cooperating brokers, and against yachts the network knows to be quietly available. We reply to you, not to your client. Your client is not named and not contacted, and terms are agreed in writing before any vessel is identified.",
   },
   {
-    question: "What happens after I submit a vessel?",
+    question: "Can I share a yacht privately?",
     answer:
-      "Your submission is held privately and we verify your firm and your authority over the vessel. Nothing is published, matched or shared at that point. Internal matching, a masked public entry and disclosure of identity are each approved separately, with the evidence recorded, and each can be withdrawn.",
+      "Yes, through the share-a-yacht form on this page. Your submission is held privately and we verify your firm and your authority over the vessel. Nothing is published, matched or shared at that point. Internal matching, a masked public entry and disclosure of identity are each approved separately, with the evidence recorded, and each can be withdrawn.",
   },
   {
     question: "Does submitting a vessel give you permission to share it?",
@@ -52,7 +52,7 @@ const FAQS = [
       "No. The permissions on the form are requests. We act on a permission only after we have verified your authority and recorded a separate approval for it.",
   },
   {
-    question: "How does co-brokerage work here?",
+    question: "How are introductions and cooperation terms agreed?",
     answer:
       "On standard industry terms, agreed in writing before any introduction. Where you hold the mandate, you remain the central agent and we represent the buyer; where we hold it, the reverse. Commission splits are settled before disclosure, not after.",
   },
@@ -144,6 +144,13 @@ export default function BrokerCooperationPage() {
           <p>
             Cooperation terms are agreed before disclosure, and your client relationship is
             yours — we do not approach a buyer introduced by another broker.
+          </p>
+          <p>
+            Our guide to{" "}
+            <Link href="/private-market-intelligence/how-to-source-a-yacht-for-a-client">
+              sourcing a yacht for a client
+            </Link>{" "}
+            explains what a credible brief contains and how introductions are agreed.
           </p>
 
           <h2>What happens to a submission</h2>

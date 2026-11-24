@@ -28,6 +28,7 @@ const LOOKING_FOR = [
   "Motor Yacht",
   "Explorer Yacht",
   "Sailing Yacht",
+  "Catamaran",
   "Superyacht",
   "Open to Opportunities",
 ];
