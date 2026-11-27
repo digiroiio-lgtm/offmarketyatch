@@ -414,7 +414,7 @@ export const INTERNATIONAL_PAGES: LandingPage[] = [
       { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
       { href: "/benetti-yachts-for-sale", label: "Benetti Yachts for Sale" },
       { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
-      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      { href: "/mega-yachts-for-sale", label: "Over 165 ft" },
       {
         href: "/private-market-intelligence/buying-a-refitted-superyacht",
         label: "Buying a Refitted Superyacht",

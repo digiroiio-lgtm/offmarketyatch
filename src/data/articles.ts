@@ -463,7 +463,7 @@ export const ARTICLES: Article[] = [
     ],
     inventoryLinks: [
       { href: "/off-market-yachts-for-sale", label: "Off-market yachts for sale" },
-      { href: "/yachts-for-sale", label: "All yachts for sale" },
+      { href: "/off-market-yachts", label: "All yachts for sale" },
     ],
   },
 
@@ -2236,7 +2236,7 @@ export const ARTICLES: Article[] = [
       "how-to-buy-a-superyacht",
     ],
     inventoryLinks: [
-      { href: "/yachts-for-sale-over-165-feet", label: "Opportunities over 165 ft / 50 m" },
+      { href: "/mega-yachts-for-sale", label: "Opportunities over 165 ft / 50 m" },
       { href: "/lurssen-yachts-for-sale", label: "Lürssen yachts for sale" },
       { href: "/superyachts-for-sale-over-25-million", label: "Superyachts over $25M" },
       { href: "/request-private-access", label: "Register your criteria" },

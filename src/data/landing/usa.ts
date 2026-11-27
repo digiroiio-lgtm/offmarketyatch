@@ -301,7 +301,7 @@ export const USA_PAGES: LandingPage[] = [
       "It also means the market is unusually well-informed. Everyone servicing a 150-foot yacht in Fort Lauderdale has a view on its condition, and that view circulates. A superyacht with a poor maintenance reputation cannot hide behind good listing photography in this market.",
       "The opportunities below are Florida-based vessels above the superyacht threshold, published in masked form.",
     ],
-    query: { locationPrefix: "Florida", lengthBand: undefined, sort: "length-desc" },
+    query: { locationPrefix: "Florida", minLengthFt: 100, sort: "length-desc" },
     inventoryHeading: "Florida superyacht opportunities",
     emptyMessage:
       "No Florida superyacht opportunities are currently published. Submit your criteria and we will approach owners and cooperating brokers in South Florida directly.",
@@ -365,7 +365,8 @@ export const USA_PAGES: LandingPage[] = [
       "For a buyer that has a direct, practical benefit. Every step of diligence happens locally and quickly. You can walk a yard, meet a surveyor, and see three comparable yachts in a day.",
       "It also concentrates information. Fort Lauderdale is where you hear that a yacht is coming available months before anyone advertises it.",
     ],
-    query: { locationPrefix: "Florida", sort: "recent" },
+    query: { locationPrefix: "Florida", sort: "price-asc" },
+    preview: { limit: 3, href: "/yachts-for-sale-florida", label: "View all Florida opportunities" },
     inventoryHeading: "Opportunities in and around Fort Lauderdale",
     emptyMessage:
       "Nothing is currently published for this area. Fort Lauderdale inventory is frequently unlisted — submit your requirement and we will search the local private market.",
@@ -434,6 +435,7 @@ export const USA_PAGES: LandingPage[] = [
       "What we hold here are the Fort Lauderdale-area opportunities where the owner has confirmed their position and authorised a masked public description.",
     ],
     query: { locationPrefix: "Florida", availabilityType: "VERIFIED OFF-MARKET", sort: "recent" },
+    preview: { limit: 3, href: "/off-market-yachts-florida", label: "View all off-market Florida opportunities" },
     inventoryHeading: "Confidential Fort Lauderdale opportunities",
     emptyMessage:
       "Nothing verified is published for this area right now. Tell us what you are looking for and we will approach the Fort Lauderdale network directly.",
@@ -500,7 +502,8 @@ export const USA_PAGES: LandingPage[] = [
       "Geography drives a lot of that. Bimini is roughly fifty miles from Government Cut, which makes a Miami-based yacht a genuinely usable weekend proposition in a way that a yacht further north is not. Boats here are bought to be run frequently and hard.",
       "For a buyer, that means paying particular attention to hours, service intervals and how the vessel has actually been used — not just how it looks.",
     ],
-    query: { locationPrefix: "Florida", sort: "recent" },
+    query: { locationPrefix: "Florida", sort: "price-desc" },
+    preview: { limit: 3, href: "/yachts-for-sale-florida", label: "View all Florida opportunities" },
     inventoryHeading: "Miami-area opportunities",
     emptyMessage:
       "Nothing is currently published for the Miami area. Submit your criteria and we will search the local private market directly.",
@@ -633,6 +636,7 @@ export const USA_PAGES: LandingPage[] = [
       "It is also the market where confidentiality expectations run highest. Owners in this community are frequently unwilling to have their vessel publicly advertised under any circumstances, which is precisely why a private channel exists.",
     ],
     query: { locationPrefix: "Florida", sort: "recent" },
+    preview: { limit: 3, href: "/yachts-for-sale-florida", label: "View all Florida opportunities" },
     inventoryHeading: "Palm Beach area opportunities",
     emptyMessage:
       "Nothing is currently published for Palm Beach. Much of this market is never published at all — submit your requirement and we will approach it directly.",
@@ -761,6 +765,7 @@ export const USA_PAGES: LandingPage[] = [
       "Inventory is thinner than Florida, and a higher proportion of it never reaches a public listing.",
     ],
     query: { location: "US West Coast", sort: "recent" },
+    preview: { limit: 3, href: "/yachts-for-sale-california", label: "View all West Coast opportunities" },
     inventoryHeading: "San Diego and Southern California opportunities",
     emptyMessage:
       "Nothing is currently published for San Diego. Submit your criteria and we will approach the West Coast private market on your behalf.",
@@ -825,6 +830,7 @@ export const USA_PAGES: LandingPage[] = [
       "Harbour constraints matter. Newport's channel and slip dimensions limit what can realistically be based here, which shapes both what is available and what is practical to buy.",
     ],
     query: { location: "US West Coast", sort: "recent" },
+    preview: { limit: 3, href: "/yachts-for-sale-california", label: "View all West Coast opportunities" },
     inventoryHeading: "Newport Beach and Orange County opportunities",
     emptyMessage:
       "Nothing is currently published for Newport Beach. This is a small, relationship-driven market — tell us your requirement and we will approach it directly.",

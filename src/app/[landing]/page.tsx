@@ -58,7 +58,9 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
   const page = getLandingPage(landing);
   if (!page) notFound();
 
-  const opportunities = getOpportunities(page.query);
+  const matching = getOpportunities(page.query);
+  const opportunities = page.preview ? matching.slice(0, page.preview.limit) : matching;
+  const showPreviewLink = Boolean(page.preview) && matching.length > opportunities.length;
 
   return (
     <>
@@ -138,7 +140,16 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
             {page.inventoryHeading}
           </h2>
           {opportunities.length > 0 ? (
-            <MarketExplorer opportunities={opportunities} showChips={false} />
+            <>
+              <MarketExplorer opportunities={opportunities} showChips={false} />
+              {showPreviewLink && page.preview && (
+                <div className="mt-8">
+                  <Link href={page.preview.href} className="btn-secondary">
+                    {page.preview.label}
+                  </Link>
+                </div>
+              )}
+            </>
           ) : (
             <div className="border border-dashed border-line-strong px-6 py-14 text-center">
               <p className="mx-auto max-w-lg text-[16px] leading-relaxed text-ink-muted">

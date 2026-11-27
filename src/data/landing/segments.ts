@@ -260,6 +260,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       },
     ],
     related: [
+      { href: "/yachts-for-sale-60-80-feet", label: "60–80 ft" },
       { href: "/yachts-for-sale-under-10-million", label: "Under $10M" },
       { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
       { href: "/motor-yachts-for-sale", label: "Motor Yachts" },
@@ -270,28 +271,29 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-under-10-million",
-    title: "Yachts for Sale Under $10 Million | 90–130 ft Private Yachts",
+    title: "Yachts for Sale Under $10 Million | 60–130 ft Private Yachts",
     metaDescription:
-      "Yachts for sale under $10 million are typically 90–130 ft with 4–7 crew. What the budget buys by length and age, running costs, and private opportunities.",
+      "Yachts for sale under $10 million range from 60 to 130 ft. What the budget buys by length and age, crew, running costs, and private opportunities in the USA.",
     h1: "Yachts for Sale Under $10 Million",
     standfirst: "Where permanent crew and real range become standard.",
     intro: [
-      "Between five and ten million dollars the market changes character. Vessels are typically 90 to 130 feet, permanent crew is standard, and the yacht becomes something you operate rather than something you drive.",
+      "Under ten million dollars covers two quite different markets. Below about five million you are mostly looking at 60 to 100 foot yachts that many owners run themselves or with one or two crew. Between five and ten million the market changes character: vessels are typically 90 to 130 feet, permanent crew is standard, and the yacht becomes something you operate rather than something you drive.",
       "It is also the point at which build quality starts to separate meaningfully. The difference between a well-engineered semi-custom hull and a heavily specified production one is not obvious in photographs, but it is obvious in a survey and in the running costs five years later.",
       "This bracket sees a disproportionate amount of private activity, because owners here are frequently trading up on a known timetable — a new build delivering in eighteen months creates a seller who has time to be discreet.",
       "If nothing below fits, register your criteria with the real budget ceiling, the length range and any builder preference. We search beyond what is advertised and tell you what we find, including when the answer is that nothing currently fits.",
     ],
-    query: { priceBand: "5m-10m", sort: "price-desc" },
-    inventoryHeading: "Opportunities between $5M and $10M",
+    query: { priceBands: ["under-5m", "5m-10m"], sort: "price-desc" },
+    inventoryHeading: "Opportunities under $10M",
     emptyMessage:
       "Nothing is currently published in this bracket. Submit your criteria and we will search the private market directly.",
     keyTakeaway:
-      "Under $10 million typically buys a yacht of 90 to 130 feet: a recent production flybridge at the shorter end, or a ten-to-twenty-year-old semi-custom displacement yacht at the longer end. Permanent crew of four to seven is standard, and around ten percent of the yacht's value per year is the usual running-cost planning figure.",
+      "Under $10 million buys a yacht of roughly 60 to 130 feet. Below $5 million that usually means a 60 to 100 foot production yacht with little or no permanent crew; from $5 million to $10 million, a 90 to 130 foot yacht with four to seven crew. Budget around ten percent of value per year to run it.",
     table: {
-      caption: "What $5M–$10M typically buys, by length",
+      caption: "What a budget under $10M typically buys, by length",
       columns: ["Length", "Typical age at this budget", "Typical vessel", "Permanent crew"],
       rows: [
-        ["90–100 ft", "Recent, often under 5 years", "Production flybridge", "3–4"],
+        ["60–80 ft", "Wide range of ages", "Production flybridge or sport yacht", "0–2"],
+        ["80–100 ft", "Wide range of ages", "Production flybridge", "1–4"],
         ["100–115 ft", "Around 5–10 years", "Production or semi-custom", "4–5"],
         ["115–130 ft", "Around 10–20 years", "Semi-custom displacement, usually refitted", "5–7"],
       ],
@@ -302,7 +304,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       {
         question: "What size yacht can you buy for under $10 million?",
         answer:
-          "Typically 90 to 130 feet, depending heavily on age and builder. A recent 100 foot production flybridge and a fifteen-year-old 130 foot semi-custom displacement yacht can occupy the same price point while being entirely different propositions.",
+          "Anything from about 60 feet up to roughly 130 feet. Below $5 million most yachts are 60 to 100 feet; between $5 million and $10 million they are typically 90 to 130 feet, depending heavily on age and builder. A recent 100 foot production flybridge and a fifteen-year-old 130 foot semi-custom displacement yacht can occupy the same price point while being entirely different propositions.",
       },
       {
         question: "How many crew does a yacht in this range need?",
@@ -431,7 +433,11 @@ export const SEGMENT_PAGES: LandingPage[] = [
       "Public listings at this level exist, but they are the exception and they are often a signal in themselves — a yacht that has been visibly for sale for two years tells a buyer something the owner would rather it did not.",
       "Most of what we handle here carries price on request. Disclosure follows a structured process, usually involving representatives on both sides, and the timeline from first conversation to closing is measured in months.",
     ],
-    query: { priceBand: "25m-50m", sort: "price-desc" },
+    query: {
+      priceBands: ["25m-50m", "50m-plus"],
+      includeOnRequestFromFt: 165,
+      sort: "price-desc",
+    },
     inventoryHeading: "Opportunities over $25M",
     emptyMessage:
       "Nothing is currently published above $25M. At this level most opportunity is never published — tell us your requirement and we will approach the market directly.",
@@ -478,7 +484,6 @@ export const SEGMENT_PAGES: LandingPage[] = [
     ],
     related: [
       { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
-      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
       { href: "/yachts-for-sale-10-million-25-million", label: "$10M – $25M" },
       { href: "/family-offices", label: "Family Office Advisory" },
     ],
@@ -486,6 +491,67 @@ export const SEGMENT_PAGES: LandingPage[] = [
   },
 
   // ── Size bands ────────────────────────────────────────────────────────────
+  {
+    slug: "yachts-for-sale-60-80-feet",
+    title: "Yachts for Sale 60–80 Feet | Owner-Operated Private Yachts",
+    metaDescription:
+      "Yachts for sale from 60 to 80 feet, mostly under $5M and often owner-operated. Running costs, crew and private opportunities in Florida and the Bahamas.",
+    h1: "Yachts for Sale 60–80 Feet",
+    standfirst: "The largest yachts most owners still run themselves.",
+    keyTakeaway:
+      "A 60 to 80 foot yacht is usually a production flybridge, sport yacht or large catamaran, typically priced under $5 million. Many owners run one themselves or with a part-time captain, rarely more than two crew. Budget roughly ten percent of value a year to run it, and weight service history above build year.",
+    intro: [
+      "Sixty to eighty feet is where most buyers make the step up from a weekend boat to a yacht that can cruise for weeks at a time. Accommodation is genuine — three or four cabins, a proper galley, crew quarters on many models — but the boat is still small enough for an experienced owner to operate.",
+      "That is the defining feature of the segment. Below roughly 80 feet a permanent crew is a choice rather than a necessity, so running costs depend far more on how the owner chooses to use the yacht than on the yacht itself.",
+      "It is also a fast-moving, well-documented market. Production models are built in numbers, so comparables exist, and a well-maintained example in Florida or the Bahamas can sell within weeks of an owner deciding to move on. The private channel matters here because the best-kept boats often change hands through a captain or a manager before they are listed.",
+    ],
+    query: { lengthBand: "under-80", sort: "length-desc" },
+    inventoryHeading: "Opportunities from 60 to 80 ft",
+    emptyMessage:
+      "Nothing is currently published in this size band. Boats here move quickly — submit your criteria and we will search directly.",
+    answers: [
+      {
+        question: "Do you need crew for a 60 to 80 foot yacht?",
+        answer:
+          "Not necessarily. Many owners in this range run the yacht themselves, using a freelance captain for deliveries and longer passages. Towards 80 feet a full-time captain, and sometimes a mate, becomes common, particularly for extended cruising.",
+      },
+      {
+        question: "How much does a 60 to 80 foot yacht cost?",
+        answer:
+          "Most sell for under $5 million, with recent production flybridges and large catamarans at the upper end and older examples well below. Age, builder and maintenance history move the price considerably within that range.",
+      },
+      {
+        question: "What does a 60 to 80 foot yacht cost to run?",
+        answer:
+          "Using the common rule of thumb of about ten percent of value per year, plan for roughly $200,000 to $400,000 annually covering dockage, insurance, fuel, maintenance and any crew. Owner-operated yachts sit at the lower end.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is a survey necessary at this size?",
+        answer:
+          "Yes. A condition and valuation survey, an engine survey and a sea trial cost a small fraction of the purchase price and routinely find issues worth many times that.",
+      },
+      {
+        question: "Can I finance a yacht in this range?",
+        answer:
+          "Marine financing is well established for yachts of this size, usually with a substantial deposit and a satisfactory survey. Terms vary with the yacht's age and flag.",
+      },
+      {
+        question: "Flybridge, sport yacht or catamaran?",
+        answer:
+          "A flybridge gives the most living space, a sport yacht more speed and a lower profile, and a catamaran stability, range and volume for its length. It is a question of how you will use the yacht rather than of quality.",
+      },
+    ],
+    related: [
+      { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
+      { href: "/yachts-for-sale-under-5-million", label: "Under $5M" },
+      { href: "/catamarans-for-sale", label: "Catamarans" },
+      { href: "/yachts-for-sale-florida", label: "Florida" },
+    ],
+    breadcrumb: [{ label: "Yachts for Sale 60–80 Feet" }],
+  },
+
   {
     slug: "yachts-for-sale-80-100-feet",
     title: "Yachts for Sale 80–100 Feet | Private Opportunities",
@@ -542,6 +608,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       },
     ],
     related: [
+      { href: "/yachts-for-sale-60-80-feet", label: "60–80 ft" },
       { href: "/yachts-for-sale-100-130-feet", label: "100–130 ft" },
       { href: "/yachts-for-sale-under-5-million", label: "Under $5M" },
       { href: "/motor-yachts-for-sale", label: "Motor Yachts" },
@@ -670,7 +737,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
       },
     ],
     related: [
-      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      { href: "/mega-yachts-for-sale", label: "Over 165 ft" },
       { href: "/yachts-for-sale-100-130-feet", label: "100–130 ft" },
       { href: "/yachts-for-sale-10-million-25-million", label: "$10M – $25M" },
       { href: "/explorer-yachts-for-sale", label: "Explorer Yachts" },
@@ -678,71 +745,6 @@ export const SEGMENT_PAGES: LandingPage[] = [
     breadcrumb: [{ label: "Yachts for Sale 130–165 Feet" }],
   },
 
-  {
-    slug: "yachts-for-sale-over-165-feet",
-    title: "Yachts for Sale Over 165 Feet | Private Mega Yacht Opportunities",
-    metaDescription:
-      "Yachts for sale over 165 feet / 50 metres through private channels. Confidential mega yacht opportunities presented to qualified buyers. Price often on request.",
-    h1: "Yachts for Sale Over 165 Feet",
-    standfirst: "A small population of vessels, individually known.",
-    intro: [
-      "Above 165 feet — fifty metres — the global fleet is small enough that the industry knows the vessels individually. There is no anonymity at this size, which is precisely why the market operates the way it does.",
-      "These yachts are commercial-scale operations. Crew complements run into the twenties, ownership is almost invariably corporate, and the yacht has a management company, a compliance calendar and an annual budget that would run a mid-sized business.",
-      "Almost nothing at this level is publicly advertised. Opportunities are communicated through a small number of intermediaries, price is generally on request, and the process from first conversation to closing runs for months.",
-    ],
-    query: { lengthBand: "165-plus", sort: "length-desc" },
-    inventoryHeading: "Opportunities over 165 ft",
-    emptyMessage:
-      "Nothing is currently published above 165 ft. At this size most opportunity never is — tell us your requirement and we will approach the market directly.",
-    answers: [
-      {
-        question: "How many yachts over 165 feet exist?",
-        answer:
-          "The global fleet above fifty metres is generally understood to number in the low thousands, small enough that individual vessels are known within the industry. Precise figures vary by source depending on whether sailing yachts, conversions and vessels under construction are included.",
-      },
-      {
-        question: "What crew does a yacht over 165 feet need?",
-        answer:
-          "Typically fifteen to twenty-five, including a rotational bridge and engineering team, a full interior department and a chef brigade. Crew management at this scale is a professional function, not an owner responsibility.",
-      },
-      {
-        question: "Are yachts this size registered commercially?",
-        answer:
-          "Frequently, even when used privately, because commercial registration allows charter and in some structures affects the fiscal position. It brings additional survey, manning and ISM compliance obligations.",
-      },
-    ],
-    faqs: [
-      {
-        question: "How is a vessel this size bought?",
-        answer:
-          "Usually through a share sale of the owning company, negotiated between representatives, with maritime counsel on both sides and a diligence process covering class, flag, crew, management agreements and the corporate structure itself.",
-      },
-      {
-        question: "Can these yachts be surveyed anywhere?",
-        answer:
-          "No. Haul-out capacity above 165 feet is limited to a relatively small number of yards worldwide, which affects survey timing and sometimes the transaction timetable.",
-      },
-      {
-        question: "Do these opportunities have published prices?",
-        answer:
-          "Rarely. Price on request is the norm, both because the figure depends on the structure of the deal and because publishing it would help identify the vessel.",
-      },
-      {
-        question: "How long does the process take?",
-        answer:
-          "Three to six months is normal, occasionally longer where the ownership structure or financing is complex.",
-      },
-    ],
-    related: [
-      { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
-      { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
-      { href: "/yachts-for-sale-130-165-feet", label: "130–165 ft" },
-      { href: "/family-offices", label: "Family Office Advisory" },
-      { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
-      { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
-    ],
-    breadcrumb: [{ label: "Yachts for Sale Over 165 Feet" }],
-  },
 
   // ── Yacht classes ─────────────────────────────────────────────────────────
   {
@@ -931,7 +933,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
     related: [
       { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
       { href: "/yachts-for-sale-mediterranean", label: "Mediterranean" },
-      { href: "/yachts-for-sale", label: "All Yachts for Sale" },
+      { href: "/off-market-yachts", label: "All Yachts for Sale" },
       { href: "/yachts-for-sale-80-100-feet", label: "80–100 ft" },
       { href: "/catamarans-for-sale", label: "Catamarans for Sale" },
     ],
@@ -1084,7 +1086,7 @@ export const SEGMENT_PAGES: LandingPage[] = [
     related: [
       { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
       { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
-      { href: "/yachts-for-sale-over-165-feet", label: "Over 165 ft" },
+      { href: "/mega-yachts-for-sale", label: "Over 165 ft" },
       { href: "/superyachts-for-sale-over-25-million", label: "Over $25M" },
       { href: "/yacht-brokers", label: "Broker Cooperation" },
       { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },

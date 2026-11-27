@@ -15,6 +15,7 @@ export const CORE_PAGES: LandingPage[] = [
       "That asymmetry is the point. A public listing tells every broker, crew member and charter client that a yacht is for sale. A masked opportunity tells a serious buyer that something exists, and nothing more.",
     ],
     query: { sort: "recent" },
+    preview: { limit: 12, href: "/off-market-yachts", label: "View the full private market" },
     inventoryHeading: "Currently published opportunities",
     emptyMessage:
       "No opportunities are currently published in this view. Submit your acquisition criteria and we will search the private market directly.",
@@ -94,7 +95,7 @@ export const CORE_PAGES: LandingPage[] = [
       "Owners choose this route for practical reasons more often than dramatic ones. A captain who reads that the yacht is for sale starts looking for another position. A charter broker who sees a listing stops placing bookings. A yard that knows an owner is exiting negotiates differently on the refit quote.",
       "The opportunities here are published at the level of detail each owner has authorised, with the identifying attributes held server-side until a request has been qualified.",
     ],
-    query: { sort: "recent" },
+    query: { availabilityType: "PRIVATE LISTING", sort: "recent" },
     inventoryHeading: "Privately available opportunities",
     emptyMessage:
       "No private opportunities are currently published in this view. Tell us your criteria and we will approach the market directly on your behalf.",
@@ -149,71 +150,6 @@ export const CORE_PAGES: LandingPage[] = [
     breadcrumb: [{ label: "Private Yachts for Sale" }],
   },
 
-  {
-    slug: "yachts-for-sale",
-    title: "Yachts for Sale | Private & Off-Market Yacht Opportunities",
-    metaDescription:
-      "Yachts for sale via a private acquisition platform: motor, explorer, sailing yachts and superyachts from $2M to $50M+ in the USA, Caribbean and Mediterranean.",
-    h1: "Yachts for Sale",
-    standfirst: "The inventory you can find publicly is not the whole market.",
-    intro: [
-      "Search any public marketplace and you will see the yachts whose owners have decided to advertise. That is a real market and a useful one, but it is a subset. Alongside it sits a quieter population of vessels whose owners would transact at the right number and have chosen not to be listed.",
-      "This platform works in the second category. Every yacht for sale here is published in masked form — enough detail to assess fit, not enough to identify the vessel — with the confidential attributes released after a buyer has been qualified.",
-      "Use the filters to narrow by price band, length, cruising area, class and build region. If nothing matches, that is worth knowing too: submit your criteria and we will search the private market rather than send you the closest available compromise.",
-    ],
-    query: { sort: "recent" },
-    inventoryHeading: "All published opportunities",
-    emptyMessage:
-      "Nothing is currently published against this view. Submit your acquisition criteria and we will search beyond publicly advertised inventory.",
-    answers: [
-      {
-        question: "What size yacht should I buy?",
-        answer:
-          "The practical dividing lines are crew and berth. Below roughly 80 feet most owners can run the boat themselves with occasional help. Between 80 and 130 feet permanent crew becomes normal. Above 130 feet you are operating a small business with payroll, class certification and a management structure, and the annual running cost typically lands somewhere around a tenth of the purchase price.",
-      },
-      {
-        question: "How much does a yacht cost to run each year?",
-        answer:
-          "A widely used industry rule of thumb is roughly ten percent of the purchase price per year covering crew, dockage, insurance, fuel, maintenance and a refit reserve. It is a planning figure rather than a quote: usage pattern, crew size, cruising area and the yacht's age move it substantially in both directions.",
-      },
-      {
-        question: "Should I buy a new yacht or a used one?",
-        answer:
-          "A new build gives you specification control and a warranty, at the cost of a delivery slot measured in years and a first-owner depreciation step. A recent used yacht gives you immediate availability and a survey you can act on. In the private market the most common sweet spot is a two-to-five-year-old vessel with warranty balance remaining and its commissioning faults already resolved.",
-      },
-    ],
-    faqs: [
-      {
-        question: "Why don't the listings show the yacht's name?",
-        answer:
-          "Because these are off-market and privately available yachts. Publishing the name would identify the vessel and defeat the confidentiality the owner is relying on. Names are disclosed to qualified buyers under appropriate terms.",
-      },
-      {
-        question: "Can you find a yacht that isn't on this site?",
-        answer:
-          "That is the larger part of what we do. Submit your criteria through the private search funnel and we approach owners, captains and cooperating brokers directly to find out what is genuinely available and unadvertised.",
-      },
-      {
-        question: "Do you sell yachts under $2 million?",
-        answer:
-          "Our published inventory generally begins around $2 million, because below that level the public market is efficient and a private approach adds little. We can still take an acquisition brief at a lower level if the requirement is specific.",
-      },
-      {
-        question: "Are prices in US dollars?",
-        answer:
-          "Yes. All pricing on this site is presented in USD and all lengths lead in feet, with metres shown secondarily. Transactions may be denominated in another currency depending on the vessel and the parties.",
-      },
-    ],
-    related: [
-      { href: "/luxury-yachts-for-sale", label: "Luxury Yachts for Sale" },
-      { href: "/motor-yachts-for-sale", label: "Motor Yachts for Sale" },
-      { href: "/explorer-yachts-for-sale", label: "Explorer Yachts for Sale" },
-      { href: "/sailing-yachts-for-sale", label: "Sailing Yachts for Sale" },
-      { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
-      { href: "/yachts-for-sale-usa", label: "Yachts for Sale USA" },
-    ],
-    breadcrumb: [{ label: "Yachts for Sale" }],
-  },
 
   {
     slug: "luxury-yachts-for-sale",
@@ -227,7 +163,11 @@ export const CORE_PAGES: LandingPage[] = [
       "What distinguishes a genuinely luxury yacht from an expensive one is usually invisible in a listing photograph: the quality of the engineering behind the joinery, whether the yacht has been maintained to a schedule or to a budget, and whether the interior was specified by the owner or by a yard's standard package.",
       "Those are exactly the things a masked opportunity forces you to ask about rather than assume. The public description here tells you the class and the condition. The specification that supports it comes with qualification.",
     ],
-    query: { priceBand: undefined, sort: "price-desc" },
+    query: {
+      priceBands: ["5m-10m", "10m-25m", "25m-50m", "50m-plus"],
+      includeOnRequestFromFt: 165,
+      sort: "price-desc",
+    },
     inventoryHeading: "Luxury opportunities by value",
     emptyMessage:
       "No opportunities in this bracket are currently published. Tell us what you are looking for and we will search the private market.",
@@ -295,7 +235,7 @@ export const CORE_PAGES: LandingPage[] = [
       "The result is that a substantial share of superyacht transactions begin privately. The opportunities below are published at the granularity each owner has authorised, with identity, exact price and current position withheld.",
       "If none of them fits, the more useful step is to register your criteria — including a preferred builder, the length in metres and the real budget ceiling. We take that brief to the private market directly, and brokers can submit it on a client's behalf.",
     ],
-    query: { types: ["Superyacht", "Motor Yacht", "Explorer Yacht"], lengthBand: undefined, sort: "length-desc" },
+    query: { types: ["Superyacht", "Motor Yacht", "Explorer Yacht"], minLengthFt: 100, sort: "length-desc" },
     inventoryHeading: "Superyacht opportunities by length",
     emptyMessage:
       "No superyacht opportunities are currently published. Submit your criteria — builder, length, budget ceiling, timeline — and we will approach the private market on your behalf.",
@@ -347,7 +287,7 @@ export const CORE_PAGES: LandingPage[] = [
       { href: "/mega-yachts-for-sale", label: "Mega Yachts for Sale" },
       { href: "/superyachts-for-sale-florida", label: "Superyachts for Sale Florida" },
       { href: "/superyachts-for-sale-over-25-million", label: "Superyachts Over $25M" },
-      { href: "/yachts-for-sale-over-165-feet", label: "Yachts Over 165 ft" },
+      { href: "/yachts-for-sale-130-165-feet", label: "Yachts 130–165 ft" },
       { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
       { href: "/yacht-brokers", label: "Broker Cooperation" },
       { href: "/private-market-intelligence/60-metre-superyacht-buying-guide", label: "Buying a 60 m Superyacht" },
@@ -417,7 +357,7 @@ export const CORE_PAGES: LandingPage[] = [
     related: [
       { href: "/superyachts-for-sale", label: "Superyachts for Sale" },
       { href: "/superyachts-for-sale-over-25-million", label: "Superyachts Over $25M" },
-      { href: "/yachts-for-sale-over-165-feet", label: "Yachts Over 165 ft" },
+      { href: "/yachts-for-sale-130-165-feet", label: "Yachts 130–165 ft" },
       { href: "/family-offices", label: "Family Office Advisory" },
       { href: "/lurssen-yachts-for-sale", label: "Lürssen Yachts for Sale" },
     ],
