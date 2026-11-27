@@ -111,6 +111,47 @@ function confidentialDescriptionCities() {
 }
 
 /**
+ * House rules on what a listing may claim, checked on the record store itself:
+ *
+ *  - "PUBLIC MARKET" is never used: every listing sits in the off-market
+ *    vocabulary (VERIFIED OFF-MARKET, PRIVATE LISTING, BROKER-SOURCED,
+ *    POTENTIAL OPPORTUNITY).
+ *  - VERIFIED OFF-MARKET needs `verified: true` and a seller who has
+ *    confirmed a position — not one who is "quietly testing" or unconfirmed.
+ *  - A record whose year is published as a range must not name a year in its
+ *    public prose, which would undo the range.
+ */
+function listingRuleViolations() {
+  const source = readFileSync(join(ROOT, "src", "data", "opportunities.ts"), "utf8");
+  const records = source.split(/\n  \{\n/).slice(1);
+  const hits = [];
+  for (const record of records) {
+    const slug = record.match(/slug: "([^"]+)"/)?.[1];
+    if (!slug) continue;
+    const availability = record.match(/availabilityType: "([^"]+)"/)?.[1];
+    const signal = record.match(/sellerSignal: "([^"]+)"/)?.[1];
+    if (availability === "PUBLIC MARKET") {
+      hits.push(`${slug} uses the PUBLIC MARKET label, which the site never shows`);
+    }
+    if (availability === "VERIFIED OFF-MARKET") {
+      if (!/verified: true/.test(record)) hits.push(`${slug} is VERIFIED OFF-MARKET but not verified`);
+      if (signal === "quietly-testing" || signal === "unconfirmed") {
+        hits.push(`${slug} is VERIFIED OFF-MARKET but the seller signal is "${signal}"`);
+      }
+    }
+    if (/yearAsRange: true/.test(record)) {
+      const prose = [
+        record.match(/descriptionPublic:\s*"([^"]+)"/)?.[1] ?? "",
+        record.match(/opportunityNotes:\s*"([^"]+)"/)?.[1] ?? "",
+      ].join(" ");
+      const year = prose.match(/\b(19|20)\d{2}\b/)?.[0];
+      if (year) hits.push(`${slug} publishes its year as a range but names ${year} in its prose`);
+    }
+  }
+  return hits;
+}
+
+/**
  * Research candidates (`src/data/research-candidates.ts`) are internal. Their
  * vessel names, source URLs, exact prices and ids must not appear anywhere a
  * browser, crawler or model can read, and none may sit in the public store.
@@ -270,6 +311,10 @@ for (const { slug, ft } of confidentialExactLengths()) {
 
 for (const { slug, city } of confidentialDescriptionCities()) {
   findings.push(`masking: confidential listing ${slug} names "${city}" in its public description`);
+}
+
+for (const hit of listingRuleViolations()) {
+  findings.push(`rules: ${hit}`);
 }
 
 console.log(`  browser bundles : ${staticFiles.length} file(s)`);

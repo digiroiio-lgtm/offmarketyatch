@@ -24,7 +24,6 @@ export type AvailabilityType =
   | "VERIFIED OFF-MARKET"
   | "PRIVATE LISTING"
   | "BROKER-SOURCED"
-  | "PUBLIC MARKET"
   | "POTENTIAL OPPORTUNITY";
 
 export type ConfidentialityLevel = "open" | "restricted" | "confidential";

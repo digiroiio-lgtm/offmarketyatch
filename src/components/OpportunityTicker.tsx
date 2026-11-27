@@ -48,9 +48,7 @@ function TickerCell({ opportunity }: { opportunity: PublicOpportunity }) {
         ? "PRIVATE SALE"
         : opportunity.availabilityType === "POTENTIAL OPPORTUNITY"
           ? "POTENTIAL"
-          : opportunity.availabilityType === "PUBLIC MARKET"
-            ? "PUBLIC MARKET"
-            : "BROKER-SOURCED";
+          : "BROKER-SOURCED";
 
   return (
     <div className="flex shrink-0 items-center gap-3 border-r border-deal-room-line px-6 py-3.5">

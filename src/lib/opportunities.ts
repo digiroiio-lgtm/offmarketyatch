@@ -319,8 +319,6 @@ export interface OpportunityQuery {
   location?: CruisingArea;
   locationPrefix?: string;
   availabilityType?: AvailabilityType;
-  /** Drop these availability types, e.g. public-market profiles from an off-market page. */
-  excludeAvailabilityTypes?: AvailabilityType[];
   buildRegion?: string;
   minYear?: number;
   featured?: boolean;
@@ -345,9 +343,6 @@ export function getOpportunities(query: OpportunityQuery = {}): PublicOpportunit
   }
   if (query.availabilityType) {
     items = items.filter((o) => o.availabilityType === query.availabilityType);
-  }
-  if (query.excludeAvailabilityTypes?.length) {
-    items = items.filter((o) => !query.excludeAvailabilityTypes!.includes(o.availabilityType));
   }
   if (query.buildRegion) items = items.filter((o) => o.buildRegion === query.buildRegion);
   if (query.minYear) items = items.filter((o) => (o.year ?? 0) >= query.minYear!);

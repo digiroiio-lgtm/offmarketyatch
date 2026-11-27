@@ -310,15 +310,15 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: null,
     priceMax: null,
     currency: "USD",
-    availabilityType: "VERIFIED OFF-MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
-      "A German-built displacement superyacht in the 200 ft-plus class, refitted in 2023 and operated to commercial standards under a long-serving crew. The ownership has asked that no price, identity or imagery be circulated publicly; qualified buyers are introduced individually.",
+      "A German-built displacement superyacht in the 200 ft-plus class, refitted in 2023 and operated to commercial standards under a long-serving crew. There is no sale mandate: availability is unconfirmed, and any approach to the ownership would be made discreetly on behalf of a qualified buyer.",
     opportunityNotes:
       "Vessels of this size and pedigree almost never appear on public marketplaces, because a visible listing affects charter positioning and crew retention. Expect a structured, documented process rather than an open negotiation.",
     usageProfile: "Private use with select charter",
     condition: "Major refit 2023",
     featured: true,
-    verified: true,
+    verified: false,
     imagesPublic: [
       { alt: "Profile study of a displacement superyacht", treatment: "silhouette", seed: "omy-1067-a" },
     ],
@@ -688,7 +688,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 39_000_000,
     priceMax: 46_000_000,
     currency: "USD",
-    availabilityType: "VERIFIED OFF-MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A Dutch-built displacement yacht approaching 200 ft, comprehensively refitted in 2021 including machinery survey items, new tenders and updated bridge electronics. Operated commercially with an established charter record in the Western Mediterranean.",
     opportunityNotes:
@@ -696,7 +696,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     usageProfile: "Charter and owner use",
     condition: "Refit completed 2021",
     featured: false,
-    verified: true,
+    verified: false,
     imagesPublic: [
       { alt: "Profile study of a displacement motor yacht", treatment: "silhouette", seed: "omy-1108-a" },
     ],
@@ -1120,7 +1120,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 24_000_000,
     priceMax: 28_000_000,
     currency: "USD",
-    availabilityType: "VERIFIED OFF-MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A 2023 Dutch-built yacht delivered new to its current owner and based in the Gulf since handover. Under 900 hours, still inside the yard warranty period, and maintained by the builder's regional service arm.",
     opportunityNotes:
@@ -1128,7 +1128,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     usageProfile: "Private use, no charter history",
     condition: "Within yard warranty",
     featured: false,
-    verified: true,
+    verified: false,
     imagesPublic: [
       { alt: "Profile study of a Dutch-built motor yacht", treatment: "silhouette", seed: "omy-1158-a" },
     ],
@@ -1877,7 +1877,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 38_000_000,
     priceMax: 48_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A steel and aluminium full-displacement superyacht of around 60 metres from a Mediterranean yard, built in the mid-2010s for twelve guests in six cabins with a professional crew of fourteen. A representative profile of the largest yachts that change hands in South Florida.",
     opportunityNotes:
@@ -1930,7 +1930,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 6_500_000,
     priceMax: 9_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A composite tri-deck motor yacht from an American yard, built in the early 2000s for twelve guests in six cabins with a crew of nine. A representative profile of the older, larger yacht that a budget under $10 million can buy in South Florida.",
     opportunityNotes:
@@ -1983,7 +1983,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 11_000_000,
     priceMax: 14_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A recent Italian-built GRP motor yacht with an asymmetric deck layout that opens one side of the main deck to the water, accommodating ten guests in five cabins with a crew of five. A representative profile of the newer, smaller choice at this budget.",
     opportunityNotes:
@@ -2035,7 +2035,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 2_700_000,
     priceMax: 3_200_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A recent composite flybridge motor yacht from an Asian yard, with four cabins for eight guests and quarters for two crew. A representative profile of the owner-operated end of the South Florida market, where most yachts of this size run with little or no permanent crew.",
     opportunityNotes:
@@ -2088,7 +2088,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 30_000_000,
     priceMax: 38_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "An all-aluminium custom superyacht of over 60 metres from an Italian yard, built in the late 2010s for twelve guests in six cabins with a crew of thirteen. A representative profile of the lighter, faster end of the large-yacht market, based in South Florida.",
     opportunityNotes:
@@ -2141,7 +2141,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 10_800_000,
     priceMax: 13_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A recent Italian-built long-range motor yacht with a displacement hull designed for economical passages and extended cruising, with five cabins for ten guests and a crew of six. A representative profile of the newer range-focused yacht based in South Florida.",
     opportunityNotes:
@@ -2194,7 +2194,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 8_700_000,
     priceMax: 10_700_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A recent Italian-built composite motor yacht with five cabins for ten guests and a crew of five, from a semi-custom planing range. A representative profile of the entry point to permanently crewed yachting in South Florida.",
     opportunityNotes:
@@ -2246,7 +2246,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 1_500_000,
     priceMax: 1_800_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A European-built GRP flybridge motor yacht with four cabins for eight guests and quarters for two crew, built in the mid-2010s. A representative profile of the most accessible yachts in South Florida, typically run by the owner with a part-time captain.",
     opportunityNotes:
@@ -2299,7 +2299,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 17_000_000,
     priceMax: 23_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A late-2010s Italian-built superyacht combining a steel hull with an aluminium superstructure, built for twelve guests in five cabins with a crew of seven and refitted recently. A representative profile of the performance-oriented superyacht tier in South Florida.",
     opportunityNotes:
@@ -2352,9 +2352,9 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 8_500_000,
     priceMax: 11_000_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
-      "A European-built GRP motor yacht from around 2010, with six cabins for twelve guests and a crew of eight. A representative profile of the larger production-built yacht that comes within reach of a budget around $10 million in South Florida.",
+      "A European-built GRP motor yacht from the turn of the last decade, with six cabins for twelve guests and a crew of eight. A representative profile of the larger production-built yacht that comes within reach of a budget around $10 million in South Florida.",
     opportunityNotes:
       "Large GRP yachts of this generation are valued on maintenance rather than age: hull and deck condition, machinery hours and whether systems have been upgraded since build decide where a yacht sits within the range.",
     usageProfile: null,
@@ -2405,7 +2405,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 3_500_000,
     priceMax: 4_300_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "A composite custom motor yacht from an American design house, built in the late 2000s with four cabins for eight guests and a crew of four. A representative profile of the custom-built yacht available for under $5 million in South Florida.",
     opportunityNotes:
@@ -2458,7 +2458,7 @@ export const OPPORTUNITY_RECORDS: OpportunityRecord[] = [
     priceMin: 3_200_000,
     priceMax: 3_800_000,
     currency: "USD",
-    availabilityType: "PUBLIC MARKET",
+    availabilityType: "POTENTIAL OPPORTUNITY",
     descriptionPublic:
       "An American-built GRP pilothouse motor yacht from the early 2010s, with four cabins for eight guests and a crew of three. A representative profile of the raised-pilothouse yacht favoured for coastal cruising from South Florida to the Bahamas.",
     opportunityNotes:
