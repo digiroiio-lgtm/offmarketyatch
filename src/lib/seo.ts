@@ -15,6 +15,8 @@ import type { PublicOpportunity } from "@/lib/types";
 
 interface PageMetaInput {
   title: string;
+  /** Use the title as-is, without the "| OffMarketYacht" template suffix. */
+  absoluteTitle?: boolean;
   description: string;
   path: string;
   noindex?: boolean;
@@ -25,6 +27,7 @@ interface PageMetaInput {
 
 export function pageMetadata({
   title,
+  absoluteTitle = false,
   description,
   path,
   noindex = false,
@@ -34,7 +37,7 @@ export function pageMetadata({
 }: PageMetaInput): Metadata {
   const url = canonical(path);
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     robots: noindex
