@@ -14,7 +14,7 @@ export const CORE_PAGES: LandingPage[] = [
       "Each opportunity below is published in masked form. You can see class, approximate length, era, build region, cruising area and an estimated asking range — enough to judge whether it is worth a conversation. Identity, shipyard, exact price and current position are held back until a buyer has been qualified against the owner's terms.",
       "That asymmetry is the point. A public listing tells every broker, crew member and charter client that a yacht is for sale. A masked opportunity tells a serious buyer that something exists, and nothing more.",
     ],
-    query: { sort: "recent" },
+    query: { excludeAvailabilityTypes: ["PUBLIC MARKET"], sort: "recent" },
     preview: { limit: 12, href: "/off-market-yachts", label: "View the full private market" },
     inventoryHeading: "Currently published opportunities",
     emptyMessage:
