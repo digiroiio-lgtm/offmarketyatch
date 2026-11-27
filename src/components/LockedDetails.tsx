@@ -10,10 +10,12 @@ export default function LockedDetails({
   fields,
   reference,
   href,
+  heading = "Withheld Until Buyer Qualification",
 }: {
   fields: string[];
   reference: string;
   href: string;
+  heading?: string;
 }) {
   return (
     <section
@@ -26,7 +28,7 @@ export default function LockedDetails({
           id={`locked-${reference}`}
           className="display mt-3 text-[26px] text-ink-inverse sm:text-[30px]"
         >
-          Withheld Until Buyer Qualification
+          {heading}
         </h2>
         <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-inverse-muted">
           The owner has authorised a limited public description only. The attributes below are

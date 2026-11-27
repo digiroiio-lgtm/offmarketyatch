@@ -37,8 +37,8 @@ export default function Footer() {
 
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {FOOTER_NAV.map((column) => (
-              <div key={column.heading}>
-                <h2 className="label-mono mb-4 text-accent">{column.heading}</h2>
+              <nav key={column.heading} aria-label={column.heading}>
+                <p className="label-mono mb-4 text-accent">{column.heading}</p>
                 <ul className="space-y-2.5">
                   {column.links.map((link) => (
                     <li key={link.href}>
@@ -51,13 +51,16 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
             ))}
           </div>
         </div>
 
-        <div className="mt-14 border-t border-deal-room-line pt-8">
-          <h2 className="label-mono mb-4 text-accent">International Inventory</h2>
+        <nav
+          aria-label="International Inventory"
+          className="mt-14 border-t border-deal-room-line pt-8"
+        >
+          <p className="label-mono mb-4 text-accent">International Inventory</p>
           <div className="flex flex-wrap gap-x-7 gap-y-2">
             {INTERNATIONAL_NAV.map((link) => (
               <Link
@@ -69,7 +72,7 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </div>
+        </nav>
 
         <div className="mt-12 border-t border-deal-room-line pt-8">
           <p className="max-w-4xl text-[12.5px] leading-relaxed text-ink-faint">

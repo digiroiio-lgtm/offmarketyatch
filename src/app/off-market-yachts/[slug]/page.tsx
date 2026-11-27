@@ -19,7 +19,9 @@ import {
   getRelatedOpportunities,
   isRetiredSampleSlug,
 } from "@/lib/opportunities";
+import { IS_SAMPLE_INVENTORY } from "@/lib/inventory-mode";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 import type { PublicOpportunity } from "@/lib/types";
 
 /**
@@ -65,6 +67,34 @@ export function generateStaticParams() {
   return getAllOpportunitySlugs().map(({ slug }) => ({ slug }));
 }
 
+/** Longest <title> that still shows in full in search results. */
+const MAX_TITLE = 60;
+
+/**
+ * The <title>, kept to 60 characters so search results do not truncate it.
+ * The public reference stays in the H1 and on the page, not in the title.
+ *
+ * "for Sale" is added only when it is true: live inventory, and not a
+ * potential opportunity (where nobody has said the yacht is for sale).
+ * Sample profiles are not offers, so they never carry it.
+ */
+function listingTitle(opportunity: PublicOpportunity): { title: string; absolute: boolean } {
+  const forSale =
+    !IS_SAMPLE_INVENTORY && opportunity.availabilityType !== "POTENTIAL OPPORTUNITY";
+  const base = forSale ? `${opportunity.titlePublic} for Sale` : opportunity.titlePublic;
+  const brand = ` | ${SITE.name}`;
+  const candidates: { title: string; absolute: boolean }[] = [
+    { title: `${base}, ${opportunity.locationPublic}`, absolute: false },
+    { title: `${base}, ${opportunity.locationPublic}`, absolute: true },
+    { title: base, absolute: false },
+    { title: base, absolute: true },
+  ];
+  const fits = candidates.find(
+    (c) => c.title.length + (c.absolute ? 0 : brand.length) <= MAX_TITLE
+  );
+  return fits ?? candidates[candidates.length - 1];
+}
+
 export async function generateMetadata(
   props: PageProps<"/off-market-yachts/[slug]">
 ): Promise<Metadata> {
@@ -74,8 +104,10 @@ export async function generateMetadata(
 
   // Title and description are built from published fields only. Nothing
   // confidential can reach <title>, the meta description or OpenGraph.
+  const { title, absolute } = listingTitle(opportunity);
   return pageMetadata({
-    title: `${opportunity.titlePublic}, ${opportunity.locationPublic} — ${opportunity.reference}`,
+    title,
+    absoluteTitle: absolute,
     description: `Confidential ${opportunity.type.toLowerCase()} opportunity. ${
       opportunity.lengthDisplay
     }, ${opportunity.buildRegion}, ${opportunity.yearLabel}. ${
@@ -113,6 +145,11 @@ export default async function OpportunityDetailPage(
   const heading = `${headingLength} ${opportunity.buildRegion.replace(/ Build$/, "")} ${opportunity.type}${
     opportunity.year !== null ? `, ${opportunity.year}` : ""
   } — ${opportunity.locationPublic}`;
+
+  // Section headings name this yacht rather than repeating the same words on
+  // every listing page.
+  const yachtLabel = `${headingLength} ${opportunity.type.toLowerCase()}`;
+  const builtLabel = `${opportunity.buildRegion.replace(/ Build$/, "")}-built ${opportunity.type.toLowerCase()}`;
 
   const specs = [
     { term: "Length", value: opportunity.lengthDisplay },
@@ -238,14 +275,14 @@ export default async function OpportunityDetailPage(
           <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <h2 className="display text-[28px] text-ink sm:text-[34px]">
-                Why this opportunity matters
+                Why this {yachtLabel} matters
               </h2>
               <p className="mt-5 text-[17px] leading-[1.75] text-ink-muted">
                 {opportunity.opportunityNotes}
               </p>
 
               <h3 className="mt-11 text-[19px] font-semibold text-ink">
-                About this yacht
+                About this {builtLabel}
               </h3>
               <p className="mt-4 text-[16.5px] leading-[1.75] text-ink-muted">
                 {opportunity.descriptionPublic}
@@ -257,7 +294,7 @@ export default async function OpportunityDetailPage(
             </div>
 
             <div>
-              <h2 className="label-mono mb-5 text-accent">Published Specification</h2>
+              <h2 className="label-mono mb-5 text-accent">{yachtLabel} specification</h2>
               <dl className="border-t border-line">
                 {specs.map((row) => (
                   <div
@@ -284,6 +321,7 @@ export default async function OpportunityDetailPage(
           <LockedDetails
             fields={opportunity.lockedFields}
             reference={opportunity.reference}
+            heading={`What is withheld on ${opportunity.reference}`}
             href="#request-details"
           />
         </div>
@@ -297,7 +335,7 @@ export default async function OpportunityDetailPage(
       </section>
 
       <div className="defer-render">
-        <FAQSection faqs={profileFaqs(opportunity)} heading="Before you enquire" />
+        <FAQSection faqs={profileFaqs(opportunity)} heading={`Questions about this ${yachtLabel}`} />
         <div className="container-site -mt-6 pb-10">
           <Link
             href="/private-market-intelligence/off-market-yacht-confidentiality"
@@ -316,7 +354,7 @@ export default async function OpportunityDetailPage(
               id="related-heading"
               className="display mb-8 text-[28px] text-ink sm:text-[32px]"
             >
-              Comparable opportunities
+              Opportunities comparable to {opportunity.reference}
             </h2>
             <OpportunityGrid opportunities={related} columns={3} compact />
           </div>
