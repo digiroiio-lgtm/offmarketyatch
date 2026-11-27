@@ -14,11 +14,14 @@ import {
   mergeSources,
   type SourceNotes,
 } from "@/data/sources";
+import type { ContentTable } from "@/lib/types";
 
 export interface ArticleSection {
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  /** Comparison table rendered after the section's paragraphs and bullets. */
+  table?: ContentTable;
 }
 
 export interface Article {
@@ -32,6 +35,11 @@ export interface Article {
   readingMinutes: number;
   published: string;
   updated: string;
+  /**
+   * The direct answer: 40–60 words, self-contained and quotable, rendered at
+   * the very top of the body and used as the page summary for answer engines.
+   */
+  keyTakeaway?: string;
   /** Lead paragraph, rendered above the answer blocks. */
   intro: string[];
   answers: { question: string; answer: string }[];
@@ -48,15 +56,17 @@ export const ARTICLES: Article[] = [
   {
     slug: "what-is-an-off-market-yacht",
     title: "What Is an Off-Market Yacht?",
-    metaTitle: "What Is an Off-Market Yacht? | Definition & How They Work",
+    metaTitle: "What Is an Off-Market Yacht? Meaning, Types & How to Access",
     metaDescription:
-      "An off-market yacht is one whose owner may sell but has chosen not to advertise it publicly. How the category works, why it exists, and how buyers access it.",
+      "An off-market yacht is one the owner would sell but won't advertise. The four types, why owners sell quietly, and how buyers get introduced to them.",
     standfirst:
       "The definition, the reasons the category exists, and what it actually means for a buyer.",
     cluster: "Private Market",
     readingMinutes: 6,
     published: "2026-06-02",
-    updated: "2026-09-01",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "An off-market yacht is one whose owner is open to selling but has chosen not to advertise it. It never appears on public marketplaces or broker listing pages and is shown selectively to qualified buyers through introductions — brokers, captains, management companies and owner networks — usually to protect crew, charter bookings and negotiating position.",
     intro: [
       "The phrase is used loosely across the industry, and that looseness costs buyers time. A broker saying they have off-market inventory might mean a yacht with a signed private mandate, or might mean a boat they think could be available if someone asked. Those are very different propositions.",
       "This is what the term means precisely, why owners choose it, and how to tell a genuine off-market opportunity from a speculative one.",
@@ -151,14 +161,16 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-to-find-off-market-yachts-for-sale",
     title: "How to Find Off-Market Yachts for Sale",
-    metaTitle: "How to Find Off-Market Yachts for Sale | Four Routes That Work",
+    metaTitle: "How to Find Off-Market Yachts for Sale: 4 Routes That Work",
     metaDescription:
-      "The four realistic routes into off-market yacht inventory, what each one costs you, and how to make an acquisition search actually produce results.",
+      "Four ways to find yachts that aren't publicly listed — brokers, captains, direct owner approaches and a retained search — with the trade-offs of each.",
     standfirst: "Four routes into private inventory, and what each one realistically delivers.",
     cluster: "Private Market",
     readingMinutes: 7,
     published: "2026-06-09",
-    updated: "2026-09-02",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "There are four realistic routes to off-market yachts: brokers with genuine owner relationships, captains and yacht management companies who hear about sales early, discreet direct approaches to owners through a representative, and a retained acquisition search. All of them work best with specific criteria, a committed budget and a timeline measured in months.",
     intro: [
       "You cannot search for something that is not published. That sounds obvious, but it is the point most buyers take longest to accept — they keep refreshing listing sites hoping the yacht they want will appear.",
       "There are four routes into off-market inventory that actually work. They differ in cost, in speed, and in how much of the work falls on you.",
@@ -211,6 +223,16 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "What makes a search fail",
+        table: {
+          caption: "Four routes to off-market yachts compared",
+          columns: ["Route", "How it works", "Strength", "Limitation"],
+          rows: [
+            ["Brokers with owner relationships", "Broker approaches owners they actually know", "Credible introduction, real answers", "Only as good as the broker's relationships"],
+            ["Captains and management companies", "They know of a sale months before it is formalised", "Earliest signal in the market", "Informal; needs a trusted intermediary"],
+            ["Direct approach", "A representative approaches the owner of a specific yacht", "Reaches yachts that are not for sale", "Most approaches receive a no"],
+            ["Retained search", "Every matching vessel is identified and approached for you", "Systematic and complete", "Needs specific criteria and takes months"],
+          ],
+        },
         paragraphs: [
           "Three things, in order of frequency. Criteria too vague to act on. A budget the buyer has not genuinely committed to, which becomes obvious the moment an owner engages. And a timeline that does not survive contact with reality — private acquisitions take months, and a buyer who needs a yacht by June is buying a listed one.",
         ],
@@ -252,14 +274,16 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-yacht-pocket-listings-work",
     title: "How Yacht Pocket Listings Work",
-    metaTitle: "How Yacht Pocket Listings Work | Private Broker Inventory",
+    metaTitle: "Yacht Pocket Listings: What They Are & How to Get Access",
     metaDescription:
-      "What a yacht pocket listing is, why brokers hold them, what it means for price discovery, and how a buyer gets access to unadvertised broker inventory.",
+      "A yacht pocket listing is a boat a broker may sell but hasn't advertised. Why brokers hold them, what it does to price, and how buyers get shown them.",
     standfirst: "The unadvertised mandate: who holds them, why, and what it costs you.",
     cluster: "Private Market",
     readingMinutes: 5,
     published: "2026-06-16",
-    updated: "2026-08-28",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "A yacht pocket listing is a vessel a broker is authorised to sell but has not advertised. Brokers hold them because the owner wants confidentiality, or because they expect to match a known buyer and keep the full commission. Buyers see pocket listings by registering specific criteria and showing they can genuinely transact.",
     intro: [
       "Borrowed from real estate, the term describes something that has existed in yacht brokerage for as long as yacht brokerage has existed: a vessel a broker is authorised to sell but has chosen not to advertise.",
       "It is entirely legitimate, extremely common, and has consequences for price discovery that buyers should understand.",
@@ -348,7 +372,9 @@ export const ARTICLES: Article[] = [
     cluster: "Private Market",
     readingMinutes: 6,
     published: "2026-06-23",
-    updated: "2026-08-30",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "Neither route is better in general. Public listings win on choice, information and speed; off-market yachts win on access to vessels you would never otherwise see, negotiating position and seller quality. There is no reliable evidence that off-market yachts sell for less, so most serious buyers use the listed market to learn values and work both routes at once.",
     intro: [
       "Most comparisons of these two routes are written by people who benefit from one of them. Here is a straight assessment of where each actually has the advantage.",
     ],
@@ -390,6 +416,18 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "The practical approach",
+        table: {
+          caption: "Off-market vs public yacht listings",
+          columns: ["Factor", "Public listing", "Off-market"],
+          rows: [
+            ["Choice", "Hundreds of vessels to compare", "Limited to what is introduced"],
+            ["Information up front", "Full specification, photos, asking price", "Masked until you qualify"],
+            ["Speed", "Fast: suits a buyer who needs a yacht this season", "Runs on the owner's timetable"],
+            ["Access", "Only yachts whose owners chose to advertise", "Yachts that will never be listed"],
+            ["Negotiating position", "Visible price history and time on market", "No public price history or reductions"],
+            ["Price", "Asking price published", "No evidence of a systematic discount"],
+          ],
+        },
         paragraphs: [
           "Use the listed market to educate yourself. Look at everything in your bracket, understand what condition and specification cost, and form an independent view of value.",
           "Then work the private channel with that knowledge, which is what lets you judge a masked opportunity quickly when one appears.",
@@ -643,14 +681,16 @@ export const ARTICLES: Article[] = [
     slug: "best-places-to-buy-a-yacht-in-the-usa",
     sources: FLORIDA_TAX_SOURCES,
     title: "Best Places to Buy a Yacht in the USA",
-    metaTitle: "Best Places to Buy a Yacht in the USA | Market by Market",
+    metaTitle: "Best Places to Buy a Yacht in the USA: Regions Compared",
     metaDescription:
-      "Where to buy a yacht in the United States: South Florida, the Northeast, the West Coast and the Gulf compared on inventory, condition, tax and infrastructure.",
+      "South Florida leads on choice, refit yards and tax; the West Coast and Northeast on condition. US yacht-buying regions compared side by side in one table.",
     standfirst: "Four US markets compared on what actually matters to a buyer.",
     cluster: "USA & Florida",
     readingMinutes: 6,
     published: "2026-07-14",
-    updated: "2026-08-29",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "South Florida, above all Fort Lauderdale, is the best place to buy a yacht in the USA for choice: it has the largest inventory, the deepest refit and survey capacity, and a sales tax cap for large yachts. Buyers who prioritise condition over choice often do better on the West Coast or in the Northeast.",
     intro: [
       "Location affects a yacht purchase more than most buyers expect — not just what is available, but the condition it is in, the tax you pay, and how easily you can survey it.",
     ],
@@ -690,6 +730,16 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "The Gulf Coast",
+        table: {
+          caption: "US yacht-buying regions compared",
+          columns: ["Region", "Inventory", "Typical condition", "Main strength", "Watch for"],
+          rows: [
+            ["South Florida", "Largest by far", "Variable: sun, humidity, hurricane exposure", "Choice above 130 ft, refit capacity, sales tax cap", "Maintenance history"],
+            ["Northeast", "Seasonal; thins out in winter", "Generally well maintained, lower annual hours", "Sailing yachts and traditional motor yachts", "Timing: the fleet moves south in winter"],
+            ["West Coast", "Much smaller", "Materially better on average", "Long-range vessels in good condition", "No equivalent of Florida's sales tax cap"],
+            ["Gulf Coast", "Smaller", "Mixed; weighted to sportfish and shallow draft", "Lower dockage costs, less competition", "Limited survey and refit capacity for large yachts"],
+          ],
+        },
         paragraphs: [
           "Naples, Tampa and the Texas coast around Galveston and Kemah. A smaller market weighted toward sportfishing vessels and shallower-draft cruisers, with lower dockage costs and less competition for good boats.",
           "Survey and refit capacity for large yachts is limited compared with the Atlantic coast, which is a practical constraint rather than a minor inconvenience.",
@@ -908,14 +958,16 @@ export const ARTICLES: Article[] = [
   {
     slug: "florida-yacht-sales-market",
     title: "The Florida Yacht Sales Market",
-    metaTitle: "The Florida Yacht Sales Market | Structure & Seasonality",
+    metaTitle: "Florida Yacht Sales Market: How It Works & When to Buy",
     metaDescription:
-      "How the Florida yacht market works: its structure, seasonality, the role of the refit industry, and why so much of it transacts before anything is listed.",
+      "How the Florida yacht market works: why Fort Lauderdale dominates, the seasonal cycle, hurricane risk, and why many sales close before a listing appears.",
     standfirst: "How the market is structured, and why so much of it is invisible.",
     cluster: "USA & Florida",
     readingMinutes: 6,
     published: "2026-08-04",
-    updated: "2026-09-05",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "Florida is the largest yacht market in the United States and the biggest concentration of large private yachts anywhere. Fort Lauderdale's refit industry is its centre of gravity, the market runs on a winter season, and a large share of sales close privately — often before a listing appears — so published data understates real activity.",
     intro: [
       "Florida's yacht market behaves the way it does because of a specific industrial geography. Understanding that geography explains most of what buyers find puzzling about it.",
     ],
@@ -997,14 +1049,16 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-much-does-a-superyacht-cost",
     title: "How Much Does a Superyacht Cost?",
-    metaTitle: "How Much Does a Superyacht Cost? | Purchase & Running Costs",
+    metaTitle: "How Much Does a Superyacht Cost? Prices by Size & Running Costs",
     metaDescription:
-      "What a superyacht costs to buy and to run, by size band, with the components of the annual operating budget broken down honestly.",
+      "Used superyachts cost about $5M–$15M at 100–130 ft, $10M–$30M at 130–165 ft and $25M+ above that, plus about 10% a year to run. Breakdown by size.",
     standfirst: "Purchase price is the smaller question. Here is the whole picture.",
     cluster: "Buying",
     readingMinutes: 7,
     published: "2026-08-11",
-    updated: "2026-09-02",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "A used superyacht typically costs $5 million to $15 million at 100 to 130 feet, $10 million to $30 million at 130 to 165 feet, and $25 million to $80 million at 165 to 200 feet. Budget roughly ten percent of the purchase price each year to run it, with crew the largest cost.",
     intro: [
       "The purchase price of a superyacht is the number people ask about. The annual cost is the number that determines whether the ownership works, and it is far less widely understood.",
     ],
@@ -1028,6 +1082,18 @@ export const ARTICLES: Article[] = [
     sections: [
       {
         heading: "Purchase price by size band",
+        table: {
+          caption: "Superyacht purchase price and running cost by size (used, 2026)",
+          columns: ["Length", "Typical purchase price", "Approx. annual running cost"],
+          rows: [
+            ["100–130 ft", "$5M–$15M", "$0.5M–$1.5M"],
+            ["130–165 ft", "$10M–$30M", "$1M–$3M"],
+            ["165–200 ft", "$25M–$80M", "$2.5M–$8M"],
+            ["Over 200 ft", "From about $50M", "From about $5M"],
+          ],
+          note:
+            "Broad ranges for used vessels in reasonable condition. Running costs apply the ten percent rule of thumb and move substantially with usage and crew size.",
+        },
         paragraphs: [
           "These are broad current ranges for used vessels in reasonable condition. Age, builder, refit history and specification move any individual yacht considerably within its band.",
         ],
@@ -1103,15 +1169,17 @@ export const ARTICLES: Article[] = [
 
   {
     slug: "how-to-buy-a-10-million-dollar-yacht",
-    title: "How to Buy a $10 Million Yacht",
-    metaTitle: "10 Million Dollar Yachts | What $10M Buys & How to Buy One",
+    title: "10 Million Dollar Yachts: What $10M Buys and How to Buy One",
+    metaTitle: "$10 Million Yacht: Size, Crew, Running Costs & How to Buy",
     metaDescription:
-      "What a 10 million dollar yacht looks like: typical size and age, running costs, diligence, and why so many yachts under $10 million change hands privately.",
+      "A $10 million yacht is typically 110–140 ft with 5–8 crew and about $1M a year to run. What each budget buys, compared in one table, and how to buy.",
     standfirst: "What the money buys, and what the ownership actually involves.",
     cluster: "Buying",
     readingMinutes: 7,
     published: "2026-08-18",
-    updated: "2026-11-24",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "A $10 million yacht is typically 110 to 140 feet: either a recent semi-custom flybridge or a ten-to-fifteen-year-old custom displacement yacht after a major refit. Expect five to eight permanent crew and about $1 million a year in running costs. Closing takes four to eight weeks once an offer is accepted; finding the right yacht takes longer.",
     intro: [
       "Ten million dollars is a meaningful threshold. It is roughly where a yacht stops being a large boat and starts being an operation with staff, compliance obligations and a management structure.",
       "This guide covers what 10 million dollar yachts typically are, what they cost to run, how the purchase differs from a smaller one, and why so many yachts at and under this level are sold without ever being advertised.",
@@ -1135,6 +1203,25 @@ export const ARTICLES: Article[] = [
     ],
     sections: [
       {
+        heading: "What $10 million buys, compared with other budgets",
+        paragraphs: [
+          "The table below places a $10 million budget against the brackets either side of it, so the trade-offs in length, crew and running costs are visible at a glance.",
+        ],
+        table: {
+          caption: "What different yacht budgets typically buy (used yachts, 2026)",
+          columns: ["Budget", "Typical length", "Typical vessel", "Permanent crew", "Annual running cost (approx.)"],
+          rows: [
+            ["Under $5M", "60–100 ft", "Production flybridge or sport yacht", "0–2", "$200k–$500k"],
+            ["$5M–$10M", "90–130 ft", "Recent flybridge or older semi-custom", "4–7", "$500k–$1M"],
+            ["Around $10M", "110–140 ft", "Semi-custom flybridge or refitted custom displacement yacht", "5–8", "About $1M"],
+            ["$10M–$25M", "120–165 ft", "Semi-custom or custom superyacht", "8–12", "$1M–$2.5M"],
+            ["Over $25M", "160 ft and above", "Custom superyacht, usually price on request", "12+", "$2.5M and up"],
+          ],
+          note:
+            "Broad ranges for used yachts in reasonable condition. Running costs use the common rule of thumb of about ten percent of value per year; actual costs vary with usage, crew size and flag.",
+        },
+      },
+      {
         heading: "The choice you actually face",
         paragraphs: [
           "At this budget the real decision is newer and smaller against older and larger, and it is not a close-run thing once you know how you will use the yacht.",
@@ -1144,6 +1231,18 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "Newer and smaller, or older and refitted",
+        table: {
+          caption: "Two ways to spend $10 million",
+          columns: ["Factor", "Newer and smaller", "Older, larger and refitted"],
+          rows: [
+            ["Typical profile", "About 110 ft, recent build", "About 130–140 ft, 10–15 years old"],
+            ["Interior volume", "Less", "Considerably more"],
+            ["Range and long passages", "More limited", "Better, usually a displacement hull"],
+            ["Maintenance risk", "Lower, current systems", "Depends on how well the refit is documented"],
+            ["Best suited to", "Frequent short trips", "Extended cruising"],
+            ["Key diligence", "Build quality and warranty position", "Yard scope of work, invoices and class reports"],
+          ],
+        },
         paragraphs: [
           "Two yachts at the same $10 million price can be ten years and thirty feet apart. The older one is only the better buy if its refit was substantial and documented — machinery, systems, paint and class work rather than a new interior.",
           "Ask for the yard scope of work, invoices and class reports before forming a view on price. Our guide to buying a refitted superyacht covers which records matter.",
@@ -1220,7 +1319,9 @@ export const ARTICLES: Article[] = [
     cluster: "Buying",
     readingMinutes: 8,
     published: "2026-08-25",
-    updated: "2026-09-04",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "To buy a superyacht, appoint a buyer's broker and maritime counsel, set a budget that includes running costs, review listed and off-market yachts, and offer subject to survey and sea trial with about ten percent in escrow. Then complete technical and legal diligence on class, flag and ownership before closing through escrow.",
     intro: [
       "Buying a superyacht is not buying a larger boat. It is acquiring an operating asset with staff, certification, a compliance calendar and, usually, a corporate structure around it.",
     ],
@@ -1321,7 +1422,9 @@ export const ARTICLES: Article[] = [
     cluster: "Process",
     readingMinutes: 7,
     published: "2026-09-01",
-    updated: "2026-09-05",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "Buying a yacht in the USA follows six steps: a written offer subject to survey, a deposit of about ten percent in escrow, survey and sea trial within a two-to-four-week acceptance period, acceptance or renegotiation, Coast Guard title and lien searches, then closing through escrow with bill of sale, title transfer and registration.",
     intro: [
       "The American process is well-established and largely standardised. Knowing the sequence in advance makes the whole thing considerably less stressful.",
     ],
@@ -1378,6 +1481,18 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "6. Closing",
+        table: {
+          caption: "The US yacht purchase process at a glance",
+          columns: ["Step", "What happens", "Who handles it"],
+          rows: [
+            ["1. Offer", "Written purchase agreement, subject to survey and sea trial", "Buyer and broker"],
+            ["2. Deposit", "About 10% held in escrow, refundable within the acceptance period", "Independent escrow agent"],
+            ["3. Survey and sea trial", "Condition, valuation and machinery surveys; sea trial", "Buyer's surveyors, at the buyer's cost"],
+            ["4. Acceptance", "Accept, reject or renegotiate on the findings", "Buyer, with broker"],
+            ["5. Title and liens", "Abstract of title from the Coast Guard NVDC; lien searches", "Maritime counsel or documentation agent"],
+            ["6. Closing", "Funds through escrow, bill of sale, title transfer, registration", "Escrow agent and counsel"],
+          ],
+        },
         paragraphs: [
           "Funds move through escrow, the bill of sale is executed, title transfers, and registration or documentation is filed. Sales or use tax is addressed according to the delivery location and intended use.",
           "The yacht is delivered in the condition specified in the agreement, and the inventory schedule determines what comes with it.",
@@ -1521,14 +1636,16 @@ export const ARTICLES: Article[] = [
   {
     slug: "how-long-does-it-take-to-buy-a-yacht",
     title: "How Long Does It Take to Buy a Yacht?",
-    metaTitle: "How Long Does It Take to Buy a Yacht? | Realistic Timelines",
+    metaTitle: "How Long Does It Take to Buy a Yacht? Timeline by Stage",
     metaDescription:
-      "Realistic timelines for buying a yacht, from search through offer, survey and closing, and what causes the delays buyers do not plan for.",
+      "Finding a yacht takes 3–9 months; closing takes 4–8 weeks after an accepted offer. A stage-by-stage timeline table and the delays buyers don't plan for.",
     standfirst: "Realistic timelines, and where the delays actually come from.",
     cluster: "Process",
     readingMinutes: 5,
     published: "2026-09-03",
-    updated: "2026-09-06",
+    updated: "2026-11-27",
+    keyTakeaway:
+      "Finding the right yacht usually takes three to nine months. After an offer is accepted, closing typically takes four to eight weeks: two to four weeks for survey and sea trial during the acceptance period, then two to four weeks for title and lien searches, funds transfer and registration. Haul-out scheduling causes most delays.",
     intro: [
       "Buyers consistently underestimate the search and overestimate the transaction. The split is usually the reverse of what people expect.",
     ],
@@ -1566,6 +1683,16 @@ export const ARTICLES: Article[] = [
       },
       {
         heading: "What actually goes wrong",
+        table: {
+          caption: "Yacht purchase timeline by stage",
+          columns: ["Stage", "Typical duration", "What happens", "Most common delay"],
+          rows: [
+            ["Search", "3–9 months (weeks for a listed yacht)", "Define criteria, review listed and off-market yachts, make approaches", "Criteria too vague to act on"],
+            ["Offer to acceptance", "2–4 weeks", "Offer subject to survey, deposit in escrow, survey and sea trial", "Haul-out availability in peak season"],
+            ["Acceptance to closing", "2–4 weeks", "Title and lien searches, documentation, funds transfer, registration", "Undischarged liens or offshore ownership structures"],
+            ["Offer to closing in total", "4–8 weeks", "The contractual part of the purchase", "Unsettled financing or berth arrangements"],
+          ],
+        },
         paragraphs: [
           "Liens are the classic. An undischarged lien from a yard invoice five years ago follows the vessel, not the seller, and clearing it takes time nobody budgeted for.",
           "Corporate structures are the second. A yacht held through two offshore entities requires diligence that is legal rather than marine, and legal diligence runs on its own timetable.",

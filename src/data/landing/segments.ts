@@ -204,9 +204,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
   // ── Budget bands ──────────────────────────────────────────────────────────
   {
     slug: "yachts-for-sale-under-5-million",
-    title: "Yachts for Sale Under $5 Million | Private Opportunities",
+    title: "Yachts for Sale Under $5 Million | 60–100 ft Private Yachts",
     metaDescription:
-      "Yachts for sale under $5 million through private channels. Confidential opportunities from 60 to 100 ft in Florida, the Bahamas and the USA.",
+      "Yachts for sale under $5 million are typically 60–100 ft, often owner-operated. Running costs, crew needs and private opportunities in Florida and the USA.",
     h1: "Yachts for Sale Under $5 Million",
     standfirst: "The entry point to the private market.",
     intro: [
@@ -218,6 +218,8 @@ export const SEGMENT_PAGES: LandingPage[] = [
     inventoryHeading: "Opportunities under $5M",
     emptyMessage:
       "Nothing is currently published in this bracket. This segment turns over fast — submit your criteria and we will search the private market for you.",
+    keyTakeaway:
+      "Under $5 million typically buys a yacht of 60 to 100 feet: a recent production flybridge or sport yacht, or an older semi-custom vessel of greater length. Below about 80 feet many owners run the boat themselves; above that, one or two permanent crew is normal. Budget roughly $200,000 to $500,000 a year to run it.",
     answers: [
       {
         question: "What can you buy for under $5 million?",
@@ -268,9 +270,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "yachts-for-sale-under-10-million",
-    title: "Yachts for Sale Under $10 Million | Private Opportunities",
+    title: "Yachts for Sale Under $10 Million | 90–130 ft Private Yachts",
     metaDescription:
-      "Yachts for sale under $10 million through private channels. Confidential opportunities from 90 to 130 ft with permanent crew, in the USA and internationally.",
+      "Yachts for sale under $10 million are typically 90–130 ft with 4–7 crew. What the budget buys by length and age, running costs, and private opportunities.",
     h1: "Yachts for Sale Under $10 Million",
     standfirst: "Where permanent crew and real range become standard.",
     intro: [
@@ -283,6 +285,19 @@ export const SEGMENT_PAGES: LandingPage[] = [
     inventoryHeading: "Opportunities between $5M and $10M",
     emptyMessage:
       "Nothing is currently published in this bracket. Submit your criteria and we will search the private market directly.",
+    keyTakeaway:
+      "Under $10 million typically buys a yacht of 90 to 130 feet: a recent production flybridge at the shorter end, or a ten-to-twenty-year-old semi-custom displacement yacht at the longer end. Permanent crew of four to seven is standard, and around ten percent of the yacht's value per year is the usual running-cost planning figure.",
+    table: {
+      caption: "What $5M–$10M typically buys, by length",
+      columns: ["Length", "Typical age at this budget", "Typical vessel", "Permanent crew"],
+      rows: [
+        ["90–100 ft", "Recent, often under 5 years", "Production flybridge", "3–4"],
+        ["100–115 ft", "Around 5–10 years", "Production or semi-custom", "4–5"],
+        ["115–130 ft", "Around 10–20 years", "Semi-custom displacement, usually refitted", "5–7"],
+      ],
+      note:
+        "Indicative only. Builder, refit history and specification move any individual yacht considerably within these ranges.",
+    },
     answers: [
       {
         question: "What size yacht can you buy for under $10 million?",
@@ -342,9 +357,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
   {
     slug: "yachts-for-sale-10-million-25-million",
     sources: DEPOSIT_NOTES,
-    title: "Yachts for Sale $10M – $25M | Private Superyacht Opportunities",
+    title: "Yachts for Sale $10M–$25M | 120–165 ft Private Superyachts",
     metaDescription:
-      "Yachts for sale between $10 million and $25 million. Confidential superyacht opportunities from 120 to 165 ft, presented privately to qualified buyers.",
+      "Yachts for sale from $10 million to $25 million are typically 120–165 ft with 8–12 crew. How this superyacht bracket trades, and private opportunities.",
     h1: "Yachts for Sale $10M – $25M",
     standfirst: "Full superyacht operation, and a market that mostly transacts privately.",
     intro: [
@@ -406,9 +421,9 @@ export const SEGMENT_PAGES: LandingPage[] = [
 
   {
     slug: "superyachts-for-sale-over-25-million",
-    title: "Superyachts for Sale Over $25 Million | Private Market",
+    title: "Superyachts for Sale Over $25 Million | 160 ft+ Private Market",
     metaDescription:
-      "Superyachts for sale over $25 million. Confidential opportunities above 160 ft presented privately to qualified buyers. Price frequently on request.",
+      "Superyachts over $25 million are typically 160 ft and above, mostly sold privately with price on request. How this market works and how buyers get access.",
     h1: "Superyachts for Sale Over $25 Million",
     standfirst: "At this level, the private market is not an alternative — it is the market.",
     intro: [
@@ -420,6 +435,8 @@ export const SEGMENT_PAGES: LandingPage[] = [
     inventoryHeading: "Opportunities over $25M",
     emptyMessage:
       "Nothing is currently published above $25M. At this level most opportunity is never published — tell us your requirement and we will approach the market directly.",
+    keyTakeaway:
+      "Superyachts over $25 million are typically 160 feet and above and trade mostly in private. There is no meaningful comparable set, most carry price on request, and the buyers who can transact at this level number in the hundreds worldwide. Disclosure follows a structured process, and first conversation to closing usually takes months.",
     answers: [
       {
         question: "What does a $25 million superyacht look like?",

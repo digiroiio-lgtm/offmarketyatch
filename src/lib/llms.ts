@@ -6,6 +6,7 @@ import { getIndexableLandingPages } from "@/data/landing";
 import { IS_SAMPLE_INVENTORY, SAMPLE_INVENTORY_NOTICE } from "@/lib/inventory-mode";
 import { getOpportunities } from "@/lib/opportunities";
 import { SITE, canonical } from "@/lib/site";
+import type { ContentTable } from "@/lib/types";
 
 /**
  * Plain-text site guides for language models (llms.txt convention).
@@ -58,6 +59,21 @@ function sourceLines(sources?: SourceNotes): string[] {
   return [...lines, ""];
 }
 
+/** A ContentTable as a Markdown table, with its caption and note. */
+function tableLines(table?: ContentTable): string[] {
+  if (!table) return [];
+  const row = (cells: string[]) => `| ${cells.join(" | ")} |`;
+  return [
+    `**${table.caption}**`,
+    "",
+    row(table.columns),
+    row(table.columns.map(() => "---")),
+    ...table.rows.map(row),
+    "",
+    ...(table.note ? [table.note, ""] : []),
+  ];
+}
+
 function header(): string[] {
   const lines = [`# ${SITE.name}`, "", `> ${SUMMARY}`, ""];
   if (IS_SAMPLE_INVENTORY) lines.push(`Note: ${SAMPLE_INVENTORY_NOTICE}`, "");
@@ -77,7 +93,13 @@ export function buildLlmsTxt(): string {
 
   lines.push("", "## Market intelligence", "");
   for (const article of ARTICLES) {
-    lines.push(link(`/private-market-intelligence/${article.slug}`, article.title, article.metaDescription));
+    lines.push(
+      link(
+        `/private-market-intelligence/${article.slug}`,
+        article.title,
+        article.keyTakeaway ?? article.metaDescription
+      )
+    );
   }
 
   lines.push(
@@ -120,7 +142,9 @@ export function buildLlmsFullTxt(): string {
 
   lines.push("## Landing pages", "");
   for (const page of getIndexableLandingPages()) {
-    lines.push(`### ${page.h1}`, "", canonical(`/${page.slug}`), "", page.standfirst, "", ...page.intro.flatMap((p) => [p, ""]));
+    lines.push(`### ${page.h1}`, "", canonical(`/${page.slug}`), "", page.standfirst, "");
+    if (page.keyTakeaway) lines.push(`Key takeaway: ${page.keyTakeaway}`, "");
+    lines.push(...page.intro.flatMap((p) => [p, ""]), ...tableLines(page.table));
     lines.push(...qa(page.answers, page.faqs), ...sourceLines(page.sources));
   }
 
@@ -134,11 +158,13 @@ export function buildLlmsFullTxt(): string {
       "",
       article.standfirst,
       "",
+      ...(article.keyTakeaway ? [`Key takeaway: ${article.keyTakeaway}`, ""] : []),
       ...article.intro.flatMap((p) => [p, ""])
     );
     for (const section of article.sections) {
       lines.push(`#### ${section.heading}`, "", ...section.paragraphs.flatMap((p) => [p, ""]));
       if (section.bullets) lines.push(...section.bullets.map((b) => `- ${b}`), "");
+      lines.push(...tableLines(section.table));
     }
     lines.push(...qa(article.answers, article.faqs), ...sourceLines(article.sources));
   }

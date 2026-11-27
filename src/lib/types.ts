@@ -164,3 +164,15 @@ export type LengthBandKey =
   | "100-130"
   | "130-165"
   | "165-plus";
+
+/**
+ * A small comparison table rendered as real HTML `<table>` markup, so search
+ * and answer engines can lift rows intact. Every cell is plain text.
+ */
+export interface ContentTable {
+  caption: string;
+  columns: string[];
+  rows: string[][];
+  /** Shown under the table: what the figures are and are not. */
+  note?: string;
+}

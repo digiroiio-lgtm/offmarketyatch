@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
+import DataTable from "@/components/DataTable";
 import FinalCTA from "@/components/FinalCTA";
+import KeyTakeaway from "@/components/KeyTakeaway";
 import SourcesNote from "@/components/SourcesNote";
 import SchemaOrg from "@/components/SchemaOrg";
 import { ARTICLES, getArticle } from "@/data/articles";
@@ -60,7 +62,7 @@ export default async function ArticlePage(
           ]),
           articleSchema({
             headline: article.title,
-            description: article.metaDescription,
+            description: article.keyTakeaway ?? article.metaDescription,
             path,
             published: article.published,
             modified: article.updated,
@@ -100,6 +102,11 @@ export default async function ArticlePage(
         </header>
 
         <div className="section-tight">
+          {article.keyTakeaway && (
+            <div className="container-prose mb-10">
+              <KeyTakeaway text={article.keyTakeaway} />
+            </div>
+          )}
           <div className="container-prose prose-editorial">
             {article.intro.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -138,6 +145,7 @@ export default async function ArticlePage(
                     ))}
                   </ul>
                 )}
+                {section.table && <DataTable table={section.table} />}
               </section>
             ))}
           </div>

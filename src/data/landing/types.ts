@@ -1,5 +1,6 @@
 import type { OpportunityQuery } from "@/lib/opportunities";
 import type { SourceNotes } from "@/data/sources";
+import type { ContentTable } from "@/lib/types";
 
 /**
  * A commercial-intent landing page.
@@ -25,6 +26,10 @@ export interface LandingPage {
   inventoryHeading: string;
   /** Shown when the query returns nothing — always routes to a lead funnel. */
   emptyMessage: string;
+  /** Direct 40–60 word answer shown above the editorial intro. */
+  keyTakeaway?: string;
+  /** Comparison table rendered after the short answers. */
+  table?: ContentTable;
   /** AI-citable question/answer units. */
   answers: { question: string; answer: string }[];
   faqs: { question: string; answer: string }[];

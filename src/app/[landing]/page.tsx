@@ -5,7 +5,9 @@ import { notFound } from "next/navigation";
 import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
+import DataTable from "@/components/DataTable";
 import FinalCTA from "@/components/FinalCTA";
+import KeyTakeaway from "@/components/KeyTakeaway";
 import SourcesNote from "@/components/SourcesNote";
 import MarketExplorer from "@/components/MarketExplorer";
 import SampleInventoryNotice from "@/components/SampleInventoryNotice";
@@ -106,6 +108,11 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
       {/* Unique editorial intro */}
       <section className="section-tight">
         <div className="container-site">
+          {page.keyTakeaway && (
+            <div className="mb-10 max-w-[760px]">
+              <KeyTakeaway text={page.keyTakeaway} />
+            </div>
+          )}
           <div className="max-w-[760px] prose-editorial">
             {page.intro.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
@@ -164,6 +171,11 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
               />
             ))}
           </div>
+          {page.table && (
+            <div className="max-w-[900px]">
+              <DataTable table={page.table} />
+            </div>
+          )}
         </div>
       </section>
 
