@@ -15,4 +15,7 @@ export const INVENTORY_MODE: InventoryMode =
 export const IS_SAMPLE_INVENTORY = INVENTORY_MODE === "sample";
 
 export const SAMPLE_INVENTORY_NOTICE =
-  "Platform demonstration. The opportunities shown are sample records used to illustrate how the private market is presented — they are not offers, and no vessel shown is represented as available.";
+  "These profiles illustrate the types of private opportunity we handle. They are not offers, and no vessel shown is represented as available; current opportunities are confirmed privately with qualified buyers.";
+
+/** Short label shown before the notice. */
+export const SAMPLE_INVENTORY_LABEL = "Representative profiles";

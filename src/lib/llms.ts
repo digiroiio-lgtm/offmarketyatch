@@ -127,12 +127,12 @@ export function buildLlmsFullTxt(): string {
   lines.push("## Opportunities (masked public view)", "");
   for (const o of getOpportunities()) {
     lines.push(
-      `### ${o.reference}: ${o.titlePublic}${IS_SAMPLE_INVENTORY ? " (sample record)" : ""}`,
+      `### ${o.reference}: ${o.titlePublic}${IS_SAMPLE_INVENTORY ? " (representative profile)" : ""}`,
       "",
       `- URL: ${canonical(`/off-market-yachts/${o.slug}`)}`,
       `- Type: ${o.type}; length: ${o.lengthDisplay}; cruising area: ${o.locationPublic}`,
       IS_SAMPLE_INVENTORY
-        ? `- Price: ${o.priceLabel}; sample status label: ${o.availabilityType} (sample record, not an offer)`
+        ? `- Price: ${o.priceLabel}; illustrative status: ${o.availabilityType} (representative profile, not an offer)`
         : `- Price: ${o.priceLabel}; status: ${o.availabilityType}`,
       "",
       o.descriptionPublic,
