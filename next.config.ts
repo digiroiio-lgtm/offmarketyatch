@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
       { source: "/private-yacht-brokerage", destination: "/private-yachts-for-sale", permanent: true },
       { source: "/off-market-yacht-listings", destination: "/superyachts-for-sale", permanent: true },
 
+      // ── Landing pages consolidated because they listed the same yachts ──
+      { source: "/yachts-for-sale", destination: "/off-market-yachts-for-sale", permanent: true },
+      { source: "/yachts-for-sale-over-165-feet", destination: "/mega-yachts-for-sale", permanent: true },
+
       // ── Funnels ─────────────────────────────────────────────────────────
       { source: "/private-access", destination: "/request-private-access", permanent: true },
       { source: "/submit-yacht", destination: "/sell-your-yacht-privately", permanent: true },

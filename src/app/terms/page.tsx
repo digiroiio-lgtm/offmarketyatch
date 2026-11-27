@@ -59,15 +59,20 @@ export default function TermsPage() {
                 body: "OffMarketYacht.com makes no representations or warranties regarding the accuracy, completeness, or availability of any yacht opportunity, vessel specification, or pricing information shared through our platform. All information is provided for introductory purposes only.",
               },
               {
-                title: "5. Limitation of Liability",
+                id: "representative-profiles",
+                title: "5. Representative Opportunity Profiles",
+                body: "Some opportunities displayed on OffMarketYacht.com are representative profiles. They are prepared to illustrate the types of vessel, size, budget and cruising area we handle in the private market, and they do not describe a specific yacht that is currently available. A representative profile is not an offer to sell, an invitation to treat, or a statement that any vessel is for sale, and its specification, price band, status and location are illustrative. Enquiries made from a representative profile are treated as a private search request: we will tell you which current opportunities, if any, match your criteria. Whether a specific vessel is available, and on what terms, is confirmed only in direct private discussion with a qualified buyer, and always remains subject to owner approval and verification.",
+              },
+              {
+                title: "6. Limitation of Liability",
                 body: "To the maximum extent permitted by applicable law, OffMarketYacht.com shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of our platform or reliance on information provided therein.",
               },
               {
-                title: "6. Changes to Terms",
+                title: "7. Changes to Terms",
                 body: "We reserve the right to update these Terms of Use at any time. Continued use of the platform following any changes constitutes acceptance of the updated terms.",
               },
-            ].map(({ title, body }) => (
-              <div key={title} className="mb-6">
+            ].map(({ id, title, body }: { id?: string; title: string; body: string }) => (
+              <div key={title} id={id} className="mb-6 scroll-mt-24">
                 <h2 className="mb-2 text-base font-bold text-ink">
                   {title}
                 </h2>

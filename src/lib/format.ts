@@ -16,7 +16,8 @@ const USD = new Intl.NumberFormat("en-US", {
 export function compactUsd(value: number): string {
   if (value >= 1_000_000) {
     const millions = value / 1_000_000;
-    const rounded = millions >= 10 ? Math.round(millions) : Math.round(millions * 10) / 10;
+    // One decimal unless it is a whole number: "$28M", "$10.8M", "$4.2M".
+    const rounded = Math.round(millions * 10) / 10;
     return `$${rounded}M`;
   }
   if (value >= 1_000) return `$${Math.round(value / 1_000)}K`;

@@ -5,12 +5,12 @@ import { IS_SAMPLE_INVENTORY } from "@/lib/inventory-mode";
 import { getOverride } from "@/lib/admin-store";
 import {
   LENGTH_BANDS,
-  PRICE_BANDS,
   compactUsd,
   exactUsd,
   ftToM,
   lengthBandFor,
   maskedLengthRange,
+  maskedYearRange,
   priceBandFor,
 } from "@/lib/format";
 import type {
@@ -192,8 +192,14 @@ function toPublicOpportunity(record: OpportunityRecord, now: Date): PublicOpport
     lengthM: publishedM,
     lengthDisplay: lengthDisplayValue,
     lengthBandLabel: lengthBandFor(publishedFt).label,
-    year: record.year,
-    yearLabel: record.year === null ? "Year on request" : String(record.year),
+    // A generalised year never publishes the exact figure, even as a number.
+    year: record.yearAsRange ? null : record.year,
+    yearLabel:
+      record.year === null
+        ? "Year on request"
+        : record.yearAsRange
+          ? maskedYearRange(record.year)
+          : String(record.year),
     refitYear: record.refitYear,
     // `builderPublic` is published only when the record explicitly sets it;
     // `builderPrivate` has no path to this object.
@@ -296,7 +302,17 @@ export interface OpportunityQuery {
   type?: YachtType;
   types?: YachtType[];
   priceBand?: PriceBandKey;
+  /** Any of these price bands. */
+  priceBands?: PriceBandKey[];
+  /**
+   * With a price filter: also keep price-on-request listings at or above this
+   * length. A price that may not be published cannot be banded, so this is the
+   * only way such a yacht reaches a budget page.
+   */
+  includeOnRequestFromFt?: number;
   lengthBand?: LengthBandKey;
+  /** Minimum length in feet, e.g. 80 ft for anything called a superyacht. */
+  minLengthFt?: number;
   country?: string;
   /** Any of these countries — for pages that span a few neighbouring markets. */
   countries?: string[];
@@ -332,14 +348,17 @@ export function getOpportunities(query: OpportunityQuery = {}): PublicOpportunit
   if (query.minYear) items = items.filter((o) => (o.year ?? 0) >= query.minYear!);
   if (query.featured !== undefined) items = items.filter((o) => o.featured === query.featured);
 
-  if (query.priceBand) {
-    const band = PRICE_BANDS.find((b) => b.key === query.priceBand);
-    if (band) {
-      items = items.filter((o) => {
-        const listed = priceBandFor(o.priceMin, o.priceMax);
-        return listed?.key === band.key;
-      });
-    }
+  const priceKeys = [
+    ...(query.priceBand ? [query.priceBand] : []),
+    ...(query.priceBands ?? []),
+  ];
+  if (priceKeys.length) {
+    const onRequestFrom = query.includeOnRequestFromFt;
+    items = items.filter((o) => {
+      const listed = priceBandFor(o.priceMin, o.priceMax);
+      if (listed) return priceKeys.includes(listed.key);
+      return onRequestFrom !== undefined && o.lengthFt >= onRequestFrom;
+    });
   }
 
   if (query.lengthBand) {
@@ -350,6 +369,8 @@ export function getOpportunities(query: OpportunityQuery = {}): PublicOpportunit
       );
     }
   }
+
+  if (query.minLengthFt) items = items.filter((o) => o.lengthFt >= query.minLengthFt!);
 
   if (query.q?.trim()) {
     const needle = query.q.trim().toLowerCase();

@@ -24,7 +24,6 @@ export type AvailabilityType =
   | "VERIFIED OFF-MARKET"
   | "PRIVATE LISTING"
   | "BROKER-SOURCED"
-  | "PUBLIC MARKET"
   | "POTENTIAL OPPORTUNITY";
 
 export type ConfidentialityLevel = "open" | "restricted" | "confidential";
@@ -41,6 +40,8 @@ export type BuildRegion =
   | "Dutch Build"
   | "German Build"
   | "Turkish Build"
+  | "Mediterranean Build"
+  | "European Build"
   | "British Build"
   | "North American Build"
   | "Asian Build";
@@ -164,3 +165,15 @@ export type LengthBandKey =
   | "100-130"
   | "130-165"
   | "165-plus";
+
+/**
+ * A small comparison table rendered as real HTML `<table>` markup, so search
+ * and answer engines can lift rows intact. Every cell is plain text.
+ */
+export interface ContentTable {
+  caption: string;
+  columns: string[];
+  rows: string[][];
+  /** Shown under the table: what the figures are and are not. */
+  note?: string;
+}
