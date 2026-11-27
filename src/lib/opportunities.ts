@@ -10,6 +10,7 @@ import {
   ftToM,
   lengthBandFor,
   maskedLengthRange,
+  maskedYearRange,
   priceBandFor,
 } from "@/lib/format";
 import type {
@@ -191,8 +192,14 @@ function toPublicOpportunity(record: OpportunityRecord, now: Date): PublicOpport
     lengthM: publishedM,
     lengthDisplay: lengthDisplayValue,
     lengthBandLabel: lengthBandFor(publishedFt).label,
-    year: record.year,
-    yearLabel: record.year === null ? "Year on request" : String(record.year),
+    // A generalised year never publishes the exact figure, even as a number.
+    year: record.yearAsRange ? null : record.year,
+    yearLabel:
+      record.year === null
+        ? "Year on request"
+        : record.yearAsRange
+          ? maskedYearRange(record.year)
+          : String(record.year),
     refitYear: record.refitYear,
     // `builderPublic` is published only when the record explicitly sets it;
     // `builderPrivate` has no path to this object.

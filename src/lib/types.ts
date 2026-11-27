@@ -41,6 +41,7 @@ export type BuildRegion =
   | "Dutch Build"
   | "German Build"
   | "Turkish Build"
+  | "Mediterranean Build"
   | "British Build"
   | "North American Build"
   | "Asian Build";
