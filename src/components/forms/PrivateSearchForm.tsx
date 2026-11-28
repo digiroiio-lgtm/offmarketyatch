@@ -15,6 +15,8 @@ import BuyerContextFields, {
 } from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 /**
  * The private-matching funnel (§11). Deliberately short and single-screen: it
@@ -34,6 +36,7 @@ const SIZE = ["Under 80 ft", "80–100 ft", "100–130 ft", "130–165 ft", "165
 const TIMELINE = ["Immediately", "0–3 months", "3–6 months", "6–12 months", "Exploring"];
 
 export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean }) {
+  const locale = useLocale();
   const [criteria, setCriteria] = useState({
     type: "",
     budget: "",
@@ -139,14 +142,14 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
 
       <div className="mt-5">
         <label htmlFor="ps-notes" className="form-label">
-          What are you looking for?
+          {t(locale, "What are you looking for?")}
         </label>
         <textarea
           id="ps-notes"
           rows={3}
           value={criteria.notes}
           onChange={(event) => setCriteria((p) => ({ ...p, notes: event.target.value }))}
-          placeholder="Specific yards, a model you have been watching, cruising plans, must-have features…"
+          placeholder={t(locale, "Specific yards, a model you have been watching, cruising plans, must-have features…")}
           className="form-input resize-y"
         />
       </div>
@@ -196,12 +199,11 @@ export default function PrivateSearchForm({ onDark = false }: { onDark?: boolean
         disabled={status === "sending"}
         className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto"
       >
-        {status === "sending" ? "Sending…" : "Start a Private Search"}
+        {status === "sending" ? t(locale, "Sending…") : t(locale, "Start a Private Search")}
       </button>
 
       <p className={`mt-4 text-[12.5px] leading-relaxed ${labelClass}`}>
-        Confidential. No obligation. We will tell you what we find, including when the answer is
-        that nothing suitable is currently available.
+        {t(locale, "Confidential. No obligation. We will tell you what we find, including when the answer is that nothing suitable is currently available.")}
       </p>
     </form>
   );

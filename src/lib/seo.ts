@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { SITE, canonical } from "@/lib/site";
+import { isLocaleReady, languageAlternates, LOCALE_CONFIG, localizedPath, t, type Locale } from "@/lib/i18n";
 import type { PublicOpportunity } from "@/lib/types";
 
 /**
@@ -63,9 +64,42 @@ export function pageMetadata({
   };
 }
 
+
+export function localizedPageMetadata(locale: Locale, path: string, base: Metadata): Metadata {
+  const localizedUrl = canonical(localizedPath(locale, path));
+  const title = typeof base.title === "string" ? t(locale, base.title) : base.title;
+  const description = typeof base.description === "string" ? t(locale, base.description) : SITE.description;
+  const baseOpenGraph = (base.openGraph && typeof base.openGraph === "object" ? base.openGraph : {}) as Record<string, unknown>;
+  const baseTwitter = (base.twitter && typeof base.twitter === "object" ? base.twitter : {}) as Record<string, unknown>;
+
+  return {
+    ...base,
+    title,
+    description,
+    alternates: {
+      ...(base.alternates ?? {}),
+      canonical: localizedUrl,
+      languages: languageAlternates(path),
+    },
+    ...(!isLocaleReady(locale) ? { robots: { index: false, follow: false } } : {}),
+    openGraph: {
+      ...baseOpenGraph,
+      url: localizedUrl,
+      locale: LOCALE_CONFIG[locale].ogLocale,
+      title: typeof baseOpenGraph.title === "string" ? t(locale, baseOpenGraph.title) : title,
+      description: typeof baseOpenGraph.description === "string" ? t(locale, baseOpenGraph.description) : description,
+    } as Metadata["openGraph"],
+    twitter: {
+      ...baseTwitter,
+      title: typeof baseTwitter.title === "string" ? t(locale, baseTwitter.title) : title,
+      description: typeof baseTwitter.description === "string" ? t(locale, baseTwitter.description) : description,
+    } as Metadata["twitter"],
+  };
+}
+
 // ─── JSON-LD ─────────────────────────────────────────────────────────────────
 
-export function organizationSchema() {
+export function organizationSchema(locale: Locale = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -75,7 +109,7 @@ export function organizationSchema() {
     url: SITE.url,
     logo: { "@type": "ImageObject", url: `${SITE.url}/logo.png` },
     image: `${SITE.url}/og-default.jpg`,
-    description: SITE.description,
+    description: t(locale, SITE.description),
     email: SITE.email,
     telephone: SITE.phoneDisplay,
     contactPoint: [
@@ -84,12 +118,21 @@ export function organizationSchema() {
         contactType: "sales",
         email: SITE.email,
         telephone: SITE.phoneDisplay,
-        areaServed: ["US", "Worldwide"],
-        availableLanguage: ["English"],
+        areaServed: ["US", "IT", "DE", "AT", "CH", "FR", "BE", "LU", "AE", "SA", "QA", "Worldwide"],
+        availableLanguage: ["English", "Italian", "German", "French", "Arabic"],
       },
     ],
     areaServed: [
       { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "Qatar" },
+      { "@type": "Country", name: "Italy" },
+      { "@type": "Country", name: "Germany" },
+      { "@type": "Country", name: "Austria" },
+      { "@type": "Country", name: "Switzerland" },
+      { "@type": "Country", name: "France" },
+      { "@type": "Country", name: "Belgium" },
+      { "@type": "Country", name: "United Arab Emirates" },
+      { "@type": "Country", name: "Saudi Arabia" },
       { "@type": "Place", name: "Caribbean" },
       { "@type": "Place", name: "Mediterranean" },
     ],
@@ -103,16 +146,16 @@ export function organizationSchema() {
   };
 }
 
-export function websiteSchema() {
+export function websiteSchema(locale: Locale = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": `${SITE.url}/#website`,
-    url: SITE.url,
+    "@id": `${canonical(localizedPath(locale, "/"))}#website`,
+    url: canonical(localizedPath(locale, "/")),
     name: SITE.name,
-    description: SITE.description,
+    description: t(locale, SITE.description),
     publisher: { "@id": `${SITE.url}/#organization` },
-    inLanguage: "en-US",
+    inLanguage: LOCALE_CONFIG[locale].htmlLang,
   };
 }
 

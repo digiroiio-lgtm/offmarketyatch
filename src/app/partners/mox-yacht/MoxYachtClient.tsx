@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -102,6 +104,7 @@ function GalleryCardSVG({ gradient }: { gradient: string }) {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MoxYachtClient() {
+  const locale = useLocale();
   return (
     <div className="min-h-screen bg-deal-room text-ink-inverse">
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
@@ -112,9 +115,9 @@ export default function MoxYachtClient() {
         <div className="relative mx-auto max-w-4xl text-center">
           {/* Breadcrumb */}
           <p className="mb-8 flex items-center justify-center gap-2 text-[11px] text-ink-muted">
-            <Link href="/off-market-yachts" className="hover:text-accent">Private Market</Link>
+            <LocaleLink href="/off-market-yachts" className="hover:text-accent">{t(locale, "Private Market")}</LocaleLink>
             <span>/</span>
-            <span className="text-ink-inverse-muted">Partners</span>
+            <span className="text-ink-inverse-muted">{t(locale, "Partners")}</span>
             <span>/</span>
             <span className="text-accent">MOX YACHT</span>
           </p>
@@ -122,7 +125,7 @@ export default function MoxYachtClient() {
           {/* Sponsor indicator */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/15 px-4 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="text-[10px] uppercase tracking-[0.28em] text-accent/70">Verified Marine Partner</span>
+            <span className="text-[10px] uppercase tracking-[0.28em] text-accent/70">{t(locale, "Verified Marine Partner")}</span>
           </div>
 
           {/* MOX wordmark */}
@@ -134,25 +137,24 @@ export default function MoxYachtClient() {
           </div>
 
           <p className="mb-4 text-[11px] uppercase tracking-[0.3em] text-ink-inverse-muted">
-            Yacht Production · Refit · Project Management
+            {t(locale, "Yacht Production · Refit · Project Management")}
           </p>
           <p className="mx-auto mb-10 max-w-xl text-[16px] leading-relaxed text-ink-inverse-muted">
-            Engineering confidence at sea. MOX YACHT supports complex yacht projects across the
-            Mediterranean with uncompromising technical expertise.
+            {t(locale, "Engineering confidence at sea. MOX YACHT supports complex yacht projects across the Mediterranean with uncompromising technical expertise.")}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
+            <LocaleLink
               href="/contact"
               className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-[12px] font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-[#e2c99a]"
             >
-              Schedule Consultation
-            </Link>
+              {t(locale, "Schedule Consultation")}
+            </LocaleLink>
             <a
               href="#services"
               className="inline-flex h-12 items-center rounded-xl border border-accent/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-ink"
             >
-              View Capabilities
+              {t(locale, "View Capabilities")}
             </a>
           </div>
         </div>
@@ -163,8 +165,8 @@ export default function MoxYachtClient() {
         <div className="mx-auto grid max-w-[1200px] grid-cols-2 divide-x divide-y divide-[#112040] md:grid-cols-4 md:divide-y-0">
           {HIGHLIGHTS.map(({ label, value }) => (
             <div key={label} className="flex flex-col items-center py-8 text-center">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-ink-muted">{label}</p>
-              <p className="mt-1 text-[14px] font-semibold text-ink-inverse">{value}</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-ink-muted">{t(locale, label)}</p>
+              <p className="mt-1 text-[14px] font-semibold text-ink-inverse">{t(locale, value)}</p>
             </div>
           ))}
         </div>
@@ -173,8 +175,8 @@ export default function MoxYachtClient() {
       {/* ── Services ─────────────────────────────────────────────────────── */}
       <section id="services" className="px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-[1200px]">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">What We Do</p>
-          <h2 className="mb-12 text-2xl font-bold text-ink-inverse">Core Capabilities</h2>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">{t(locale, "What We Do")}</p>
+          <h2 className="mb-12 text-2xl font-bold text-ink-inverse">{t(locale, "Core Capabilities")}</h2>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((svc) => (
@@ -183,8 +185,8 @@ export default function MoxYachtClient() {
                 className="rounded-xl border border-deal-room-line bg-deal-room p-7 transition-colors hover:border-accent/20"
               >
                 <span className="mb-4 block text-3xl">{svc.icon}</span>
-                <h3 className="mb-2 text-[16px] font-semibold text-ink-inverse">{svc.title}</h3>
-                <p className="text-[13px] leading-relaxed text-ink-inverse-muted">{svc.description}</p>
+                <h3 className="mb-2 text-[16px] font-semibold text-ink-inverse">{t(locale, svc.title)}</h3>
+                <p className="text-[13px] leading-relaxed text-ink-inverse-muted">{t(locale, svc.description)}</p>
               </div>
             ))}
           </div>
@@ -194,8 +196,8 @@ export default function MoxYachtClient() {
       {/* ── Gallery ──────────────────────────────────────────────────────── */}
       <section className="border-t border-deal-room-line bg-deal-room px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-[1200px]">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Operations</p>
-          <h2 className="mb-10 text-2xl font-bold text-ink-inverse">Yacht Project Gallery</h2>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">{t(locale, "Operations")}</p>
+          <h2 className="mb-10 text-2xl font-bold text-ink-inverse">{t(locale, "Yacht Project Gallery")}</h2>
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {GALLERY_ITEMS.map((item) => (
@@ -215,8 +217,8 @@ export default function MoxYachtClient() {
                   </div>
                 </div>
                 <div className="border-t border-deal-room-line bg-deal-room px-4 py-3">
-                  <p className="text-[12px] font-medium text-ink-inverse">{item.label}</p>
-                  <p className="text-[10px] text-ink-muted">{item.sub}</p>
+                  <p className="text-[12px] font-medium text-ink-inverse">{t(locale, item.label)}</p>
+                  <p className="text-[10px] text-ink-muted">{t(locale, item.sub)}</p>
                 </div>
               </div>
             ))}
@@ -229,12 +231,10 @@ export default function MoxYachtClient() {
         <div className="mx-auto max-w-[1200px]">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
-              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">Operational Base</p>
-              <h2 className="mb-4 text-2xl font-bold text-ink-inverse">Antalya Freezone Advantage</h2>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-accent">{t(locale, "Operational Base")}</p>
+              <h2 className="mb-4 text-2xl font-bold text-ink-inverse">{t(locale, "Antalya Freezone Advantage")}</h2>
               <p className="mb-6 text-[15px] leading-relaxed text-ink-inverse-muted">
-                Operating from Turkey&rsquo;s premier yacht hub, MOX YACHT leverages the Antalya
-                Freezone for cost-efficient, high-quality yacht projects. The Freezone status enables
-                VAT-exempt operations and streamlined international logistics.
+                {t(locale, "Operating from Turkey’s premier yacht hub, MOX YACHT leverages the Antalya Freezone for cost-efficient, high-quality yacht projects. The Freezone status enables VAT-exempt operations and streamlined international logistics.")}
               </p>
               <ul className="space-y-3">
                 {[
@@ -246,7 +246,7 @@ export default function MoxYachtClient() {
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-[13px] text-ink-inverse-muted">
                     <span className="mt-[5px] h-px w-5 shrink-0 bg-accent/50" />
-                    {item}
+                    {t(locale, item)}
                   </li>
                 ))}
               </ul>
@@ -276,7 +276,7 @@ export default function MoxYachtClient() {
                 {/* Label */}
                 <div className="absolute bottom-6 right-8 text-right">
                   <p className="text-[11px] font-medium text-accent/70">Antalya, TR</p>
-                  <p className="text-[10px] text-ink-muted">Mediterranean Hub</p>
+                  <p className="text-[10px] text-ink-muted">{t(locale, "Mediterranean Hub")}</p>
                 </div>
               </div>
             </div>
@@ -287,25 +287,24 @@ export default function MoxYachtClient() {
       {/* ── Contact CTA ──────────────────────────────────────────────────── */}
       <section className="border-t border-deal-room-line bg-deal-room px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-xl text-center">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-accent">Work With Us</p>
-          <h2 className="mb-4 text-2xl font-bold text-ink-inverse">Start Your Yacht Project</h2>
+          <p className="mb-3 text-[10px] uppercase tracking-[0.3em] text-accent">{t(locale, "Work With Us")}</p>
+          <h2 className="mb-4 text-2xl font-bold text-ink-inverse">{t(locale, "Start Your Yacht Project")}</h2>
           <p className="mb-8 text-[15px] leading-relaxed text-ink-inverse-muted">
-            Speak confidentially with the MOX YACHT team about your refit, production, or project
-            management requirements.
+            {t(locale, "Speak confidentially with the MOX YACHT team about your refit, production, or project management requirements.")}
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link
+            <LocaleLink
               href="/contact"
               className="inline-flex h-12 items-center rounded-xl bg-accent px-8 text-[12px] font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-[#e2c99a]"
             >
-              Contact MOX YACHT
-            </Link>
-            <Link
+              {t(locale, "Contact MOX YACHT")}
+            </LocaleLink>
+            <LocaleLink
               href="/off-market-yachts"
               className="inline-flex h-12 items-center rounded-xl border border-accent/30 px-8 text-[12px] font-semibold uppercase tracking-wider text-accent transition-colors hover:bg-accent hover:text-ink"
             >
-              Back to Marketplace
-            </Link>
+              {t(locale, "Back to Marketplace")}
+            </LocaleLink>
           </div>
         </div>
       </section>

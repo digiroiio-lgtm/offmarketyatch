@@ -1,4 +1,5 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { t, type Locale } from "@/lib/i18n";
 
 import {
   IS_SAMPLE_INVENTORY,
@@ -13,7 +14,7 @@ import {
  * Terms. Renders nothing once `NEXT_PUBLIC_INVENTORY_MODE=live` is set
  * against real verified inventory.
  */
-export default function SampleInventoryNotice({ onDark = false }: { onDark?: boolean }) {
+export default function SampleInventoryNotice({ onDark = false, locale = "en" }: { onDark?: boolean; locale?: Locale }) {
   if (!IS_SAMPLE_INVENTORY) return null;
 
   return (
@@ -24,12 +25,12 @@ export default function SampleInventoryNotice({ onDark = false }: { onDark?: boo
       role="note"
     >
       <span className={`font-medium ${onDark ? "text-ink-inverse" : "text-ink-muted"}`}>
-        {SAMPLE_INVENTORY_LABEL}.
+        {t(locale, SAMPLE_INVENTORY_LABEL)}.
       </span>{" "}
-      {SAMPLE_INVENTORY_NOTICE}{" "}
-      <Link href="/terms#representative-profiles" className="underline underline-offset-2">
-        Learn more
-      </Link>
+      {t(locale, SAMPLE_INVENTORY_NOTICE)}{" "}
+      <LocaleLink href="/terms#representative-profiles" className="underline underline-offset-2">
+        {t(locale, "Learn more")}
+      </LocaleLink>
     </p>
   );
 }

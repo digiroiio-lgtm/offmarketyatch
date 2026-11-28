@@ -1,4 +1,4 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 export default function SectionHeading({
   eyebrow,
@@ -46,14 +46,14 @@ export default function SectionHeading({
         )}
       </div>
       {linkHref && linkLabel && (
-        <Link
+        <LocaleLink
           href={linkHref}
           className={`shrink-0 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors ${
             onDark ? "text-accent hover:text-white" : "text-accent hover:text-ink"
           }`}
         >
           {linkLabel} →
-        </Link>
+        </LocaleLink>
       )}
     </div>
   );

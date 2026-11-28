@@ -6,6 +6,8 @@ import OpportunityGrid from "@/components/OpportunityGrid";
 import { track } from "@/lib/analytics";
 import { LENGTH_BANDS, PRICE_BANDS, priceBandFor } from "@/lib/format";
 import type { PublicOpportunity, YachtType } from "@/lib/types";
+import { useLocale } from "@/components/LocaleProvider";
+import { displayYachtText, t } from "@/lib/i18n";
 
 /**
  * Client-side browsing over an already-masked set of opportunities. The array
@@ -69,6 +71,7 @@ export default function MarketExplorer({
   initialFilters?: Partial<Filters>;
   showChips?: boolean;
 }) {
+  const locale = useLocale();
   const [filters, setFilters] = useState<Filters>({ ...EMPTY, ...initialFilters });
   const [searchInput, setSearchInput] = useState(filters.q);
   const searchStarted = useRef(false);
@@ -166,7 +169,7 @@ export default function MarketExplorer({
             <path strokeLinecap="round" d="M20 20l-3.5-3.5" />
           </svg>
           <label htmlFor="market-search" className="sr-only">
-            Search private yacht opportunities
+            {t(locale, "Search private yacht opportunities")}
           </label>
           <input
             id="market-search"
@@ -179,7 +182,7 @@ export default function MarketExplorer({
                 track("search_started", {});
               }
             }}
-            placeholder="Search private yacht opportunities..."
+            placeholder={t(locale, "Search private yacht opportunities...")}
             className="w-full bg-transparent py-1.5 text-[16px] text-ink outline-none placeholder:text-ink-faint"
           />
           {(searchInput || activeCount > 0) && (
@@ -191,7 +194,7 @@ export default function MarketExplorer({
               }}
               className="label-mono shrink-0 text-ink-faint transition-colors hover:text-accent"
             >
-              Clear
+              {t(locale, "Clear")}
             </button>
           )}
         </div>
@@ -214,7 +217,7 @@ export default function MarketExplorer({
             value={filters.location}
             onChange={(v) => updateFilter("location", v)}
             options={[
-              { value: "USA", label: "United States" },
+              { value: "USA", label: t(locale, "United States") },
               ...locations.map((l) => ({ value: l, label: l })),
             ]}
           />
@@ -222,13 +225,13 @@ export default function MarketExplorer({
             label="Type"
             value={filters.type}
             onChange={(v) => updateFilter("type", v)}
-            options={types.map((t) => ({ value: t, label: t }))}
+            options={types.map((type) => ({ value: type, label: displayYachtText(locale, type) }))}
           />
           <FilterSelect
             label="Build Region"
             value={filters.region}
             onChange={(v) => updateFilter("region", v)}
-            options={regions.map((r) => ({ value: r, label: r }))}
+            options={regions.map((region) => ({ value: region, label: displayYachtText(locale, region) }))}
           />
         </div>
       </div>
@@ -249,7 +252,7 @@ export default function MarketExplorer({
                     : "border-line-strong text-ink-muted hover:border-ink hover:text-ink"
                 }`}
               >
-                {chip.label}
+                {t(locale, chip.label)}
               </button>
             );
           })}
@@ -258,16 +261,15 @@ export default function MarketExplorer({
 
       <div className="mt-8 flex items-baseline justify-between border-b border-line pb-4">
         <p className="label-mono text-ink-faint">
-          {results.length} {results.length === 1 ? "opportunity" : "opportunities"}
-          {activeCount > 0 || filters.q ? " matching" : " published"}
+          {results.length} {t(locale, results.length === 1 ? "opportunity" : "opportunities")}{" "}{t(locale, activeCount > 0 || filters.q ? "matching" : "published")}
         </p>
         <p className="label-mono text-ink-faint">
-          Confidential · Masked until qualification
+          {t(locale, "Confidential · Masked until qualification")}
         </p>
       </div>
 
       <div className="mt-8">
-        <OpportunityGrid opportunities={results} priorityCount={3} />
+        <OpportunityGrid opportunities={results} priorityCount={3} locale={locale} />
       </div>
     </div>
   );
@@ -284,19 +286,20 @@ function FilterSelect({
   onChange: (value: string) => void;
   options: { value: string; label: string }[];
 }) {
+  const locale = useLocale();
   return (
     <div className="bg-paper-raised px-4 py-3">
       <label className="label-mono block text-ink-faint">
-        {label}
+        {t(locale, label)}
         <select
           value={value}
           onChange={(event) => onChange(event.target.value)}
           className="mt-2 w-full cursor-pointer bg-transparent text-[14px] font-normal normal-case tracking-normal text-ink outline-none"
         >
-          <option value="">Any</option>
+          <option value="">{t(locale, "Any")}</option>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {t(locale, option.label)}
             </option>
           ))}
         </select>

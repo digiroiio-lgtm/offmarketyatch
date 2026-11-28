@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import FinalCTA from "@/components/FinalCTA";
@@ -64,7 +64,7 @@ export default function IntelligenceHub() {
               <h2 className="label-mono mb-6 text-accent">{cluster}</h2>
               <div className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
                 {articles.map((article) => (
-                  <Link
+                  <LocaleLink
                     key={article.slug}
                     href={`/private-market-intelligence/${article.slug}`}
                     className="group flex flex-col bg-paper-raised p-7 transition-colors hover:bg-paper-sunken"
@@ -79,7 +79,7 @@ export default function IntelligenceHub() {
                       {article.readingMinutes} min read
                       <span className="ml-3 text-accent">Read →</span>
                     </p>
-                  </Link>
+                  </LocaleLink>
                 ))}
               </div>
             </div>

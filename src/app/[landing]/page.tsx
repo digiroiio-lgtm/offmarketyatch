@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import HomePage from "@/app/page";
+import { isLocale, SUPPORTED_LOCALES } from "@/lib/i18n";
+import { localizedPageMetadata } from "@/lib/seo";
+import { translateReactTree } from "@/lib/translate-tree";
+import { SITE } from "@/lib/site";
 import { notFound } from "next/navigation";
 
 import AnswerBlock from "@/components/AnswerBlock";
@@ -35,13 +40,24 @@ import {
 export const dynamicParams = true;
 
 export function generateStaticParams() {
-  return LANDING_PAGES.map((page) => ({ landing: page.slug }));
+  return [
+    ...LANDING_PAGES.map((page) => ({ landing: page.slug })),
+    ...SUPPORTED_LOCALES.map((locale) => ({ landing: locale })),
+  ];
 }
 
 export async function generateMetadata(
   props: PageProps<"/[landing]">
 ): Promise<Metadata> {
   const { landing } = await props.params;
+  if (isLocale(landing)) {
+    const title = "Off-Market Yachts for Sale | Private Yacht Opportunities — OffMarketYacht";
+    return localizedPageMetadata(landing, "/", {
+      title,
+      description: SITE.description,
+      openGraph: { type: "website", title, description: SITE.description },
+    });
+  }
   const page = getLandingPage(landing);
   if (!page) return {};
 
@@ -55,6 +71,7 @@ export async function generateMetadata(
 
 export default async function LandingRoute(props: PageProps<"/[landing]">) {
   const { landing } = await props.params;
+  if (isLocale(landing)) return translateReactTree(await HomePage(), landing);
   const page = getLandingPage(landing);
   if (!page) notFound();
 
@@ -93,16 +110,16 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
             {page.standfirst}
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link href="/request-private-access" className="btn-primary">
+            <LocaleLink href="/request-private-access" className="btn-primary">
               Request Private Access
-            </Link>
-            <Link href="#opportunities" className="btn-onDark">
+            </LocaleLink>
+            <LocaleLink href="#opportunities" className="btn-onDark">
               {opportunities.length > 0
                 ? `View ${opportunities.length} ${
                     opportunities.length === 1 ? "Opportunity" : "Opportunities"
                   }`
                 : "Start a Private Search"}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>
@@ -144,9 +161,9 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
               <MarketExplorer opportunities={opportunities} showChips={false} />
               {showPreviewLink && page.preview && (
                 <div className="mt-8">
-                  <Link href={page.preview.href} className="btn-secondary">
+                  <LocaleLink href={page.preview.href} className="btn-secondary">
                     {page.preview.label}
-                  </Link>
+                  </LocaleLink>
                 </div>
               )}
             </>
@@ -155,9 +172,9 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
               <p className="mx-auto max-w-lg text-[16px] leading-relaxed text-ink-muted">
                 {page.emptyMessage}
               </p>
-              <Link href="/request-private-access" className="btn-primary mt-7">
+              <LocaleLink href="/request-private-access" className="btn-primary mt-7">
                 Start a Private Search
-              </Link>
+              </LocaleLink>
             </div>
           )}
         </div>
@@ -214,13 +231,13 @@ export default async function LandingRoute(props: PageProps<"/[landing]">) {
           <h2 className="label-mono mb-6 text-accent">Related</h2>
           <div className="flex flex-wrap gap-2.5">
             {page.related.map((link) => (
-              <Link
+              <LocaleLink
                 key={link.href}
                 href={link.href}
                 className="border border-line-strong px-4 py-2.5 text-[14px] text-ink-muted transition-colors hover:border-ink hover:text-ink"
               >
                 {link.label}
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         </div>

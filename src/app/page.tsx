@@ -1,4 +1,4 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
@@ -88,12 +88,12 @@ export default function HomePage() {
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link href="/off-market-yachts" className="btn-primary">
+                <LocaleLink href="/off-market-yachts" className="btn-primary">
                   Explore Private Opportunities
-                </Link>
-                <Link href="/request-private-access" className="btn-onDark">
+                </LocaleLink>
+                <LocaleLink href="/request-private-access" className="btn-onDark">
                   Tell Us What You&rsquo;re Looking For
-                </Link>
+                </LocaleLink>
               </div>
 
               <p className="mt-6 text-[13px] text-ink-inverse-muted">
@@ -195,9 +195,9 @@ export default function HomePage() {
                 exposure: a defined set of qualified buyers rather than an open invitation.
               </p>
               <p>
-                <Link href="/private-market-intelligence/what-is-an-off-market-yacht">
+                <LocaleLink href="/private-market-intelligence/what-is-an-off-market-yacht">
                   Read the full explanation of how off-market yacht sales work →
-                </Link>
+                </LocaleLink>
               </p>
             </div>
           </div>
@@ -230,13 +230,13 @@ export default function HomePage() {
               { label: "Bahamas", href: "/yachts-for-sale-bahamas" },
               { label: "Caribbean", href: "/yachts-for-sale-caribbean" },
             ].map((market) => (
-              <Link
+              <LocaleLink
                 key={market.href}
                 href={market.href}
                 className="label-mono border border-line-strong px-3 py-2 text-ink-muted transition-colors hover:border-ink hover:text-ink"
               >
                 {market.label}
-              </Link>
+              </LocaleLink>
             ))}
           </div>
 
@@ -349,9 +349,9 @@ export default function HomePage() {
                 value your yacht from a form, and we will not tell you a buyer exists unless one
                 does.
               </p>
-              <Link href="/sell-your-yacht-privately" className="btn-primary mt-8">
+              <LocaleLink href="/sell-your-yacht-privately" className="btn-primary mt-8">
                 Discuss a Private Sale
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className="border border-line bg-paper-raised">
@@ -428,7 +428,7 @@ export default function HomePage() {
                 body: "From offer and deposit through survey, sea trial, closing and registration.",
               },
             ].map((article) => (
-              <Link
+              <LocaleLink
                 key={article.href}
                 href={article.href}
                 className="group bg-paper-raised p-7 transition-colors hover:bg-paper-sunken"
@@ -440,7 +440,7 @@ export default function HomePage() {
                   {article.body}
                 </p>
                 <span className="label-mono mt-5 inline-block text-accent">Read →</span>
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         </div>

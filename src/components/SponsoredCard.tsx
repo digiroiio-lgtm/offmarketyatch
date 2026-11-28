@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import SponsorBadge from "./SponsorBadge";
 
 // Three editorial card variants
@@ -123,12 +123,12 @@ export default function SponsoredCard({ variantIndex = 0 }: SponsoredCardProps) 
             <p className="text-[10px] uppercase tracking-widest text-[#4a5568]">Antalya, TR</p>
             <p className="text-[12px] font-medium text-[#c9a96e]/80">Mediterranean</p>
           </div>
-          <Link
+          <LocaleLink
             href="/partners/mox-yacht"
             className="rounded-lg border border-[#c9a96e]/30 px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-all duration-200 hover:bg-[#c9a96e] hover:text-[#0a1628]"
           >
             {v.cta}
-          </Link>
+          </LocaleLink>
         </div>
       </div>
     </article>

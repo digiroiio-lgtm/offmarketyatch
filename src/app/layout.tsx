@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 import "./globals.css";
 import AttributionTracker from "@/components/AttributionTracker";
@@ -7,6 +8,8 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Header from "@/components/Header";
 import SchemaOrg from "@/components/SchemaOrg";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import { LocaleProvider } from "@/components/LocaleProvider";
+import { LOCALE_CONFIG, localeFromHeader } from "@/lib/i18n";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
@@ -46,25 +49,28 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = localeFromHeader((await headers()).get("x-om-locale"));
   return (
-    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+    <html lang={LOCALE_CONFIG[locale].htmlLang} dir={LOCALE_CONFIG[locale].dir} className="h-full antialiased" suppressHydrationWarning>
       <body className="flex min-h-full flex-col bg-paper text-ink">
+        <LocaleProvider locale={locale}>
         {/* Applies the stored theme before paint so there is no flash. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}`,
           }}
         />
-        <SchemaOrg schema={[organizationSchema(), websiteSchema()]} />
+        <SchemaOrg schema={[organizationSchema(locale), websiteSchema(locale)]} />
         <GoogleAnalytics />
         <AttributionTracker />
         <Header />
         <main id="main" className="flex-1 pb-[68px] md:pb-0">
           {children}
         </main>
-        <Footer />
+        <Footer locale={locale} />
         <StickyMobileCTA />
+        </LocaleProvider>
       </body>
     </html>
   );

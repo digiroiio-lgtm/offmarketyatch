@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
@@ -101,7 +101,7 @@ export default function BrokerCooperationPage() {
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {PATHS.map((path) => (
-              <Link
+              <LocaleLink
                 key={path.href}
                 href={path.href}
                 className="group flex flex-col border border-line-strong bg-paper-raised p-6 transition-colors hover:border-ink"
@@ -112,7 +112,7 @@ export default function BrokerCooperationPage() {
                 <span className="mt-3 text-[14.5px] leading-relaxed text-ink-muted">
                   {path.body}
                 </span>
-              </Link>
+              </LocaleLink>
             ))}
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function BrokerCooperationPage() {
             <a href="#requirement">submit your client&rsquo;s requirement</a>: the yard if it is
             firm, the length, the real budget ceiling and the timeline. We match it privately
             and reply to you. You can also enquire against any{" "}
-            <Link href="/off-market-yachts">published reference</Link> on your client&rsquo;s
+            <LocaleLink href="/off-market-yachts">published reference</LocaleLink> on your client&rsquo;s
             behalf.
           </p>
           <p>
@@ -147,9 +147,9 @@ export default function BrokerCooperationPage() {
           </p>
           <p>
             Our guide to{" "}
-            <Link href="/private-market-intelligence/how-to-source-a-yacht-for-a-client">
+            <LocaleLink href="/private-market-intelligence/how-to-source-a-yacht-for-a-client">
               sourcing a yacht for a client
-            </Link>{" "}
+            </LocaleLink>{" "}
             explains what a credible brief contains and how introductions are agreed.
           </p>
 

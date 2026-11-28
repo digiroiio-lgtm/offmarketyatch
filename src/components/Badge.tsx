@@ -1,4 +1,5 @@
 import type { OpportunityBadge } from "@/lib/types";
+import { t, type Locale } from "@/lib/i18n";
 
 /**
  * Restrained badge system. Every badge shown is derived from a stored field
@@ -37,9 +38,11 @@ const BADGE_TONE: Record<OpportunityBadge, Tone> = {
 export function Badge({
   badge,
   onDark = false,
+  locale = "en",
 }: {
   badge: OpportunityBadge;
   onDark?: boolean;
+  locale?: Locale;
 }) {
   const tone = BADGE_TONE[badge] ?? "geo";
   const onDarkClass =
@@ -55,7 +58,7 @@ export function Badge({
         onDark ? onDarkClass : TONE[tone]
       }`}
     >
-      {badge}
+      {t(locale, badge)}
     </span>
   );
 }
@@ -65,10 +68,12 @@ export function BadgeRow({
   badges,
   limit = 3,
   onDark = false,
+  locale = "en",
 }: {
   badges: OpportunityBadge[];
   limit?: number;
   onDark?: boolean;
+  locale?: Locale;
 }) {
   const priority: OpportunityBadge[] = [
     "POTENTIAL OPPORTUNITY",
@@ -94,7 +99,7 @@ export function BadgeRow({
   return (
     <div className="flex flex-wrap gap-1.5">
       {ordered.slice(0, limit).map((badge) => (
-        <Badge key={badge} badge={badge} onDark={onDark} />
+        <Badge key={badge} badge={badge} onDark={onDark} locale={locale} />
       ))}
     </div>
   );

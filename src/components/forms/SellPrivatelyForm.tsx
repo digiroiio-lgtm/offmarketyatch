@@ -12,10 +12,13 @@ import {
 import { EXPECTED_VALUE, SALE_TIMELINE, YACHT_TYPE } from "@/components/forms/intake-options";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 /** Sell-side funnel (§12). Positioned as private exploration, not a mandate. */
 
 export default function SellPrivatelyForm() {
+  const locale = useLocale();
   const [yacht, setYacht] = useState({
     type: "",
     length: "",
@@ -86,15 +89,12 @@ export default function SellPrivatelyForm() {
       noValidate
       className="relative border border-line bg-paper-raised p-6 sm:p-10"
     >
-      <p className="label-mono text-accent">Private Sale Enquiry</p>
+      <p className="label-mono text-accent">{t(locale, "Private Sale Enquiry")}</p>
       <h2 className="display mt-3 text-[28px] text-ink sm:text-[32px]">
-        Tell us about the yacht.
+        {t(locale, "Tell us about the yacht.")}
       </h2>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-muted">
-        Nothing is published, circulated or listed as a result of this form. It starts a private
-        conversation about whether there is buyer demand worth exploring. Matching your yacht to
-        buyers, any masked entry and any disclosure of its identity each need your separate
-        authorisation later.
+        {t(locale, "Nothing is published, circulated or listed as a result of this form. It starts a private conversation about whether there is buyer demand worth exploring. Matching your yacht to buyers, any masked entry and any disclosure of its identity each need your separate authorisation later.")}
       </p>
 
       <Honeypot value={honeypot} onChange={setHoneypot} />
@@ -112,14 +112,14 @@ export default function SellPrivatelyForm() {
           label="Length"
           value={yacht.length}
           onChange={(v) => setYacht((p) => ({ ...p, length: v }))}
-          placeholder="e.g. 120 ft"
+          placeholder={t(locale, "e.g. 120 ft")}
         />
         <Field
           id="sell-year"
           label="Year"
           value={yacht.year}
           onChange={(v) => setYacht((p) => ({ ...p, year: v }))}
-          placeholder="e.g. 2018"
+          placeholder={t(locale, "e.g. 2018")}
         />
         <Field
           id="sell-builder"
@@ -132,7 +132,7 @@ export default function SellPrivatelyForm() {
           label="Current Location"
           value={yacht.location}
           onChange={(v) => setYacht((p) => ({ ...p, location: v }))}
-          placeholder="e.g. Fort Lauderdale"
+          placeholder={t(locale, "e.g. Fort Lauderdale")}
         />
         <SelectField
           id="sell-value"
@@ -151,7 +151,7 @@ export default function SellPrivatelyForm() {
       </div>
 
       <div className="mt-10 border-t border-line pt-8">
-        <h3 className="mb-5 text-[17px] font-semibold text-ink">How should we reach you?</h3>
+        <h3 className="mb-5 text-[17px] font-semibold text-ink">{t(locale, "How should we reach you?")}</h3>
         <div className="grid gap-5 sm:grid-cols-3">
           <Field
             id="sell-name"
@@ -194,12 +194,11 @@ export default function SellPrivatelyForm() {
         disabled={status === "sending"}
         className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto"
       >
-        {status === "sending" ? "Sending…" : "Discuss a Private Sale"}
+        {status === "sending" ? t(locale, "Sending…") : t(locale, "Discuss a Private Sale")}
       </button>
 
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-        Confidential. We do not publish your yacht, circulate its details, or contact your crew
-        or marina without your instruction, and we record each authorisation you give.
+        {t(locale, "Confidential. We do not publish your yacht, circulate its details, or contact your crew or marina without your instruction, and we record each authorisation you give.")}
       </p>
     </form>
   );

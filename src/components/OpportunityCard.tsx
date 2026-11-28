@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { useLocale } from "@/components/LocaleProvider";
+import { displayYachtText, t } from "@/lib/i18n";
 
 import { BadgeRow } from "@/components/Badge";
 import OpportunityVisual from "@/components/OpportunityVisual";
@@ -14,6 +16,12 @@ import type { PublicOpportunity } from "@/lib/types";
  * renders has already been masked server-side; there is nothing withheld
  * hiding in the props.
  */
+function localizedAddedLabel(locale: ReturnType<typeof useLocale>, label: string): string {
+  const days = label.match(/^Added (\d+) days ago$/);
+  if (days) return t(locale, "Added {days} days ago").replace("{days}", days[1]);
+  return t(locale, label);
+}
+
 export default function OpportunityCard({
   opportunity,
   priority = false,
@@ -23,6 +31,7 @@ export default function OpportunityCard({
   priority?: boolean;
   compact?: boolean;
 }) {
+  const locale = useLocale();
   const href = `/off-market-yachts/${opportunity.slug}`;
   const isPotential = opportunity.availabilityType === "POTENTIAL OPPORTUNITY";
 
@@ -32,7 +41,7 @@ export default function OpportunityCard({
         <OpportunityVisual
           image={
             opportunity.images[0] ?? {
-              alt: `Profile study of a ${opportunity.type.toLowerCase()}`,
+              alt: t(locale, "Profile study") + " — " + displayYachtText(locale, opportunity.type),
               treatment: "silhouette",
               seed: opportunity.reference,
             }
@@ -40,6 +49,7 @@ export default function OpportunityCard({
           type={opportunity.type}
           className={compact ? "aspect-[16/9]" : "aspect-[16/10]"}
           priority={priority}
+          locale={locale}
         />
         {/*
           The reference and the badges share one row, so the badge count has to
@@ -47,7 +57,7 @@ export default function OpportunityCard({
           shrinking badge row keeps them apart at every width.
         */}
         <div className="absolute inset-x-3 top-3 flex items-start justify-between gap-2">
-          <BadgeRow badges={opportunity.badges} limit={compact ? 1 : 2} onDark />
+          <BadgeRow badges={opportunity.badges} limit={compact ? 1 : 2} onDark locale={locale} />
           <span className="label-mono shrink-0 border border-white/20 px-2 py-1 text-white/70">
             {opportunity.reference}
           </span>
@@ -56,37 +66,37 @@ export default function OpportunityCard({
 
       <div className="flex flex-1 flex-col p-5">
         <p className="label-mono text-ink-faint">
-          {opportunity.availabilityType}
+          {t(locale, opportunity.availabilityType)}
           {opportunity.verified && (
-            <span className="ml-2 text-signal">· Seller position confirmed</span>
+            <span className="ml-2 text-signal">· {t(locale, "Seller position confirmed")}</span>
           )}
         </p>
 
         <h3 className="mt-2.5 text-[19px] font-semibold leading-snug tracking-tight text-ink">
-          <Link href={href} className="after:absolute after:inset-0">
-            {opportunity.titlePublic}
-          </Link>
+          <LocaleLink href={href} className="after:absolute after:inset-0">
+            {displayYachtText(locale, opportunity.titlePublic)}
+          </LocaleLink>
         </h3>
 
         <p className="mt-1.5 text-[13.5px] text-ink-muted">
-          {opportunity.buildRegion} · {opportunity.yearLabel}
-          {opportunity.refitYear ? ` · Refit ${opportunity.refitYear}` : ""}
+          {displayYachtText(locale, opportunity.buildRegion)} · {opportunity.yearLabel}
+          {opportunity.refitYear ? ` · ${t(locale, "Refit")} ${opportunity.refitYear}` : ""}
         </p>
-        <p className="text-[13.5px] text-ink-muted">{opportunity.locationPublic}</p>
+        <p className="text-[13.5px] text-ink-muted">{t(locale, opportunity.locationPublic)}</p>
 
         <p className="mt-4 font-mono text-[20px] tabular-nums tracking-tight text-ink">
           {opportunity.priceLabel}
         </p>
         {opportunity.priceVisibility === "band" && (
-          <p className="label-mono mt-1 text-ink-faint">Estimated asking range</p>
+          <p className="label-mono mt-1 text-ink-faint">{t(locale, "Estimated asking range")}</p>
         )}
 
         {!compact && (
           <dl className="mt-4 grid grid-cols-3 gap-x-3 gap-y-2 border-t border-line pt-4">
             {[
-              { term: "Guests", value: opportunity.guests },
-              { term: "Cabins", value: opportunity.cabins },
-              { term: "Crew", value: opportunity.crew },
+              { term: t(locale, "Guests"), value: opportunity.guests },
+              { term: t(locale, "Cabins"), value: opportunity.cabins },
+              { term: t(locale, "Crew"), value: opportunity.crew },
             ]
               .filter((row) => row.value !== null)
               .map((row) => (
@@ -97,7 +107,7 @@ export default function OpportunityCard({
               ))}
             {opportunity.hullMaterial && (
               <div className="col-span-3">
-                <dt className="label-mono text-ink-faint">Hull</dt>
+                <dt className="label-mono text-ink-faint">{t(locale, "Hull")}</dt>
                 <dd className="data-value mt-1 text-ink">{opportunity.hullMaterial}</dd>
               </div>
             )}
@@ -106,17 +116,16 @@ export default function OpportunityCard({
 
         {isPotential && (
           <p className="mt-4 border-l-2 border-lock/60 pl-3 text-[12.5px] leading-relaxed text-ink-muted">
-            Availability not confirmed. Our acquisition team can investigate privately on behalf
-            of qualified buyers.
+            {t(locale, "Availability not confirmed. Our acquisition team can investigate privately on behalf of qualified buyers.")}
           </p>
         )}
 
         <div className="mt-auto flex items-end justify-between gap-3 pt-5">
           <span className="label-mono text-ink-faint">
-            {relativeDayLabel(opportunity.createdAt)}
+            {localizedAddedLabel(locale, relativeDayLabel(opportunity.createdAt))}
           </span>
           <span className="text-[12px] font-semibold uppercase tracking-[0.12em] text-accent transition-transform group-hover:translate-x-0.5">
-            {isPotential ? "Investigate Privately →" : "Request Details →"}
+            {t(locale, isPotential ? "Investigate Privately →" : "Request Details →")}
           </span>
         </div>
       </div>

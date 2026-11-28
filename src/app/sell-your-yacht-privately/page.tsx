@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -71,9 +71,9 @@ export default function SellPrivatelyPage() {
           <p className="mt-6 max-w-2xl text-[18px] leading-relaxed text-ink-inverse-muted">
             Explore buyer demand without immediately placing your yacht on the public market.
           </p>
-          <Link href="#enquiry" className="btn-primary mt-9">
+          <LocaleLink href="#enquiry" className="btn-primary mt-9">
             Discuss a Private Sale
-          </Link>
+          </LocaleLink>
         </div>
       </section>
 

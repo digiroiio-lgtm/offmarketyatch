@@ -1,4 +1,5 @@
 import type { PublicImage, YachtType } from "@/lib/types";
+import { t, type Locale } from "@/lib/i18n";
 
 /**
  * Privacy treatment for opportunity imagery.
@@ -46,12 +47,14 @@ export default function OpportunityVisual({
   type,
   className = "",
   priority = false,
+  locale = "en",
 }: {
   image: PublicImage;
   type: YachtType;
   className?: string;
   /** Set on above-the-fold cards; drops the lazy hint so LCP paints sooner. */
   priority?: boolean;
+  locale?: Locale;
 }) {
   const drift = seedValue(image.seed);
   const horizon = 58 + drift * 10;
@@ -67,7 +70,7 @@ export default function OpportunityVisual({
         viewBox="0 0 400 200"
         className="h-full w-full"
         role="img"
-        aria-label={image.alt}
+        aria-label={t(locale, image.alt)}
         preserveAspectRatio="xMidYMid slice"
         {...(priority ? {} : { loading: "lazy" as const })}
       >
@@ -109,7 +112,7 @@ export default function OpportunityVisual({
 
       {image.treatment !== "authorized" && (
         <span className="label-mono absolute bottom-2.5 left-3 text-white/45">
-          {image.treatment === "silhouette" ? "Profile study" : "Illustrative"} · not the vessel
+          {t(locale, image.treatment === "silhouette" ? "Profile study" : "Illustrative")} · {t(locale, "not the vessel")}
         </span>
       )}
     </div>

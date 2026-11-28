@@ -1,4 +1,5 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { t, type Locale } from "@/lib/i18n";
 
 /**
  * The locked block tells the visitor exactly which attributes are being
@@ -11,11 +12,13 @@ export default function LockedDetails({
   reference,
   href,
   heading = "Withheld Until Buyer Qualification",
+  locale = "en",
 }: {
   fields: string[];
   reference: string;
   href: string;
   heading?: string;
+  locale?: Locale;
 }) {
   return (
     <section
@@ -23,7 +26,7 @@ export default function LockedDetails({
       className="border border-line bg-deal-room text-ink-inverse"
     >
       <div className="border-b border-deal-room-line px-6 py-5 sm:px-8">
-        <p className="label-mono text-accent">Confidential Details</p>
+        <p className="label-mono text-accent">{t(locale, "Confidential Details")}</p>
         <h2
           id={`locked-${reference}`}
           className="display mt-3 text-[26px] text-ink-inverse sm:text-[30px]"
@@ -31,8 +34,7 @@ export default function LockedDetails({
           {heading}
         </h2>
         <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-inverse-muted">
-          The owner has authorised a limited public description only. The attributes below are
-          held server-side and released to qualified buyers under appropriate terms.
+          {t(locale, "The owner has authorised a limited public description only. The attributes below are held server-side and released to qualified buyers under appropriate terms.")}
         </p>
       </div>
 
@@ -53,19 +55,17 @@ export default function LockedDetails({
                 d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
               />
             </svg>
-            <span className="text-[15px] text-ink-inverse-muted">{field}</span>
+            <span className="text-[15px] text-ink-inverse-muted">{t(locale, field)}</span>
           </li>
         ))}
       </ul>
 
       <div className="px-6 py-7 sm:px-8">
-        <Link href={href} className="btn-primary w-full sm:w-auto">
-          Request Private Access
-        </Link>
+        <LocaleLink href={href} className="btn-primary w-full sm:w-auto">
+          {t(locale, "Request Private Access")}
+        </LocaleLink>
         <p className="mt-4 text-[13px] leading-relaxed text-ink-faint">
-          Available to qualified buyers. All inquiries handled confidentially. Submitting a
-          request does not release confidential information automatically — a member of our team
-          reviews every request before anything is shared.
+          {t(locale, "Available to qualified buyers. All inquiries handled confidentially. Submitting a request does not release confidential information automatically — a member of our team reviews every request before anything is shared.")}
         </p>
       </div>
     </section>

@@ -1,5 +1,8 @@
 "use client";
 
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
+
 /** Shared primitives for the lead funnels. */
 
 export function StepIndicator({
@@ -11,13 +14,14 @@ export function StepIndicator({
   total: number;
   label: string;
 }) {
+  const locale = useLocale();
   return (
     <div className="mb-8">
       <div className="flex items-baseline justify-between">
         <p className="label-mono text-accent">
-          Step {String(step).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          {t(locale, "Step")} {String(step).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </p>
-        <p className="label-mono text-ink-faint">{label}</p>
+        <p className="label-mono text-ink-faint">{t(locale, label)}</p>
       </div>
       <div
         className="mt-3 flex gap-1"
@@ -25,7 +29,7 @@ export function StepIndicator({
         aria-valuenow={step}
         aria-valuemin={1}
         aria-valuemax={total}
-        aria-label={`Step ${step} of ${total}: ${label}`}
+        aria-label={`${t(locale, "Step")} ${step} ${t(locale, "of")} ${total}: ${t(locale, label)}`}
       >
         {Array.from({ length: total }, (_, index) => (
           <span
@@ -51,9 +55,10 @@ export function ChoiceGroup({
   value: string;
   onSelect: (value: string) => void;
 }) {
+  const locale = useLocale();
   return (
     <fieldset>
-      <legend className="display mb-6 text-[26px] text-ink sm:text-[30px]">{legend}</legend>
+      <legend className="display mb-6 text-[26px] text-ink sm:text-[30px]">{t(locale, legend)}</legend>
       <div className="grid gap-2.5 sm:grid-cols-2">
         {options.map((option) => (
           <button
@@ -63,7 +68,7 @@ export function ChoiceGroup({
             onClick={() => onSelect(option)}
             className="choice-tile"
           >
-            <span>{option}</span>
+            <span>{t(locale, option)}</span>
             <span
               aria-hidden="true"
               className={`h-2 w-2 shrink-0 rounded-full border transition-colors ${
@@ -100,10 +105,11 @@ export function Field({
   error?: string;
   hint?: string;
 }) {
+  const locale = useLocale();
   return (
     <div>
       <label htmlFor={id} className="form-label">
-        {label}
+        {t(locale, label)}
         {required && (
           <span className="ml-1 text-accent" aria-hidden="true">
             *
@@ -117,19 +123,19 @@ export function Field({
         onChange={(event) => onChange(event.target.value)}
         required={required}
         autoComplete={autoComplete}
-        placeholder={placeholder}
+        placeholder={placeholder ? t(locale, placeholder) : undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
         className="form-input"
       />
       {hint && !error && (
         <p id={`${id}-hint`} className="form-hint">
-          {hint}
+          {t(locale, hint)}
         </p>
       )}
       {error && (
         <p id={`${id}-error`} role="alert" className="mt-1 text-[12px] text-accent">
-          {error}
+          {t(locale, error)}
         </p>
       )}
     </div>
@@ -151,10 +157,11 @@ export function SelectField({
   options: string[];
   required?: boolean;
 }) {
+  const locale = useLocale();
   return (
     <div>
       <label htmlFor={id} className="form-label">
-        {label}
+        {t(locale, label)}
         {required && (
           <span className="ml-1 text-accent" aria-hidden="true">
             *
@@ -168,10 +175,10 @@ export function SelectField({
         required={required}
         className="form-input"
       >
-        <option value="">Select…</option>
+        <option value="">{t(locale, "Select…")}</option>
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            {t(locale, option)}
           </option>
         ))}
       </select>
@@ -187,9 +194,10 @@ export function Honeypot({
   value: string;
   onChange: (value: string) => void;
 }) {
+  const locale = useLocale();
   return (
     <div aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
-      <label htmlFor="website-url">Website</label>
+      <label htmlFor="website-url">{t(locale, "Website")}</label>
       <input
         id="website-url"
         name="website"
@@ -204,10 +212,11 @@ export function Honeypot({
 }
 
 export function FormError({ message }: { message: string | null }) {
+  const locale = useLocale();
   if (!message) return null;
   return (
     <p role="alert" className="border-l-2 border-accent py-2 pl-4 text-[14px] text-ink">
-      {message}
+      {t(locale, message)}
     </p>
   );
 }
@@ -221,12 +230,13 @@ export function SuccessPanel({
   body: string;
   footnote?: string;
 }) {
+  const locale = useLocale();
   return (
     <div className="border border-line bg-paper-raised p-8 sm:p-10" role="status">
-      <p className="label-mono text-signal">Request received</p>
-      <h2 className="display mt-4 text-[28px] text-ink sm:text-[32px]">{title}</h2>
-      <p className="mt-4 text-[16px] leading-relaxed text-ink-muted">{body}</p>
-      {footnote && <p className="mt-6 text-[13px] leading-relaxed text-ink-faint">{footnote}</p>}
+      <p className="label-mono text-signal">{t(locale, "Request received")}</p>
+      <h2 className="display mt-4 text-[28px] text-ink sm:text-[32px]">{t(locale, title)}</h2>
+      <p className="mt-4 text-[16px] leading-relaxed text-ink-muted">{t(locale, body)}</p>
+      {footnote && <p className="mt-6 text-[13px] leading-relaxed text-ink-faint">{t(locale, footnote)}</p>}
     </div>
   );
 }

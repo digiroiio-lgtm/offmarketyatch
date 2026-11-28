@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import SponsorBadge from "./SponsorBadge";
 
 const CAPABILITIES = [
@@ -102,18 +102,18 @@ export default function FeaturedSponsorBlock() {
 
           {/* CTAs */}
           <div className="flex flex-wrap gap-3">
-            <Link
+            <LocaleLink
               href="/partners/mox-yacht"
               className="inline-flex h-11 items-center rounded-xl bg-[#c9a96e] px-7 text-[12px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
             >
               View Capabilities
-            </Link>
-            <Link
+            </LocaleLink>
+            <LocaleLink
               href="/contact"
               className="inline-flex h-11 items-center rounded-xl border border-[#c9a96e]/30 px-7 text-[12px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
             >
               Contact Team
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </div>

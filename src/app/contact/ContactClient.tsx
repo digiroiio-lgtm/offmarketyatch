@@ -6,8 +6,11 @@ import { Field, FormError, Honeypot, SuccessPanel } from "@/components/forms/For
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
 import { SITE } from "@/lib/site";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 export default function ContactClient() {
+  const locale = useLocale();
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [message, setMessage] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -40,10 +43,10 @@ export default function ContactClient() {
       <div className="container-site">
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <h2 className="label-mono mb-5 text-accent">Direct</h2>
+            <h2 className="label-mono mb-5 text-accent">{t(locale, "Direct")}</h2>
             <dl className="border-t border-line">
               <div className="border-b border-line py-4">
-                <dt className="text-[13px] text-ink-faint">Email</dt>
+                <dt className="text-[13px] text-ink-faint">{t(locale, "Email")}</dt>
                 <dd className="mt-1">
                   <a
                     href={`mailto:${SITE.email}`}
@@ -54,7 +57,7 @@ export default function ContactClient() {
                 </dd>
               </div>
               <div className="border-b border-line py-4">
-                <dt className="text-[13px] text-ink-faint">Telephone</dt>
+                <dt className="text-[13px] text-ink-faint">{t(locale, "Telephone")}</dt>
                 <dd className="mt-1">
                   <a
                     href={`tel:${SITE.phoneHref}`}
@@ -67,8 +70,7 @@ export default function ContactClient() {
             </dl>
 
             <p className="mt-8 text-[14px] leading-relaxed text-ink-muted">
-              For a specific opportunity, enquire against its reference from the opportunity page
-              — that carries the listing context and gets a faster, more useful answer.
+              {t(locale, "For a specific opportunity, enquire against its reference from the opportunity page — that carries the listing context and gets a faster, more useful answer.")}
             </p>
           </div>
 
@@ -83,9 +85,9 @@ export default function ContactClient() {
               noValidate
               className="relative border border-line bg-paper-raised p-6 sm:p-8"
             >
-              <h2 className="display text-[26px] text-ink sm:text-[30px]">Send a message</h2>
+              <h2 className="display text-[26px] text-ink sm:text-[30px]">{t(locale, "Send a message")}</h2>
               <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
-                Confidential. We do not publish, share or sell contact details.
+                {t(locale, "Confidential. We do not publish, share or sell contact details.")}
               </p>
 
               <Honeypot value={honeypot} onChange={setHoneypot} />
@@ -124,7 +126,7 @@ export default function ContactClient() {
 
               <div className="mt-5">
                 <label htmlFor="c-message" className="form-label">
-                  Message
+                  {t(locale, "Message")}
                 </label>
                 <textarea
                   id="c-message"
@@ -132,7 +134,7 @@ export default function ContactClient() {
                   value={message}
                   onChange={(event) => setMessage(event.target.value)}
                   className="form-input resize-y"
-                  placeholder="What are you looking for, or what would you like to discuss?"
+                  placeholder={t(locale, "What are you looking for, or what would you like to discuss?")}
                 />
               </div>
 
@@ -145,7 +147,7 @@ export default function ContactClient() {
                 disabled={status === "sending"}
                 className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto"
               >
-                {status === "sending" ? "Sending…" : "Send Message"}
+                {status === "sending" ? t(locale, "Sending…") : t(locale, "Send Message")}
               </button>
             </form>
           )}
