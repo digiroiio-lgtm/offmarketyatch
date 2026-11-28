@@ -424,6 +424,19 @@ export function getAllOpportunitySlugs(): { slug: string; indexable: boolean; up
     .map((o) => ({ slug: o.slug, indexable: o.indexable, updatedAt: o.updatedAt }));
 }
 
+/**
+ * True when another published listing has the same public title and location.
+ * Those listings would otherwise share one <title>, which search engines read
+ * as duplicates, so the page adds its public reference to tell them apart.
+ */
+export function sharesPublicTitle(opportunity: PublicOpportunity): boolean {
+  const now = new Date();
+  const key = `${opportunity.titlePublic}|${opportunity.locationPublic}`;
+  return publishedRecords()
+    .map((r) => toPublicOpportunity(r, now))
+    .some((o) => o.slug !== opportunity.slug && `${o.titlePublic}|${o.locationPublic}` === key);
+}
+
 /** Real counts, used wherever the UI shows a number. Never estimated. */
 export function getInventoryStats() {
   const now = new Date();

@@ -123,6 +123,18 @@ export const FOOTER_NAV: { heading: string; links: NavItem[] }[] = [
   },
 ];
 
+/** Yacht types and builders, linked site-wide so each page is easy to reach. */
+export const TYPE_BUILDER_NAV: NavItem[] = [
+  { href: "/motor-yachts-for-sale", label: "Motor Yachts" },
+  { href: "/explorer-yachts-for-sale", label: "Explorer Yachts" },
+  { href: "/sailing-yachts-for-sale", label: "Sailing Yachts" },
+  { href: "/catamarans-for-sale", label: "Catamarans" },
+  { href: "/lurssen-yachts-for-sale", label: "Lürssen" },
+  { href: "/feadship-yachts-for-sale", label: "Feadship" },
+  { href: "/benetti-yachts-for-sale", label: "Benetti" },
+  { href: "/sunseeker-yachts-for-sale", label: "Sunseeker" },
+];
+
 /** Regions and international inventory, kept secondary to the USA. */
 export const INTERNATIONAL_NAV: NavItem[] = [
   { href: "/yachts-for-sale-caribbean", label: "Caribbean" },
