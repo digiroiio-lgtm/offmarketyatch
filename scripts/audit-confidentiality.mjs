@@ -279,7 +279,15 @@ scanResearch(staticFiles, "browser bundle");
 scanResearch(htmlFiles, "prerendered HTML");
 scanResearch(rscFiles, "RSC payload");
 scanResearch(
-  ["llms.txt", "llms-full.txt", "sitemap.xml", "robots.txt"].map((n) => join(APP_DIR, `${n}.body`)),
+  [
+    "llms.txt",
+    "llms-full.txt",
+    "sitemap.xml",
+    "robots.txt",
+    "sitemaps/pages.xml",
+    "sitemaps/listings.xml",
+    "sitemaps/intelligence.xml",
+  ].map((n) => join(APP_DIR, `${n}.body`)),
   "text/xml body"
 );
 for (const id of researchLeaksIntoStore()) {

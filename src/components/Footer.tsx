@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { FOOTER_NAV, INTERNATIONAL_NAV, SITE } from "@/lib/site";
+import { FOOTER_NAV, INTERNATIONAL_NAV, SITE, TYPE_BUILDER_NAV } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -55,6 +55,24 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
+        <nav
+          aria-label="By Type & Builder"
+          className="mt-14 border-t border-deal-room-line pt-8"
+        >
+          <p className="label-mono mb-4 text-accent">By Type &amp; Builder</p>
+          <div className="flex flex-wrap gap-x-7 gap-y-2">
+            {TYPE_BUILDER_NAV.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[13.5px] transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
         <nav
           aria-label="International Inventory"

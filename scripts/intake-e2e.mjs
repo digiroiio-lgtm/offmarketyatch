@@ -99,7 +99,7 @@ const baseAnswers = (builder, location) => ({
 try {
   await waitReady();
 
-  const sitemapBefore = (await text("/sitemap.xml")).match(/<loc>/g).length;
+  const sitemapBefore = (await text("/sitemaps/listings.xml")).match(/<loc>/g).length;
   const countBefore = (await text("/request-private-access")).match(/(\d+) opportunities currently published/)?.[1];
 
   // Submissions
@@ -161,7 +161,7 @@ try {
     for (const marker of Object.values(MARKERS)) if (body.includes(marker)) leaked.push(`${path}:${marker}`);
   }
   expect(leaked.length === 0, `no submission data in public pages${leaked.length ? ` (${leaked.join(", ")})` : ""}`);
-  expect((await text("/sitemap.xml")).match(/<loc>/g).length === sitemapBefore, "sitemap unchanged");
+  expect((await text("/sitemaps/listings.xml")).match(/<loc>/g).length === sitemapBefore, "sitemap unchanged");
   expect((await text("/request-private-access")).match(/(\d+) opportunities currently published/)?.[1] === countBefore, "published inventory count unchanged");
 
   // Gates
@@ -223,7 +223,7 @@ try {
     for (const marker of Object.values(MARKERS)) if (body.includes(marker)) leaked.push(`${path}:${marker}`);
   }
   expect(leaked.length === 0, "still no submission data in public pages after approvals");
-  expect((await text("/sitemap.xml")).match(/<loc>/g).length === sitemapBefore, "sitemap still unchanged");
+  expect((await text("/sitemaps/listings.xml")).match(/<loc>/g).length === sitemapBefore, "sitemap still unchanged");
 } catch (error) {
   console.error(error);
   failures += 1;

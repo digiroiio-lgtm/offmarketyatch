@@ -18,6 +18,7 @@ import {
   getOpportunityBySlug,
   getRelatedOpportunities,
   isRetiredSampleSlug,
+  sharesPublicTitle,
 } from "@/lib/opportunities";
 import { IS_SAMPLE_INVENTORY } from "@/lib/inventory-mode";
 import { breadcrumbSchema, pageMetadata } from "@/lib/seo";
@@ -72,7 +73,8 @@ const MAX_TITLE = 60;
 
 /**
  * The <title>, kept to 60 characters so search results do not truncate it.
- * The public reference stays in the H1 and on the page, not in the title.
+ * The public reference stays in the H1 and on the page, and reaches the title
+ * only when another listing has the same public title and location.
  *
  * "for Sale" is added only when it is true: live inventory, and not a
  * potential opportunity (where nobody has said the yacht is for sale).
@@ -83,11 +85,14 @@ function listingTitle(opportunity: PublicOpportunity): { title: string; absolute
     !IS_SAMPLE_INVENTORY && opportunity.availabilityType !== "POTENTIAL OPPORTUNITY";
   const base = forSale ? `${opportunity.titlePublic} for Sale` : opportunity.titlePublic;
   const brand = ` | ${SITE.name}`;
+  // Two listings with the same public title and location would share one
+  // <title>; the public reference keeps each one unique.
+  const ref = sharesPublicTitle(opportunity) ? ` · ${opportunity.reference}` : "";
   const candidates: { title: string; absolute: boolean }[] = [
-    { title: `${base}, ${opportunity.locationPublic}`, absolute: false },
-    { title: `${base}, ${opportunity.locationPublic}`, absolute: true },
-    { title: base, absolute: false },
-    { title: base, absolute: true },
+    { title: `${base}, ${opportunity.locationPublic}${ref}`, absolute: false },
+    { title: `${base}, ${opportunity.locationPublic}${ref}`, absolute: true },
+    { title: `${base}${ref}`, absolute: false },
+    { title: `${base}${ref}`, absolute: true },
   ];
   const fits = candidates.find(
     (c) => c.title.length + (c.absolute ? 0 : brand.length) <= MAX_TITLE
