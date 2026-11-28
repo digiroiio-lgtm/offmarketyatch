@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LocaleLink from "@/components/LocaleLink";
-import HomePage from "@/app/page";
+import HomePage from "@/components/HomePage";
 import { isLocale, SUPPORTED_LOCALES } from "@/lib/i18n";
 import { localizedPageMetadata } from "@/lib/seo";
 import { translateReactTree } from "@/lib/translate-tree";

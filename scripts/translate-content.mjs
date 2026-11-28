@@ -13,7 +13,7 @@ const TRANSLATABLE_KEYS = new Set([
   "ctaLabel", "secondaryCtaLabel", "linkLabel", "label", "term", "detail",
   "emptyMessage", "inventoryHeading", "cluster", "question", "answer",
   "placeholder", "footnote", "text", "headingLabel", "note", "subtitle", "options",
-  "summary", "tagline", "headline", "caption", "buttonText", "alt",
+  "summary", "tagline", "headline", "caption", "buttonText", "alt", "aria-label", "aria-description",
 ]);
 
 if (!API_KEY) {
