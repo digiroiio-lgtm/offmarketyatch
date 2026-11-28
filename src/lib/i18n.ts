@@ -383,6 +383,44 @@ const MESSAGES: Record<string, Message> = {
   "Added last week": { it: "Aggiunto la scorsa settimana", de: "Letzte Woche hinzugefügt", fr: "Ajouté la semaine dernière", ar: "أُضيف الأسبوع الماضي" },
   "Added {weeks} weeks ago": { it: "Aggiunto {weeks} settimane fa", de: "Vor {weeks} Wochen hinzugefügt", fr: "Ajouté il y a {weeks} semaines", ar: "أُضيف قبل {weeks} أسابيع" },
   "Added {months} months ago": { it: "Aggiunto {months} mesi fa", de: "Vor {months} Monaten hinzugefügt", fr: "Ajouté il y a {months} mois", ar: "أُضيف قبل {months} أشهر" },
+  "VAT-exempt zone for international vessel work": {
+    it: "Zona esente IVA per le attività internazionali sulle imbarcazioni",
+    de: "Mehrwertsteuerfreie Zone für internationale Arbeiten an Schiffen",
+    fr: "Zone exonérée de TVA pour les travaux maritimes internationaux",
+    ar: "منطقة معفاة من ضريبة القيمة المضافة لأعمال السفن الدولية",
+  },
+  "Access to 20+ vetted specialist shipyards": {
+    it: "Accesso a oltre 20 cantieri navali specializzati e verificati",
+    de: "Zugang zu über 20 geprüften Spezialwerften",
+    fr: "Accès à plus de 20 chantiers navals spécialisés et sélectionnés",
+    ar: "إمكانية الوصول إلى أكثر من 20 حوضاً متخصصاً تم التحقق منه",
+  },
+  "Skilled workforce at competitive rates": {
+    it: "Manodopera qualificata a tariffe competitive",
+    de: "Qualifizierte Fachkräfte zu wettbewerbsfähigen Preisen",
+    fr: "Main-d’œuvre qualifiée à des tarifs compétitifs",
+    ar: "قوى عاملة ماهرة بأسعار تنافسية",
+  },
+  "Year-round Mediterranean climate": {
+    it: "Clima mediterraneo tutto l’anno",
+    de: "Ganzjähriges Mittelmeerklima",
+    fr: "Climat méditerranéen toute l’année",
+    ar: "مناخ متوسطي على مدار العام",
+  },
+  "Direct IALA maritime route access": {
+    it: "Accesso diretto alle rotte marittime IALA",
+    de: "Direkter Zugang zu IALA-Schifffahrtsrouten",
+    fr: "Accès direct aux routes maritimes IALA",
+    ar: "وصول مباشر إلى المسارات البحرية التابعة لـ IALA",
+  },
+  "Florida": { it: "Florida", de: "Florida", fr: "Floride", ar: "فلوريدا" },
+  "Bahamas": { it: "Bahamas", de: "Bahamas", fr: "Bahamas", ar: "جزر البهاما" },
+  "Caribbean": { it: "Caraibi", de: "Karibik", fr: "Caraïbes", ar: "الكاريبي" },
+  "Mediterranean": { it: "Mediterraneo", de: "Mittelmeer", fr: "Méditerranée", ar: "البحر الأبيض المتوسط" },
+  "Northern Europe": { it: "Europa settentrionale", de: "Nordeuropa", fr: "Europe du Nord", ar: "شمال أوروبا" },
+  "Middle East": { it: "Medio Oriente", de: "Naher Osten", fr: "Moyen-Orient", ar: "الشرق الأوسط" },
+  "US East Coast": { it: "Costa orientale degli Stati Uniti", de: "US-Ostküste", fr: "Côte est des États-Unis", ar: "الساحل الشرقي للولايات المتحدة" },
+  "US West Coast": { it: "Costa occidentale degli Stati Uniti", de: "US-Westküste", fr: "Côte ouest des États-Unis", ar: "الساحل الغربي للولايات المتحدة" },
 };
 
 export function isLocale(value: string): value is SupportedLocale {

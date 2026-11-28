@@ -13,7 +13,7 @@ const TRANSLATABLE_KEYS = new Set([
   "ctaLabel", "secondaryCtaLabel", "linkLabel", "label", "term", "detail",
   "emptyMessage", "inventoryHeading", "cluster", "question", "answer",
   "placeholder", "footnote", "text", "headingLabel", "note", "subtitle", "options",
-  "summary", "tagline", "headline", "caption", "buttonText", "alt", "aria-label", "aria-description",
+  "summary", "tagline", "headline", "caption", "buttonText", "alt", "aria-label", "aria-description", "message", "error", "fields",
 ]);
 
 if (!API_KEY) {
@@ -26,7 +26,7 @@ async function walk(directory) {
   for (const entry of entries) {
     const full = path.join(directory, entry.name);
     if (entry.isDirectory()) {
-      if (["admin", "api", "i18n"].includes(entry.name)) continue;
+      if (["admin", "i18n"].includes(entry.name)) continue;
       files.push(...(await walk(full)));
     } else if (/\.(tsx?|mts|cts)$/.test(entry.name)) {
       files.push(full);
@@ -79,7 +79,6 @@ function collectStrings(fileName, sourceText, output) {
 
 const sourceFiles = (await walk(SOURCE_ROOT)).filter((file) =>
   !file.includes(path.sep + "admin" + path.sep) &&
-  !file.includes(path.sep + "api" + path.sep) &&
   !file.endsWith(path.sep + "opportunities.ts") &&
   !file.endsWith(path.sep + "catalog.generated.ts")
 );
