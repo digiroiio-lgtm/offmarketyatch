@@ -1,7 +1,8 @@
 import { ARTICLES } from "@/data/articles";
 import { getIndexableLandingPages } from "@/data/landing";
 import { getAllOpportunitySlugs } from "@/lib/opportunities";
-import { SITE } from "@/lib/site";
+import { canonical, SITE } from "@/lib/site";
+import { isLocaleReady, languageAlternates, localizedPath, SUPPORTED_LOCALES, type Locale } from "@/lib/i18n";
 
 /**
  * Sitemaps list only pages we actually want indexed.
@@ -113,13 +114,21 @@ function latest(entries: Entry[]): string {
 }
 
 export function renderSectionSitemap(section: SitemapSection): string {
+  const locales: Locale[] = ["en", ...SUPPORTED_LOCALES.filter(isLocaleReady)];
   const urls = entriesFor(section)
-    .map(
-      ({ path, lastModified }) =>
-        `<url>\n<loc>${escapeXml(`${SITE.url}${path === "/" ? "" : path}`)}</loc>\n<lastmod>${isoDate(lastModified)}</lastmod>\n</url>`
-    )
+    .flatMap(({ path, lastModified }) => {
+      const alternates = Object.entries(languageAlternates(path))
+        .map(([language, href]) =>
+          `<xhtml:link rel="alternate" hreflang="${escapeXml(language)}" href="${escapeXml(href)}" />`
+        )
+        .join("\n");
+      return locales.map((locale) => {
+        const localizedUrl = canonical(localizedPath(locale, path));
+        return `<url>\n<loc>${escapeXml(localizedUrl)}</loc>\n<lastmod>${isoDate(lastModified)}</lastmod>\n${alternates}\n</url>`;
+      });
+    })
     .join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 }
 
 export function renderSitemapIndex(): string {

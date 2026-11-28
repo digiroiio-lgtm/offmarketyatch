@@ -1,4 +1,5 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { displayYachtText, t, type Locale } from "@/lib/i18n";
 
 import type { PublicOpportunity } from "@/lib/types";
 
@@ -9,8 +10,10 @@ import type { PublicOpportunity } from "@/lib/types";
  */
 export default function OpportunityTicker({
   opportunities,
+  locale = "en",
 }: {
   opportunities: PublicOpportunity[];
+  locale?: Locale;
 }) {
   if (opportunities.length === 0) return null;
 
@@ -21,7 +24,7 @@ export default function OpportunityTicker({
     <div className="ticker-viewport overflow-hidden border-y border-deal-room-line bg-deal-room py-0">
       <div className="flex w-max ticker-track" aria-hidden="true">
         {cells.map((opportunity, index) => (
-          <TickerCell key={`${opportunity.slug}-${index}`} opportunity={opportunity} />
+          <TickerCell key={`${opportunity.slug}-${index}`} opportunity={opportunity} locale={locale} />
         ))}
       </div>
 
@@ -29,10 +32,10 @@ export default function OpportunityTicker({
       <ul className="sr-only">
         {opportunities.map((opportunity) => (
           <li key={opportunity.slug}>
-            <Link href={`/off-market-yachts/${opportunity.slug}`}>
-              {opportunity.reference}: {opportunity.titlePublic}, {opportunity.locationPublic},{" "}
+            <LocaleLink href={`/off-market-yachts/${opportunity.slug}`}>
+              {opportunity.reference}: {displayYachtText(locale, opportunity.titlePublic)}, {t(locale, opportunity.locationPublic)},{" "}
               {opportunity.priceLabel}
-            </Link>
+            </LocaleLink>
           </li>
         ))}
       </ul>
@@ -40,7 +43,7 @@ export default function OpportunityTicker({
   );
 }
 
-function TickerCell({ opportunity }: { opportunity: PublicOpportunity }) {
+function TickerCell({ opportunity, locale = "en" }: { opportunity: PublicOpportunity; locale?: Locale }) {
   const headline =
     opportunity.availabilityType === "VERIFIED OFF-MARKET"
       ? "OFF-MARKET"
@@ -52,9 +55,9 @@ function TickerCell({ opportunity }: { opportunity: PublicOpportunity }) {
 
   return (
     <div className="flex shrink-0 items-center gap-3 border-r border-deal-room-line px-6 py-3.5">
-      <span className="label-mono text-accent">{headline}</span>
+      <span className="label-mono text-accent">{t(locale, headline)}</span>
       <span className="label-mono text-white/40">{opportunity.reference}</span>
-      <span className="text-[13px] text-ink-inverse-muted">{opportunity.titlePublic}</span>
+      <span className="text-[13px] text-ink-inverse-muted">{displayYachtText(locale, opportunity.titlePublic)}</span>
       <span className="text-[13px] text-white/35">{opportunity.locationPublic}</span>
       <span className="font-mono text-[13px] tabular-nums text-white/75">
         {opportunity.priceLabel}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { notFound } from "next/navigation";
 
 import AnswerBlock from "@/components/AnswerBlock";
@@ -157,9 +157,9 @@ export default async function ArticlePage(
             <h2 className="label-mono mb-5 text-accent">Put this to use</h2>
             <div className="flex flex-wrap gap-2.5">
               {article.inventoryLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="btn-secondary btn-sm">
+                <LocaleLink key={link.href} href={link.href} className="btn-secondary btn-sm">
                   {link.label}
-                </Link>
+                </LocaleLink>
               ))}
             </div>
           </div>
@@ -175,7 +175,7 @@ export default async function ArticlePage(
               <h2 className="label-mono mb-6 text-accent">Continue reading</h2>
               <div className="grid gap-px border border-line bg-line sm:grid-cols-3">
                 {related.map((item) => (
-                  <Link
+                  <LocaleLink
                     key={item.slug}
                     href={`/private-market-intelligence/${item.slug}`}
                     className="bg-paper-raised p-7 transition-colors hover:bg-paper-sunken"
@@ -186,7 +186,7 @@ export default async function ArticlePage(
                     <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">
                       {item.standfirst}
                     </p>
-                  </Link>
+                  </LocaleLink>
                 ))}
               </div>
             </div>

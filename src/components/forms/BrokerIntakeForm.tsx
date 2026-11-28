@@ -13,6 +13,8 @@ import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { EXPECTED_VALUE, SALE_TIMELINE, YACHT_TYPE } from "@/components/forms/intake-options";
 import { track } from "@/lib/analytics";
 import { ANSWER_KEYS } from "@/lib/intake/types";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 /**
  * Broker partner intake. Distinct from the owner form: it asks for professional
@@ -35,6 +37,7 @@ const PERMISSIONS = [
 ];
 
 export default function BrokerIntakeForm() {
+  const locale = useLocale();
   const [contact, setContact] = useState({ name: "", email: "", phone: "", company: "" });
   const [firm, setFirm] = useState({ role: "", website: "", licence: "", jurisdictions: "" });
   const [representation, setRepresentation] = useState("");
@@ -132,18 +135,17 @@ export default function BrokerIntakeForm() {
       className="relative scroll-mt-28 border border-line bg-paper-raised p-6 sm:p-10"
       id="submit"
     >
-      <p className="label-mono text-accent">Share a Yacht Privately</p>
+      <p className="label-mono text-accent">{t(locale, "Share a Yacht Privately")}</p>
       <h2 className="display mt-3 text-[28px] text-ink sm:text-[32px]">
-        Share a yacht privately.
+        {t(locale, "Share a yacht privately.")}
       </h2>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-muted">
-        Nothing is published, matched or shared as a result of this form. It opens a private
-        record that we verify before any use is agreed in writing.
+        {t(locale, "Nothing is published, matched or shared as a result of this form. It opens a private record that we verify before any use is agreed in writing.")}
       </p>
 
       <Honeypot value={honeypot} onChange={setHoneypot} />
 
-      <h3 className="mt-8 text-[17px] font-semibold text-ink">You and your brokerage</h3>
+      <h3 className="mt-8 text-[17px] font-semibold text-ink">{t(locale, "You and your brokerage")}</h3>
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field id="broker-name" label="Full Name" value={contact.name} required autoComplete="name"
           onChange={(v) => setContact((p) => ({ ...p, name: v }))} error={fieldErrors.name} />
@@ -184,13 +186,13 @@ export default function BrokerIntakeForm() {
             options={REPRESENTATION.map((r) => r.label)}
           />
           {fieldErrors.representation && (
-            <p role="alert" className="mt-1 text-[12px] text-accent">{fieldErrors.representation}</p>
+            <p role="alert" className="mt-1 text-[12px] text-accent">{t(locale, fieldErrors.representation)}</p>
           )}
         </div>
         <label className="flex items-start gap-3 pt-7 text-[14.5px] text-ink-muted">
           <input type="checkbox" checked={evidence} onChange={(e) => setEvidence(e.target.checked)}
             className="mt-1" />
-          I can supply mandate evidence on request.
+          {t(locale, "I can supply mandate evidence on request.")}
         </label>
       </div>
 
@@ -219,8 +221,7 @@ export default function BrokerIntakeForm() {
           Permissions you are requesting
         </h3>
         <p className="mt-2 text-[14px] leading-relaxed text-ink-muted">
-          These are requests. None is granted by submitting this form; each is approved
-          separately, after verification, and can be withdrawn.
+          {t(locale, "These are requests. None is granted by submitting this form; each is approved separately, after verification, and can be withdrawn.")}
         </p>
         <div className="mt-4 space-y-3">
           {PERMISSIONS.map((permission) => (
@@ -237,18 +238,18 @@ export default function BrokerIntakeForm() {
         <label className="flex items-start gap-3 text-[14.5px] text-ink-muted">
           <input type="checkbox" checked={attested} onChange={(e) => setAttested(e.target.checked)}
             className="mt-1" />
-          I confirm I am authorised to share this information with OffMarketYacht.
+          {t(locale, "I confirm I am authorised to share this information with OffMarketYacht.")}
         </label>
         {fieldErrors.attested && (
-          <p role="alert" className="text-[12px] text-accent">{fieldErrors.attested}</p>
+          <p role="alert" className="text-[12px] text-accent">{t(locale, fieldErrors.attested)}</p>
         )}
         <label className="flex items-start gap-3 text-[14.5px] text-ink-muted">
           <input type="checkbox" checked={coBrokerage} onChange={(e) => setCoBrokerage(e.target.checked)}
             className="mt-1" />
-          I understand that co-brokerage terms are agreed in writing before any introduction.
+          {t(locale, "I understand that co-brokerage terms are agreed in writing before any introduction.")}
         </label>
         {fieldErrors.coBrokerage && (
-          <p role="alert" className="text-[12px] text-accent">{fieldErrors.coBrokerage}</p>
+          <p role="alert" className="text-[12px] text-accent">{t(locale, fieldErrors.coBrokerage)}</p>
         )}
       </div>
 
@@ -258,12 +259,11 @@ export default function BrokerIntakeForm() {
 
       <button type="submit" disabled={status === "sending"}
         className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto">
-        {status === "sending" ? "Sending…" : "Submit Privately"}
+        {status === "sending" ? t(locale, "Sending…") : t(locale, "Submit Privately")}
       </button>
 
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-        Confidential. We do not publish, circulate or disclose your mandate, and we do not contact
-        the owner, crew or marina, without your written instruction.
+        {t(locale, "Confidential. We do not publish, circulate or disclose your mandate, and we do not contact the owner, crew or marina, without your written instruction.")}
       </p>
     </form>
   );

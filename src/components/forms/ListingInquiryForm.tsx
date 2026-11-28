@@ -16,6 +16,8 @@ import BuyerContextFields, {
 } from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 import { lengthBandFor, priceBandFor } from "@/lib/format";
 import type { PublicOpportunity } from "@/lib/types";
 
@@ -47,6 +49,7 @@ export default function ListingInquiryForm({
 }: {
   opportunity: PublicOpportunity;
 }) {
+  const locale = useLocale();
   const [contact, setContact] = useState({ name: "", email: "", phone: "" });
   const [answers, setAnswers] = useState({ buyerStatus: "", budget: "", timeline: "" });
   const [buyer, setBuyer] = useState(EMPTY_BUYER_CONTEXT);
@@ -117,9 +120,9 @@ export default function ListingInquiryForm({
   if (status === "done") {
     return (
       <SuccessPanel
-        title={`Your request against ${opportunity.reference} has been received.`}
-        body="A member of our team will review your request and come back to you directly. Where the owner has authorised disclosure to qualified buyers, we will share the confidential detail under appropriate terms."
-        footnote="We do not release identity, exact pricing or location automatically on submission of a form."
+        title={t(locale, "Your request against {reference} has been received.").replace("{reference}", opportunity.reference)}
+        body={t(locale, "A member of our team will review your request and come back to you directly. Where the owner has authorised disclosure to qualified buyers, we will share the confidential detail under appropriate terms.")}
+        footnote={t(locale, "We do not release identity, exact pricing or location automatically on submission of a form.")}
       />
     );
   }
@@ -135,15 +138,15 @@ export default function ListingInquiryForm({
       id="request-details"
     >
       <p className="label-mono text-accent">
-        {isPotential ? "Private Investigation Request" : "Request Confidential Details"}
+        {t(locale, isPotential ? "Private Investigation Request" : "Request Confidential Details")}
       </p>
       <h2 className="display mt-3 text-[26px] text-ink sm:text-[30px]">
-        {isPotential ? `Investigate ${opportunity.reference}` : `Access ${opportunity.reference}`}
+        {t(locale, isPotential ? "Investigate {reference}" : "Access {reference}").replace("{reference}", opportunity.reference)}
       </h2>
       <p className="mt-3 text-[15px] leading-relaxed text-ink-muted">
         {isPotential
-          ? "Availability is not confirmed on this vessel. Tell us where you stand and our acquisition team can make a discreet approach on your behalf."
-          : "A few questions. Your answers let us qualify the request and respond with the right level of detail."}
+          ? t(locale, "Availability is not confirmed on this vessel. Tell us where you stand and our acquisition team can make a discreet approach on your behalf.")
+          : t(locale, "A few questions. Your answers let us qualify the request and respond with the right level of detail.")}
       </p>
 
       <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-y border-line py-4">
@@ -154,7 +157,7 @@ export default function ListingInquiryForm({
           { term: "Range", value: opportunity.priceLabel },
         ].map((row) => (
           <div key={row.term}>
-            <dt className="label-mono text-ink-faint">{row.term}</dt>
+            <dt className="label-mono text-ink-faint">{t(locale, row.term)}</dt>
             <dd className="data-value mt-1 text-ink">{row.value}</dd>
           </div>
         ))}
@@ -238,14 +241,14 @@ export default function ListingInquiryForm({
         className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto"
       >
         {status === "sending"
-          ? "Sending…"
+          ? t(locale, "Sending…")
           : isPotential
-            ? "Investigate Privately →"
-            : "Request Confidential Details"}
+            ? t(locale, "Investigate Privately →")
+            : t(locale, "Request Confidential Details")}
       </button>
 
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-        Available to qualified buyers. All inquiries handled confidentially.
+        {t(locale, "Available to qualified buyers. All inquiries handled confidentially.")}
       </p>
     </form>
   );

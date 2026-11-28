@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 
 import AnswerBlock from "@/components/AnswerBlock";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -152,12 +152,12 @@ export default function MarketplacePage() {
 
           <p className="mt-10 text-[15px] text-ink-muted">
             More on how this market works in{" "}
-            <Link
+            <LocaleLink
               href="/private-market-intelligence"
               className="text-ink underline decoration-accent underline-offset-4 hover:text-accent"
             >
               Private Market Intelligence
-            </Link>
+            </LocaleLink>
             .
           </p>
         </div>

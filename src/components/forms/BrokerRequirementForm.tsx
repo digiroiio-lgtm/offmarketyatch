@@ -11,6 +11,8 @@ import {
 } from "@/components/forms/FormParts";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 /**
  * A broker registering a client's acquisition requirement.
@@ -47,6 +49,7 @@ const SIZE = [
 const TIMELINE = ["Immediately", "0–3 months", "3–6 months", "6–12 months", "Exploring"];
 
 export default function BrokerRequirementForm() {
+  const locale = useLocale();
   const [contact, setContact] = useState({ name: "", email: "", phone: "", company: "" });
   const [criteria, setCriteria] = useState({
     relationship: "",
@@ -129,17 +132,17 @@ export default function BrokerRequirementForm() {
       className="relative scroll-mt-28 border border-line bg-paper-raised p-6 sm:p-10"
       id="requirement"
     >
-      <p className="label-mono text-accent">Client Requirement</p>
+      <p className="label-mono text-accent">{t(locale, "Client Requirement")}</p>
       <h2 className="display mt-3 text-[28px] text-ink sm:text-[32px]">
-        Submit a client requirement.
+        {t(locale, "Submit a client requirement.")}
       </h2>
       <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-ink-muted">
-        Your client is not named and not contacted. We match the brief privately and reply to you.
+        {t(locale, "Your client is not named and not contacted. We match the brief privately and reply to you.")}
       </p>
 
       <Honeypot value={honeypot} onChange={setHoneypot} />
 
-      <h3 className="mt-8 text-[17px] font-semibold text-ink">You and your brokerage</h3>
+      <h3 className="mt-8 text-[17px] font-semibold text-ink">{t(locale, "You and your brokerage")}</h3>
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field id="br-name" label="Full Name" value={contact.name} required autoComplete="name"
           onChange={(v) => setContact((p) => ({ ...p, name: v }))} error={fieldErrors.name} />
@@ -158,13 +161,13 @@ export default function BrokerRequirementForm() {
             onChange={(v) => setCriteria((p) => ({ ...p, relationship: v }))}
             options={RELATIONSHIP} />
           {fieldErrors.relationship && (
-            <p role="alert" className="mt-1 text-[12px] text-accent">{fieldErrors.relationship}</p>
+            <p role="alert" className="mt-1 text-[12px] text-accent">{t(locale, fieldErrors.relationship)}</p>
           )}
         </div>
       </div>
 
       <h3 className="mt-10 border-t border-line pt-8 text-[17px] font-semibold text-ink">
-        The requirement
+        {t(locale, "The requirement")}
       </h3>
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <SelectField id="br-type" label="Yacht Type" value={criteria.type}
@@ -173,24 +176,24 @@ export default function BrokerRequirementForm() {
           onChange={(v) => setCriteria((p) => ({ ...p, size: v }))} options={SIZE} />
         <Field id="br-builders" label="Preferred Builders" value={criteria.builders}
           onChange={(v) => setCriteria((p) => ({ ...p, builders: v }))}
-          placeholder="e.g. Lürssen, Feadship, Benetti" hint="Name a yard only if it is firm." />
+          placeholder={t(locale, "e.g. Lürssen, Feadship, Benetti")} hint={t(locale, "Name a yard only if it is firm.")} />
         <Field id="br-budget" label="Budget Ceiling" value={criteria.budgetCeiling}
           onChange={(v) => setCriteria((p) => ({ ...p, budgetCeiling: v }))}
-          placeholder="e.g. under $30M" hint="The real ceiling, not the opening figure." />
+          placeholder={t(locale, "e.g. under $30M")} hint={t(locale, "The real ceiling, not the opening figure.")} />
         <SelectField id="br-timeline" label="Buying Timeline" value={criteria.timeline}
           onChange={(v) => setCriteria((p) => ({ ...p, timeline: v }))} options={TIMELINE} />
       </div>
 
       <div className="mt-5">
         <label htmlFor="br-notes" className="form-label">
-          Anything else that decides it
+          {t(locale, "Anything else that decides it")}
         </label>
         <textarea
           id="br-notes"
           rows={3}
           value={criteria.notes}
           onChange={(event) => setCriteria((p) => ({ ...p, notes: event.target.value }))}
-          placeholder="Build year range, refit tolerance, cruising grounds, charter use, deal-breakers…"
+          placeholder={t(locale, "Build year range, refit tolerance, cruising grounds, charter use, deal-breakers…")}
           className="form-input resize-y"
         />
       </div>
@@ -199,10 +202,10 @@ export default function BrokerRequirementForm() {
         <label className="flex items-start gap-3 text-[14.5px] text-ink-muted">
           <input type="checkbox" checked={coBrokerage} onChange={(e) => setCoBrokerage(e.target.checked)}
             className="mt-1" />
-          I understand that co-brokerage terms are agreed in writing before any vessel is identified.
+          {t(locale, "I understand that co-brokerage terms are agreed in writing before any vessel is identified.")}
         </label>
         {fieldErrors.coBrokerage && (
-          <p role="alert" className="text-[12px] text-accent">{fieldErrors.coBrokerage}</p>
+          <p role="alert" className="text-[12px] text-accent">{t(locale, fieldErrors.coBrokerage)}</p>
         )}
       </div>
 
@@ -212,11 +215,11 @@ export default function BrokerRequirementForm() {
 
       <button type="submit" disabled={status === "sending"}
         className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto">
-        {status === "sending" ? "Sending…" : "Submit Requirement"}
+        {status === "sending" ? t(locale, "Sending…") : t(locale, "Submit Requirement")}
       </button>
 
       <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-        Confidential. Your client relationship stays yours.
+        {t(locale, "Confidential. Your client relationship stays yours.")}
       </p>
     </form>
   );

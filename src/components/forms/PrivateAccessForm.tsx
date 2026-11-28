@@ -17,6 +17,8 @@ import BuyerContextFields, {
 } from "@/components/forms/BuyerContextFields";
 import { useLeadSubmit } from "@/components/forms/useLeadSubmit";
 import { track } from "@/lib/analytics";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 /**
  * The primary qualification funnel (§9). One decision per screen keeps the
@@ -46,6 +48,7 @@ export default function PrivateAccessForm({
   /** "compact" drops the surrounding panel chrome for embedding in a section. */
   variant?: "full" | "compact";
 }) {
+  const locale = useLocale();
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState({
     lookingFor: "",
@@ -178,11 +181,10 @@ export default function PrivateAccessForm({
         {step === 5 && (
           <form onSubmit={handleSubmit} noValidate className="relative">
             <h2 className="display mb-2 text-[26px] text-ink sm:text-[30px]">
-              Where should we send matching opportunities?
+              {t(locale, "Where should we send matching opportunities?")}
             </h2>
             <p className="mb-7 text-[15px] leading-relaxed text-ink-muted">
-              Confidential. Used to qualify your request and contact you directly — never
-              published, never sold on.
+              {t(locale, "Confidential. Used to qualify your request and contact you directly — never published, never sold on.")}
             </p>
 
             <Honeypot value={honeypot} onChange={setHoneypot} />
@@ -255,12 +257,11 @@ export default function PrivateAccessForm({
               disabled={status === "sending"}
               className="btn-primary mt-6 w-full disabled:opacity-60 sm:w-auto"
             >
-              {status === "sending" ? "Sending…" : "Request Private Opportunities"}
+              {status === "sending" ? t(locale, "Sending…") : t(locale, "Request Private Opportunities")}
             </button>
 
             <p className="mt-4 text-[12.5px] leading-relaxed text-ink-faint">
-              All inquiries handled confidentially. Submitting this form does not release
-              confidential listing information automatically.
+              {t(locale, "All inquiries handled confidentially. Submitting this form does not release confidential listing information automatically.")}
             </p>
           </form>
         )}
@@ -272,7 +273,7 @@ export default function PrivateAccessForm({
           onClick={() => setStep((prev) => prev - 1)}
           className="label-mono mt-8 text-ink-faint transition-colors hover:text-accent"
         >
-          ← Back
+          ← {t(locale, "Back")}
         </button>
       )}
     </div>

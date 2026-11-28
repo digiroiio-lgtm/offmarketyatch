@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { canonical, SITE } from "@/lib/site";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import PageHero from "@/components/PageHero";
 import Breadcrumb from "@/components/Breadcrumb";
 import SchemaOrg from "@/components/SchemaOrg";
@@ -233,12 +233,12 @@ export default function YachtShowsPage() {
                   Visit Official Site →
                 </a>
                 {event.guide && (
-                  <Link
+                  <LocaleLink
                     href={event.guide}
                     className="mt-2 self-start text-xs font-semibold uppercase tracking-widest text-accent transition hover:text-ink"
                   >
                     Buyer&rsquo;s Guide →
-                  </Link>
+                  </LocaleLink>
                 )}
               </div>
             ))}
@@ -370,12 +370,12 @@ export default function YachtShowsPage() {
             public show season begins. Request access now to be positioned ahead of the calendar.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/request-private-access" className="btn-primary">
+            <LocaleLink href="/request-private-access" className="btn-primary">
               Request Private Access
-            </Link>
-            <Link href="/sell-your-yacht-privately" className="btn-onDark">
+            </LocaleLink>
+            <LocaleLink href="/sell-your-yacht-privately" className="btn-onDark">
               Submit a Yacht
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>

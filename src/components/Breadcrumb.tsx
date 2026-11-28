@@ -1,35 +1,36 @@
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { t, type Locale } from "@/lib/i18n";
 
 export interface Crumb {
   label: string;
   href?: string;
 }
 
-export default function Breadcrumb({ items }: { items: Crumb[] }) {
+export default function Breadcrumb({ items, locale = "en" }: { items: Crumb[]; locale?: Locale }) {
   return (
-    <nav aria-label="Breadcrumb" className="border-b border-line bg-paper-sunken">
+    <nav aria-label={t(locale, "Breadcrumb")} className="border-b border-line bg-paper-sunken">
       <div className="container-site">
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 py-3">
           <li>
-            <Link
+            <LocaleLink
               href="/"
               className="label-mono text-ink-faint transition-colors hover:text-accent"
             >
               Home
-            </Link>
+            </LocaleLink>
           </li>
           {items.map((item, index) => (
-            <li key={`${item.label}-${index}`} className="flex items-center gap-2">
+            <li key={`${t(locale, item.label)}-${index}`} className="flex items-center gap-2">
               <span aria-hidden="true" className="text-ink-faint">
                 /
               </span>
               {item.href ? (
-                <Link
+                <LocaleLink
                   href={item.href}
                   className="label-mono text-ink-faint transition-colors hover:text-accent"
                 >
                   {item.label}
-                </Link>
+                </LocaleLink>
               ) : (
                 <span aria-current="page" className="label-mono text-ink">
                   {item.label}

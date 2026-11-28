@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import SponsorBadge from "./SponsorBadge";
 
 // Abstract cinematic shipyard SVG background
@@ -83,18 +83,18 @@ export default function SponsoredBanner() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3">
-              <Link
+              <LocaleLink
                 href="/partners/mox-yacht"
                 className="inline-flex h-10 items-center rounded-lg bg-[#c9a96e] px-6 text-[11px] font-semibold uppercase tracking-wider text-[#0a1628] transition-colors hover:bg-[#e2c99a]"
               >
                 Explore MOX YACHT
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/contact"
                 className="inline-flex h-10 items-center rounded-lg border border-[#c9a96e]/30 px-6 text-[11px] font-semibold uppercase tracking-wider text-[#c9a96e] transition-colors hover:bg-[#c9a96e] hover:text-[#0a1628]"
               >
                 Schedule Consultation
-              </Link>
+              </LocaleLink>
             </div>
           </div>
 

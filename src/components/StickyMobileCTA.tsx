@@ -1,6 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
+import { useLocale } from "@/components/LocaleProvider";
+import { internalPath, t } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
 
 import { track } from "@/lib/analytics";
@@ -14,24 +16,22 @@ const SUPPRESSED_PREFIXES = [
 
 export default function StickyMobileCTA() {
   const pathname = usePathname();
-  if (SUPPRESSED_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
+  const locale = useLocale();
+  const basePath = internalPath(locale, pathname);
+  if (SUPPRESSED_PREFIXES.some((prefix) => basePath.startsWith(prefix))) return null;
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-deal-room-line bg-deal-room/95 px-4 py-3 backdrop-blur md:hidden">
       <div className="flex gap-2.5">
-        <Link
+        <LocaleLink
           href="/off-market-yachts"
           className="btn-onDark flex-1 py-3 text-[11px]"
-        >
-          Browse Market
-        </Link>
-        <Link
+         >{t(locale, "Browse Market")}</LocaleLink>
+        <LocaleLink
           href="/request-private-access"
           onClick={() => track("request_access_click", { form: "sticky_mobile" })}
           className="btn-primary flex-1 py-3 text-[11px]"
-        >
-          Private Access
-        </Link>
+         >{t(locale, "Private Access")}</LocaleLink>
       </div>
     </div>
   );
