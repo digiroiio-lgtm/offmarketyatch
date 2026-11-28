@@ -19,6 +19,10 @@ import type { PublicOpportunity } from "@/lib/types";
 function localizedAddedLabel(locale: ReturnType<typeof useLocale>, label: string): string {
   const days = label.match(/^Added (\d+) days ago$/);
   if (days) return t(locale, "Added {days} days ago").replace("{days}", days[1]);
+  const weeks = label.match(/^Added (\d+) weeks ago$/);
+  if (weeks) return t(locale, "Added {weeks} weeks ago").replace("{weeks}", weeks[1]);
+  const months = label.match(/^Added (\d+) months ago$/);
+  if (months) return t(locale, "Added {months} months ago").replace("{months}", months[1]);
   return t(locale, label);
 }
 

@@ -380,6 +380,9 @@ const MESSAGES: Record<string, Message> = {
   "Flybridge": { it: "Flybridge", de: "Flybridge", fr: "Flybridge", ar: "فلاي بريدج" },
   "Pilothouse": { it: "Timoneria", de: "Steuerhaus", fr: "Timonerie", ar: "قمرة القيادة" },
   "Mega Yacht": { it: "Mega yacht", de: "Megayacht", fr: "Mégayacht", ar: "يخت ضخم" },
+  "Added last week": { it: "Aggiunto la scorsa settimana", de: "Letzte Woche hinzugefügt", fr: "Ajouté la semaine dernière", ar: "أُضيف الأسبوع الماضي" },
+  "Added {weeks} weeks ago": { it: "Aggiunto {weeks} settimane fa", de: "Vor {weeks} Wochen hinzugefügt", fr: "Ajouté il y a {weeks} semaines", ar: "أُضيف قبل {weeks} أسابيع" },
+  "Added {months} months ago": { it: "Aggiunto {months} mesi fa", de: "Vor {months} Monaten hinzugefügt", fr: "Ajouté il y a {months} mois", ar: "أُضيف قبل {months} أشهر" },
 };
 
 export function isLocale(value: string): value is SupportedLocale {
@@ -427,7 +430,7 @@ const LOCALIZED_SLUGS: Record<SupportedLocale, Record<string, string>> = {
 };
 
 export function internalPath(locale: Locale, path: string): string {
-  const clean = path.replace(/^\/(it|de|fr|ar)(?=\/|$)/, "") || "/";
+  const clean = path.replace(/^\/(en|it|de|fr|ar)(?=\/|$)/, "") || "/";
   if (locale === "en" || clean === "/") return clean;
   const segments = clean.split("/").filter(Boolean);
   const reverse = Object.fromEntries(
