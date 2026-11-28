@@ -2,7 +2,7 @@
 
 import LocaleLink from "@/components/LocaleLink";
 import { useLocale } from "@/components/LocaleProvider";
-import { t } from "@/lib/i18n";
+import { internalPath, t } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
 
 import { track } from "@/lib/analytics";
@@ -17,7 +17,7 @@ const SUPPRESSED_PREFIXES = [
 export default function StickyMobileCTA() {
   const pathname = usePathname();
   const locale = useLocale();
-  const basePath = pathname.replace(/^\/(it|de|fr|ar)(?=\/|$)/, "") || "/";
+  const basePath = internalPath(locale, pathname);
   if (SUPPRESSED_PREFIXES.some((prefix) => basePath.startsWith(prefix))) return null;
 
   return (

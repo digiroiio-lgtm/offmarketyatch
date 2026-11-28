@@ -12,7 +12,7 @@ const TRANSLATABLE_KEYS = new Set([
   "heading", "body", "content", "paragraphs", "bullets", "keyTakeaway", "eyebrow",
   "ctaLabel", "secondaryCtaLabel", "linkLabel", "label", "term", "detail",
   "emptyMessage", "inventoryHeading", "cluster", "question", "answer",
-  "placeholder", "footnote", "text", "headingLabel", "note", "subtitle", "options",
+  "placeholder", "footnote", "text", "headingLabel", "note", "subtitle", "options", "h1", "primaryLabel", "secondaryLabel", "hint", "legend",
   "summary", "tagline", "headline", "caption", "buttonText", "alt", "aria-label", "aria-description", "message", "error", "fields",
 ]);
 

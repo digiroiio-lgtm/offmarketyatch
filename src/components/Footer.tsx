@@ -1,9 +1,13 @@
+"use client";
+
 import LocaleLink from "@/components/LocaleLink";
-import { t, type Locale } from "@/lib/i18n";
+import { useLocale } from "@/components/LocaleProvider";
+import { t } from "@/lib/i18n";
 
 import { FOOTER_NAV, INTERNATIONAL_NAV, SITE, TYPE_BUILDER_NAV } from "@/lib/site";
 
-export default function Footer({ locale = "en" }: { locale?: Locale }) {
+export default function Footer() {
+  const locale = useLocale();
   return (
     <footer className="border-t border-deal-room-line bg-deal-room text-ink-inverse-muted">
       <div className="container-wide py-16">

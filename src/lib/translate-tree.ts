@@ -29,12 +29,7 @@ function translateSchema(value: unknown, locale: Locale, key = ""): unknown {
     if (key === "@context" || key === "telephone" || key === "email") return value;
     if (key === "inLanguage") return LOCALE_CONFIG[locale].htmlLang;
     if (key === "url" || key === "item" || key === "mainEntityOfPage") return localizeUrl(value, locale);
-    if (key === "@id") {
-      const hashIndex = value.indexOf("#");
-      return hashIndex >= 0
-        ? localizeUrl(value.slice(0, hashIndex), locale) + value.slice(hashIndex)
-        : localizeUrl(value, locale);
-    }
+    if (key === "@id") return value.includes("#") ? value : localizeUrl(value, locale);
     return t(locale, value);
   }
   if (Array.isArray(value)) return value.map((item) => translateSchema(item, locale, key));

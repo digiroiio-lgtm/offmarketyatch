@@ -68,7 +68,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main id="main" className="flex-1 pb-[68px] md:pb-0">
           {children}
         </main>
-        <Footer locale={locale} />
+        <Footer />
         <StickyMobileCTA />
         </LocaleProvider>
       </body>
