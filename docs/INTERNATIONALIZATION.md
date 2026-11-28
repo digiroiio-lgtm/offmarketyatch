@@ -21,7 +21,7 @@ German, French and Arabic regional variants share one language edition initially
 - The root layout sets the document language and direction. Arabic uses RTL.
 - The server translation tree translates page copy and display props without changing identifiers, query values, confidential inventory records or external URLs.
 - localizedPageMetadata emits localized canonical URLs, Open Graph metadata and reciprocal hreflang alternates.
-- Sitemap entries are emitted for all five editions with xhtml:link alternates.
+- Sitemap entries and hreflang alternates are emitted only for locales with a generated translation catalog.
 - Organization structured data lists the first-wave service markets and available languages.
 
 ## Generate the complete translation catalog
@@ -35,7 +35,7 @@ The repository contains hand-reviewed translations for core commercial UI. The f
 5. Review src/i18n/catalog.generated.ts, especially legal, finance, privacy, brokerage and yacht-technical terminology.
 6. Run lint, typecheck, build and the locale QA checklist before deployment.
 
-The translation API key is used only by the local/CI script and must never be exposed to the browser or committed to the repository. Generated translations are a first pass; native-speaker review is required before treating each locale as fully production-ready.
+The translation API key is used only by the local/CI script and must never be exposed to the browser or committed to the repository. Until the generated catalog is populated, localized routes remain noindex and are excluded from hreflang and XML sitemaps so English fallback copy cannot be indexed as duplicate translations. Generated translations are a first pass; native-speaker review is required before treating each locale as fully production-ready.
 
 ## Release QA by locale
 
@@ -47,7 +47,7 @@ The translation API key is used only by the local/CI script and must never be ex
 For every locale, verify:
 - Every public route loads and every internal navigation link remains in the same locale.
 - Canonical URL, hreflang, Open Graph locale and document lang are correct.
-- Sitemap contains each localized route and reciprocal alternates.
+- Once the locale catalog is ready, the sitemap contains each localized route and reciprocal alternates.
 - Titles and descriptions are unique and fit search snippets.
 - Forms preserve English internal enum values while showing localized labels.
 - Search/filter behavior, validation, success states and email notifications remain unchanged.
