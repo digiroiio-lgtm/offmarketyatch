@@ -1,7 +1,7 @@
 import { ARTICLES } from "@/data/articles";
 import { getIndexableLandingPages } from "@/data/landing";
 import { getAllOpportunitySlugs } from "@/lib/opportunities";
-import { SITE } from "@/lib/site";
+import { canonical, SITE } from "@/lib/site";
 import { isLocaleReady, languageAlternates, localizedPath, SUPPORTED_LOCALES, type Locale } from "@/lib/i18n";
 
 /**
@@ -123,7 +123,7 @@ export function renderSectionSitemap(section: SitemapSection): string {
         )
         .join("\n");
       return locales.map((locale) => {
-        const localizedUrl = SITE.url + localizedPath(locale, path);
+        const localizedUrl = canonical(localizedPath(locale, path));
         return `<url>\n<loc>${escapeXml(localizedUrl)}</loc>\n<lastmod>${isoDate(lastModified)}</lastmod>\n${alternates}\n</url>`;
       });
     })

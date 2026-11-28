@@ -124,6 +124,8 @@ export function organizationSchema(locale: Locale = "en") {
     ],
     areaServed: [
       { "@type": "Country", name: "United States" },
+      { "@type": "Country", name: "United Kingdom" },
+      { "@type": "Country", name: "Luxembourg" },
       { "@type": "Country", name: "Qatar" },
       { "@type": "Country", name: "Italy" },
       { "@type": "Country", name: "Germany" },

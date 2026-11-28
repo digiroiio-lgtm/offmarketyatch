@@ -3,7 +3,7 @@ import "server-only";
 import { cloneElement, Fragment, isValidElement } from "react";
 import type { ReactElement, ReactNode } from "react";
 import { LOCALE_CONFIG, localizedPath, t, type Locale } from "@/lib/i18n";
-import { SITE } from "@/lib/site";
+import { canonical, SITE } from "@/lib/site";
 
 const SKIP_KEYS = new Set([
   "href", "src", "slug", "path", "id", "key", "value", "type", "kind", "role",
@@ -18,7 +18,7 @@ function localizeUrl(value: string, locale: Locale): string {
   try {
     const url = new URL(value, SITE.url);
     if (url.origin !== SITE.url) return value;
-    return url.origin + localizedPath(locale, url.pathname) + url.search + url.hash;
+    return canonical(localizedPath(locale, url.pathname)) + url.search + url.hash;
   } catch {
     return value;
   }

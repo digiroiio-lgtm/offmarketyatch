@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/site";
+import { canonical } from "@/lib/site";
 import { GENERATED_TRANSLATIONS } from "@/i18n/catalog.generated";
 
 export const SUPPORTED_LOCALES = ["it", "de", "fr", "ar"] as const;
@@ -376,6 +376,10 @@ const MESSAGES: Record<string, Message> = {
   "Added today": { it: "Aggiunto oggi", de: "Heute hinzugefügt", fr: "Ajouté aujourd’hui", ar: "أُضيف اليوم" },
   "Added yesterday": { it: "Aggiunto ieri", de: "Gestern hinzugefügt", fr: "Ajouté hier", ar: "أُضيف أمس" },
   "Added {days} days ago": { it: "Aggiunto {days} giorni fa", de: "Vor {days} Tagen hinzugefügt", fr: "Ajouté il y a {days} jours", ar: "أُضيف قبل {days} أيام" },
+  "Long-Range": { it: "A lungo raggio", de: "Langstrecken", fr: "Long-courrier", ar: "بعيد المدى" },
+  "Flybridge": { it: "Flybridge", de: "Flybridge", fr: "Flybridge", ar: "فلاي بريدج" },
+  "Pilothouse": { it: "Timoneria", de: "Steuerhaus", fr: "Timonerie", ar: "قمرة القيادة" },
+  "Mega Yacht": { it: "Mega yacht", de: "Megayacht", fr: "Mégayacht", ar: "يخت ضخم" },
 };
 
 export function isLocale(value: string): value is SupportedLocale {
@@ -450,7 +454,7 @@ export function isLocaleReady(locale: Locale): boolean {
 
 export function languageAlternates(path: string): Record<string, string> {
   const basePath = localizedPath("en", path);
-  const urlFor = (locale: Locale) => SITE.url + localizedPath(locale, basePath);
+  const urlFor = (locale: Locale) => canonical(localizedPath(locale, basePath));
   const result: Record<string, string> = {
     "en-US": urlFor("en"),
     "en-GB": urlFor("en"),
@@ -467,7 +471,7 @@ export function languageAlternates(path: string): Record<string, string> {
 
 export function displayYachtText(locale: Locale, source: string): string {
   const terms = [
-    "North American Build", "Northern European Build", "Mediterranean Build",
+    "North American Build", "Northern European Build", "Mediterranean Build", "Long-Range", "Flybridge", "Pilothouse", "Mega Yacht",
     "European Build", "Italian Build", "British Build", "Dutch Build", "German Build",
     "Asian Build", "Explorer Yacht", "Motor Yacht", "Sailing Yacht", "Sport Yacht",
     "Superyacht", "Catamaran", "Trimaran",
